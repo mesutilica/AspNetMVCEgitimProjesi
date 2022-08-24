@@ -1,0 +1,143 @@
+﻿@{
+}
+
+<h2>MVC02 HtmlHelpers</h2>
+
+@Html.ActionLink("Anasayfa", "Index", "Home")
+
+@Html.ActionLink("MVC01 Razor Syntax", "Index", "MVC01RazorSyntax")
+
+<h3>
+    Html Checkbox Oluşturma
+</h3>
+
+@Html.CheckBox("Onay") Onaylıyorum
+
+<h3>
+    Html Checkbox Oluşturma
+</h3>
+
+@Html.TextBox("txtAd") Ekranda giriş(input) elementi oluşturur.
+
+<input id="txtSoyad" name="txtSoyad" type="text" value="">
+
+<h3>
+    Html Hidden(Gizli Element) Oluşturma
+</h3>
+
+@Html.Hidden("GizliElement", "Html Hidden(Gizli Element) deki veriler sadece sayfa kaynağında görünür")
+
+<h3>
+    Html Label Oluşturma
+</h3>
+
+@Html.Label("lblAd", "Html label elementi")
+
+<h3>
+    Html Textarea(Çok satırlı input) Oluşturma
+</h3>
+
+@Html.TextArea("txtAdres", "Html Textarea(Çok satırlı input) Oluşturma")
+
+<h3>
+    Html Password(Şifre alanı) Oluşturma
+</h3>
+
+@Html.Password("txtPassword")
+
+<hr />
+
+<h3>
+    Html Helpers ile Form Oluşturma
+</h3>
+
+@using (Html.BeginForm())
+{
+    <h4>Kullanıcı Adı</h4>
+    @Html.Editor("txtKullaniciAdi")
+    <h4>Şifre</h4>
+    @Html.Password("txtPassword")
+    <br />
+    <input type="submit" value="Giriş" />
+}
+
+<hr />
+
+<h3>Listbox Elementi Kullanımı</h3>
+
+@{
+    SelectListItem[] liste = new SelectListItem[3]
+            {
+                new SelectListItem() { Text = "Bilgisayar"},
+                new SelectListItem() { Text = "Elektronik"},
+                new SelectListItem() { Text = "Telefon"}
+            };
+    string htmlRawOrnek = "<h5>Html Raw ile Ekrana Html içerik yazdırma</h5>";
+}
+
+@Html.ListBox("lbListe", liste)
+
+<hr />
+
+<h3>RadioButton Elementi Kullanımı</h3>
+
+@Html.RadioButton("rbOnay", "Onaylıyorum") Sözleşmeyi Onaylıyorum
+
+<hr />
+
+<h3>Html Raw ile Ekrana Html içerik yazdırma</h3>
+
+@htmlRawOrnek
+
+@Html.Raw(@htmlRawOrnek)
+
+@Html.Raw("<b style='color:red'>Html Raw ile Ekrana Html içerik yazdırma</b>")
+
+<hr />
+
+<h2>İletişim Formu</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="container" id="iletisimFormu">
+        <div class="row mb-3">
+            <div class="col">
+                Adınız
+            </div>
+            <div class="col">
+                @Html.TextBox("txtAd", null, null, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                Soyadınız
+            </div>
+            <div class="col">
+                @Html.TextBox("txtSoyad", "Soyadı", null, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                Telefon Numaranız
+            </div>
+            <div class="col">
+                @Html.TextBox("txtTelefon", null, null, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                Mesajınız
+            </div>
+            <div class="col">
+                @Html.TextArea("txtMesaj", null, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <input type="submit" value="Gönder" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+        
+        
+}

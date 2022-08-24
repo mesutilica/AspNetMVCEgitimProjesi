@@ -1,0 +1,29 @@
+﻿
+@{
+
+    string postMesaji = "";
+    string mesajKutusu = "";
+
+    
+
+}
+
+<h2>MVC Postback İşlemi</h2>
+
+<form method="post">
+    <input type="text" name="txtad" value="" />
+    <input type="submit" name="btnGonder" value="Gönder" />
+</form>
+
+@postMesaji
+
+@Html.Raw(mesajKutusu)
+
+<h2>MVC Postback İşlemi</h2>
+
+<form method="get">
+    <input type="text" name="kelime" value="" />
+    <input type="submit" name="btnGonder" value="Gönder" />
+</form>
+
+@ViewBag.Mesaj

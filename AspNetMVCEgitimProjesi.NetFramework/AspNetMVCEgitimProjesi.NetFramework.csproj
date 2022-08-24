@@ -123,6 +123,8 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MVC01RazorSyntaxController.cs" />
+    <Compile Include="Controllers\MVC02HtmlHelpersController.cs" />
+    <Compile Include="Controllers\MVC03PostBackController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,6 +168,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\MVC01RazorSyntax\Index.cshtml" />
+    <Content Include="Views\MVC02HtmlHelpers\Index.cshtml" />
+    <Content Include="Views\MVC03PostBack\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

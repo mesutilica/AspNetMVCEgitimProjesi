@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("OzelCss", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,6 +25,7 @@
                     <li>@Html.ActionLink("Hakkımızda", "About", "Home")</li>
                     <li>@Html.ActionLink("İletişim", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Varsayılan", "Index", "Default")</li>
+                    @Html.Partial("_PartialLogin")
                 </ul>
             </div>
         </div>
@@ -31,6 +33,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        @RenderSection("OzelIcerik", required: false)
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>

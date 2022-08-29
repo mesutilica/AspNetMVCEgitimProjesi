@@ -1,0 +1,56 @@
+﻿
+@{
+    DateTime tarih = DateTime.Now;
+}
+
+<p>
+    Github dan proje indirdiğimizde Solutiona a sağ tıklayıp Clean Solution deyip sonrasında yine Solutiona sağ tıklayıp Rebuild Solution diyerek projeyi tekrardan çalıştırmamız gerekebilir.
+</p>
+
+<p>
+    String Format : Ekrandaki verileri formatlamak için kullanırız.
+</p>
+
+<h3>
+    Tarih Formatlama
+</h3>
+
+<h4>
+    @tarih
+</h4>
+
+@("Kısa Saat -t : " + String.Format("{0:t}", tarih))
+
+<hr />
+
+@("Kısa Tarih -d : " + String.Format("{0:d}", tarih))
+
+<hr />
+
+@("Yıl -yyyy : " + String.Format("{0:yyyy}", tarih))
+
+<h3>
+    Sayı Formatlama
+</h3>
+
+@("0:C : " + String.Format("{0:C}", 49.50))
+
+<hr />
+
+@("0:D3 : " + String.Format("{0:D3}", 10))
+
+<hr />
+
+@("0:D5 : " + String.Format("{0:D5}", 10))
+
+<hr />
+
+@("0:F1 : " + String.Format("{0:F1}", 15.96))
+
+<hr />
+
+@("0:F2 : " + String.Format("{0:F2}", 15.95))
+
+<hr />
+
+@("0:F3 : " + String.Format("{0:F3}", 15.95))

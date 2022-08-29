@@ -1,0 +1,25 @@
+﻿@using System.Web
+
+@{
+    string baslik = "<h1>HttpUtility, Html Encode, Html Decode</h1>";
+    string baslikHtmlEncode = HttpUtility.HtmlEncode(baslik);
+    string baslikHtmlDecode = HttpUtility.HtmlDecode(baslikHtmlEncode);
+}
+
+<h1>
+    Http Utility : İçeriklerimizi erb için kodlayabilir veya kodlanmış veriyi çözebilmemizi sağlar.
+</h1>
+
+<h3>
+    Orjinal Başlık : @baslik
+</h3>
+
+<h3>
+    Başlığın Html Encode Hali : @baslikHtmlEncode
+</h3>
+
+<h3>
+    Başlığın Html Decode Edilmiş Hali : @baslikHtmlDecode
+</h3>
+
+@Html.Raw(baslikHtmlDecode)

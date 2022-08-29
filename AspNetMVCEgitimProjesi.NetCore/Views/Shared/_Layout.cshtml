@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AspNetMVCEgitimProjesi.NetCore.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("OzelCss", required: false)
 </head>
 <body>
     <header>
@@ -20,11 +21,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MVC01RazorSyntax" asp-action="Index">Razor Syntax</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MVC02HtmlHelpers" asp-action="Index">Html Helpers</a>
+                        </li>
+                        <partial name="_PartialLogin" />
                     </ul>
                 </div>
             </div>
@@ -35,6 +40,8 @@
             @RenderBody()
         </main>
     </div>
+
+    @await RenderSectionAsync("OzelIcerik", required: false)
 
     <footer class="border-top footer text-muted">
         <div class="container">

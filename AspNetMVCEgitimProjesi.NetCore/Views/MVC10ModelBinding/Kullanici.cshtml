@@ -1,0 +1,72 @@
+﻿@model Kullanici
+@{
+    ViewData["Title"] = "Kullanici";
+}
+
+<h1>Kullanici</h1>
+
+<p>
+    Bir view da sayfa modeli kullanmak için, sayfanın en üstüne @@ işaretinden sonra model yazıp class ımızın namespacini yazmamız gerekir.
+</p>
+
+<h3>
+    Model içerisinden gelen verileri ekranda gösterme
+</h3>
+
+<table class="table table-striped">
+    <tr>
+        <td>Ad</td>
+        <td>@Model.Ad</td>
+    </tr>
+    <tr>
+        <td>Soyad</td>
+        <td>@Model.Soyad</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <td>Kullanıcı Adı</td>
+        <td>@Model.KullaniciAdi</td>
+    </tr>
+    <tr>
+        <td>Şifre</td>
+        <td>@Model.Sifre</td>
+    </tr>
+</table>
+
+<h3>
+    Model içerisinden gelen verileri düzenleme
+</h3>
+
+<form asp-action="Kullanici">
+    <table class="table table-bordered">
+        <tr>
+            <td>Ad</td>
+            <td>@Html.TextBoxFor(model => model.Ad)</td>
+        </tr>
+        <tr>
+            <td>Soyad</td>
+            <td>@Html.TextBoxFor(model => model.Soyad)</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@Html.TextBoxFor(model => model.Email)</td>
+        </tr>
+        <tr>
+            <td>Kullanıcı Adı</td>
+            <td>@Html.TextBoxFor(model => model.KullaniciAdi)</td>
+        </tr>
+        <tr>
+            <td>Şifre</td>
+            <td>@Html.TextBoxFor(model => model.Sifre)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </td>
+        </tr>
+    </table>
+</form>

@@ -27,5 +27,34 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return View(kullanici); // Post işleminden sonra metoda parametreyle gelen kullanici nesnesini tekrar ekrana gönder
         }
+        public IActionResult Adres()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Adres(Adres adres)
+        {
+            // Projelerde bu noktada yakaladığımız adres nesnesini veritabanına kaydederiz.
+            return View(adres);
+        }
+        public IActionResult UyeSayfasi()
+        {
+            Kullanici kullanici = new Kullanici()
+            {
+                Ad = "Murat",
+                Soyad = "Yılmaz",
+                Email = "info@yoneciti.com",
+                KullaniciAdi = "murat",
+                Sifre = "123456"
+            };
+            //kullanici.Sifre = "112365";
+            UyeSayfasiViewModel model = new UyeSayfasiViewModel()
+            {
+                Kullanici = kullanici,
+                Adres = new Adres { Ilce = "Ataşehir", Sehir = "İstanbul", AcikAdres = "Menekşe Sokak No:18" }
+            };
+            //model.Adres = new Adres { Ilce = "Ataşehir", Sehir = "İstanbul", AcikAdres = "Menekşe Sokak No:18" };
+            return View(model);
+        }
     }
 }

@@ -3,6 +3,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews(); // Uygulamada MVC controller view yapýsýný kullanacaðýz
 
+builder.Services.AddSession(option => option.IdleTimeout = TimeSpan.FromMinutes(3)); // Uygulamada session kullanacaðýmýzý bildirdik. option kullanarak session yapýlandýrmasýný kullanabiliriz. Sonrasýnda aþaðýdaki add tanýmlamasýndan sonra use session ayarýný yapýyoruz.
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -15,6 +17,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection(); // http den https ye otomatik yönlendire yap
 app.UseStaticFiles(); // Uygulamada statik doyalar(wwwroot içerisindekiler) kullanýlabilsin
+
+app.UseSession(); // web uygulamamýzda session kullanýmýný aktif et
 
 app.UseRouting(); // Uygulamada Routing mekanizmasýný aktif et
 

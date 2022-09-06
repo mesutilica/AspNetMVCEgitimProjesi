@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Cookie Oku";
+}
+
+<h1>Cookie Oku</h1>
+
+<a href="CookieOlustur">
+    Cookie Oluştur
+</a>
+<hr />
+<a href="CookieSil">
+    Cookie Sil
+</a>
+
+<hr />
+
+<div>
+    Cookie deki kullanıcı adı :
+    <b>
+        @TempData["kullaniciadi"]
+    </b>
+</div>
+
+<hr />
+
+<div>
+    Cookie deki kullanıcı guid :
+    <b>
+        @TempData["kullaniciguid"]
+    </b>
+</div>

@@ -129,9 +129,20 @@
     <Compile Include="Controllers\MVC05StringFormatController.cs" />
     <Compile Include="Controllers\MVC06SectionController.cs" />
     <Compile Include="Controllers\MVC07PartialController.cs" />
+    <Compile Include="Controllers\MVC08ControllerToViewController.cs" />
+    <Compile Include="Controllers\MVC09ViewToControllerDataController.cs" />
+    <Compile Include="Controllers\MVC10ModelBindingController.cs" />
+    <Compile Include="Controllers\MVC11ModelValidationController.cs" />
+    <Compile Include="Controllers\MVC12SessionController.cs" />
+    <Compile Include="Controllers\MVC13CookieController.cs" />
+    <Compile Include="Controllers\MVC14ViewResultsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Adres.cs" />
+    <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\Uye.cs" />
+    <Compile Include="Models\UyeSayfasiViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,10 +190,31 @@
     <Content Include="Views\MVC06Section\Index.cshtml" />
     <Content Include="Views\MVC07Partial\Index.cshtml" />
     <Content Include="Views\Shared\_PartialLogin.cshtml" />
+    <Content Include="Views\MVC08ControllerToView\Index.cshtml" />
+    <Content Include="Views\MVC09ViewToControllerData\Index.cshtml" />
+    <Content Include="Views\MVC10ModelBinding\Adres.cshtml" />
+    <Content Include="Views\MVC10ModelBinding\Index.cshtml" />
+    <Content Include="Views\MVC10ModelBinding\Kullanici.cshtml" />
+    <Content Include="Views\MVC10ModelBinding\UyeSayfasi.cshtml" />
+    <Content Include="Views\MVC11ModelValidation\Index.cshtml" />
+    <Content Include="Views\MVC11ModelValidation\UyeDuzenle.cshtml" />
+    <Content Include="Views\MVC11ModelValidation\UyeListesi.cshtml" />
+    <Content Include="Views\MVC11ModelValidation\UyeSil.cshtml" />
+    <Content Include="Views\MVC11ModelValidation\YeniUye.cshtml" />
+    <Content Include="Views\MVC12Session\Index.cshtml" />
+    <Content Include="Views\MVC12Session\SessionOku.cshtml" />
+    <Content Include="Views\MVC12Session\SessionOlustur.cshtml" />
+    <Content Include="Views\MVC12Session\SessionSil.cshtml" />
+    <Content Include="Views\MVC13Cookie\CookieOku.cshtml" />
+    <Content Include="Views\MVC13Cookie\CookieOlustur.cshtml" />
+    <Content Include="Views\MVC13Cookie\Index.cshtml" />
+    <Content Include="Views\MVC14ViewResults\Index.cshtml" />
+    <Content Include="Views\MVC14ViewResults\FarkliViewDondur.cshtml" />
+    <Content Include="Views\Shared\_KategorilerPartial.cshtml" />
+    <Content Include="Views\Shared\_KategorilerPartialModelKullanimi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

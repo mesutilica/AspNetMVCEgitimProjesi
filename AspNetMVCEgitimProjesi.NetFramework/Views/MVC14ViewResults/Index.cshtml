@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Mvc View Result Çeşitleri";
+}
+
+<h2>Mvc View Result Çeşitleri</h2>
+
+<h3>
+    Redirect Result : Sayfayı bir url adresine yönlendirme için kullanılır
+</h3>
+
+@Html.ActionLink("Redirect Result", "Yonlendir")
+
+<h3>
+    RedirectToAction Result : Sayfayı başka bir actiona yönlendirme için kullanılır
+</h3>
+
+@Html.ActionLink("RedirectToAction Result", "Yonlendir")
+
+
+<h3>
+    RedirectToRouteResult Result : Sayfayı başka bir route a yönlendirme için kullanılır
+</h3>
+
+@Html.ActionLink("RedirectToRouteResult Result", "RouteYonlendir")
+
+
+<h3>
+    PartialViewResult : Actiona gelen istek sonucu geriye bir PartialView döndürmek için kullanılır
+</h3>
+
+@Html.Partial("_KategorilerPartial")
+
+<h3>
+    Kategorileri Action ile Getir : controller daki bir action u çalıştırmak için kullanılır
+</h3>
+
+@Html.Action("KategorileriGetirPartial")
+
+<h3>
+    Kategorileri Action ile Getir : controller daki bir actionı model kullanarak çalıştırmak için kullanılır
+</h3>
+
+@Html.Action("KategorileriModelleGetirPartial")
+

@@ -25,6 +25,12 @@ app.UseRouting(); // Uygulamada Routing mekanizmasýný aktif et
 app.UseAuthentication(); // Uygulamada oturum açma iþlemini aktif et
 app.UseAuthorization(); // Uygulamada yetkilendirme kullanýmýný aktif et
 
+// Admin areasýný ekledikten sonra aþaðýdaki route ayarýný tanýmlamamýz gerekiyor! Sonrasýnda admin içerisindeki controllerlarýn üstüne area adýný yazmamýz gerekiyor yoksa 404 error hatasý alýyoruz.
+app.MapControllerRoute(
+            name: "admin",
+            pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}"
+          );
+
 app.MapControllerRoute( // uygulamada kullanacaðýmýz routing yapýsý
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

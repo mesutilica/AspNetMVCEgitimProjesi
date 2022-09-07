@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -44,6 +45,57 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                 "Telefon", "Bilgisayar", "Monitör", "Klavye", "Laptop"
             };
             return PartialView("_KategorilerPartialModelKullanimi", kategoriler); // Geriye döndermek istediğimiz partial ismini verebiliriz
+        }
+        public FileStreamResult MetinDosyasiIndir()
+        {
+            string metin = "FileStreamResult ile metin dosyası indirme";
+
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(metin);
+            memory.Write(bytes, 0, bytes.Length);
+            memory.Position = 0;
+            FileStreamResult result = new FileStreamResult(memory, "text/plain");
+            result.FileDownloadName = "metin.txt";
+
+            return result;
+        }
+        public JavaScriptResult JsResult()
+        {
+            return JavaScript("alert('JavaScriptResult')");
+        }
+        public JsonResult JsonResult()
+        {
+            var kullanici = new Kullanici()
+            {
+                Ad = "Ali",
+                Soyad = "Çakmaktaş",
+                KullaniciAdi = "acakmak",
+                Email = "ali@cakmaktas.com"
+            };
+            return Json(kullanici, JsonRequestBehavior.AllowGet);
+        }
+        public ContentResult XmlContentResult()
+        {
+            var xml = @"
+                <kullanicilar>
+                    <kullanici>
+                        <Id>1</Id>
+                        <Ad>Ali</Ad>
+                        <Soyad>Çakmaktaş</Soyad>
+                        <KullaniciAdi>acakmak</KullaniciAdi>
+                        <Email>ali@cakmaktas.com</Email>
+                    </kullanici>
+                    <kullanici>
+                        <Id>2</Id>
+                        <Ad>Barni</Ad>
+                        <Soyad>Moloztaş</Soyad>
+                        <KullaniciAdi>barny</KullaniciAdi>
+                        <Email>barni@moloztas.com</Email>
+                    </kullanici>
+                </kullanicilar>
+            ";
+
+            return Content(xml, "application/xml");
         }
     }
 }

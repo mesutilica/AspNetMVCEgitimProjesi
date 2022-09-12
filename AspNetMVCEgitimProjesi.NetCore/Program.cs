@@ -1,9 +1,13 @@
+using AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews(); // Uygulamada MVC controller view yapýsýný kullanacaðýz
 
 builder.Services.AddSession(option => option.IdleTimeout = TimeSpan.FromMinutes(3)); // Uygulamada session kullanacaðýmýzý bildirdik. option kullanarak session yapýlandýrmasýný kullanabiliriz. Sonrasýnda aþaðýdaki add tanýmlamasýndan sonra use session ayarýný yapýyoruz.
+
+builder.Services.AddDbContext<DatabaseContext>(); // Entity framework ü projede servis olarak kullanabilmek için bu tanýmlama gerekli
 
 var app = builder.Build();
 

@@ -1,11 +1,12 @@
 ﻿using AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize] // CategoriesController daki tüm actionlara gelecek isteklerde oturum kontrolü yaptırdık bu şekilde.
     public class CategoriesController : Controller
     {
         DatabaseContext context = new DatabaseContext();

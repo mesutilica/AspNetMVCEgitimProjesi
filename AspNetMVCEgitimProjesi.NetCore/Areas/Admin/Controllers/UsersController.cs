@@ -1,10 +1,11 @@
 ﻿using AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
 {
-    [Area("Admin")] // soldakini yazmazsak sayfalar açılmıyor!!
+    [Area("Admin"), Authorize] // soldakini yazmazsak sayfalar açılmıyor!!
     public class UsersController : Controller
     {
         DatabaseContext context = new DatabaseContext();

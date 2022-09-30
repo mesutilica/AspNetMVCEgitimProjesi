@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Mvc Dosya Yükleme";
+}
+
+<h1>Mvc Dosya Yükleme</h1>
+
+<form asp-action="Index" enctype="multipart/form-data">
+    <input name="Image" class="form-control" type="file" />
+    <hr />
+    <input type="submit" value="Yükle" class="btn btn-primary" />
+</form>
+<hr />
+<img src="/Img/@TempData["Resim"]" alt="" height="180" />

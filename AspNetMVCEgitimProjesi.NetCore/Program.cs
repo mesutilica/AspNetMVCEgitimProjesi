@@ -26,6 +26,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseExceptionHandler("/Home/Error"); // Global hata yakalama için
+
 app.UseHttpsRedirection(); // http den https ye otomatik yönlendire yap
 app.UseStaticFiles(); // Uygulamada statik doyalar(wwwroot içerisindekiler) kullanýlabilsin
 

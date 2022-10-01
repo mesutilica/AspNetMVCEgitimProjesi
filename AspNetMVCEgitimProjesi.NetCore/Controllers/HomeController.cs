@@ -1,4 +1,5 @@
 ﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -26,6 +27,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            var err = HttpContext.Features.Get<IExceptionHandlerFeature>(); // hataları yakalayıp loglayabiliriz
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

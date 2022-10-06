@@ -8,24 +8,20 @@
     Sayfa içerisinde bir bölüm
 </section>
 
-
-
 @section Scripts{
     @*<script>alert("Scripts isimli section çalıştı!")</script>*@
+    <script>console.log("Bu yazı section ile gönderildi!")</script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 }
 
-@section OzelIcerik{
+    @section OzelIcerik{
     <section class="jumbotron">
         Sayfa içerisinde bir bölüm
     </section>
 }
 
-@section OzelCss{
+    @section OzelCss{
     <style>
-        body {
-            background-color: red;
-            color: white;
-        }
+        body { background-color: red; color: white; }
     </style>
 }

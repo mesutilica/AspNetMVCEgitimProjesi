@@ -13,6 +13,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models
         {
             // metodu oluşturduktan sonra aşağıdaki gibi veritabanı ayarlarını tanımlayabiliriz.
             optionsBuilder.UseSqlServer(@"server=(localdb)\MSSQLLocalDB; Database=AspNetMVCEgitimProjesi; integrated security=True"); // Burada connection string tanımlıyoruz
+            //optionsBuilder.UseInMemoryDatabase("InMemoryDb");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,7 +27,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models
                     Name = "Admin",
                     Surname = "User",
                     Username = "Admin",
-                    Password = "123456"
+                    Password = "1234"
                 }
                 );
             base.OnModelCreating(modelBuilder);

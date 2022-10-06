@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
 {
-    [Area("Admin"), Authorize]
+    [Area("Admin")]//, Authorize
     public class ProductsController : Controller
     {
         DatabaseContext context = new DatabaseContext();

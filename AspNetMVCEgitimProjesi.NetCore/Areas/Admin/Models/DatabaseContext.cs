@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using AspNetMVCEgitimProjesi.NetCore.Models;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models
 {
@@ -36,5 +37,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models
             // Migration oluştuktan sonra PMC konsoluna update-database yazıp enter a basıyoruz, bu veritabanımızı ve tablolarımızı oluşturacak
             // Sonraki adımda Program.cs dosyasına Databasecontext i servis olarak ekliyoruz
         }
+        public DbSet<AspNetMVCEgitimProjesi.NetCore.Models.Kullanici> Kullanici { get; set; }
     }
 }

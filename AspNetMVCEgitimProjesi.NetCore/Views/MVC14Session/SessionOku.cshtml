@@ -1,17 +1,15 @@
-﻿
-
-@{
+﻿@{
     ViewData["Title"] = "Session Oku";
 }
 
 <h1>Session Oku</h1>
 
 <div>
-    Sessiondaki Değer : 
+    Sessiondaki Değer :
     <b>
         @TempData["SessionBilgi"]
     </b>
-    
+
 </div>
 
 <hr />
@@ -22,6 +20,9 @@
 
 <hr />
 
-<a asp-action="SessionSil">
-    Session Sil Sayfasına Git
-</a>
+@if (TempData["SessionBilgi"] is not null)
+{
+    <form asp-action="SessionSil">
+        <input type="submit" value="Çıkış" />
+    </form>
+}

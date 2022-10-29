@@ -41,4 +41,8 @@
     @_context.HttpContext.Request.Query["kelime"]
     <br /> Session değeri : 
     @_context.HttpContext.Session.GetString("deger")
+    <br /> Oturum açılmış mı? : 
+    @_context.HttpContext.User.Identity.IsAuthenticated
+    <br /> Kullanıcı User Rolüne Sahip mi? :
+    @_context.HttpContext.User.IsInRole("User")
 </p>

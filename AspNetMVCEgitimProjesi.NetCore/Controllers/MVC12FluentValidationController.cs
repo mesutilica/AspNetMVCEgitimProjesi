@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC19FluentValidationController : Controller
+    public class MVC12FluentValidationController : Controller
     {
         private IValidator<Kullanici> _validator;
 
-        public MVC19FluentValidationController(IValidator<Kullanici> validator)
+        public MVC12FluentValidationController(IValidator<Kullanici> validator)
         {
             _validator = validator;
         }

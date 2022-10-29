@@ -11,7 +11,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             return View();
         }
         [HttpPost] // Aşağıdaki metot sayfa (View) post edildiğinde çalışır
-        public IActionResult Index(string text1, string ddlListe, bool cbOnay)
+        public IActionResult Index(string text1, string ddlListe, bool cbOnay, IFormCollection keyValuePairs)
         {
             // 1. Yöntem parametrelerden gelen veriler;
             /*

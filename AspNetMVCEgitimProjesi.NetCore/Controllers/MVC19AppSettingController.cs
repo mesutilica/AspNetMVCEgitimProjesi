@@ -2,11 +2,11 @@
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC15AppSettingController : Controller
+    public class MVC19AppSettingController : Controller
     {
         private readonly IConfiguration _configuration;
 
-        public MVC15AppSettingController(IConfiguration configuration)
+        public MVC19AppSettingController(IConfiguration configuration)
         {
             _configuration = configuration;
         }

@@ -1,0 +1,44 @@
+﻿@inject IHttpContextAccessor _context
+
+@{
+    ViewData["Title"] = "HttpContextAccessor";
+}
+
+<h1>HttpContextAccessor</h1>
+
+<p>
+    Sunucu üzerinden birden fazla istemciye hizmet verecek şekilde tasarlanmış uygulama mimarilerinde her bir istek için benzersiz/tekil bir Context nesnesi üretilir. 
+    Context üzerinden de istemci tarafından yapılan Request ile birlikte uygulamaya ve isteğe ait bazı bilgilere ulaşılabilir. Bununla birlikte framework bize, ilgili istek için üretilen Context nesnesi yaşadığı sürece saklanması gereken bilgilerinde tutulduğu koleksiyon sunmaktadır.
+</p>
+
+<p>
+    HttpContextAccessor kullanabilmek için program.cs ye builder.Services.AddSingleton < IHttpContextAccessor HttpContextAccessor >(); kodunu ekliyoruz.
+</p>
+
+<p>
+    Controller da DI yaparak kullanabiliriz;
+    <hr />
+    @Html.Raw(TempData["mesaj"])
+</p>
+
+<form>
+    @Html.Editor("kelime")
+</form>
+
+<p>
+    Sayafada direk inject ederek kullanabiliriz;
+    <hr />
+    @_context.HttpContext.GetRouteValue("Controller")
+    <br />
+    @_context.HttpContext.GetRouteValue("Action")
+    <br />
+    @_context.HttpContext.GetRouteValue("id")
+    <br />
+    @_context.HttpContext.Request.Method
+    <br />
+    @_context.HttpContext.Request.QueryString
+    <br />
+    @_context.HttpContext.Request.Query["kelime"]
+    <br /> Session değeri : 
+    @_context.HttpContext.Session.GetString("deger")
+</p>

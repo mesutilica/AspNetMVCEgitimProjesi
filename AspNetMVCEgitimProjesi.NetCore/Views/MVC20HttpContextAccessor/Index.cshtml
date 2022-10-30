@@ -27,20 +27,22 @@
 
 <p>
     Sayafada direk inject ederek kullanabiliriz;
-    <hr />
+    <hr />Controller Adı : 
     @_context.HttpContext.GetRouteValue("Controller")
-    <br />
+    <br />Action Adı :
     @_context.HttpContext.GetRouteValue("Action")
-    <br />
+    <br />Id Değeri : 
     @_context.HttpContext.GetRouteValue("id")
-    <br />
+    <br />Request Method : 
     @_context.HttpContext.Request.Method
-    <br />
+    <br />QueryString : 
     @_context.HttpContext.Request.QueryString
-    <br />
+    <br />Query kelime:
     @_context.HttpContext.Request.Query["kelime"]
     <br /> Session değeri : 
-    @_context.HttpContext.Session.GetString("deger")
+    @_context.HttpContext.Session.GetString("UserGuid")
+    <br /> Cookie değeri : 
+    @_context.HttpContext.Request.Cookies["userguid"]
     <br /> Oturum açılmış mı? : 
     @_context.HttpContext.User.Identity.IsAuthenticated
     <br /> Kullanıcı User Rolüne Sahip mi? :

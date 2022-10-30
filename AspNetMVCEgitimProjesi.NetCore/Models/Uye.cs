@@ -20,7 +20,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Models
         [MaxLength(11, ErrorMessage = "TC Numarası 11 Karakter Olmalıdır!")]
         public string TcKimlikNo { get; set; }
         [Display(Name = "Doğum Tarihi")]
-        public DateTime DogumTarihi { get; set; }
+        public DateTime DogumTarihi { get; set; } = DateTime.Now;
         [Display(Name = "Kullanıcı Adı")]
         public string KullaniciAdi { get; set; }
         [Display(Name = "Şifre"), DataType(DataType.Password)]

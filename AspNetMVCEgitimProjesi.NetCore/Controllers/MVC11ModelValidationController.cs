@@ -13,8 +13,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             var uyeListesi = new List<Uye>()
             {
-                new Uye() { Id = 1, Ad = "Akın", Soyad = "Malkoç", Email ="akin@siteadi.com"  },
-                new Uye() {  Id = 2, Ad = "Mert", Soyad = "Temel", Email ="mert@siteadi.com"  }
+                new Uye() { Id = 1, Ad = "Murat", Soyad = "Malkoçoğlu", Email ="akin@siteadi.com"  },
+                new Uye() {  Id = 2, Ad = "Alp", Soyad = "Arslan", Email ="alp@siteadi.com"  },
+                new Uye() {  Id = 3, Ad = "Pusat", Soyad = "Kılıç", Email ="pusat@siteadi.com"  }
             };
             uyeListesi.Add(new Uye() { Id = 1453, Ad = "Fatih", Soyad = "Sultan", Email = "fatih@sultan.net" });
 

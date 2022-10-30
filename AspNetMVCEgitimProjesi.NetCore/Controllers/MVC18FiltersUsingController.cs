@@ -8,7 +8,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         [UserControl]
         public IActionResult Index()
         {
-            ViewBag.Kullanici = HttpContext.Session.GetString("deger");
+            ViewBag.Kullanici = HttpContext.Session.GetString("UserGuid");
             return View();
         }
     }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using AspNetMVCEgitimProjesi.NetCore.Models;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models
 {

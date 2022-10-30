@@ -30,12 +30,13 @@
 </h3>
 
 @{
-    SelectListItem[] liste = new SelectListItem[3]
-            {
-                new SelectListItem() { Text = "Bilgisayar" },
-                new SelectListItem() { Text = "Monitör" },
-                new SelectListItem() { Text = "Tablet" }
-            };
+    SelectListItem[] liste = {
+       new SelectListItem() { Text = "Bilgisayar", Value = "1" },
+       new SelectListItem() { Text = "Monitör", Value = "2" },
+       new SelectListItem() { Text = "Telefon", Value = "3" },
+       new SelectListItem() { Text = "Televizyon", Value = "4" },
+       new SelectListItem() { Text = "Tablet" }
+    };
 }
 
 <form asp-action="Index" method="post">
@@ -48,6 +49,8 @@
     <input type="submit" value="Gönder" />
 </form>
 
+<h3>1. Yöntem parametrelerden gelen veriler;</h3>
+
 @ViewBag.Mesaj
 
 <hr />
@@ -57,3 +60,27 @@
 <hr />
 
 @TempData["Tdata"]
+
+<h3>2. Yöntem Request Form ile verileri yakalama</h3>
+
+@ViewBag.Mesaj2
+
+<hr />
+
+@ViewBag.MesajListe2
+
+<hr />
+
+@TempData["Tdata2"]
+
+<h3>3. Yöntem IFormCollection Kullanarak</h3>
+
+@ViewBag.Mesaj3
+
+<hr />
+
+@ViewBag.MesajListe3
+
+<hr />
+
+@TempData["Tdata3"]

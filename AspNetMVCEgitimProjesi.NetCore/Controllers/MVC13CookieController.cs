@@ -8,25 +8,33 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return View();
         }
-        public IActionResult CookieOlustur()
+        [HttpPost]
+        public IActionResult CookieOlustur(string kullaniciAdi, string sifre)
         {
-            CookieOptions cookie = new()
+            if (kullaniciAdi == "admin" && sifre == "123456")
             {
-                Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
-            };
-            Response.Cookies.Append("username", "Admin", cookie);
-            Response.Cookies.Append("userguid", "1235479893-sdfsfs-sdfsg", cookie);
+                CookieOptions cookie = new()
+                {
+                    Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
+                };
+                Response.Cookies.Append("kullaniciAdi", kullaniciAdi, cookie);
+                Response.Cookies.Append("sifre", sifre, cookie);
+                Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
+                return RedirectToAction("CookieOku");
+            }
             return View();
         }
         public IActionResult CookieOku()
         {
-            TempData["kullaniciadi"] = Request.Cookies["username"]; // Request.Cookies ile username isimli cookie yi okuyoruz
+            if (Request.Cookies["userguid"] is null) return RedirectToAction("Index");
+            TempData["kullaniciadi"] = Request.Cookies["kullaniciAdi"]; // Request.Cookies ile username isimli cookie yi okuyoruz
             TempData["kullaniciguid"] = Request.Cookies["userguid"];
             return View();
         }
         public IActionResult CookieSil()
         {
-            Response.Cookies.Delete("username");
+            Response.Cookies.Delete("kullaniciAdi");
+            Response.Cookies.Delete("sifre");
             Response.Cookies.Delete("userguid");
 
             return RedirectToAction("CookieOku");

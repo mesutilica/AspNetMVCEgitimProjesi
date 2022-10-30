@@ -13,6 +13,14 @@
     Klasik .net framework mvc de session lar direk kullanılabilir fakat .net core da session kullanabilmek için program.cs dosyasında tanımlama yapmalıyız.
 </p>
 
-<a asp-action="SessionOlustur">
-    Session Oluştur Sayfasına Git
+<h1>Session Oluştur</h1>
+
+<form asp-action="SessionOlustur">
+    <input type="text" name="kullaniciAdi" placeholder="Kullanıcı Adı" />
+    <input type="text" name="sifre" placeholder="Şifre" />
+    <input type="submit" value="Giriş" />
+</form>
+
+<a asp-action="SessionOku">
+    Session Oku Sayfasına Git
 </a>

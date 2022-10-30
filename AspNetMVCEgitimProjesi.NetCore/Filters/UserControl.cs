@@ -7,8 +7,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var kullanici = context.HttpContext.Session.GetString("deger");
-            if (kullanici == null) context.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
+            var UserGuid = context.HttpContext.Session.GetString("UserGuid");
+            var userguid = context.HttpContext.Request.Cookies["userguid"];
+            if (userguid == null) context.Result = new RedirectResult("/MVC14Session?msg=AccessDenied");
             base.OnActionExecuting(context);
         }
     }

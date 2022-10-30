@@ -14,18 +14,24 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         public IActionResult Index(string text1, string ddlListe, bool cbOnay, IFormCollection keyValuePairs)
         {
             // 1. Yöntem parametrelerden gelen veriler;
-            /*
+            /**/
             ViewBag.Mesaj = "Textboxdan gelen veri : " + text1;
             ViewBag.MesajListe = "liste den seçilen değer : " + ddlListe;
             TempData["Tdata"] = "Checkbox dan seçilen değer : " + cbOnay;
-            */
+
             // 2. Yöntem Request Form ile verileri yakalama
 
-            ViewBag.Mesaj = "Textboxdan gelen veri : " + Request.Form["text1"];
-            ViewBag.MesajListe = "liste den seçilen değer : " + Request.Form["ddlListe"];
-            TempData["Tdata"] = "Checkbox dan seçilen değer : " + Request.Form["cbOnay"][0];// first() de kullanılabilir //true seçince true,false dönüyor
+            ViewBag.Mesaj2 = "Textboxdan gelen veri : " + Request.Form["text1"];
+            ViewBag.MesajListe2 = "liste den seçilen değer : " + Request.Form["ddlListe"];
+            TempData["Tdata2"] = "Checkbox dan seçilen değer : " + Request.Form["cbOnay"][0];// first() de kullanılabilir //true seçince true,false dönüyor
+
             //TempData["Tdata"] = "Checkbox dan seçilen değer : " + Request.Form.GetValues("cbOnay")[0];
 
+            // 3. Yöntem IFormCollection Kullanarak
+
+            ViewBag.Mesaj3 = "keyValuePairs Textboxdan gelen veri : " + keyValuePairs["text1"];
+            ViewBag.MesajListe3 = "keyValuePairs liste den seçilen değer : " + keyValuePairs["ddlListe"];
+            TempData["Tdata3"] = "keyValuePairs Checkbox dan seçilen değer : " + keyValuePairs["cbOnay"][0];
             return View();
         }
 

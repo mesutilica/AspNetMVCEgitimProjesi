@@ -4,17 +4,8 @@
 
 <h1>Session Oku</h1>
 
-<div>
-    Sessiondaki Değer :
-    <b>
-        @TempData["SessionBilgi"]
-    </b>
 
-</div>
-
-<hr />
-
-<a asp-action="SessionOlustur">
+<a asp-action="Index">
     Session Oluştur Sayfasına Git
 </a>
 
@@ -22,7 +13,23 @@
 
 @if (TempData["SessionBilgi"] is not null)
 {
+    <div>
+        Sessiondaki Değer :
+        <b>
+            @TempData["SessionBilgi"]
+        </b>
+        Guid :
+        <b>
+            @TempData["UserGuid"]
+        </b>
+    </div>
+
+    <hr />
+
     <form asp-action="SessionSil">
         <input type="submit" value="Çıkış" />
     </form>
+}
+else{
+    <div>Session Boş</div>
 }

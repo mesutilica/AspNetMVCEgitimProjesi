@@ -8,18 +8,14 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return View();
         }
-        public IActionResult SessionOlustur()
-        {
-            HttpContext.Session.SetString("deger", "Admin"); // session da string olarak key value şeklinde değer saklayabiliriz
-            // Session["deger"] = "Admin"; klasik .net mvc de sessiona veri atma bu şekildeydi
-            return View();
-        }
         [HttpPost]
-        public IActionResult SessionOlustur(string kullaniciAdi, string sifre)
+        public IActionResult SessionOlustur(string kullaniciAdi, int sifre)
         {
-            if (kullaniciAdi == "admin" && sifre == "123456")
+            if (kullaniciAdi == "admin" && sifre == 123456)
             {
-                HttpContext.Session.SetString("Kullanici", "Admin"); // session da string olarak key value şeklinde değer saklayabiliriz
+                HttpContext.Session.SetString("Kullanici", kullaniciAdi); // session da string olarak key value şeklinde değer saklayabiliriz
+                HttpContext.Session.SetInt32("Sifre", sifre);
+                HttpContext.Session.SetString("UserGuid", Guid.NewGuid().ToString());
                 return RedirectToAction("SessionOku");
             }
             // Session["deger"] = "Admin"; klasik .net mvc de sessiona veri atma bu şekildeydi
@@ -28,6 +24,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         public IActionResult SessionOku()
         {
             TempData["SessionBilgi"] = HttpContext.Session.GetString("Kullanici"); // sessiondaki veriye bu şekilde keye verdiğimiz isimle ulaşıyoruz
+            TempData["UserGuid"] = HttpContext.Session.GetString("UserGuid");
             // TempData["SessionBilgi"] = Session["deger"];  klasik .net mvc de sessiondaki veriye ulaşım bu şekildeydi
             return View();
         }

@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "File Upload - Dosya Yükleme İşlemi";
+}
+
+<h2>File Upload - Dosya Yükleme İşlemi</h2>
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="dosya" id="fileup" />
+    <hr />
+    <input type="submit" value="Yükle" />
+
+</form>
+
+<p>
+    Mvc de resim yükleme için form elementine enctype="multipart/form-data" attribute ünü mutlakaeklemeliyiz yoksa dosya yüklenmez!!
+</p>
+
+@ViewData["message"]
+
+<img src="/Images/@ViewBag.Resimadi" alt="" width="500" />

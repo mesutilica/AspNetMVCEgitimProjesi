@@ -9,9 +9,11 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             return View();
         }
-        public ActionResult SessionOlustur()
+        [HttpPost]
+        public ActionResult SessionOlustur(string kullaniciAdi, int sifre)
         {
-            Session["deger"] = "Admin"; //klasik .net mvc de sessiona veri atma bu şekildeydi
+            if (kullaniciAdi == "admin" && sifre == 123)
+                Session["deger"] = "Admin"; //klasik .net mvc de sessiona veri atma bu şekildeydi
             return View();
         }
         public ActionResult SessionOku()

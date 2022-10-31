@@ -11,7 +11,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         [HttpPost]
         public IActionResult SessionOlustur(string kullaniciAdi, int sifre)
         {
-            if (kullaniciAdi == "admin" && sifre == 123456)
+            if (kullaniciAdi == "admin" && sifre == 123)
             {
                 HttpContext.Session.SetString("Kullanici", kullaniciAdi); // session da string olarak key value şeklinde değer saklayabiliriz
                 HttpContext.Session.SetInt32("Sifre", sifre);

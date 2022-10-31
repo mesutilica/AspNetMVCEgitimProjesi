@@ -143,6 +143,9 @@
     <Compile Include="Controllers\MVC12SessionController.cs" />
     <Compile Include="Controllers\MVC13CookieController.cs" />
     <Compile Include="Controllers\MVC14ViewResultsController.cs" />
+    <Compile Include="Controllers\MVC15FileUploadController.cs" />
+    <Compile Include="Controllers\MVC16FiltersUsingController.cs" />
+    <Compile Include="Filters\UserControl.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,7 +217,6 @@
     <Content Include="Views\MVC11ModelValidation\YeniUye.cshtml" />
     <Content Include="Views\MVC12Session\Index.cshtml" />
     <Content Include="Views\MVC12Session\SessionOku.cshtml" />
-    <Content Include="Views\MVC12Session\SessionOlustur.cshtml" />
     <Content Include="Views\MVC12Session\SessionSil.cshtml" />
     <Content Include="Views\MVC13Cookie\CookieOku.cshtml" />
     <Content Include="Views\MVC13Cookie\CookieOlustur.cshtml" />
@@ -223,10 +225,13 @@
     <Content Include="Views\MVC14ViewResults\FarkliViewDondur.cshtml" />
     <Content Include="Views\Shared\_KategorilerPartial.cshtml" />
     <Content Include="Views\Shared\_KategorilerPartialModelKullanimi.cshtml" />
+    <Content Include="Views\MVC15FileUpload\Index.cshtml" />
+    <Content Include="Views\MVC16FiltersUsing\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

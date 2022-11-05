@@ -59,7 +59,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "Name", "Password", "Surname", "Username" },
-                values: new object[] { 1, "admin@AspNetMVCEgitimProjesi.net", "Admin", "123456", "User", "Admin" });
+                values: new object[] { 1, "admin@AspNetMVCEgitimProjesi.net", "Admin", "123", "User", "Admin" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

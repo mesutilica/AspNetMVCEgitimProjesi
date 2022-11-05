@@ -56,6 +56,11 @@ app.MapControllerRoute(
             pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
           );
 
+app.MapControllerRoute(
+            name: "efcore",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+          );
+
 app.MapControllerRoute( // uygulamada kullanacaðýmýz routing yapýsý
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

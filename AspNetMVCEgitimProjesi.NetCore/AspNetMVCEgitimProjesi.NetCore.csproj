@@ -10,6 +10,8 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Blog\Data\" />
     <Folder Include="Areas\Blog\Models\" />
+    <Folder Include="Areas\EFCore\Data\" />
+    <Folder Include="Areas\EFCore\Models\" />
     <Folder Include="wwwroot\Img\" />
   </ItemGroup>
 
@@ -23,6 +25,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\EFCore\Views\Home\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

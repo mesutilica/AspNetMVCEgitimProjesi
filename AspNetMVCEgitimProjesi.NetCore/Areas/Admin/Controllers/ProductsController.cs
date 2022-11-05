@@ -7,13 +7,19 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
     [Area("Admin")]//, Authorize
     public class ProductsController : Controller
     {
-        DatabaseContext context = new DatabaseContext();
+        private readonly DatabaseContext _context;
+
+        public ProductsController(DatabaseContext context)
+        {
+            _context = context;
+        }
+
         // GET: ProductsController
         public ActionResult Index()
         {
             List<Product> products = new List<Product>();
 
-            products = context.Products.ToList();
+            products = _context.Products.ToList();
 
             return View(products);
         }
@@ -45,8 +51,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
                     product.Image = Image.FileName;
                 }
 
-                context.Entry(product).State = EntityState.Added;
-                context.SaveChanges();
+                _context.Entry(product).State = EntityState.Added;
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -59,7 +65,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
         // GET: ProductsController/Edit/5
         public ActionResult Edit(int id)
         {
-            Product product = context.Products.Find(id);
+            Product product = _context.Products.Find(id);
 
             if (product == null) return NotFound();
 
@@ -81,9 +87,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
                     product.Image = Image.FileName;
                 }
 
-                context.Products.Update(product);
+                _context.Products.Update(product);
 
-                context.SaveChanges();
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -96,7 +102,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
         // GET: ProductsController/Delete/5
         public ActionResult Delete(int id)
         {
-            Product product = context.Products.Find(id);
+            Product product = _context.Products.Find(id);
 
             if (product == null) return NotFound();
 
@@ -110,8 +116,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
         {
             try
             {
-                context.Products.Remove(product);
-                context.SaveChanges();
+                _context.Products.Remove(product);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

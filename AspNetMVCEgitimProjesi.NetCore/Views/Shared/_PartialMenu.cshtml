@@ -1,6 +1,6 @@
 ﻿
-<li class="nav-item">
-    <a class="nav-link text-dark" href="/MVC07Partial">Partial</a>
+<li class="nav-item @ViewBag.CurrentMenu">
+    <a class="nav-link" href="/MVC07Partial" title="@ViewBag.Baslik">Partial @ViewBag.id</a>
 </li>
 
 <div class="dropdown">
@@ -10,38 +10,38 @@
 
     <ul class="dropdown-menu">
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC08ControllerToView">ControllerToView</a>
+            <a class="nav-link" href="/MVC08ControllerToView">ControllerToView</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC09ViewToControllerData">ViewToController</a>
+            <a class="nav-link" href="/MVC09ViewToControllerData">ViewToController</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC10ModelBinding">ModelBinding</a>
+            <a class="nav-link" href="/MVC10ModelBinding">ModelBinding</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC11ModelValidation">ModelValidation</a>
+            <a class="nav-link" href="/MVC11ModelValidation">ModelValidation</a>
         </li>
     </ul>
 </div>
 
 
 <li class="nav-item">
-    <a class="nav-link text-dark" href="/MVC13Cookie">Cookie</a>
+    <a class="nav-link" href="/MVC13Cookie">Cookie</a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link text-dark" href="/MVC14Session">Session</a>
+    <a class="nav-link" href="/MVC14Session">Session</a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link text-dark" href="/MVC15ViewResults">ViewResults</a>
+    <a class="nav-link" href="/MVC15ViewResults">ViewResults</a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link text-dark" href="/MVC16FileUpload">FileUpload</a>
+    <a class="nav-link" href="/MVC16FileUpload">FileUpload</a>
 </li>
 
 <div class="dropdown">
@@ -51,23 +51,39 @@
 
     <ul class="dropdown-menu">
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC17ViewComponentUsing">ViewComponentUsing</a>
+            <a class="nav-link" href="/MVC17ViewComponentUsing">ViewComponentUsing</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC18FiltersUsing">FiltersUsing</a>
+            <a class="nav-link" href="/MVC18FiltersUsing">FiltersUsing</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC19AppSetting">AppSetting</a>
+            <a class="nav-link" href="/MVC19AppSetting">AppSetting</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark" href="/MVC20HttpContextAccessor">HttpContextAccessor</a>
+            <a class="nav-link" href="/MVC20HttpContextAccessor">HttpContextAccessor</a>
         </li>
     </ul>
 </div>
 
-<li class="nav-item">
-    <a class="nav-link text-dark" href="/Admin">Area Kullanımı</a>
-</li>
+<div class="dropdown">
+    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Area Kullanımı
+    </a>
+
+    <ul class="dropdown-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin">Admin</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/Blog">Blog</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/EFCore">EFCore</a>
+        </li>
+    </ul>
+</div>

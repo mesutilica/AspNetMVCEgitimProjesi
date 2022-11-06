@@ -1,5 +1,12 @@
 ﻿@{
     ViewBag.Title = "MVC Partial Kullanımı";
+    ViewData["CurrentMenu"] = "active";
+}
+
+@section OzelCss{
+    <style>
+        .active { background-color: silver; }
+    </style>
 }
 
 <h2>MVC Partial Kullanımı</h2>
@@ -7,6 +14,8 @@
 <p>
     Partial parça anlamına gelir ve kod sayısı fazlalaşan ve karmaşıklaşan uygulamalarda sayfalarımızı parçalara ayırarak yönetmemizi kolaylaştırır.
 </p>
+
+<partial name="_PartialTest" />
 
 <ul>
     @Html.Partial("_PartialMenu")
@@ -18,3 +27,20 @@
     <hr />
     @await Html.PartialAsync("_PartialMenu")
 </ul>
+
+<partial name="_PartialMenu" view-data="ViewData" />
+
+<hr />
+
+<h3>ViewDataDictionary ile Veri Gönderme</h3>
+
+@await Html.PartialAsync("_PartialMenu", new ViewDataDictionary(ViewData) { { "id", 18 }, { "Baslik", "Partial Data" } })
+
+@*
+<partial name="_Partial" for="PartialViewModel" view-data="ViewData" />
+
+@await Html.PartialAsync("_Header", new ViewDataDictionary { { "HeaderName", "User Management" }, { "TitleName", "List Of Users" } })
+
+@{
+    await Html.PartialAsync("_Header", new ViewDataDictionary { { "HeaderName", "User Management" }, { "TitleName", "List Of Users" } });
+}*@

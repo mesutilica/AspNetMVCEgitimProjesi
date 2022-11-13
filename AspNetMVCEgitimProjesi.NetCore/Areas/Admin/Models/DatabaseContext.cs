@@ -30,6 +30,28 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models
                     Password = "123"
                 }
                 );
+            modelBuilder.Entity<Category>().HasData(
+                new Category
+                {
+                    Id = 1,
+                    Name = "Elektronik",
+                    IsActive = true
+                },
+                new Category
+                {
+                    Id = 2,
+                    Name = "Bilgisayar",
+                    IsActive = true
+                }
+                );
+            modelBuilder.Entity<Product>().HasData(
+                        new Product { Id = 1, CategoryId = 1, Name = "Monitör", Price = 1984, Stock = 3 },
+                        new Product { Id = 2, CategoryId = 1, Name = "Led TV", Price = 5500, Stock = 5 },
+                        new Product { Id = 3, CategoryId = 1, Name = "LCD TV", Price = 3500, Stock = 7 },
+                        new Product { Id = 4, CategoryId = 2, Name = "Oyuncu PC", Price = 18000, Stock = 3 },
+                        new Product { Id = 5, CategoryId = 2, Name = "Laptop", Price = 13000, Stock = 5 },
+                        new Product { Id = 6, CategoryId = 2, Name = "Dizüstü", Price = 23500, Stock = 7 }
+                );
             base.OnModelCreating(modelBuilder);
             // Bu aşamadan sonra artık migration oluşturmamız gerekiyor. Bunun için Visual studion üst menüsünden Tools > Nuget Package Manager > Package Manager Console menüsüne tıklayarak kod yazma penceresini aktif ediyoruz.
             // Veritabanı oluşturmak için P.M.C. konsoluna add-migration InitialCreate yazıp enter a basıyoruz fakat bu işlemden önce Entity Framework Core Tools paketini de yüklememiz gerekiyor projeye nuget dan

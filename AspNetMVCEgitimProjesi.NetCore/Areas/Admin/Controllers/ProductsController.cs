@@ -1,5 +1,6 @@
 ﻿using AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
@@ -33,6 +34,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
         // GET: ProductsController/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(_context.Categories.ToList(), "Id", "Name");
             return View();
         }
 
@@ -58,17 +60,18 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
             }
             catch
             {
-                return View(product);
+                ModelState.AddModelError("", "Hata Oluştu!");
             }
+            ViewBag.CategoryId = new SelectList(_context.Categories.ToList(), "Id", "Name");
+            return View(product);
         }
 
         // GET: ProductsController/Edit/5
         public ActionResult Edit(int id)
         {
             Product product = _context.Products.Find(id);
-
             if (product == null) return NotFound();
-
+            ViewBag.CategoryId = new SelectList(_context.Categories.ToList(), "Id", "Name");
             return View(product);
         }
 
@@ -95,8 +98,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
             }
             catch
             {
-                return View(product);
+                ModelState.AddModelError("", "Hata Oluştu!");
             }
+            ViewBag.CategoryId = new SelectList(_context.Categories.ToList(), "Id", "Name");
+            return View(product);
         }
 
         // GET: ProductsController/Delete/5

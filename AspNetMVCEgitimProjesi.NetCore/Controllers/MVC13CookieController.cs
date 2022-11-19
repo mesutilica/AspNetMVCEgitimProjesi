@@ -13,12 +13,12 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             if (kullaniciAdi == "admin" && sifre == "123456")
             {
-                CookieOptions cookie = new()
+                CookieOptions cookieAyarlari = new()
                 {
                     Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
                 };
-                Response.Cookies.Append("kullaniciAdi", kullaniciAdi, cookie);
-                Response.Cookies.Append("sifre", sifre, cookie);
+                Response.Cookies.Append("kullaniciAdi", kullaniciAdi, cookieAyarlari);
+                Response.Cookies.Append("sifre", sifre, cookieAyarlari);
                 Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
                 return RedirectToAction("CookieOku");
             }

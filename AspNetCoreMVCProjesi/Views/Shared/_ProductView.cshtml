@@ -1,0 +1,9 @@
+﻿@model Product
+
+<div class="col-lg-4">
+
+    <img src="~/Img/@Model.Image" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" />
+    <h2>@Model.Name</h2>
+
+    <p><a class="btn btn-secondary" asp-action="Detail" asp-controller="Products" asp-route-id="@Model.Id">İncele »</a></p>
+</div>

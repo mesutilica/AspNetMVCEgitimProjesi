@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Category>
+
+@foreach (Category kategori in Model)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index" asp-route-id="@kategori.Id">@kategori.Name</a>
+    </li>
+}
+
+<div class="dropdown">
+    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Ürünlerimiz
+    </a>
+
+    <ul class="dropdown-menu">
+        
+        @foreach (Category kategori in Model)
+        {
+            <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-id="@kategori.Id">@kategori.Name</a></li>
+        }
+    </ul>
+</div>

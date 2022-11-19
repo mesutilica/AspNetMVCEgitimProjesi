@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Brand>
+
+@{
+    ViewData["Title"] = "Markalar";
+}
+<h1 class="text-center mt-3">Markalar</h1>
+
+<div class="row text-center">
+    @foreach (var marka in Model)
+    {
+        <div class="col-lg-4">
+
+            <img src="~/Img/@marka.Logo" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" />
+            <h2>@marka.Name</h2>
+
+            <p><a class="btn btn-secondary" asp-action="Detail" asp-controller="Brands" asp-route-id="@marka.Id">İncele »</a></p>
+        </div>
+    }
+</div>

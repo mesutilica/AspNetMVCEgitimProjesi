@@ -1,0 +1,14 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = ViewBag.Title + " İle İlgili Arama Sonuçları";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="row text-center">
+    @foreach (var product in Model)
+    {
+        @await Html.PartialAsync("_ProductView", product)
+    }
+</div>

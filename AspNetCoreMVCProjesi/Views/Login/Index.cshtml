@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="/css/admin.css" rel="stylesheet">
+</head>
+<body class="text-center">
+
+    <main class="form-signin">
+        <form asp-action="Index">
+            <img class="mb-4" src="/Img/lock-300x300.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 fw-normal">Giriş</h1>
+            <div class="alert">
+                @TempData["Mesaj"]
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" name="email" required placeholder="name@example.com">
+                <label for="floatingInput">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+                <label for="floatingPassword">Şifre</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Beni Hatırla
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş</button>
+            <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+        </form>
+    </main>
+</body>
+</html>

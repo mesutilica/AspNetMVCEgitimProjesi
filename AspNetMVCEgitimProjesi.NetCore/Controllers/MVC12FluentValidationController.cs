@@ -18,9 +18,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(Kullanici person)
+        public async Task<IActionResult> Index(Kullanici kullanici)
         {
-            FluentValidation.Results.ValidationResult result = await _validator.ValidateAsync(person);
+            FluentValidation.Results.ValidationResult result = await _validator.ValidateAsync(kullanici);
 
             if (!result.IsValid)
             {
@@ -30,7 +30,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                     ModelState.AddModelError(error.PropertyName, error.ErrorMessage); // FluentValidation hatalarını eklemek için
                     ModelState.AddModelError("", error.ErrorMessage); // hataları üst kısımda göstermek için
                 }
-                return View("Index", person);
+                return View("Index", kullanici);
             }
 
             // Eğer isvalid ise burada kaydı gerçekleştir

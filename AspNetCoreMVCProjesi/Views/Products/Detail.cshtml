@@ -1,0 +1,32 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = Model.Name + " Detay";
+}
+
+
+
+<div class="row">
+    <div class="col">
+        <img src="/Img/@Model.Image" class="img-fluid" alt="@Model.Name" title="@Model.Name" />
+    </div>
+    <div class="col">
+        <h1>@Model.Name</h1>
+        <table class="table">
+            <tr>
+                <td>
+                    <i>Marka</i>
+                </td>
+                <td>@Model.Brand.Name</td>
+            </tr>
+            <tr>
+                <td>Kategori</td>
+                <td>@Model.Category.Name</td>
+            </tr>
+        </table>
+        <h4>Ürün Açıklaması</h4>
+        <p>
+            @Html.Raw(Model.Description)
+        </p>
+    </div>
+</div>

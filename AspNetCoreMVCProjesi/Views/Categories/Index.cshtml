@@ -1,0 +1,14 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = Model.Name + " Ürünleri";
+}
+<h1 class="text-center mt-3">@Model.Name Ürünleri</h1>
+
+<div class="row text-center">
+    @foreach (var product in Model.Products)
+    {
+        @await Html.PartialAsync("_ProductView", product)
+    }
+</div>
+

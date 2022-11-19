@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Ürünlerimiz";
+}
+<h1 class="text-center mt-3">Ürünlerimiz</h1>
+
+<div class="row text-center">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4">
+
+            <img src="~/Img/@item.Image" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" />
+            <h2>@item.Name</h2>
+            <p>@item.Description</p>
+            <p><a class="btn btn-secondary" href="#">İncele »</a></p>
+        </div>
+
+        <!-- /.col-lg-4 -->
+    }
+</div>
+

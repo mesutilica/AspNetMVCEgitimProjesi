@@ -45,7 +45,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
             return result;
         }
-        public JsonResult JsonResult()
+        public JsonResult JsonDondur()
         {
             var kullanici = new Kullanici()
             {

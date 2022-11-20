@@ -22,7 +22,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
                 return RedirectToAction("CookieOku");
             }
-            return View();
+            return RedirectToAction("Index");
         }
         public IActionResult CookieOku()
         {

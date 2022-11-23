@@ -18,6 +18,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return View();
         }
+        public IActionResult Contact()
+        {
+            return View();
+        }
 
         public ActionResult Privacy()
         {

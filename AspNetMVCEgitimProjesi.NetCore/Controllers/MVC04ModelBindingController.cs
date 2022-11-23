@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC10ModelBindingController : Controller
+    public class MVC04ModelBindingController : Controller
     {
         public IActionResult Index()
         {

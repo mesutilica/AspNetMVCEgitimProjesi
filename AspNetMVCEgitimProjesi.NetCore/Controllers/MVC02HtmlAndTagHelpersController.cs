@@ -2,7 +2,7 @@
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC04HttpUtilityController : Controller
+    public class MVC02HtmlAndTagHelpersController : Controller
     {
         public IActionResult Index()
         {

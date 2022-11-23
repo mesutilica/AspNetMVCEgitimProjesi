@@ -4,6 +4,55 @@
 
 <div class="text-center">
     <h1 class="display-4">
-        ASP.NET Core Eğitim Projesi Anasayfa
+        MVC Nedir? MVC Yaşam Döngüsü
     </h1>
+</div>
+
+<p>
+    MVC, Yazılım Mühendisliği’nde önemli bir yere sahip architectural patterns (yazılım mimari desenleri)’ın bir parçasıdır. Model, View ve Controller kelimelerinin baş harflerinden oluşan MVC (Model-View-Controller), 1979 yılında Tygve Reeskaug tarafından oluşturulmuş ve yazılım gelişmede bir çok projede kullanılmıştır. 10 Aralık 2007'de Microsoft’un MVC desenini Asp.Net teknolojisi ile birleştirmesi ile popülaritesi daha da artmıştır.
+</p>
+
+<p>
+    MVC ile ilgili en yanlış bilgi, MVC’nin Microsoft tarafından çıkartıldığı düşüncesidir. MVC’nin Asp.Net’e entegre edilmesinden önce bu deseni bir çok (.Net) yazılım geliştiricisi bilmemekteydi, bilse de kullanmıyorlardı. Asp.Net MVC’nin gelişiminin ardından MVC’ye ilgi oldukça artmış durumda.
+</p>
+
+<p>
+    MVC deseni, 3 katmandan oluşmaktadır ve katmanları birbirinden bağımsız (birbirini etkilemeden) olarak çalışmaktadır. Bu sebeple çoğunlukla büyük çaplı projelerde projelerin yönetiminin ve kontrolünün daha rahat sağlanabilmesi için tercih edilmektedir. MVC ile geliştirilen projelerde projenin detaylarına göre bir çok kişi eş zamanlı olarak kolaylıkla çalışabilmektedir.
+</p>
+
+<h2>MVC Şeması</h2>
+
+<div class="col">
+    <img src="~/img/r2-mvc-deseni.png" class="img-fluid" />
+</div>
+
+<h2>Model Nedir?</h2>
+
+<p>
+    Model, MVC’de projenin iş mantığının (business logic) oluşturulduğu bölümdür. İş mantığıyla beraber doğrulama (validation) ve veri erişim (data access) işlemleri de bu bölümde gerçekleştirilmektedir.
+    <br />
+    Model tek katmandan oluşabileceği gibi kendi içinde birden fazla katmandan da oluşabilir. İç yapılandırma projenin büyüklüğü ile yazılım geliştiricinin planlamasına kalmış bir durumdur. Eğer proje büyük çaplı ise modeli birden çok katmana ayırmak projenin yönetimi açısından faydalı olacaktır.
+</p>
+
+<h2>View Nedir?</h2>
+
+<p>
+View, MVC’de projenin arayüzlerinin oluşturulduğu bölümdür. Bu bölümde projenin kullanıcılara sunulacak olan HTML dosyaları yer almaktadır. Projenin geliştirildiği yazılım dillerine göre dosya uzantıları da değişebilmektedir. Projelerin büyüklüğüne göre dikkat edilmesi gereken bir nokta ise, klasörlemedir.
+</p>
+
+<p>
+    Eğer bir web projesi geliştiriyorsanız, projenin View’larının yer aldığı klasörlerinin hiyerarşisi, ilerleyen dönemlerde karmaşıklığa sebep olmaması için dikkatli yapılmalıdır. Kimi yazılım geliştiriciler web projelerinde HTML dosyaları ile Javascript, CSS ve resim dosyalarını aynı klasör içinde barındırmaktadır. Ufak bir ayrıntı gibi görünse de projenin ilerleyen dönemlerinde ciddi problemler oluşturmaktadır.
+View’ın bir görevi de, kullanıcılardan alınan istekleri controller’a iletmektir.
+</p>
+
+<h2>Controller Nedir?</h2>
+
+<p>
+    Controller, MVC’de projenin iç süreçlerini kontrol eden bölümdür. Bu bölümde View ile Model arasındaki bağlantı kurulur. Kullanıcılardan gelen istekler (request) Controller’larda değerlendirilir, isteğin detayına göre hangi işlemlerin yapılacağı ve kullanıcıya hangi View’ın döneceği (response) belirtilir.
+</p>
+
+<h3>MVC’nin Yaşam Döngüsü(Life Cycle)</h3>
+
+<div class="col">
+    <img src="~/img/r3-mvc-yasam-dongusu.png" class="img-fluid" />
 </div>

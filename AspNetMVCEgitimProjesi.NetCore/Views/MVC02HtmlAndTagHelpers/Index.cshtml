@@ -1,11 +1,13 @@
 ﻿@{
 }
 
-<h2>MVC02 HtmlHelpers</h2>
+<h2>MVC Html ve Tag Helpers</h2>
 
 @Html.ActionLink("Anasayfa", "Index", "Home")
-
+<br />
 @Html.ActionLink("MVC01 Razor Syntax", "Index", "MVC01RazorSyntax")
+<br />
+<a asp-action="Index" asp-controller="Home" asp-route-id="18">Anasayfa</a>
 
 <h3>
     Html Checkbox Oluşturma
@@ -63,10 +65,25 @@
 
 <hr />
 
+<h3>
+    Tag Helpers ile Form Oluşturma
+</h3>
+
+<form asp-action="Index" asp-controller="MVC02HtmlAndTagHelpers" method="post">
+    <h4>Kullanıcı Adı</h4>
+    <input id="txtKullaniciAdi" name="txtKullaniciAdi" type="text" value="">
+    <h4>Şifre</h4>
+    <input id="txtSifre" name="txtSifre" type="text" value="">
+    <br />
+    <input type="submit" value="Giriş" />
+</form>
+
+<hr />
+
 <h3>Listbox Elementi Kullanımı</h3>
 
 @{
-    SelectListItem[] liste = new SelectListItem[3]
+    var kategoriler = new SelectListItem[]
             {
                 new SelectListItem() { Text = "Bilgisayar"},
                 new SelectListItem() { Text = "Elektronik"},
@@ -75,7 +92,7 @@
     string htmlRawOrnek = "<h5>Html Raw ile Ekrana Html içerik yazdırma</h5>";
 }
 
-@Html.ListBox("lbListe", liste)
+@Html.ListBox("lbListe", kategoriler)
 
 <hr />
 
@@ -95,49 +112,4 @@
 
 <hr />
 
-<h2>İletişim Formu</h2>
-
-@using (Html.BeginForm())
-{
-    <div class="container" id="iletisimFormu">
-        <div class="row mb-3">
-            <div class="col">
-                Adınız
-            </div>
-            <div class="col">
-                @Html.TextBox("txtAd", null, null, new {@class = "form-control"})
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                Soyadınız
-            </div>
-            <div class="col">
-                @Html.TextBox("txtSoyad", "Soyadı", null, new {@class = "form-control"})
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                Telefon Numaranız
-            </div>
-            <div class="col">
-                @Html.TextBox("txtTelefon", null, null, new {@class = "form-control"})
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                Mesajınız
-            </div>
-            <div class="col">
-                @Html.TextArea("txtMesaj", null, new {@class = "form-control"})
-            </div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <input type="submit" value="Gönder" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-        
-        
-}
+Burada örnek olarak home controller a contact sayfası yapıp iletişim formu yapıyoruz.

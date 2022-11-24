@@ -9,7 +9,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Filters
         {
             var UserGuid = context.HttpContext.Session.GetString("UserGuid");
             var userguid = context.HttpContext.Request.Cookies["userguid"];
-            if (userguid == null) context.Result = new RedirectResult("/MVC14Session?msg=AccessDenied");
+            if (UserGuid == null) context.Result = new RedirectResult("/MVC11Session?msg=AccessDenied");
             base.OnActionExecuting(context);
         }
     }

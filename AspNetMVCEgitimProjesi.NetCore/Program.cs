@@ -1,4 +1,3 @@
-using AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Models;
 using AspNetMVCEgitimProjesi.NetCore.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies; // Bu kütüphaneyi de admin login için ekledik.
@@ -13,8 +12,7 @@ builder.Services.AddScoped<IValidator<Kullanici>, KullaniciValidator>();
 
 builder.Services.AddSession(option => option.IdleTimeout = TimeSpan.FromMinutes(3)); // Uygulamada session kullanacaðýmýzý bildirdik. option kullanarak session yapýlandýrmasýný kullanabiliriz. Sonrasýnda aþaðýdaki add tanýmlamasýndan sonra use session ayarýný yapýyoruz.
 
-builder.Services.AddDbContext<DatabaseContext>(); // Entity framework ü projede servis olarak kullanabilmek için bu tanýmlama gerekli
-//builder.Services.AddDbContext<DatabaseContext>(option => option.UseInMemoryDatabase("InMemoryDb")); // UseInMemoryDatabase kullanýmý
+builder.Services.AddDbContext<UyeContext>(); //option => option.UseInMemoryDatabase("InMemoryDb") UseInMemoryDatabase kullanýmý
 // Admin login iþlemi için aþaðýdaki servisi ekliyoruz.
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {

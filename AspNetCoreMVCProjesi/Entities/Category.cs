@@ -13,10 +13,8 @@ namespace AspNetCoreMVCProjesi.Entities
         public string? Image { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)] // ScaffoldColumn(false) : sayfa oluştururken bu kolon oluşmasın
         public DateTime? CreateDate { get; set; } = DateTime.Now;
-        public virtual ICollection<Product> Products { get; set; }
-        public Category()
-        {
-            Products = new List<Product>();
-        }
+        [Display(Name = "Durum")]
+        public bool IsActive { get; set; }
+        public virtual ICollection<Product>? Products { get; set; }
     }
 }

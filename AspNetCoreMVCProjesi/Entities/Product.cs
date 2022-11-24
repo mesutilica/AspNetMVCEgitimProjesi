@@ -7,6 +7,10 @@ namespace AspNetCoreMVCProjesi.Entities
         public int Id { get; set; }
         [Display(Name = "Ürün Adı"), StringLength(50), Required(ErrorMessage = "Ürün Adı Boş Geçilemez!")]
         public string Name { get; set; }
+        [Display(Name = "Ürün Fiyatı")]
+        public decimal Price { get; set; }
+        [Display(Name = "Ürün Stok")]
+        public int Stock { get; set; }
         [Display(Name = "Ürün Açıklama"), DataType(DataType.MultilineText)] // Description inputunun textbox yerine textarea olması için
         public string? Description { get; set; }
         [Display(Name = "Ürün Resmi"), StringLength(50)]

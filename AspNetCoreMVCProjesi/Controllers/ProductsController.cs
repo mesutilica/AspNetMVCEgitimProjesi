@@ -1,4 +1,5 @@
 ﻿using AspNetCoreMVCProjesi.Data;
+using AspNetCoreMVCProjesi.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,10 @@ namespace AspNetCoreMVCProjesi.Controllers
 
         public IActionResult Index(int? id)
         {
-            return View(_databaseContext.Products.ToList());
+            var model = new List<Product>();
+            if (id == null) model = _databaseContext.Products.ToList();
+            else model = _databaseContext.Products.Where(p => p.CategoryId == id).ToList();
+            return View(model);
         }
 
         public IActionResult Search(string? q)

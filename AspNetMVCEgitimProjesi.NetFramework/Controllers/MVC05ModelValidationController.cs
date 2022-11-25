@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC11ModelValidationController : Controller
+    public class MVC05ModelValidationController : Controller
     {
         // GET: MVC11ModelValidation
         public ActionResult Index()

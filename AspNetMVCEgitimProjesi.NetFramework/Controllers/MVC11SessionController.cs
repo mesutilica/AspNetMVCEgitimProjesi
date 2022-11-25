@@ -2,7 +2,7 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC12SessionController : Controller
+    public class MVC11SessionController : Controller
     {
         // GET: MVC12Session
         public ActionResult Index()

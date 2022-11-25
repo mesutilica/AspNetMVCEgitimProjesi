@@ -2,7 +2,7 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC05StringFormatController : Controller
+    public class MVC12StringFormatController : Controller
     {
         // GET: MVC05StringFormat
         public ActionResult Index()

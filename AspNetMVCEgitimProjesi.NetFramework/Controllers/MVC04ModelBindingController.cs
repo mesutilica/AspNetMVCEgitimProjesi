@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC10ModelBindingController : Controller
+    public class MVC04ModelBindingController : Controller
     {
         // GET: MVC10ModelBinding
         public ActionResult Index()

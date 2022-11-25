@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC14ViewResultsController : Controller
+    public class MVC08ViewResultsController : Controller
     {
         // GET: MVC14ViewResults
         public ActionResult Index()

@@ -2,6 +2,31 @@
     ViewData["Title"] = "MVC de View dan Controller a Veri Gönderme";
 }
 
+<h1>MVC de Controller dan View a Veri Gönderme</h1>
+
+<h3>Ürün Bilgileri</h3>
+
+<table class="table">
+    <tr>
+        <td>Ürün Kategorisi</td>
+        <td>: @ViewBag.UrunKategorisi</td>
+    </tr>
+    <tr>
+        <td>Ürün Adı</td>
+        <td>: @ViewData["UrunAdi"]</td>
+    </tr>
+    <tr>
+        <td>Ürün Fiyatı</td>
+        <td>: @TempData["UrunFiyati"] TL</td>
+    </tr>
+    <tr>
+        <td>Ürün Fiyatı (Formatlı)</td>
+        <td>: @(String.Format("{0:C}", TempData["UrunFiyati"]))</td>
+    </tr>
+</table>
+
+<hr />
+
 <h1>MVC de View dan Controller a Veri Gönderme</h1>
 
 <h3>
@@ -30,8 +55,7 @@
 </h3>
 
 @{
-    SelectListItem[] liste = new SelectListItem[3]
-            {
+    SelectListItem[] liste = new SelectListItem[]{
                 new SelectListItem() { Text = "Bilgisayar" },
                 new SelectListItem() { Text = "Monitör" },
                 new SelectListItem() { Text = "Tablet" }
@@ -48,6 +72,10 @@
     <input type="submit" value="Gönder" />
 </form>
 
+<hr />
+
+<h3>1. Yöntem parametrelerden gelen veriler;</h3>
+
 @ViewBag.Mesaj
 
 <hr />
@@ -57,3 +85,27 @@
 <hr />
 
 @TempData["Tdata"]
+
+<h3>2. Yöntem Request Form ile verileri yakalama</h3>
+
+@ViewBag.Mesaj2
+
+<hr />
+
+@ViewBag.MesajListe2
+
+<hr />
+
+@TempData["Tdata2"]
+
+<h3>3. Yöntem IFormCollection Kullanarak</h3>
+
+@ViewBag.Mesaj3
+
+<hr />
+
+@ViewBag.MesajListe3
+
+<hr />
+
+@TempData["Tdata3"]

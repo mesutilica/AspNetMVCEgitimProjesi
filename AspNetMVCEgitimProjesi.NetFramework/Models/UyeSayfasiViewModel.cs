@@ -1,4 +1,4 @@
-﻿namespace AspNetMVCEgitimProjesi.NetCore.Models
+﻿namespace AspNetMVCEgitimProjesi.NetFramework.Models
 {
     public class UyeSayfasiViewModel
     {

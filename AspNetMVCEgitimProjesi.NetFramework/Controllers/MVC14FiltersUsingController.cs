@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC16FiltersUsingController : Controller
+    public class MVC14FiltersUsingController : Controller
     {
         [UserControl]
         public ActionResult Index()

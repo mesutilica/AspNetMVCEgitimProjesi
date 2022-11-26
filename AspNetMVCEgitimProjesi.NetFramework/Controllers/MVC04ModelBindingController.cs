@@ -1,4 +1,4 @@
-﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
 using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers

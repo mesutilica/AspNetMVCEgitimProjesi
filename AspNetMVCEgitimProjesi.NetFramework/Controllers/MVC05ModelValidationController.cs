@@ -1,4 +1,4 @@
-﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -6,6 +6,12 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC05ModelValidationController : Controller
     {
+        static List<Uye> uyeListesi = new List<Uye>()
+         {
+             new Uye() { Id = 1, Ad = "Alp", Soyad = "Arslan", Email ="alp@siteadi.com"  },
+             new Uye() {  Id = 2, Ad = "Mert", Soyad = "Temel", Email ="mert@siteadi.com"  }
+         };
+
         // GET: MVC11ModelValidation
         public ActionResult Index()
         {
@@ -13,12 +19,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult UyeListesi()
         {
-            var uyeListesi = new List<Uye>()
-            {
-                new Uye() { Id = 1, Ad = "Akın", Soyad = "Malkoç", Email ="akin@siteadi.com"  },
-                new Uye() {  Id = 2, Ad = "Mert", Soyad = "Temel", Email ="mert@siteadi.com"  }
-            };
-            uyeListesi.Add(new Uye() { Id = 1453, Ad = "Fatih", Soyad = "Sultan", Email = "fatih@sultan.net" });
+            uyeListesi.Add(new Uye() { Id = 18, Ad = "Mesut", Soyad = "Ilıca", Email = "mesut@gmail.net" });
 
             return View(uyeListesi); // Ekrana modeli view içerisinde gönderebiliyoruz
         }
@@ -31,8 +32,9 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             if (ModelState.IsValid) // Eğer modeldeki validasyon kurallarına uyulmuşsa, tersi için !ModelState.IsValid
             {
+                uyeListesi.Add(uye);
                 // Parametreyle gelen uye nesnesini burada veritabanına kaydedebiliriz
-                ViewBag.Uye = uye.Ad + " " + uye.Soyad + " İsimli üye kaydı başarıyla gerçekleşti..";
+                return RedirectToAction("UyeListesi");
             }
             if (!ModelState.IsValid) // model kuralları geçersizse
             {

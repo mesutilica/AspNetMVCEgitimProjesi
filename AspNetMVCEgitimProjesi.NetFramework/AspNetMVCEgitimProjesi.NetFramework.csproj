@@ -127,11 +127,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin\Models\Product.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MVC01RazorSyntaxController.cs" />
     <Compile Include="Controllers\MVC02HtmlHelpersController.cs" />
-    <Compile Include="Controllers\MVC14AppSettingController.cs" />
+    <Compile Include="Controllers\MVC13AppSettingController.cs" />
     <Compile Include="Controllers\MVC12StringFormatController.cs" />
     <Compile Include="Controllers\MVC06SectionController.cs" />
     <Compile Include="Controllers\MVC07PartialController.cs" />
@@ -142,7 +141,7 @@
     <Compile Include="Controllers\MVC10CookieController.cs" />
     <Compile Include="Controllers\MVC08ViewResultsController.cs" />
     <Compile Include="Controllers\MVC09FileUploadController.cs" />
-    <Compile Include="Controllers\MVC16FiltersUsingController.cs" />
+    <Compile Include="Controllers\MVC14FiltersUsingController.cs" />
     <Compile Include="Filters\UserControl.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,7 +192,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\MVC01RazorSyntax\Index.cshtml" />
     <Content Include="Views\MVC02HtmlHelpers\Index.cshtml" />
     <Content Include="Views\MVC12StringFormat\Index.cshtml" />
@@ -221,8 +219,8 @@
     <Content Include="Views\Shared\_KategorilerPartial.cshtml" />
     <Content Include="Views\Shared\_KategorilerPartialModelKullanimi.cshtml" />
     <Content Include="Views\MVC09FileUpload\Index.cshtml" />
-    <Content Include="Views\MVC16FiltersUsing\Index.cshtml" />
-    <Content Include="Views\MVC14AppSetting\Index.cshtml" />
+    <Content Include="Views\MVC14FiltersUsing\Index.cshtml" />
+    <Content Include="Views\MVC13AppSetting\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

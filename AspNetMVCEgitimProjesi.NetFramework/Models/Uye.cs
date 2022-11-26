@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations; // Validation işlemleri için gerekli kütüphane
 
-namespace AspNetMVCEgitimProjesi.NetCore.Models
+namespace AspNetMVCEgitimProjesi.NetFramework.Models
 {
     public class Uye
     {

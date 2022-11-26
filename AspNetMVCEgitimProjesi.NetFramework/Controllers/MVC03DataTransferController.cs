@@ -4,7 +4,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC03DataTransferController : Controller
     {
-        // GET: MVC08DataTransfer
+        // GET: MVC03DataTransfer
         public ActionResult Index(string txtAra)
         {
             // MVC de temel olarak 3 türde view a veri yollama yapısı var

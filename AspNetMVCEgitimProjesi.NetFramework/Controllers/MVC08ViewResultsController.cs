@@ -1,4 +1,4 @@
-﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 

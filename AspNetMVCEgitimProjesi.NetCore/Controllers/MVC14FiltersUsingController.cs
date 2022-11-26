@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC15FiltersUsingController : Controller
+    public class MVC14FiltersUsingController : Controller
     {
         [UserControl]
         public IActionResult Index()

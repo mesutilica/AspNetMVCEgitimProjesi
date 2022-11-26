@@ -12,6 +12,13 @@ namespace AspNetCoreMVCProjesi.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // Burası veritabanı yapılandırma ayarlarını yapabileceğimiz metot
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=NetCoreMvcProjeUygulamasi; integrated security=true;");
+            //optionsBuilder.UseInMemoryDatabase("NetCoreMvcProjeUygulamasi");
+            base.OnConfiguring(optionsBuilder);
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(

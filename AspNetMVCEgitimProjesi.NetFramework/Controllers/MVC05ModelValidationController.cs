@@ -1,5 +1,6 @@
 ﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
@@ -9,7 +10,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         static List<Uye> uyeListesi = new List<Uye>()
          {
              new Uye() { Id = 1, Ad = "Alp", Soyad = "Arslan", Email ="alp@siteadi.com"  },
-             new Uye() {  Id = 2, Ad = "Mert", Soyad = "Temel", Email ="mert@siteadi.com"  }
+             new Uye() { Id = 2, Ad = "Mert", Soyad = "Temel", Email ="mert@siteadi.com"  },
+             new Uye() { Id = 3, Ad = "Mesut", Soyad = "Ilıca", Email = "mesut@gmail.net" }
          };
 
         // GET: MVC11ModelValidation
@@ -19,8 +21,6 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult UyeListesi()
         {
-            uyeListesi.Add(new Uye() { Id = 18, Ad = "Mesut", Soyad = "Ilıca", Email = "mesut@gmail.net" });
-
             return View(uyeListesi); // Ekrana modeli view içerisinde gönderebiliyoruz
         }
         public ActionResult YeniUye()
@@ -32,6 +32,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             if (ModelState.IsValid) // Eğer modeldeki validasyon kurallarına uyulmuşsa, tersi için !ModelState.IsValid
             {
+                uye.Id = uyeListesi.Count + 1;
                 uyeListesi.Add(uye);
                 // Parametreyle gelen uye nesnesini burada veritabanına kaydedebiliriz
                 return RedirectToAction("UyeListesi");
@@ -44,7 +45,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult UyeDuzenle(int? id) // Üye düzenle sayfasına adres çubuğundaki Route üzerinden id bilgisi gönderilir ve bu id ile eşleşen kayıt veritabanından çekilerek ekrana gönderilir.
         {
-            var uyeBilgileri = new Uye() { Id = 1, Ad = "Akın", Soyad = "Malkoç", Email = "akin@siteadi.com" };
+            var uyeBilgileri = uyeListesi.FirstOrDefault(u => u.Id == id);
 
             return View(uyeBilgileri);
         }
@@ -60,13 +61,15 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult UyeSil(int? id)
         {
-            var uyeBilgileri = new Uye() { Id = 1, Ad = "Akın", Soyad = "Malkoç", Email = "akin@siteadi.com" };
+            var uyeBilgileri = uyeListesi.FirstOrDefault(u => u.Id == id);
 
             return View(uyeBilgileri);
         }
         [HttpPost]
-        public ActionResult UyeSil(Uye uye)
+        public ActionResult UyeSil(int? id, Uye uye)
         {
+            var uyeBilgileri = uyeListesi.FirstOrDefault(u => u.Id == id);
+            uyeListesi.Remove(uyeBilgileri);
             // Kaydı sil
             return RedirectToAction("UyeListesi"); // sayfayı listeye yönlendir
         }

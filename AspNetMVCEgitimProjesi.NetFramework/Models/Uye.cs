@@ -10,12 +10,10 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Models
         public string Ad { get; set; }
         [Required(ErrorMessage = "Soyad alanı boş geçilemez!"), StringLength(50)]
         public string Soyad { get; set; }
-        [Required(ErrorMessage = "Email alanı boş geçilemez!"), StringLength(50)]
         [EmailAddress(ErrorMessage = "Geçersiz Email Adresi!")] // Aşağıdaki alana email adresi türünde veri girilebilsin
         public string Email { get; set; }
         [Phone(ErrorMessage = "Geçersiz Telefon Formatı!")]
         public string Telefon { get; set; } // string? soru işareti bu alanın nullable yani boş geçilebilir olmasını sağlar
-        [Required(ErrorMessage = "TC Kimlik Numarası boş geçilemez!"), StringLength(11)]
         [Display(Name = "TC Kimlik Numarası")] // Ekranda TcKimlikNo yerine TC Kimlik Numarası yazısı yazsın
         [MinLength(11, ErrorMessage = "TC Numarası 11 Karakter Olmalıdır!")]
         [MaxLength(11, ErrorMessage = "TC Numarası 11 Karakter Olmalıdır!")]

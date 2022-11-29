@@ -15,7 +15,7 @@ namespace AspNetCoreMVCProjesi.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Burası veritabanı yapılandırma ayarlarını yapabileceğimiz metot
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=NetCoreMvcProjeUygulamasi; integrated security=true;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=NetCoreMvcProjeUygulamasi; integrated security=true;"); // TrustServerCertificate=True
             //optionsBuilder.UseInMemoryDatabase("NetCoreMvcProjeUygulamasi");
             base.OnConfiguring(optionsBuilder);
         }

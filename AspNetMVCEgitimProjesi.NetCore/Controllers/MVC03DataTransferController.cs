@@ -9,6 +9,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             // MVC de temel olarak 3 türde view a veri yollama yapısı var
             // Örneğin veritabanından ürün bilgisini çekip ekrana  yollamak için
+
             // 1- ViewBag : Tek Kullanımlık Ömrü Var
             ViewBag.UrunKategorisi = "Bilgisayar";
             // 2-Viewdata : Tek Kullanımlık Ömrü Var

@@ -16,7 +16,7 @@
 @Html.CheckBox("Onay") Onaylıyorum
 
 <h3>
-    Html Checkbox Oluşturma
+    Html TextBox Oluşturma
 </h3>
 
 @Html.TextBox("txtAd") Ekranda giriş(input) elementi oluşturur.
@@ -80,7 +80,7 @@
 
 <hr />
 
-<h3>Listbox Elementi Kullanımı</h3>
+<h3>Listbox ve DropDownList Elementi Kullanımı</h3>
 
 @{
     var kategoriler = new SelectListItem[]
@@ -93,7 +93,8 @@
 }
 
 @Html.ListBox("lbListe", kategoriler)
-
+<br />
+@Html.DropDownList("ddlListe", kategoriler)
 <hr />
 
 <h3>RadioButton Elementi Kullanımı</h3>

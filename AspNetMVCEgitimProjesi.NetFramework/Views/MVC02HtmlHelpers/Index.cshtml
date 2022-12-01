@@ -63,7 +63,7 @@
 
 <hr />
 
-<h3>Listbox Elementi Kullanımı</h3>
+<h3>Listbox ve DropDownList Elementi Kullanımı</h3>
 
 @{
     SelectListItem[] liste = new SelectListItem[]{
@@ -75,6 +75,8 @@
 }
 
 @Html.ListBox("lbListe", liste)
+<br />
+@Html.DropDownList("ddlListe", liste)
 
 <hr />
 

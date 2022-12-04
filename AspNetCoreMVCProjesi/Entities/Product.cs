@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetCoreMVCProjesi.Entities
 {
@@ -13,7 +15,8 @@ namespace AspNetCoreMVCProjesi.Entities
         public int Stock { get; set; }
         [Display(Name = "Ürün Açıklama"), DataType(DataType.MultilineText)] // Description inputunun textbox yerine textarea olması için
         public string? Description { get; set; }
-        [Display(Name = "Ürün Resmi"), StringLength(50)]
+        [Column("UrunResmi", TypeName = "Varchar")]
+        [Display(Name = "Ürün Resmi"), MaxLength(50)]
         public string? Image { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]
         public DateTime? CreateDate { get; set; } = DateTime.Now;

@@ -21,6 +21,10 @@ namespace AspNetCoreMVCProjesi.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //FluentApi
+            modelBuilder.Entity<Brand>().Property(a => a.Name).IsRequired().HasColumnType("varchar(50)").HasMaxLength(50);
+            modelBuilder.Entity<Brand>().Property(a => a.Logo).HasColumnType("varchar(50)").HasMaxLength(50);
+
             modelBuilder.Entity<User>().HasData(
                 new User
                 {

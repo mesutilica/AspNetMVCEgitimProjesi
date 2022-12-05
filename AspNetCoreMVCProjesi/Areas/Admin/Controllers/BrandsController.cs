@@ -60,7 +60,8 @@ namespace AspNetCoreMVCProjesi.Areas.Admin.Controllers
         // GET: BrandsController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var marka = await _context.Brands.FindAsync(id);
+            //var marka = await _context.Brands.FindAsync(id);
+            var marka = _context.Brands.FirstOrDefault(b => b.Id == id);
             if (marka == null) return NotFound();  // Eğer gönderilen id ye ait bir marka veritabanında yoksa geriye NotFound(Bulunamadı) hatası dön.
             return View(marka);
         }

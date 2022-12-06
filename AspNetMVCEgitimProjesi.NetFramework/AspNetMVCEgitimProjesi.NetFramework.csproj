@@ -197,7 +197,7 @@
     <Content Include="Views\MVC12StringFormat\Index.cshtml" />
     <Content Include="Views\MVC06Section\Index.cshtml" />
     <Content Include="Views\MVC07Partial\Index.cshtml" />
-    <Content Include="Views\Shared\_PartialLogin.cshtml" />
+    <Content Include="Views\Shared\_PartialMenu.cshtml" />
     <Content Include="Views\MVC03DataTransfer\Index.cshtml" />
     <Content Include="Views\MVC04ModelBinding\Adres.cshtml" />
     <Content Include="Views\MVC04ModelBinding\Index.cshtml" />

@@ -24,7 +24,9 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult ActionaYonlendir()
         {
-            return RedirectToAction("Index"); // ActionaYonlendir metodu tetiklendiğinde FarkliViewDondur isimli actiona sayfayı yönlendir
+            //return RedirectToAction("Index"); // ActionaYonlendir metodu tetiklendiğinde FarkliViewDondur isimli actiona sayfayı yönlendir
+            //return RedirectToAction("Yonlendir");
+            return RedirectToAction("UyeListesi", "MVC05ModelValidation"); // controller ve action u belirtebiliriz
         }
         public RedirectToRouteResult RouteYonlendir()
         {
@@ -74,22 +76,22 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         public ContentResult XmlContentResult()
         {
             var xml = @"
-                <kullanicilar>
-                    <kullanici>
+                <urunler>
+                    <urun>
                         <Id>1</Id>
-                        <Ad>Ali</Ad>
-                        <Soyad>Çakmaktaş</Soyad>
-                        <KullaniciAdi>acakmak</KullaniciAdi>
-                        <Email>ali@cakmaktas.com</Email>
-                    </kullanici>
-                    <kullanici>
+                        <UrunAdi>Klavye</UrunAdi>
+                        <Fiyati>199</Fiyati>
+                        <Stok>3</Stok>
+                        <Kategori>Bilgisayar</Kategori>
+                    </urun>
+                    <urun>
                         <Id>2</Id>
-                        <Ad>Barni</Ad>
-                        <Soyad>Moloztaş</Soyad>
-                        <KullaniciAdi>barny</KullaniciAdi>
-                        <Email>barni@moloztas.com</Email>
-                    </kullanici>
-                </kullanicilar>
+                        <UrunAdi>Mouse</UrunAdi>
+                        <Fiyati>99</Fiyati>
+                        <Stok>5</Stok>
+                        <Kategori>Bilgisayar</Kategori>
+                    </urun>
+                </urunler>
             ";
 
             return Content(xml, "application/xml");

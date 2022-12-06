@@ -10,7 +10,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         static List<Uye> uyeListesi = new List<Uye>()
          {
              new Uye() { Id = 1, Ad = "Alp", Soyad = "Arslan", Email ="alp@siteadi.com"  },
-             new Uye() { Id = 2, Ad = "Mert", Soyad = "Temel", Email ="mert@siteadi.com"  },
+             new Uye() { Id = 2, Ad = "Murat", Soyad = "Yılmaz", Email ="murat@kartipi.com"  },
              new Uye() { Id = 3, Ad = "Mesut", Soyad = "Ilıca", Email = "mesut@gmail.net" }
          };
 

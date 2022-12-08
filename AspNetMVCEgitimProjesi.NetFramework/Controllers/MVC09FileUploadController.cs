@@ -32,7 +32,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                     var dosyaAdi = Path.GetFileName(dosya.FileName);
                     var yol = Path.Combine(klasor, dosyaAdi);
 
-                    dosya.SaveAs(yol);
+                    //dosya.SaveAs(yol);
+
+                    // 3. Yönetm - Resmi direk sunucuya yollama
+                    dosya.SaveAs(Server.MapPath("/Images/" + dosya.FileName));
 
                     ViewBag.ResimAdi = dosyaAdi;
                 }

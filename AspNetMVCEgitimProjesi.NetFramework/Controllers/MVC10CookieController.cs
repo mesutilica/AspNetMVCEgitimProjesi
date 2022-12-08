@@ -28,8 +28,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult CookieSil()
         {
-            Response.Cookies.Remove("username");
-
+            if (HttpContext.Request.Cookies["username"] != null)
+                HttpContext.Response.Cookies["username"].Expires = DateTime.Now.AddSeconds(-1);
             return RedirectToAction("CookieOku");
         }
     }

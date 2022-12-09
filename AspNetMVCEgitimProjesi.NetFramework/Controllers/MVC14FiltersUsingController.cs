@@ -1,6 +1,4 @@
-﻿
-
-using AspNetMVCEgitimProjesi.NetFramework.Filters;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Filters;
 using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers

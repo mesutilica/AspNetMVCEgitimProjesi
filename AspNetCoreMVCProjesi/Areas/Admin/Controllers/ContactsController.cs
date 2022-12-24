@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using AspNetCoreMVCProjesi.Data;
+﻿using AspNetCoreMVCProjesi.Data;
 using AspNetCoreMVCProjesi.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreMVCProjesi.Areas.Admin.Controllers
 {
@@ -18,9 +18,9 @@ namespace AspNetCoreMVCProjesi.Areas.Admin.Controllers
         // GET: Admin/Contacts
         public async Task<IActionResult> Index()
         {
-              return _context.Contacts != null ? 
-                          View(await _context.Contacts.ToListAsync()) :
-                          Problem("Entity set 'DatabaseContext.Contacts'  is null.");
+            return _context.Contacts != null ?
+                        View(await _context.Contacts.ToListAsync()) :
+                        Problem("Entity set 'DatabaseContext.Contacts'  is null.");
         }
 
         // GET: Admin/Contacts/Details/5
@@ -146,14 +146,14 @@ namespace AspNetCoreMVCProjesi.Areas.Admin.Controllers
             {
                 _context.Contacts.Remove(contact);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ContactExists(int id)
         {
-          return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

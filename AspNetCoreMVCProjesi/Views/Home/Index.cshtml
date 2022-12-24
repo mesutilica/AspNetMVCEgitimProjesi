@@ -28,9 +28,12 @@
 </h1>
 
 <div class="row text-center">
-
-    @foreach (var product in Model.Products)
-    {
-        @await Html.PartialAsync("_ProductView", product)
+    @{
+        foreach (var product in Model.Products)
+        {
+            //<partial name="_ProductView" model="product" />
+            //@await Html.PartialAsync("_ProductView", product)
+            await Html.RenderPartialAsync("_ProductView", product);
+        }
     }
 </div>

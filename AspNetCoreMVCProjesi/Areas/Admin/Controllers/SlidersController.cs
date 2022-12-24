@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using AspNetCoreMVCProjesi.Data;
+﻿using AspNetCoreMVCProjesi.Data;
 using AspNetCoreMVCProjesi.Entities;
 using AspNetCoreMVCProjesi.Tools;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreMVCProjesi.Areas.Admin.Controllers
 {

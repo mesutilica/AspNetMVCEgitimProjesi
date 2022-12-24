@@ -15,7 +15,7 @@ namespace AspNetCoreMVCProjesi.Entities
         public int Stock { get; set; }
         [Display(Name = "Ürün Açıklama"), DataType(DataType.MultilineText)] // Description inputunun textbox yerine textarea olması için
         public string? Description { get; set; }
-        [Column("UrunResmi", TypeName = "Varchar")]
+        [Column("Image", TypeName = "Varchar")]
         [Display(Name = "Ürün Resmi"), MaxLength(50)]
         public string? Image { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]

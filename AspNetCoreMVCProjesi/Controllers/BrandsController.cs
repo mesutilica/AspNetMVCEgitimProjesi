@@ -15,7 +15,7 @@ namespace AspNetCoreMVCProjesi.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             var markalar = await _databaseContext.Brands.AsNoTracking().ToListAsync();
-           
+
             return View(markalar);
         }
         public IActionResult Detail(int? id)

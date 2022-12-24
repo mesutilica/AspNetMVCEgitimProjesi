@@ -22,8 +22,14 @@
 
 <partial name="_PartilModelKullanimi" model="Model" />
 
+<h3>PartialAsync</h3>
+
 @await Html.PartialAsync("_PartilModelKullanimi", Model)
 
+<h3>RenderPartialAsync</h3>
+@{
+    await Html.RenderPartialAsync("_PartilModelKullanimi", Model);
+}
 <ul>
     @Html.Partial("_PartialMenu")
     <hr />

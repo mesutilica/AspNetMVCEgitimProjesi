@@ -21,7 +21,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             return View();
         }
         [HttpPost] // Aşağıdaki metot sayfa (View) post edildiğinde çalışır
-        public IActionResult Index(string text1, string ddlListe, bool cbOnay, IFormCollection keyValuePairs)
+        public IActionResult Index(string text1, string ddlListe, bool cbOnay, IFormCollection formCollection)
         {
             // 1. Yöntem parametrelerden gelen veriler;
             /**/
@@ -39,9 +39,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
             // 3. Yöntem IFormCollection Kullanarak
 
-            ViewBag.Mesaj3 = "keyValuePairs Textboxdan gelen veri : " + keyValuePairs["text1"];
-            ViewBag.MesajListe3 = "keyValuePairs liste den seçilen değer : " + keyValuePairs["ddlListe"];
-            TempData["Tdata3"] = "keyValuePairs Checkbox dan seçilen değer : " + keyValuePairs["cbOnay"][0];
+            ViewBag.Mesaj3 = "keyValuePairs Textboxdan gelen veri : " + formCollection["text1"];
+            ViewBag.MesajListe3 = "keyValuePairs liste den seçilen değer : " + formCollection["ddlListe"];
+            TempData["Tdata3"] = "keyValuePairs Checkbox dan seçilen değer : " + formCollection["cbOnay"][0];
             return View();
         }
 

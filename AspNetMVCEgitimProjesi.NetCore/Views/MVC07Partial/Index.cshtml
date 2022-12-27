@@ -22,13 +22,13 @@
 
 <partial name="_PartilModelKullanimi" model="Model" />
 
-<h3>PartialAsync</h3>
+<h3>Partialin Asenkron Çağrılması</h3>
 
-@await Html.PartialAsync("_PartilModelKullanimi", Model)
+@await Html.PartialAsync("_PartialModelKullanimi", Model)
 
 <h3>RenderPartialAsync</h3>
 @{
-    await Html.RenderPartialAsync("_PartilModelKullanimi", Model);
+    await Html.RenderPartialAsync("_PartialModelKullanimi", Model);
 }
 <ul>
     @Html.Partial("_PartialMenu")

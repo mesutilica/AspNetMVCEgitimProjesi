@@ -24,6 +24,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         public IActionResult SessionOku()
         {
             TempData["SessionBilgi"] = HttpContext.Session.GetString("Kullanici"); // sessiondaki veriye bu şekilde keye verdiğimiz isimle ulaşıyoruz
+            TempData["Sifre"] = HttpContext.Session.GetInt32("Sifre");
             TempData["UserGuid"] = HttpContext.Session.GetString("UserGuid");
             // TempData["SessionBilgi"] = Session["deger"];  klasik .net mvc de sessiondaki veriye ulaşım bu şekildeydi
             return View();

@@ -11,18 +11,14 @@
 
 <hr />
 
-@if (TempData["SessionBilgi"] is not null)
+@if (Context.Session.GetInt32("IsLoggedIn") == 1)
 {
-    <div>
-        Sessiondaki Değer :
-        <b>
-            @TempData["SessionBilgi"]
-        </b>
-        Guid :
-        <b>
-            @TempData["UserGuid"]
-        </b>
-    </div>
+    <h3>
+        Hoşgeldin : @Context.Session.GetString("Kullanici")
+    </h3>
+    <h3>
+        Guid : @Context.Session.GetString("UserGuid")
+    </h3>
 
     <hr />
 

@@ -18,7 +18,7 @@
 <div>
     Cookie deki kullanıcı adı :
     <b>
-        @TempData["kullaniciadi"]
+        @Context.Request.Cookies["kullaniciAdi"]
     </b>
 </div>
 
@@ -27,6 +27,6 @@
 <div>
     Cookie deki kullanıcı guid :
     <b>
-        @TempData["kullaniciguid"]
+        @Context.Request.Cookies["userguid"]
     </b>
 </div>

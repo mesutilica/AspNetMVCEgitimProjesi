@@ -27,8 +27,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         public IActionResult CookieOku()
         {
             if (Request.Cookies["userguid"] is null) return RedirectToAction("Index");
-            TempData["kullaniciadi"] = Request.Cookies["kullaniciAdi"]; // Request.Cookies ile username isimli cookie yi okuyoruz
-            TempData["kullaniciguid"] = Request.Cookies["userguid"];
             return View();
         }
         public IActionResult CookieSil()

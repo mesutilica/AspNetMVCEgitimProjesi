@@ -10,7 +10,13 @@ builder.Services.AddControllersWithViews(); // Uygulamada MVC controller view ya
 //FluentValidation
 builder.Services.AddScoped<IValidator<Kullanici>, KullaniciValidator>();
 
-builder.Services.AddSession(option => option.IdleTimeout = TimeSpan.FromMinutes(3)); // Uygulamada session kullanacaðýmýzý bildirdik. option kullanarak session yapýlandýrmasýný kullanabiliriz. Sonrasýnda aþaðýdaki add tanýmlamasýndan sonra use session ayarýný yapýyoruz.
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".CustomSession";
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
+    options.Cookie.HttpOnly = true; // Javascriptle ulaþýlamasýn
+    options.Cookie.IsEssential = true; // onay politikasý kontrolleri atlansýn
+}); // Uygulamada session kullanacaðýmýzý bildirdik. option kullanarak session yapýlandýrmasýný kullanabiliriz. Sonrasýnda aþaðýdaki add tanýmlamasýndan sonra use session ayarýný yapýyoruz.
 
 builder.Services.AddDbContext<UyeContext>(); //option => option.UseInMemoryDatabase("InMemoryDb") UseInMemoryDatabase kullanýmý
 // Admin login iþlemi için aþaðýdaki servisi ekliyoruz.

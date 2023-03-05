@@ -15,6 +15,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             {
                 HttpContext.Session.SetString("Kullanici", kullaniciAdi); // session da string olarak key value şeklinde değer saklayabiliriz
                 HttpContext.Session.SetInt32("Sifre", sifre);
+                HttpContext.Session.SetInt32("IsLoggedIn", 1);
                 HttpContext.Session.SetString("UserGuid", Guid.NewGuid().ToString());
                 return RedirectToAction("SessionOku");
             }
@@ -23,10 +24,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         }
         public IActionResult SessionOku()
         {
-            TempData["SessionBilgi"] = HttpContext.Session.GetString("Kullanici"); // sessiondaki veriye bu şekilde keye verdiğimiz isimle ulaşıyoruz
-            TempData["Sifre"] = HttpContext.Session.GetInt32("Sifre");
-            TempData["UserGuid"] = HttpContext.Session.GetString("UserGuid");
-            // TempData["SessionBilgi"] = Session["deger"];  klasik .net mvc de sessiondaki veriye ulaşım bu şekildeydi
             return View();
         }
         [HttpPost]

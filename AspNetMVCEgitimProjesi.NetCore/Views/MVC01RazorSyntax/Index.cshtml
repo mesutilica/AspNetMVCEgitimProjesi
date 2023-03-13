@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "MVC01 Razor Syntax .Net Core";
     string adi = "Ali";
-    string[] isimler = new string[] { "Mert", "Mücahit", "Aslı" }; // c# dizi yapısını razor syntax ı ile kullandık
+    string[] isimler = { "Mücahit", "Alp", "Arslan" }; // c# dizi yapısını razor syntax ı ile kullandık
     // @{} blokları arasına direk csharp kodları yazabiliyoruz veya @ ile csharp kodu yazabiliyoruz bu yazım türüne razor syntax ı diyoruz. @{} parantezlerinin içerisinde çok satırlı olarak başına ayrıca @ koymadan cs kodu yazabilirken sayfa içerisinde sadece @ ifadesi kullanırsak tek satırlık cs kodu yazabiliriz ve her cs kodunun önüne @ işareti koymamız gerekir.
 }
 
@@ -28,7 +28,25 @@
     <br />
 }
 <hr />
+<h3>İsimler</h3>
 @foreach (var ad in isimler) // razor syntax ile döngü kullanabiliriz
 {
-    @(ad + " ")   
+    if (ad == isimler[0])
+    {
+        <div class="active">İlk İsim : @ad</div>
+    }
+    @(ad + " ")
 }
+<hr />
+2. isim : @isimler[1]
+<hr />
+<h6>
+    Üretim Yılı
+</h6>
+<select>
+    <option value="">Seçiniz</option>
+    @for (int i = DateTime.Now.Year; i > 2000; i--)
+    {
+        <option value="@i">@i</option>
+    }
+</select>

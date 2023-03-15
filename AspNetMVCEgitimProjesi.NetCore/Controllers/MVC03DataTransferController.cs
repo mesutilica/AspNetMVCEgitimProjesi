@@ -29,19 +29,20 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             ViewBag.MesajListe = "liste den seçilen değer : " + ddlListe;
             TempData["Tdata"] = "Checkbox dan seçilen değer : " + cbOnay;
 
-            // 2. Yöntem Request Form ile verileri yakalama
+            // 2. Yöntem IFormCollection Kullanarak
+
+            ViewBag.Mesaj3 = "keyValuePairs Textboxdan gelen veri : " + formCollection["text1"];
+            ViewBag.MesajListe3 = "keyValuePairs liste den seçilen değer : " + formCollection["ddlListe"];
+            TempData["Tdata3"] = "keyValuePairs Checkbox dan seçilen değer : " + formCollection["cbOnay"][0];
+
+            // 3. Yöntem Request Form ile verileri yakalama
 
             ViewBag.Mesaj2 = "Textboxdan gelen veri : " + Request.Form["text1"];
             ViewBag.MesajListe2 = "liste den seçilen değer : " + Request.Form["ddlListe"];
             TempData["Tdata2"] = "Checkbox dan seçilen değer : " + Request.Form["cbOnay"][0];// first() de kullanılabilir //true seçince true,false dönüyor
 
             //TempData["Tdata"] = "Checkbox dan seçilen değer : " + Request.Form.GetValues("cbOnay")[0];
-
-            // 3. Yöntem IFormCollection Kullanarak
-
-            ViewBag.Mesaj3 = "keyValuePairs Textboxdan gelen veri : " + formCollection["text1"];
-            ViewBag.MesajListe3 = "keyValuePairs liste den seçilen değer : " + formCollection["ddlListe"];
-            TempData["Tdata3"] = "keyValuePairs Checkbox dan seçilen değer : " + formCollection["cbOnay"][0];
+            
             return View();
         }
 

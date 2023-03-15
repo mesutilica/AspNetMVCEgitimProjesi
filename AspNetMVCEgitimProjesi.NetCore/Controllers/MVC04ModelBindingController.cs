@@ -9,7 +9,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return View();
         }
-        public IActionResult Kullanici()
+        public IActionResult KullaniciDetay()
         {
             Kullanici kullanici = new Kullanici()
             {
@@ -19,20 +19,20 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 KullaniciAdi = "murat",
                 Sifre = "123456"
             };
-
             return View(kullanici); // yukardaki kullanici nesnesinin view da model olarak kullanılabilmesi için bu şekilde view a göndermemiz gerekir.
         }
         [HttpPost]
-        public IActionResult Kullanici(Kullanici kullanici) // Burada belirttiğimiz kullanici nesnesi view sayfasındaki model kullanan form içerisindeki verileri model binding yöntemiyle yakalıyor.
+        public IActionResult KullaniciDetay(Kullanici kullanici) // Burada belirttiğimiz kullanici nesnesi view sayfasındaki model kullanan form içerisindeki verileri model binding yöntemiyle yakalıyor.
         {
             return View(kullanici); // Post işleminden sonra metoda parametreyle gelen kullanici nesnesini tekrar ekrana gönder
         }
-        public IActionResult Adres()
+        public IActionResult AdresDetay()
         {
-            return View();
+            var model = new Adres { Ilce = "Ataşehir", Sehir = "İstanbul", AcikAdres = "Menekşe Sokak No:18" };
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Adres(Adres adres)
+        public IActionResult AdresDetay(Adres adres)
         {
             // Projelerde bu noktada yakaladığımız adres nesnesini veritabanına kaydederiz.
             return View(adres);

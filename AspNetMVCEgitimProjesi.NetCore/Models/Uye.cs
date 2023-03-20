@@ -14,8 +14,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Models
         [Phone(ErrorMessage = "Geçersiz Telefon Formatı!")]
         public string? Telefon { get; set; } // string? soru işareti bu alanın nullable yani boş geçilebilir olmasını sağlar
         [Display(Name = "TC Kimlik Numarası"), StringLength(11)] // Ekranda TcKimlikNo yerine TC Kimlik Numarası yazısı yazsın
-        [MinLength(11, ErrorMessage = "TC Numarası 11 Karakter Olmalıdır!")]
-        [MaxLength(11, ErrorMessage = "TC Numarası 11 Karakter Olmalıdır!")]
+        [MinLength(11, ErrorMessage = "{0} 11 Karakter Olmalıdır!")]
+        [MaxLength(11, ErrorMessage = "{0} 11 Karakter Olmalıdır!")]
         public string? TcKimlikNo { get; set; }
         [Display(Name = "Doğum Tarihi")]
         public DateTime? DogumTarihi { get; set; }

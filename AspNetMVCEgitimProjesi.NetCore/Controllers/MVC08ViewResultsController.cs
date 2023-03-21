@@ -22,7 +22,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         }
         public IActionResult ActionaYonlendir()
         {
-            return RedirectToAction("Index"); // ActionaYonlendir metodu tetiklendiğinde FarkliViewDondur isimli actiona sayfayı yönlendir
+            //return RedirectToAction("Index"); // metot çalıştığında aynı controllerdaki bir actiona yönlendirmemizi sağlar
+            return RedirectToAction("Index", "Home"); // metot çalıştığında farklı bir controller daki actiona bu şekilde yönlendirebiliriz
         }
         public RedirectToRouteResult RouteYonlendir()
         {

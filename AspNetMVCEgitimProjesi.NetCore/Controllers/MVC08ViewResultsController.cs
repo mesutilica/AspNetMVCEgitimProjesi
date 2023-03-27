@@ -33,19 +33,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return PartialView("_KategorilerPartial"); // Geriye döndermek istediğimiz partial ismini verebiliriz
         }
-        public FileStreamResult MetinDosyasiIndir()
-        {
-            string metin = "FileStreamResult ile metin dosyası indirme";
-
-            System.IO.MemoryStream memory = new System.IO.MemoryStream();
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(metin);
-            memory.Write(bytes, 0, bytes.Length);
-            memory.Position = 0;
-            FileStreamResult result = new FileStreamResult(memory, "text/plain");
-            result.FileDownloadName = "metin.txt";
-
-            return result;
-        }
         public JsonResult JsonDondur()
         {
             var kullanici = new Kullanici()
@@ -79,6 +66,17 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             ";
 
             return Content(xml, "application/xml");
+        }
+        public FileStreamResult MetinDosyasiIndir()
+        {
+            string metin = "FileStreamResult ile metin dosyası indirme";
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(metin);
+            memory.Write(bytes, 0, bytes.Length);
+            memory.Position = 0;
+            FileStreamResult result = new FileStreamResult(memory, "text/plain");
+            result.FileDownloadName = "metin.txt";
+            return result;
         }
     }
 }

@@ -22,7 +22,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
                 return RedirectToAction("CookieOku");
             }
-            return RedirectToAction("Index");
+            else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
+            return View("Index");
         }
         public IActionResult CookieOku()
         {

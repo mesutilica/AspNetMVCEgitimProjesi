@@ -1,0 +1,19 @@
+﻿@model List<string>
+@{
+}
+<a asp-action="Ekle">
+    Ekle
+</a>
+
+@TempData["EklenenEleman"]
+
+<ul class="list-group">
+    @foreach (var kategori in Model)
+    {
+        <li class="list-group-item">
+            <a href="/Home/Index?kategori=@kategori">
+                @kategori
+            </a>
+        </li>
+    }
+</ul>

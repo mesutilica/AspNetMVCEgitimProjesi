@@ -27,6 +27,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+builder.Services.AddMemoryCache(); // Keþlemeyi kullanabilmek için
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -4,11 +4,6 @@
 
 <h1>Session Oku</h1>
 
-
-<a asp-action="Index">
-    Session Oluştur Sayfasına Git
-</a>
-
 <hr />
 
 @if (Context.Session.GetInt32("IsLoggedIn") == 1)
@@ -27,5 +22,10 @@
     </form>
 }
 else{
-    <div>Session Boş</div>
+    <div class="alert alert-danger">
+        Lütfen Oturum Açınız!
+    </div>
+    <a asp-action="Index">
+        Session Oluştur Sayfasına Git
+    </a>
 }

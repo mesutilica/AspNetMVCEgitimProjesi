@@ -30,6 +30,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         public IActionResult SessionSil()
         {
             HttpContext.Session.Remove("Kullanici"); // Kullanici isimli sessionu süresini beklemeden sil
+            HttpContext.Session.Clear();
             return RedirectToAction("SessionOku");
         }
     }

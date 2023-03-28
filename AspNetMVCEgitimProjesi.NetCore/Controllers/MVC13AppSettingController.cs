@@ -15,8 +15,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             TempData["Email"] = _configuration["Email"]; // TempData ile appsettings deki Email bilgisini okuyup view a gönderdik
             TempData["MailSunucu"] = _configuration["MailSunucu"];
-            TempData["UserName"] = _configuration["MailKullanici:UserName"];
-            TempData["Password"] = _configuration.GetSection("MailKullanici:Password").Value;
+            TempData["KullaniciAdi"] = _configuration["MailKullanici:UserName"]; // json daki MailKullanici altındaki Username değerine : ile ulaşıyoruz
+            TempData["Sifre"] = _configuration.GetSection("MailKullanici:Password").Value;// GetSection metoduyla da veriyi çekebiliriz
             return View();
         }
     }

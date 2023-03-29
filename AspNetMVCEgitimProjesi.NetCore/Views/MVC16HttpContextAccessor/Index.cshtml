@@ -48,3 +48,29 @@
     <br /> Kullanıcı User Rolüne Sahip mi? :
     @_context.HttpContext.User.IsInRole("User")
 </p>
+
+<p>
+    Sayafada direk inject ederek kullanabiliriz;
+    <hr />Controller Adı : 
+    @Context.GetRouteValue("Controller")
+    <br />Action Adı :
+    @Context.GetRouteValue("Action")
+    <br />Id Değeri : 
+    @Context.GetRouteValue("id")
+    <br />Request Method : 
+    @Context.Request.Method
+    <br />Request Scheme :
+    @Context.Request.Scheme
+    <br />QueryString : 
+    @Context.Request.QueryString
+    <br />Query kelime:
+    @Context.Request.Query["kelime"]
+    <br /> Session değeri : 
+    @Context.Session.GetString("UserGuid")
+    <br /> Cookie değeri : 
+    @Context.Request.Cookies["userguid"]
+    <br /> Oturum açılmış mı? : 
+    @Context.User.Identity.IsAuthenticated
+    <br /> Kullanıcı User Rolüne Sahip mi? :
+    @Context.User.IsInRole("User")
+</p>

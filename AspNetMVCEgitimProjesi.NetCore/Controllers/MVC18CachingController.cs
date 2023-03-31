@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC18CachingController : Controller
     {
+        UyeContext context = new UyeContext();
         private readonly IMemoryCache _memoryCache;
-        List<string> list = new List<string>();
         public MVC18CachingController(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
@@ -14,29 +15,62 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
         public IActionResult Index()
         {
-            list = _memoryCache.Get<List<string>>("list");
+            var model = context.Uyes.ToList();
+            if (model is null)
+            {
+                context.Uyes.AddRange(
+                    new Uye
+                    {
+                        Ad = "Alp",
+                        KullaniciAdi = "alp",
+                        Sifre = "123"
+                    },
+                    new Uye
+                    {
+                        Ad = "Ali",
+                        KullaniciAdi = "ali",
+                        Sifre = "456"
+                    },
+                    new Uye
+                    {
+                        Ad = "Murat",
+                        KullaniciAdi = "Murat",
+                        Sifre = "789"
+                    }
+                );
+                context.SaveChanges();
+                model = context.Uyes.ToList();
+            }
+            return View(model);
+        }
+        public IActionResult IndexCache()
+        {
+            var list = _memoryCache.Get<List<Uye>>("liste");
 
             if (list is null)
             {
-                list = new()
-                {
-                    "Elektronik",
-                    "Bilgisayar",
-                    "Telefon",
-                    "Monitör"
-                };
+                list = context.Uyes.ToList();
                 //Thread.Sleep(5000);
-                _memoryCache.Set("list", list, TimeSpan.FromMinutes(1));
+                _memoryCache.Set("liste", list, TimeSpan.FromSeconds(18));
             }
-            
             return View(list);
         }
-        public IActionResult Ekle()
+        public IActionResult Create()
         {
-            string yeni = "Yeni Elemean " + list.Count;
-            list.Add(yeni);
-            TempData["EklenenEleman"] = yeni;
-            return RedirectToAction("Index");
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Uye uye)
+        {
+            if (ModelState.IsValid) // Eğer modeldeki validasyon kurallarına uyulmuşsa, tersi için !ModelState.IsValid
+            {
+                context.Add(uye); // 6. yöntem
+                context.SaveChanges();
+                TempData["Uye"] = uye.Ad + " " + uye.Soyad + " İsimli üye kaydı başarıyla gerçekleşti..";
+                //_memoryCache.Remove("liste");
+                return RedirectToAction("Index");
+            }
+            return View(uye);
         }
     }
 }

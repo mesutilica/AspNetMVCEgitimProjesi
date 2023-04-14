@@ -4,8 +4,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.ViewComponents
 {
     public class Kategoriler : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(string secili)
         {
+            ViewBag.Secili = secili;
             return View();
         }
     }

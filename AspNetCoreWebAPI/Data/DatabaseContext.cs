@@ -15,8 +15,9 @@ namespace AspNetCoreWebAPI.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Burası veritabanı yapılandırma ayarlarını yapabileceğimiz metot
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=NetCoreMvcProjeUygulamasi; integrated security=true;"); // TrustServerCertificate=True
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=AspNetCoreMVCProjesi; integrated security=true;"); // TrustServerCertificate=True
             //optionsBuilder.UseInMemoryDatabase("NetCoreMvcProjeUygulamasi");
+            optionsBuilder.UseLazyLoadingProxies();
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

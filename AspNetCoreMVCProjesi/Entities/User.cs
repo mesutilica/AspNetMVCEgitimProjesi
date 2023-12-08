@@ -19,5 +19,11 @@ namespace AspNetCoreMVCProjesi.Entities
         public bool IsActive { get; set; }
         [Display(Name = "Admin?")]
         public bool IsAdmin { get; set; }
+        [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]
+        public DateTime CreateDate { get; set; }
+        public Guid? UserGuid { get; set; } = Guid.NewGuid();
+        // Jwt için propertyler
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpireDate { get; set; }
     }
 }

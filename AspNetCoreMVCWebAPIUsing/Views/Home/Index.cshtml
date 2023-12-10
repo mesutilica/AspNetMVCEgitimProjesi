@@ -7,7 +7,7 @@
     <p>
         Asp.Net Core ile web api projesinin kullanım örnekleri.
     </p>
-    <div id="products" class="row row-cols-4">
+    <div id="products" class="row row-cols-3">
     </div>
 </div>
 
@@ -25,13 +25,13 @@
 
         fetch('https://dummyjson.com/products')
             .then(response => response.json()) // JSON olarak dönüştür
-            .then(products => {
-                console.log(products.products)
+            .then(data => {
+                console.log(data.products)
                 // Ekrandaki div elementini seç
                 let div = document.getElementById('products');
                 // Ürünleri div içine yazdır
-                Object.values(products.products).forEach(product => {
-                    div.innerHTML += `<p>${product.title} - ${product.price}</p>`;
+                data.products.forEach(product => {
+                    div.innerHTML += `<div><a href="/Home/Detail/${product.id}"><img src="${product.thumbnail}" alt="" class="img-fluid" /></a><h5>${product.title} - ${product.price} ₺</h5></div>`;
                 });
             })
             .catch(error => {

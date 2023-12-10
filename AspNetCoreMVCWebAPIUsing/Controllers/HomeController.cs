@@ -18,8 +18,12 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Detail(int? id)
         {
+            if (id is null)
+            {
+                return BadRequest();
+            }
             return View();
         }
 

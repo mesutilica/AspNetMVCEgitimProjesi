@@ -1,8 +1,58 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Anasayfa";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Web API Kullanımı</h1>
+    <p>
+        Asp.Net Core ile web api projesinin kullanım örnekleri.
+    </p>
+    <div id="products" class="row row-cols-4">
+    </div>
 </div>
+
+@section Scripts {
+    <script>
+        // fetch('https://dummyjson.com/products')
+        //     .then((response) => response.json())
+        //     .then(function (data) {
+        //         // console.log(data.products)
+        //         data.forEach((urun) => {
+        //             document.getElementById("products").innerHTML += "<div class='col'>" + urun.title + "</div>"
+        //         })
+        //     })
+        //.then(console.log);
+
+        fetch('https://dummyjson.com/products')
+            .then(response => response.json()) // JSON olarak dönüştür
+            .then(products => {
+                console.log(products.products)
+                // Ekrandaki div elementini seç
+                let div = document.getElementById('products');
+                // Ürünleri div içine yazdır
+                Object.values(products.products).forEach(product => {
+                    div.innerHTML += `<p>${product.title} - ${product.price}</p>`;
+                });
+            })
+            .catch(error => {
+                // Hata olursa konsola yazdır
+                console.error(error);
+            });
+
+        // fetch("https://jsonplaceholder.typicode.com/todos")
+        //     .then((response) => response.json()) //parse json data
+        //     .then(function (todos) {
+        //         todos.forEach((todo) => {
+        //             // console.log(todo.title); //Başlıkları console' a yazdırma
+        //              document.getElementById("products").innerHTML += "<div class='col'>" + todo.title + "</div>"
+        //         });
+        //     });
+
+
+        // console.warn(then(datas))
+        // datas.forEach((key) => { key });
+        // products.forEach((key) => {
+        //     console.log(`${key}: ${person[key]}`));
+        //                 });
+    </script>
+}

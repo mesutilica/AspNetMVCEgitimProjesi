@@ -1,10 +1,10 @@
 ﻿@inject IHttpContextAccessor _context
 
 @{
-    ViewData["Title"] = "HttpContextAccessor";
+    ViewData["Title"] = "Http Context Accessor";
 }
 
-<h1>HttpContextAccessor</h1>
+<h1>Http Context Accessor</h1>
 
 <p>
     Sunucu üzerinden birden fazla istemciye hizmet verecek şekilde tasarlanmış uygulama mimarilerinde her bir istek için benzersiz/tekil bir Context nesnesi üretilir. 
@@ -50,7 +50,6 @@
 </p>
 
 <p>
-    Sayafada direk inject ederek kullanabiliriz;
     <hr />Controller Adı : 
     @Context.GetRouteValue("Controller")
     <br />Action Adı :

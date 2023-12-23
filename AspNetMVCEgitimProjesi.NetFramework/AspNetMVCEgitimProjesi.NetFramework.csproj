@@ -142,6 +142,7 @@
     <Compile Include="Controllers\MVC08ViewResultsController.cs" />
     <Compile Include="Controllers\MVC09FileUploadController.cs" />
     <Compile Include="Controllers\MVC14FiltersUsingController.cs" />
+    <Compile Include="Controllers\MVC15HttpContextController.cs" />
     <Compile Include="Filters\UserControl.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -221,6 +222,7 @@
     <Content Include="Views\MVC09FileUpload\Index.cshtml" />
     <Content Include="Views\MVC14FiltersUsing\Index.cshtml" />
     <Content Include="Views\MVC13AppSetting\Index.cshtml" />
+    <Content Include="Views\MVC15HttpContext\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

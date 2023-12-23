@@ -2,7 +2,7 @@
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC15ViewComponentUsingController : Controller
+    public class MVC16ViewComponentUsingController : Controller
     {
         public IActionResult Index()
         {

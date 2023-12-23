@@ -2,11 +2,11 @@
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC16HttpContextAccessorController : Controller
+    public class MVC15HttpContextController : Controller
     {
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public MVC16HttpContextAccessorController(IHttpContextAccessor contextAccessor)
+        public MVC15HttpContextController(IHttpContextAccessor contextAccessor)
         {
             _contextAccessor = contextAccessor;
         }

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "MVC Http Context";
+}
+
+<h2>MVC Http Context</h2>
+
+
+<form>
+    @Html.Editor("kelime")
+</form>
+
+<p>
+    Controller Adı :
+    @ViewContext.RouteData.Values["controller"].ToString()
+    <br />Action Adı :
+    @ViewContext.RouteData.Values["action"].ToString()
+    <br />Id Değeri :
+    @ViewContext.RouteData.Values["id"]
+    <br />Request Method :
+    @Context.Request.HttpMethod
+    <br />Request Scheme :
+    @Context.Request.Url.Scheme
+    <br />QueryString :
+    @Context.Request.QueryString
+    <br />Query kelime:
+    @Context.Request.QueryString["kelime"]
+    <br /> Session değeri :
+    @Context.Session["UserGuid"]
+    <br /> Cookie değeri :
+    @Context.Request.Cookies["userguid"]
+    <br /> Oturum açılmış mı? :
+    @Context.User.Identity.IsAuthenticated
+    <br /> Kullanıcı User Rolüne Sahip mi? :
+    @Context.User.IsInRole("User")
+</p>

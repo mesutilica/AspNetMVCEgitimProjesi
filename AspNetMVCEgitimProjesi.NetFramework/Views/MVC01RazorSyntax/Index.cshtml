@@ -1,34 +1,97 @@
 ﻿@{
-    ViewData["Title"] = "MVC01 Razor Syntax .Net Core";
+    ViewBag.Title = "MVC Razor Syntax";
+
     string adi = "Ali";
-    string[] isimler = new string[] { "Mert", "Mücahit", "Aslı" }; // c# dizi yapısını razor syntax ı ile kullandık
-                                                                   // @{} blokları arasına direk csharp kodları yazabiliyoruz veya @ ile csharp kodu yazabiliyoruz bu yazım türüne razor syntax ı diyoruz. @{} parantezlerinin içerisinde çok satırlı olarak başına ayrıca @ koymadan cs kodu yazabilirken sayfa içerisinde sadece @ ifadesi kullanırsak tek satırlık cs kodu yazabiliriz ve her cs kodunun önüne @ işareti koymamız gerekir.
+    string[] isimler = { "Muhammed", "Ali", "Cem", "Kürşat", "Alparslan" };
+    var tarih = @DateTime.Now; // yorum satırı
 }
 
-<h1>MVC01 Razor Syntax</h1>
+<h2>MVC Razor Syntax</h2>
+<h6>Title : @ViewBag.Title</h6>
+<p>
+    C# kodu ile html kodlarını karışık yazabiliyoruz. Ekrandaki metnin c# kodu olduğunu başına eklenen at ifadesinden anlıyor sistem. Bu yazım şekline de razor syntax ı deniliyor
+</p>
+<h3>İsim :  @adi</h3>
 
-@ViewData["Title"]
+<h4>
+    Tarih :  @tarih
+</h4>
 
-@ViewData["Title"]
-
-<h3>Adı değişkeni değeri</h3>
-@adi
-
-<h3>İsimler</h3>
-
-@foreach (var ad in isimler) // razor syntax ile döngü kullanabiliriz
+@if (tarih.Hour > 18)
 {
+    <h6>İyi Akşamlar</h6>
+}
+else if (tarih.Hour > 12 && tarih.Hour < 18)
+{
+    <h6>İyi Günler</h6>
+}
+else
+{
+    <h6>İyi Sabahlar</h6>
+}
 
-    <h4>
-        @ad
-    </h4>
-    @ad
+<h2>Dizideki İsimler</h2>
+
+@foreach (var isim in isimler)
+{
+    if (isim == isimler[0])
+    {
+        <div class="active">İlk İsim : @isim</div>
+    }
+    @isim
     <hr />
-    @ad
-    <br />
 }
+
 <hr />
-@foreach (var ad in isimler) // razor syntax ile döngü kullanabiliriz
+Listedeki 2. isim : @isimler[1]
+<hr />
+
+@foreach (var isim in isimler)
 {
-    @(ad + " ")
+    <h6>@isim</h6>
 }
+
+<hr />
+
+@foreach (var isim in isimler)
+{
+    @(isim + " ")// isimleri aralarına boşluk bırakarak yazdırır
+    @:İsim :  @isim -
+}
+
+<h3>For Örneği</h3>
+
+@for (var i = 0; i < isimler.Length; i++)
+{
+    <text>İsim : @isimler[i]
+    <hr />
+    </text>
+}
+
+<h3>For Örneği 2</h3>
+
+@for (var i = 0; i < isimler.Length; i++)
+{
+    @:İsim : @isimler[i]
+    <hr />
+}
+
+info@deneme.com şeklinde at ifadesinden ince yapışık metin varsa bunun c# kodu olmadığını razor syntax anlar.
+
+<h5>
+    Kullanıcı Adı :  @@aspnet
+</h5>
+
+kullanıcı adı vb başında @@ işareti olan bir metin kullanmak için çift @@ işareti eklemeliyiz.
+
+<h3>
+    Üretim Yılı
+</h3>
+
+<select>
+    <option value="">Seçiniz</option>
+    @for (int i = DateTime.Now.Year; i > 2000; i--)
+    {
+        <option value="@i">@i</option>
+    }
+</select>

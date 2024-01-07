@@ -7,7 +7,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Models
         public DbSet<Uye> Uyes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("InMemoryDb");
+            // optionsBuilder.UseInMemoryDatabase("InMemoryDb");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=UyeDb; integrated security=true; TrustServerCertificate=True"); // 
             base.OnConfiguring(optionsBuilder);
         }
     }

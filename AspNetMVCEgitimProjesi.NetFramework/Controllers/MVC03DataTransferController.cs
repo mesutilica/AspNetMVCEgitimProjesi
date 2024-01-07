@@ -7,39 +7,38 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         // GET: MVC03DataTransfer
         public ActionResult Index(string txtAra)
         {
-            // MVC de temel olarak 3 türde view a veri yollama yapısı var
-            // Örneğin veritabanından ürün bilgisini çekip ekrana  yollamak için
-            // 1- ViewBag : Tek Kullanımlık Ömrü Var
-            ViewBag.UrunKategorisi = "Bilgisayar";
-            // 2-Viewdata : Tek Kullanımlık Ömrü Var
-            ViewData["UrunAdi"] = "Acer Monitör";
-            // 3-TempData : 2 Kullanımlık Ömrü Var
-            TempData["UrunFiyati"] = 35.18;
+            // 3 Farklı Yöntemle Controllerdan View a Basit Veriler Gönderebiliriz
 
-            ViewBag.GetVerisi = txtAra;
+            // 1-ViewBag : Tek kullanımlık ömrü vardır.
+            ViewBag.UrunKategorisi = "Bilgisayar"; // Burada ViewBag ismi standart olarak yazılır sonrasında . deyip dilediğimiz değişken adını yazabiliriz.
+            // 2-ViewData : Tek kullanımlık ömrü vardır.
+            ViewData["UrunAdi"] = "Everbook Laptop";
+            // 3-TempData : 2 kullanımlık ömrü vardır.
+            TempData["UrunFiyati"] = 18.000;
+
+            ViewBag.ArananKelime = txtAra;
             return View();
         }
         [HttpPost]
-        public ActionResult Index(string text1, string ddlListe, bool cbOnay, FormCollection keyValuePairs)
+        public ActionResult Index(string text1, string ddlListe, bool cbOnay, FormCollection formCollection)
         {
-            // 1. Yöntem parametrelerden gelen veriler;
+            ViewBag.Baslik1 = "1. Yöntem Parametreyle Veri Yakalama";
+            ViewBag.Mesaj1 = "Textbox değeri : " + text1;
+            ViewBag.Mesaj2 = "Dropdown değeri : " + ddlListe;
+            ViewBag.Mesaj3 = "cbOnay değeri : " + cbOnay;
 
-            ViewBag.Mesaj = "Textboxdan gelen veri : " + text1;
-            ViewBag.MesajListe = "liste den seçilen değer : " + ddlListe;
-            TempData["Tdata"] = "Checkbox dan seçilen değer : " + cbOnay;
+            ViewBag.Baslik2 = "2. Yöntem Request Form İle Yakalama";
+            ViewBag.Mesaj4 = "Textbox değeri : " + Request.Form["text1"];
+            ViewBag.Mesaj5 = "Dropdown değeri : " + Request.Form["ddlListe"];
 
-            // 2. Yöntem Request Form ile verileri yakalama
+            ViewBag.Mesaj6 = "cbOnay değeri : " + Request.Form.GetValues("cbOnay")[0];
+            ViewBag.Mesaj6 += " -- <hr> text1 değeri : " + Request.Form.GetValues("text1")[0];
+            ViewBag.Mesaj6 += " -- ddlListe değeri : " + Request.Form.GetValues("ddlListe")[0];
 
-            ViewBag.Mesaj2 = "Textboxdan gelen veri : " + Request.Form["text1"];
-            ViewBag.MesajListe2 = "liste den seçilen değer : " + Request.Form["ddlListe"];
-            //TempData["Tdata"] = "Checkbox dan seçilen değer : " + Request.Form["cbOnay"][0];// first() de kullanılabilir //true seçince true,false dönüyor
-            TempData["Tdata2"] = "Checkbox dan seçilen değer : " + Request.Form.GetValues("cbOnay")[0];
-
-            // 3. Yöntem FormCollection Kullanarak
-
-            ViewBag.Mesaj3 = "keyValuePairs Textboxdan gelen veri : " + keyValuePairs["text1"];
-            ViewBag.MesajListe3 = "keyValuePairs liste den seçilen değer : " + keyValuePairs["ddlListe"];
-            TempData["Tdata3"] = "keyValuePairs Checkbox dan seçilen değer : " + keyValuePairs.GetValues("cbOnay")[0];
+            ViewBag.Baslik3 = "3. Yöntem FormCollection İle Yakalama";
+            ViewBag.Mesaj7 = "Textbox değeri : " + formCollection["text1"];
+            ViewBag.Mesaj8 = "Dropdown değeri : " + formCollection["ddlListe"];
+            ViewBag.Mesaj9 = "cbOnay değeri : " + formCollection.GetValues("cbOnay")[0];
             return View();
         }
     }

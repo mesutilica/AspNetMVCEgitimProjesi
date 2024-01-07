@@ -10,7 +10,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             return View();
         }
-        public ActionResult Kullanici()
+        public ActionResult KullaniciDetay()
         {
             Kullanici kullanici = new Kullanici()
             {
@@ -24,21 +24,21 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             return View(kullanici); // yukardaki kullanici nesnesinin view da model olarak kullanılabilmesi için bu şekilde view a göndermemiz gerekir.
         }
         [HttpPost]
-        public ActionResult Kullanici(Kullanici kullanici) // Burada belirttiğimiz kullanici nesnesi view sayfasındaki model kullanan form içerisindeki verileri model binding yöntemiyle yakalıyor.
+        public ActionResult KullaniciDetay(Kullanici kullanici) // Burada belirttiğimiz kullanici nesnesi view sayfasındaki model kullanan form içerisindeki verileri model binding yöntemiyle yakalıyor.
         {
             return View(kullanici); // Post işleminden sonra metoda parametreyle gelen kullanici nesnesini tekrar ekrana gönder
         }
-        public ActionResult Adres()
+        public ActionResult AdresDetay()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Adres(Adres adres)
+        public ActionResult AdresDetay(Adres adres)
         {
             // Projelerde bu noktada yakaladığımız adres nesnesini veritabanına kaydederiz.
             return View(adres);
         }
-        public ActionResult UyeSayfasi()
+        public ActionResult KullaniciAdresDetay()
         {
             Kullanici kullanici = new Kullanici()
             {

@@ -1,8 +1,10 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations; // Validation işlemleri için gerekli kütüphane
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema; // Validation işlemleri için gerekli kütüphane
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Models
 {
+    [Table("Uyeler")]
     public class Uye
     {
         public int Id { get; set; }
@@ -22,13 +24,12 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Models
         public DateTime DogumTarihi { get; set; }
         [Display(Name = "Kullanıcı Adı")]
         public string KullaniciAdi { get; set; }
-        [Display(Name = "Şifre"), DataType(DataType.Password)]
+        [Display(Name = "Şifre")]
         [StringLength(15, ErrorMessage = "{0} {2} Karakterden Az Olamaz!", MinimumLength = 5)]
         [Required(ErrorMessage = "{0} alanı boş geçilemez!")]
         public string Sifre { get; set; }
-        [Display(Name = "Şifreyi Tekrar Giriniz"), DataType(DataType.Password)]
-        [Required(ErrorMessage = "{0} alanı boş geçilemez!")]
-        [Compare("Sifre")] // Sifre property si ile karşılaştır
+        [Display(Name = "Şifreyi Tekrar Giriniz")]
+        [Compare("Sifre"), ScaffoldColumn(true), NotMapped] // Sifre property si ile karşılaştır
         public string SifreTekrar { get; set; }
     }
 }

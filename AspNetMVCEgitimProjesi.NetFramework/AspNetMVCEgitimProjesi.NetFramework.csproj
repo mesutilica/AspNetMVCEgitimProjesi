@@ -124,6 +124,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MVC01RazorSyntaxController.cs" />
     <Compile Include="Controllers\MVC02HtmlHelpersController.cs" />
+    <Compile Include="Controllers\MVC06CRUDController.cs" />
     <Compile Include="Controllers\MVC13AppSettingController.cs" />
     <Compile Include="Controllers\MVC12StringFormatController.cs" />
     <Compile Include="Controllers\MVC06SectionController.cs" />
@@ -140,10 +141,6 @@
     <Compile Include="Filters\UserControl.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401072045153_initialCreate.cs" />
-    <Compile Include="Migrations\202401072045153_initialCreate.designer.cs">
-      <DependentUpon>202401072045153_initialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adres.cs" />
@@ -220,6 +217,11 @@
     <Content Include="Views\MVC14FiltersUsing\Index.cshtml" />
     <Content Include="Views\MVC13AppSetting\Index.cshtml" />
     <Content Include="Views\MVC15HttpContext\Index.cshtml" />
+    <Content Include="Views\MVC06CRUD\Create.cshtml" />
+    <Content Include="Views\MVC06CRUD\Delete.cshtml" />
+    <Content Include="Views\MVC06CRUD\Details.cshtml" />
+    <Content Include="Views\MVC06CRUD\Edit.cshtml" />
+    <Content Include="Views\MVC06CRUD\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -238,11 +240,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202401072045153_initialCreate.resx">
-      <DependentUpon>202401072045153_initialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

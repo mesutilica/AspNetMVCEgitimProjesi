@@ -1,7 +1,9 @@
 ﻿@{
     ViewBag.Title = "MVC Razor Syntax";
 
-    string adi = "Ali";
+    string urunAdi = "Bilgisayar";
+    decimal fiyat = 18000;
+    decimal kdv = 1.20M;
     string[] isimler = { "Muhammed", "Ali", "Cem", "Kürşat", "Alparslan" };
     var tarih = @DateTime.Now; // yorum satırı
 }
@@ -11,7 +13,11 @@
 <p>
     C# kodu ile html kodlarını karışık yazabiliyoruz. Ekrandaki metnin c# kodu olduğunu başına eklenen at ifadesinden anlıyor sistem. Bu yazım şekline de razor syntax ı deniliyor
 </p>
-<h3>İsim :  @adi</h3>
+<h4>Ürün Adı :  @urunAdi</h4>
+<h4>Ürün Fiyatı :  @fiyat ₺</h4>
+<h4>Kdv Dahil :  @(fiyat * kdv) ₺</h4>
+
+<hr />
 
 <h4>
     Tarih :  @tarih

@@ -6,14 +6,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC05ModelValidationController : Controller
     {
-        UyeContext context = new UyeContext();
         public IActionResult Index()
         {
             return View();
-        }
-        public IActionResult UyeListesi()
-        {
-            return View(context.Uyes.ToList()); // Ekrana modeli view içerisinde gönderebiliyoruz
         }
         public IActionResult YeniUye()
         {
@@ -30,8 +25,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 //context.Entry<Uye>(uye).State = EntityState.Added; // 3. yöntem
                 //context.Entry(uye).State = EntityState.Added; // 4. yöntem
                 //context.Attach<Uye>(uye); // 5. yöntem
-                context.Add(uye); // 6. yöntem
-                context.SaveChanges();
+                //context.Add(uye); // 6. yöntem
+                //context.SaveChanges();
                 TempData["Uye"] = uye.Ad + " " + uye.Soyad + " İsimli üye kaydı başarıyla gerçekleşti..";
                 return RedirectToAction("UyeListesi");
             }
@@ -47,9 +42,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             //var uye = context.Uyes.Where(b => b.Id == id).FirstOrDefault();
             //var uye = context.Uyes.Where(b => b.Id == id).SingleOrDefault();
             //var uye = context.Uyes.FirstOrDefault(b => b.Id == id);
-            var uye = context.Uyes.SingleOrDefault(b => b.Id == id);
+            //var uye = context.Uyes.SingleOrDefault(b => b.Id == id);
 
-            return View(uye);
+            return View();//uye
         }
         [HttpPost]
         public IActionResult UyeDuzenle(Uye uye)
@@ -62,28 +57,23 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 // context.Attach<Uye>(uye).State = EntityState.Modified;
                 // context.Entry(uye).State = EntityState.Modified;
                 // context.Entry<Uye>(uye).State = EntityState.Modified;
-                context.Entry(uye).State = EntityState.Modified;
-                context.SaveChanges();
+                // context.Entry(uye).State = EntityState.Modified;
+                // context.SaveChanges();
                 return RedirectToAction("UyeListesi");
             }
             return View(uye);
         }
-        public IActionResult UyeSil(int? id)
-        {
-            var uye = context.Uyes.Find(id);
-
-            return View(uye);
-        }
+        
         [HttpPost]
         public IActionResult UyeSil(Uye uye)
         {
             // Kaydı sil
-            context.Remove(uye);
+            // context.Remove(uye);
             // context.Uyes.Remove(uye);
             // context.Attach<Uye>(uye).State = EntityState.Deleted;
             // context.Entry(uye).State = EntityState.Deleted;
             // context.Entry<Uye>(uye).State = EntityState.Deleted;
-            context.SaveChanges();
+            // context.SaveChanges();
             return RedirectToAction("UyeListesi"); // sayfayı listeye yönlendir
         }
     }

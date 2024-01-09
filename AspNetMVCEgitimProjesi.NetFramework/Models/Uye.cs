@@ -29,7 +29,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Models
         [Required(ErrorMessage = "{0} alanı boş geçilemez!")]
         public string Sifre { get; set; }
         [Display(Name = "Şifreyi Tekrar Giriniz")]
-        [Compare("Sifre"), ScaffoldColumn(true), NotMapped] // Sifre property si ile karşılaştır
+        [StringLength(15, ErrorMessage = "{0} {2} Karakterden Az Olamaz!", MinimumLength = 5)]
+        [Compare("Sifre")] // Sifre property si ile karşılaştır
         public string SifreTekrar { get; set; }
     }
 }

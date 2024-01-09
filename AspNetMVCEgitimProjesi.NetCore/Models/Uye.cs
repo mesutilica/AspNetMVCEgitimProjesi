@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations; // Validation işlemleri için gerekli kütüphane
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema; // Validation işlemleri için gerekli kütüphane
 
 namespace AspNetMVCEgitimProjesi.NetCore.Models
 {
+    [Table("Uyeler")]
     public class Uye
     {
         public int Id { get; set; }
@@ -23,8 +25,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Models
         public string? KullaniciAdi { get; set; }
         [Display(Name = "Şifre")]
         [StringLength(15, ErrorMessage = "{0} {2} Karakterden Az Olamaz!", MinimumLength = 5)]
+        [Required(ErrorMessage = "{0} alanı boş geçilemez!")]
         public string? Sifre { get; set; }
         [Display(Name = "Şifreyi Tekrar Giriniz")]
+        [StringLength(15, ErrorMessage = "{0} {2} Karakterden Az Olamaz!", MinimumLength = 5)]
         [Compare("Sifre")] // Sifre property si ile karşılaştır
         public string? SifreTekrar { get; set; }
     }

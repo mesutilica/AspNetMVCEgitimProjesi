@@ -1,22 +1,15 @@
 ﻿@model AspNetMVCEgitimProjesi.NetCore.Models.Uye
 
 @{
-    ViewData["Title"] = "Üye Sil";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Üye Sil</h1>
+<h1>Details</h1>
 
-<h3>Bu kaydı silmek istediğinize emin misiniz?</h3>
 <div>
-    <h4>Üye Bilgileri</h4>
+    <h4>Uye</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Ad)
         </dt>
@@ -72,9 +65,8 @@
             @Html.DisplayFor(model => model.SifreTekrar)
         </dd>
     </dl>
-    
-    <form asp-action="UyeSil">
-        <input type="submit" value="Sil" class="btn btn-danger" /> |
-        <a asp-action="UyeListesi">Listeye Dön</a>
-    </form>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

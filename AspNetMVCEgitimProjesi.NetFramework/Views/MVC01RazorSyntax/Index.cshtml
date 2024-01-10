@@ -13,9 +13,17 @@
 <p>
     C# kodu ile html kodlarını karışık yazabiliyoruz. Ekrandaki metnin c# kodu olduğunu başına eklenen at ifadesinden anlıyor sistem. Bu yazım şekline de razor syntax ı deniliyor
 </p>
-<h4>Ürün Adı :  @urunAdi</h4>
-<h4>Ürün Fiyatı :  @fiyat ₺</h4>
-<h4>Kdv Dahil :  @(fiyat * kdv) ₺</h4>
+
+<div class="row">
+    <div class="col-sm-6">
+        <img src="~/Images/Laptop.jpg" />
+    </div>
+    <div class="col-sm-6">
+        <h4>Ürün Adı :  @urunAdi</h4>
+        <h4>Ürün Fiyatı :  @fiyat ₺</h4>
+        <h4>Kdv Dahil :  @(fiyat * kdv) ₺</h4>
+    </div>
+</div>
 
 <hr />
 

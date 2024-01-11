@@ -2,9 +2,9 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC07PartialController : Controller
+    public class MVC07SectionController : Controller
     {
-        // GET: MVC07Partial
+        // GET: MVC06Section
         public ActionResult Index()
         {
             return View();

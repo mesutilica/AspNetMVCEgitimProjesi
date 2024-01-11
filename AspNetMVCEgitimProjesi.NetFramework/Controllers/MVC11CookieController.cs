@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC10CookieController : Controller
+    public class MVC11CookieController : Controller
     {
         // GET: MVC13Cookie
         public ActionResult Index()

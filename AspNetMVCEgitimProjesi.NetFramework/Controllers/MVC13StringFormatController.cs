@@ -2,9 +2,9 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC15HttpContextController : Controller
+    public class MVC13StringFormatController : Controller
     {
-        // GET: MVC15HttpContext
+        // GET: MVC12StringFormat
         public ActionResult Index()
         {
             return View();

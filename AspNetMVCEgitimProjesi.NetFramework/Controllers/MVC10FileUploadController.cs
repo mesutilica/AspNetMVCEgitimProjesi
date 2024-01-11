@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC09FileUploadController : Controller
+    public class MVC10FileUploadController : Controller
     {
         public ActionResult Index()
         {

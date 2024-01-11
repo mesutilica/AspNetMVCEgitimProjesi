@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC13AppSettingController : Controller
+    public class MVC14AppSettingController : Controller
     {
         // GET: MVC13AppSetting
         public ActionResult Index()

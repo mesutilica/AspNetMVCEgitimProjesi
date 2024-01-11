@@ -2,9 +2,9 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC06SectionController : Controller
+    public class MVC16HttpContextController : Controller
     {
-        // GET: MVC06Section
+        // GET: MVC15HttpContext
         public ActionResult Index()
         {
             return View();

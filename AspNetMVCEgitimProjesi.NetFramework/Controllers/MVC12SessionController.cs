@@ -2,19 +2,19 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC11SessionController : Controller
+    public class MVC12SessionController : Controller
     {
         // GET: MVC12Session
         public ActionResult Index()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost] // , ActionName("SessionOlustur")
         public ActionResult SessionOlustur(string kullaniciAdi, int sifre)
         {
             if (kullaniciAdi == "admin" && sifre == 123)
                 Session["deger"] = "Admin"; //klasik .net mvc de sessiona veri atma bu şekildeydi
-            return View();
+            return RedirectToAction("SessionOku");
         }
         public ActionResult SessionOku()
         {
@@ -24,7 +24,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         public ActionResult SessionSil()
         {
             HttpContext.Session.Remove("deger"); // deger isimli sessionu süresini beklemeden sil
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

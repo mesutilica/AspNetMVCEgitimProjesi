@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC08ViewResultsController : Controller
+    public class MVC09ViewResultsController : Controller
     {
         // GET: MVC14ViewResults
         public ActionResult Index()
@@ -45,19 +45,6 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             };
             return PartialView("_KategorilerPartialModelKullanimi", kategoriler); // Geriye döndermek istediğimiz partial ismini verebiliriz
         }
-        public FileStreamResult MetinDosyasiIndir()
-        {
-            string metin = "FileStreamResult ile metin dosyası indirme";
-
-            System.IO.MemoryStream memory = new System.IO.MemoryStream();
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(metin);
-            memory.Write(bytes, 0, bytes.Length);
-            memory.Position = 0;
-            FileStreamResult result = new FileStreamResult(memory, "text/plain");
-            result.FileDownloadName = "metin.txt";
-
-            return result;
-        }
         public JavaScriptResult JsResult()
         {
             return JavaScript("alert('JavaScriptResult')");
@@ -95,6 +82,19 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             ";
 
             return Content(xml, "application/xml");
+        }
+        public FileStreamResult MetinDosyasiIndir()
+        {
+            string metin = "FileStreamResult ile metin dosyası indirme";
+
+            System.IO.MemoryStream memory = new System.IO.MemoryStream();
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(metin);
+            memory.Write(bytes, 0, bytes.Length);
+            memory.Position = 0;
+            FileStreamResult result = new FileStreamResult(memory, "text/plain");
+            result.FileDownloadName = "metin.txt";
+
+            return result;
         }
     }
 }

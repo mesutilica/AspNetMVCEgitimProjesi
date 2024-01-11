@@ -2,9 +2,9 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
-    public class MVC12StringFormatController : Controller
+    public class MVC08PartialController : Controller
     {
-        // GET: MVC12StringFormat
+        // GET: MVC07Partial
         public ActionResult Index()
         {
             return View();

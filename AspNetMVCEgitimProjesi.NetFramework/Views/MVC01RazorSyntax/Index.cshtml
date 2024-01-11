@@ -28,20 +28,24 @@
 <hr />
 
 <h4>
-    Tarih :  @tarih
+    Tarih ve saat :  @tarih
+</h4>
+
+<h4>
+    Kısa Tarih :  @tarih.ToShortDateString()
 </h4>
 
 @if (tarih.Hour > 18)
 {
-    <h6>İyi Akşamlar</h6>
+    <h5>İyi Akşamlar</h5>
 }
 else if (tarih.Hour > 12 && tarih.Hour < 18)
 {
-    <h6>İyi Günler</h6>
+    <h5>İyi Günler</h5>
 }
 else
 {
-    <h6>İyi Sabahlar</h6>
+    <h5>İyi Sabahlar</h5>
 }
 
 <h2>Dizideki İsimler</h2>

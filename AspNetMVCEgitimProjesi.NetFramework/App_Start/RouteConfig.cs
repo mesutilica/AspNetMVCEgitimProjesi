@@ -8,7 +8,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapMvcAttributeRoutes(); // özel route tanımlamak için
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -13,7 +13,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         // GET: MVC06CRUD
         public ActionResult Index()
         {
-            return View(db.Uyes.ToList());
+            return View(db.Uyeler.ToList());
         }
 
         // GET: MVC06CRUD/Details/5
@@ -23,7 +23,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Uye uye = db.Uyes.Find(id);
+            Uye uye = db.Uyeler.Find(id);
             if (uye == null)
             {
                 return HttpNotFound();
@@ -44,7 +44,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Uyes.Add(uye);
+                db.Uyeler.Add(uye);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,7 +59,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Uye uye = db.Uyes.Find(id);
+            Uye uye = db.Uyeler.Find(id);
             if (uye == null)
             {
                 return HttpNotFound();
@@ -88,7 +88,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Uye uye = db.Uyes.Find(id);
+            Uye uye = db.Uyeler.Find(id);
             if (uye == null)
             {
                 return HttpNotFound();
@@ -101,8 +101,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Uye uye = db.Uyes.Find(id);
-            db.Uyes.Remove(uye);
+            Uye uye = db.Uyeler.Find(id);
+            db.Uyeler.Remove(uye);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

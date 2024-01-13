@@ -1,11 +1,13 @@
 ﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC09ViewResultsController : Controller
     {
+        private UyeContext context = new UyeContext();
         // GET: MVC14ViewResults
         public ActionResult Index()
         {
@@ -51,35 +53,24 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public JsonResult JsonResult()
         {
-            var kullanici = new Kullanici()
-            {
-                Ad = "Ali",
-                Soyad = "Çakmaktaş",
-                KullaniciAdi = "acakmak",
-                Email = "ali@cakmaktas.com"
-            };
-            return Json(kullanici, JsonRequestBehavior.AllowGet);
+            var kullanicilar = context.Uyeler.ToList();
+            return Json(kullanicilar, JsonRequestBehavior.AllowGet);
         }
         public ContentResult XmlContentResult()
         {
-            var xml = @"
-                <urunler>
-                    <urun>
-                        <Id>1</Id>
-                        <UrunAdi>Klavye</UrunAdi>
-                        <Fiyati>199</Fiyati>
-                        <Stok>3</Stok>
-                        <Kategori>Bilgisayar</Kategori>
-                    </urun>
-                    <urun>
-                        <Id>2</Id>
-                        <UrunAdi>Mouse</UrunAdi>
-                        <Fiyati>99</Fiyati>
-                        <Stok>5</Stok>
-                        <Kategori>Bilgisayar</Kategori>
-                    </urun>
-                </urunler>
-            ";
+            var kullanicilar = context.Uyeler.ToList();
+            var xml = "<kullanicilar>";
+            foreach (var item in kullanicilar)
+            {
+                xml += $@"<kullanici>
+                        <Id>{item.Id}</Id>
+                        <Ad>{item.Ad}</Ad>
+                        <Soyad>{item.Soyad}</Soyad>
+                        <KullaniciAdi>{item.TcKimlikNo}</KullaniciAdi>
+                        <Email>{item.DogumTarihi}</Email>
+                    </kullanici>";
+            }
+            xml += "</kullanicilar>";
 
             return Content(xml, "application/xml");
         }

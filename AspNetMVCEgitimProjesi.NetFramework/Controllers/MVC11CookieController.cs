@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
+using System;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -6,6 +8,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC11CookieController : Controller
     {
+        private UyeContext context = new UyeContext();
         // GET: MVC13Cookie
         public ActionResult Index()
         {
@@ -14,7 +17,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         [Route("CookieOlustur"), HttpPost]
         public ActionResult CookieOlustur(string kullaniciAdi, string sifre)
         {
-            if (kullaniciAdi == "admin" && sifre == "123")
+            var kullanici = context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
+            if (kullanici != null)
             {
                 HttpCookie cookie = new HttpCookie("username", "Admin")
                 {
@@ -24,7 +28,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                 Response.Cookies.Add(new HttpCookie("userguid", Guid.NewGuid().ToString()));
                 return RedirectToAction("CookieOku");
             }
-            TempData["mesaj"] = "Giriş Başarısız!";
+            else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
             return RedirectToAction("Index");
         }
         public ActionResult CookieOku()

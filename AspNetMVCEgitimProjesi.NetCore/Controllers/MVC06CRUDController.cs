@@ -16,7 +16,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         // GET: MVC06CRUD
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Uyes.ToListAsync());
+            return View(await _context.Uyeler.ToListAsync());
         }
 
         // GET: MVC06CRUD/Details/5
@@ -27,7 +27,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 return NotFound();
             }
 
-            var uye = await _context.Uyes
+            var uye = await _context.Uyeler
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (uye == null)
             {
@@ -67,7 +67,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 return NotFound();
             }
 
-            var uye = await _context.Uyes.FindAsync(id);
+            var uye = await _context.Uyeler.FindAsync(id);
             if (uye == null)
             {
                 return NotFound();
@@ -116,7 +116,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 return NotFound();
             }
 
-            var uye = await _context.Uyes
+            var uye = await _context.Uyeler
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (uye == null)
             {
@@ -131,10 +131,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var uye = await _context.Uyes.FindAsync(id);
+            var uye = await _context.Uyeler.FindAsync(id);
             if (uye != null)
             {
-                _context.Uyes.Remove(uye);
+                _context.Uyeler.Remove(uye);
             }
 
             await _context.SaveChangesAsync();
@@ -143,7 +143,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
         private bool UyeExists(int id)
         {
-            return _context.Uyes.Any(e => e.Id == id);
+            return _context.Uyeler.Any(e => e.Id == id);
         }
     }
 }

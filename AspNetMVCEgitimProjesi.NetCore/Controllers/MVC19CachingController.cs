@@ -15,10 +15,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
         public IActionResult Index()
         {
-            var model = context.Uyes.ToList();
+            var model = context.Uyeler.ToList();
             if (model is null)
             {
-                context.Uyes.AddRange(
+                context.Uyeler.AddRange(
                     new Uye
                     {
                         Ad = "Alp",
@@ -39,7 +39,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                     }
                 );
                 context.SaveChanges();
-                model = context.Uyes.ToList();
+                model = context.Uyeler.ToList();
             }
             return View(model);
         }
@@ -49,7 +49,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
             if (list is null)
             {
-                list = context.Uyes.ToList();
+                list = context.Uyeler.ToList();
                 //Thread.Sleep(5000);
                 _memoryCache.Set("liste", list, TimeSpan.FromSeconds(18));
             }

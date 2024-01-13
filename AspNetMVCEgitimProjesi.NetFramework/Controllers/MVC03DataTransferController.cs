@@ -27,18 +27,17 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             ViewBag.Mesaj2 = "Dropdown değeri : " + ddlListe;
             ViewBag.Mesaj3 = "cbOnay değeri : " + cbOnay;
 
-            ViewBag.Baslik2 = "2. Yöntem Request Form İle Yakalama";
-            ViewBag.Mesaj4 = "Textbox değeri : " + Request.Form["text1"];
-            ViewBag.Mesaj5 = "Dropdown değeri : " + Request.Form["ddlListe"];
+            ViewBag.Baslik2 = "2. Yöntem FormCollection İle Yakalama";
+            ViewBag.Mesaj4 = "Textbox değeri : " + formCollection["text1"];
+            ViewBag.Mesaj5 = "Dropdown değeri : " + formCollection["ddlListe"];
+            ViewBag.Mesaj6 = "cbOnay değeri : " + formCollection.GetValues("cbOnay")[0];
 
-            ViewBag.Mesaj6 = "cbOnay değeri : " + Request.Form.GetValues("cbOnay")[0];
-            ViewBag.Mesaj6 += " -- <hr> text1 değeri : " + Request.Form.GetValues("text1")[0];
-            ViewBag.Mesaj6 += " -- ddlListe değeri : " + Request.Form.GetValues("ddlListe")[0];
-
-            ViewBag.Baslik3 = "3. Yöntem FormCollection İle Yakalama";
-            ViewBag.Mesaj7 = "Textbox değeri : " + formCollection["text1"];
-            ViewBag.Mesaj8 = "Dropdown değeri : " + formCollection["ddlListe"];
-            ViewBag.Mesaj9 = "cbOnay değeri : " + formCollection.GetValues("cbOnay")[0];
+            ViewBag.Baslik3 = "3. Yöntem Request Form İle Yakalama";
+            ViewBag.Mesaj7 = "Textbox değeri : " + Request.Form["text1"];
+            ViewBag.Mesaj8 = "Dropdown değeri : " + Request.Form["ddlListe"];
+            ViewBag.Mesaj9 = "cbOnay değeri : " + Request.Form.GetValues("cbOnay")[0];
+            ViewBag.Mesaj9 += " -- <hr> text1 değeri : " + Request.Form.GetValues("text1")[0];
+            ViewBag.Mesaj9 += " -- ddlListe değeri : " + Request.Form.GetValues("ddlListe")[0];
             return View();
         }
     }

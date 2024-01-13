@@ -5,6 +5,13 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC09ViewResultsController : Controller
     {
+        private readonly UyeContext _context;
+
+        public MVC09ViewResultsController(UyeContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -35,36 +42,24 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         }
         public JsonResult JsonDondur()
         {
-            var kullanici = new Kullanici()
-            {
-                Ad = "Ali",
-                Soyad = "Çakmaktaş",
-                KullaniciAdi = "acakmak",
-                Email = "ali@cakmaktas.com"
-            };
-            return Json(kullanici);
+            var kullanicilar = _context.Uyeler.ToList();
+            return Json(kullanicilar);
         }
         public ContentResult XmlContentResult()
         {
-            var xml = @"
-                <kullanicilar>
-                    <kullanici>
-                        <Id>1</Id>
-                        <Ad>Ali</Ad>
-                        <Soyad>Çakmaktaş</Soyad>
-                        <KullaniciAdi>acakmak</KullaniciAdi>
-                        <Email>ali@cakmaktas.com</Email>
-                    </kullanici>
-                    <kullanici>
-                        <Id>2</Id>
-                        <Ad>Barni</Ad>
-                        <Soyad>Moloztaş</Soyad>
-                        <KullaniciAdi>barny</KullaniciAdi>
-                        <Email>barni@moloztas.com</Email>
-                    </kullanici>
-                </kullanicilar>
-            ";
-
+            var kullanicilar = _context.Uyeler.ToList();
+            var xml = "<kullanicilar>";
+            foreach (var item in kullanicilar)
+            {
+                xml += $@"<kullanici>
+                        <Id>{item.Id}</Id>
+                        <Ad>{item.Ad}</Ad>
+                        <Soyad>{item.Soyad}</Soyad>
+                        <KullaniciAdi>{item.TcKimlikNo}</KullaniciAdi>
+                        <Email>{item.DogumTarihi}</Email>
+                    </kullanici>";
+            }
+            xml += "</kullanicilar>";
             return Content(xml, "application/xml");
         }
         public FileStreamResult MetinDosyasiIndir()

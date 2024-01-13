@@ -1,24 +1,32 @@
-﻿using System.Web.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC12SessionController : Controller
     {
+        private UyeContext context = new UyeContext();
         // GET: MVC12Session
         public ActionResult Index()
         {
             return View();
         }
         [HttpPost] // , ActionName("SessionOlustur")
-        public ActionResult SessionOlustur(string kullaniciAdi, int sifre)
+        public ActionResult SessionOlustur(string kullaniciAdi, string sifre)
         {
-            if (kullaniciAdi == "admin" && sifre == 123)
-                Session["deger"] = "Admin"; //klasik .net mvc de sessiona veri atma bu şekildeydi
-            return RedirectToAction("SessionOku");
+            var kullanici = context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
+            if (kullanici != null)
+            {
+                Session["deger"] = "Admin"; //klasik .net mvc de sessiona veri atma
+                return RedirectToAction("SessionOku");
+            }
+            else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
+            return RedirectToAction("Index");
         }
         public ActionResult SessionOku()
         {
-            TempData["SessionBilgi"] = Session["deger"]; // klasik .net mvc de sessiondaki veriye ulaşım bu şekildeydi
+            TempData["SessionBilgi"] = Session["deger"]; // klasik .net mvc de sessiondaki veriye ulaşım
             return View();
         }
         public ActionResult SessionSil()

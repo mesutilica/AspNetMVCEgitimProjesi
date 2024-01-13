@@ -1,26 +1,35 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC12SessionController : Controller
     {
+        private readonly UyeContext _context;
+
+        public MVC12SessionController(UyeContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult SessionOlustur(string kullaniciAdi, int sifre)
+        public IActionResult SessionOlustur(string kullaniciAdi, string sifre)
         {
-            if (kullaniciAdi == "admin" && sifre == 123)
+            var kullanici = _context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
+            if (kullanici != null)
             {
                 HttpContext.Session.SetString("Kullanici", kullaniciAdi); // session da string olarak key value şeklinde değer saklayabiliriz
-                HttpContext.Session.SetInt32("Sifre", sifre);
+                HttpContext.Session.SetString("Sifre", sifre);
                 HttpContext.Session.SetInt32("IsLoggedIn", 1);
                 HttpContext.Session.SetString("UserGuid", Guid.NewGuid().ToString());
                 return RedirectToAction("SessionOku");
             }
-            // Session["deger"] = "Admin"; klasik .net mvc de sessiona veri atma bu şekildeydi
-            return View();
+            else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
+            return RedirectToAction("Index");
         }
         public IActionResult SessionOku()
         {

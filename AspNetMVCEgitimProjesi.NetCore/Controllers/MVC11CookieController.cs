@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC11CookieController : Controller
     {
+        private readonly UyeContext _context;
+
+        public MVC11CookieController(UyeContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -11,7 +19,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         [HttpPost]
         public IActionResult CookieOlustur(string kullaniciAdi, string sifre)
         {
-            if (kullaniciAdi == "admin" && sifre == "123456")
+            var kullanici = _context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
+            if (kullanici != null)
             {
                 CookieOptions cookieAyarlari = new()
                 {

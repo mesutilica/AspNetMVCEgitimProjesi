@@ -1,5 +1,7 @@
 ﻿@{
     ViewBag.Title = "File Upload - Dosya Yükleme İşlemi";
+    var dosyalar = new DirectoryInfo(Server.MapPath("/Images"));
+    var infoList = dosyalar.GetFiles();
 }
 
 <h2>File Upload - Dosya Yükleme İşlemi</h2>
@@ -18,4 +20,9 @@
 
 @TempData["message"]
 
-<img src="/Images/@ViewBag.Resimadi" alt="" width="500" />
+<hr />
+
+@foreach (var item in infoList)
+{
+    <span><img src="/Images/@item.Name" alt="@item.Name" title="@item.Name" height="118" /></span>
+}

@@ -1,5 +1,4 @@
 ﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -38,7 +37,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             return PartialView("_KategorilerPartial"); // Geriye döndermek istediğimiz partial ismini verebiliriz
         }
-        public PartialViewResult KategorileriModelleGetirPartial() // Geriye PartialView döndüren action
+        public PartialViewResult PartialdaModelKullanimi() // Geriye PartialView döndüren action
         {
             // Model için kullanılacak listeyi burada veritabanından çekeriz
             var kullanicilar = context.Uyeler.ToList();
@@ -63,7 +62,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                         <Id>{item.Id}</Id>
                         <Ad>{item.Ad}</Ad>
                         <Soyad>{item.Soyad}</Soyad>
-                        <KullaniciAdi>{item.TcKimlikNo}</KullaniciAdi>
+                        <KullaniciAdi>{item.KullaniciAdi}</KullaniciAdi>
                         <Email>{item.DogumTarihi}</Email>
                     </kullanici>";
             }
@@ -73,15 +72,13 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public FileStreamResult MetinDosyasiIndir()
         {
-            string metin = "FileStreamResult ile metin dosyası indirme";
-
+            string metin = "FileStreamResult ile metin dosyası indirme"; // indirilecek dosya içeriği
             System.IO.MemoryStream memory = new System.IO.MemoryStream();
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(metin);
             memory.Write(bytes, 0, bytes.Length);
             memory.Position = 0;
             FileStreamResult result = new FileStreamResult(memory, "text/plain");
             result.FileDownloadName = "metin.txt";
-
             return result;
         }
     }

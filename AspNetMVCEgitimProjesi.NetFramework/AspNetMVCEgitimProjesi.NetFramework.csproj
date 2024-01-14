@@ -246,7 +246,6 @@
     <Content Include="Views\MVC11Cookie\CookieOku.cshtml" />
     <Content Include="Views\MVC11Cookie\Index.cshtml" />
     <Content Include="Views\MVC09ViewResults\Index.cshtml" />
-    <Content Include="Views\MVC09ViewResults\FarkliViewDondur.cshtml" />
     <Content Include="Views\Shared\_KategorilerPartial.cshtml" />
     <Content Include="Views\Shared\_PartialModelKullanimi.cshtml" />
     <Content Include="Views\MVC10FileUpload\Index.cshtml" />
@@ -258,6 +257,7 @@
     <Content Include="Views\MVC06CRUD\Details.cshtml" />
     <Content Include="Views\MVC06CRUD\Edit.cshtml" />
     <Content Include="Views\MVC06CRUD\Index.cshtml" />
+    <Content Include="Views\MVC15FiltersUsing\HataYakalama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

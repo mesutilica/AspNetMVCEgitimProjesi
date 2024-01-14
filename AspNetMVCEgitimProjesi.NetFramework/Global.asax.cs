@@ -13,5 +13,10 @@ namespace AspNetMVCEgitimProjesi.NetFramework
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_Error()
+        {
+            var ex = Server.GetLastError(); // son hatayı yakala
+            //log an exception
+        }
     }
 }

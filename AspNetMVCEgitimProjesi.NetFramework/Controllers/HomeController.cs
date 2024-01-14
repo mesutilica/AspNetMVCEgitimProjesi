@@ -22,5 +22,20 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 
             return View();
         }
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            filterContext.ExceptionHandled = true;
+
+            //Burada hatayı logluyoruz
+
+            //Redirect to action
+            filterContext.Result = RedirectToAction("Error", "InternalError");
+
+            // Özel hata sayfası yönlendirme
+            //filterContext.Result = new ViewResult
+            //{
+            //    ViewName = "~/Views/Error/InternalError.cshtml"
+            //};
+        }
     }
 }

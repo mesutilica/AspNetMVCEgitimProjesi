@@ -17,14 +17,21 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             {
                 // Dosya işlemleri için system.ıo kütüphanesini using ile yukarıya eklemeliyiz!
                 var uzanti = Path.GetExtension(dosya.FileName); // Dosya uzantı kontrolü yapmak istersek
+                var klasor = Server.MapPath("/Images"); // Resmi yükleyeceğimiz klasör(Eğer projede bu klasör yoksa oluşturmalıyız yoksa hata verir!)
+                var klasorVarmi = Directory.Exists(klasor); // sunucuda bu klasör var mı?
+                TempData["Message"] = "klasorVarmi : " + klasorVarmi;
+                if (klasorVarmi == false) // eğer sunucuda bu konumda klasör yoksa
+                {
+                    var sonuc = Directory.CreateDirectory(klasor); // ana dizine Images klasörü oluştur
+                    TempData["Message"] += " - Klasör Oluşturuldu.. " + sonuc;
+                }
                 if (uzanti == ".jpg" || uzanti == ".jpeg" || uzanti == ".png" || uzanti == ".gif") // Sadece bu uzantılardaki dosyaları kabul et
                 {
                     // 1. Yöntem Random(Rastgele) İsimle Dosya Yükleme
-                    var klasor = Server.MapPath("/Images"); // Resmi yükleyeceğimiz klasör(Eğer projede bu klasör yoksa oluşturmalıyız yoksa hata verir!)
                     var randomFileName = Path.GetRandomFileName(); // rasgele dosya ismi oluşturma metodu
                     var fileName = Path.ChangeExtension(randomFileName, ".jpg"); // dosya adı ve uzantısını değiştirip birleştirdik
                     var path = Path.Combine(klasor, fileName); // klasör ve resim adını birleştirdik
-                    dosya.SaveAs(path); // resmi farklı kaydet metoduyla sunucuya yüklüyoruz.
+                    //dosya.SaveAs(path); // resmi farklı kaydet metoduyla sunucuya yüklüyoruz.
                     //ViewBag.ResimAdi = fileName;
                     //ViewBag.ResimPath = path;
 
@@ -38,6 +45,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                     dosya.SaveAs(Server.MapPath("/Images/" + dosya.FileName));
 
                     ViewBag.ResimAdi = dosyaAdi;
+                    return RedirectToAction("Index");
                 }
                 else TempData["message"] = "Sadece .jpg, .jpeg, .png, .gif Resimleri Yükleyebilirsiniz! ";
             }

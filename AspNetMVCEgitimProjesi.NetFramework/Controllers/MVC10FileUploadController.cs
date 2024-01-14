@@ -39,7 +39,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
                     ViewBag.ResimAdi = dosyaAdi;
                 }
-                else ViewData["message"] = "Sadece .jpg, .jpeg, .png, .gif Resimleri Yükleyebilirsiniz! ";
+                else TempData["message"] = "Sadece .jpg, .jpeg, .png, .gif Resimleri Yükleyebilirsiniz! ";
             }
             return View();
         }

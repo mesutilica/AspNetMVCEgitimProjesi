@@ -8,7 +8,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
         {
             var UserGuid = context.HttpContext.Session["userguid"];
             var userguid = context.HttpContext.Request.Cookies["userguid"];
-            if (userguid == null) context.Result = new RedirectResult("/MVC11Session?msg=AccessDenied");
+            if (UserGuid == null) 
+                context.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
             base.OnActionExecuting(context);
         }
     }

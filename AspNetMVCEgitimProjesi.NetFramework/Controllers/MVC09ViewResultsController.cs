@@ -41,15 +41,12 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         public PartialViewResult KategorileriModelleGetirPartial() // Geriye PartialView döndüren action
         {
             // Model için kullanılacak listeyi burada veritabanından çekeriz
-            List<string> kategoriler = new List<string>()
-            {
-                "Telefon", "Bilgisayar", "Monitör", "Klavye", "Laptop"
-            };
-            return PartialView("_KategorilerPartialModelKullanimi", kategoriler); // Geriye döndermek istediğimiz partial ismini verebiliriz
+            var kullanicilar = context.Uyeler.ToList();
+            return PartialView("_PartialModelKullanimi", kullanicilar); // Geriye döndermek istediğimiz partial ismini verebiliriz
         }
         public JavaScriptResult JsResult()
         {
-            return JavaScript("alert('JavaScriptResult')");
+            return JavaScript("console.log('JavaScriptResult')");
         }
         public JsonResult JsonResult()
         {

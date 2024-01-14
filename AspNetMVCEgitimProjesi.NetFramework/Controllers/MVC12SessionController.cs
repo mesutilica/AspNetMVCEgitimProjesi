@@ -1,4 +1,5 @@
 ﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,7 +19,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             var kullanici = context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
             if (kullanici != null)
             {
-                Session["deger"] = "Admin"; //klasik .net mvc de sessiona veri atma
+                Session["deger"] = "Admin"; //mvc de sessiona veri atma
+                Session["userguid"] = Guid.NewGuid().ToString();
                 return RedirectToAction("SessionOku");
             }
             else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
@@ -26,12 +28,13 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult SessionOku()
         {
-            TempData["SessionBilgi"] = Session["deger"]; // klasik .net mvc de sessiondaki veriye ulaşım
+            TempData["SessionBilgi"] = Session["deger"]; // sessiondaki veriye ulaşım
             return View();
         }
         public ActionResult SessionSil()
         {
             HttpContext.Session.Remove("deger"); // deger isimli sessionu süresini beklemeden sil
+            Session["userguid"] = null;
             return RedirectToAction("Index");
         }
     }

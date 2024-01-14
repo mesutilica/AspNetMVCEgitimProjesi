@@ -248,7 +248,7 @@
     <Content Include="Views\MVC09ViewResults\Index.cshtml" />
     <Content Include="Views\MVC09ViewResults\FarkliViewDondur.cshtml" />
     <Content Include="Views\Shared\_KategorilerPartial.cshtml" />
-    <Content Include="Views\Shared\_KategorilerPartialModelKullanimi.cshtml" />
+    <Content Include="Views\Shared\_PartialModelKullanimi.cshtml" />
     <Content Include="Views\MVC10FileUpload\Index.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\Index.cshtml" />
     <Content Include="Views\MVC14AppSetting\Index.cshtml" />

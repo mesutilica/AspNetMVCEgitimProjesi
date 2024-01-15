@@ -51,5 +51,15 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public ActionResult ResimSil(string resimYolu)
+        {
+            if (System.IO.File.Exists(resimYolu))
+            {
+                System.IO.File.Delete(resimYolu);
+                return RedirectToAction("Index");
+            }
+            return View("Index");
+        }
     }
 }

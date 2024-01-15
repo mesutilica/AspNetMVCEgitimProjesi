@@ -7,11 +7,8 @@
 <h2>File Upload - Dosya Yükleme İşlemi</h2>
 
 <form action="" method="post" enctype="multipart/form-data">
-
     <input type="file" name="dosya" id="fileup" />
-    <hr />
-    <input type="submit" value="Yükle" />
-
+    <input type="submit" value="Yükle" class="btn btn-info" />
 </form>
 
 <p>
@@ -22,7 +19,35 @@
 
 <hr />
 
-@foreach (var item in infoList)
-{
-    <span><img src="/Images/@item.Name" alt="@item.Name" title="@item.Name" height="118" /></span>
-}
+<table class="table">
+    <tr>
+        <th>Resim</th>
+        <th>Dosya Adı</th>
+        <th>Oluşma Tarihi</th>
+        <th>Dosya Boyutu</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in infoList)
+    {
+        <tr>
+            <td>
+                <img src="/Images/@item.Name" alt="@item.Name" title="@item.Name" height="118" />
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.CreationTime
+            </td>
+            <td>
+                @item.Length
+            </td>
+            <td>
+                <form action="/MVC10FileUpload/ResimSil" method="post">
+                    <input type="hidden" name="resimYolu" value="@item.FullName" />
+                    <button type="submit" class="btn btn-danger"> <span class="btn-close btn-close-white"></span></button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

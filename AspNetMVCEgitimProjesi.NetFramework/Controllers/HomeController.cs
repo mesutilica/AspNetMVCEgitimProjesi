@@ -11,14 +11,14 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Hakkımızda sayfası";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "İletişim sayfası";
 
             return View();
         }
@@ -29,7 +29,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             //Burada hatayı logluyoruz
 
             //Redirect to action
-            filterContext.Result = RedirectToAction("Error", "InternalError");
+            filterContext.Result = RedirectToAction("Error", "Home");
 
             // Özel hata sayfası yönlendirme
             //filterContext.Result = new ViewResult

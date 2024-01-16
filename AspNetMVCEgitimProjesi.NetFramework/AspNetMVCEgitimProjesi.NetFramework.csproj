@@ -147,6 +147,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adres.cs" />
     <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\Urun.cs" />
     <Compile Include="Models\Uye.cs" />
     <Compile Include="Models\UyeContext.cs" />
     <Compile Include="Models\UyeSayfasiViewModel.cs" />
@@ -177,6 +178,15 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
+    <Content Include="Img\asus-laptop.jpg" />
+    <Content Include="Img\dark.jpg" />
+    <Content Include="Img\klavye.jpg" />
+    <Content Include="Img\lock-300x300.png" />
+    <Content Include="Img\Manzara.jpg" />
+    <Content Include="Img\mobilya.jpg" />
+    <Content Include="Img\monster-indirim-teknosafari.jpg" />
+    <Content Include="Img\r2-mvc-deseni.png" />
+    <Content Include="Img\r3-mvc-yasam-dongusu.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
@@ -12,9 +14,15 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             // 1-ViewBag : Tek kullanımlık ömrü vardır.
             ViewBag.UrunKategorisi = "Bilgisayar"; // Burada ViewBag ismi standart olarak yazılır sonrasında . deyip dilediğimiz değişken adını yazabiliriz.
             // 2-ViewData : Tek kullanımlık ömrü vardır.
-            ViewData["UrunAdi"] = "Everbook Laptop";
+            IList<Urun> urunListesi = new List<Urun>
+            {
+                new Urun() { Adi = "Oyun Bilgisayarı", Fiyati = 49000, Stok = 5 },
+                new Urun() { Adi = "Laptop", Fiyati = 29000, Stok = 7 },
+                new Urun() { Adi = "İş İstasyonu", Fiyati = 99000, Stok = 3 }
+            };
+            ViewData["Urunler"] = urunListesi;
             // 3-TempData : 2 kullanımlık ömrü vardır.
-            TempData["UrunFiyati"] = 18.000;
+            TempData["UrunBilgi"] = "Toplam " + urunListesi.Count + " Ürün Bulundu..";
 
             ViewBag.ArananKelime = txtAra;
             return View();
@@ -22,6 +30,14 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         [HttpPost]
         public ActionResult Index(string text1, string ddlListe, bool cbOnay, FormCollection formCollection)
         {
+            IList<Urun> urunListesi = new List<Urun>
+            {
+                new Urun() { Adi = "Oyun Bilgisayarı", Fiyati = 49000, Stok = 5 },
+                new Urun() { Adi = "Laptop", Fiyati = 29000, Stok = 7 },
+                new Urun() { Adi = "İş İstasyonu", Fiyati = 99000, Stok = 3 }
+            };
+            ViewData["Urunler"] = urunListesi;
+
             ViewBag.Baslik1 = "1. Yöntem Parametreyle Veri Yakalama";
             ViewBag.Mesaj1 = "Textbox değeri : " + text1;
             ViewBag.Mesaj2 = "Dropdown değeri : " + ddlListe;

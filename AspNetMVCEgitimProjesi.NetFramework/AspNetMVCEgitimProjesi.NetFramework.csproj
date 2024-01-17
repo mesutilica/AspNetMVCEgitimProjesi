@@ -178,13 +178,10 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
-    <Content Include="Img\asus-laptop.jpg" />
-    <Content Include="Img\dark.jpg" />
-    <Content Include="Img\klavye.jpg" />
-    <Content Include="Img\lock-300x300.png" />
-    <Content Include="Img\Manzara.jpg" />
-    <Content Include="Img\mobilya.jpg" />
-    <Content Include="Img\monster-indirim-teknosafari.jpg" />
+    <Content Include="Images\lock-300x300.png" />
+    <Content Include="Images\Manzara.jpg" />
+    <Content Include="Images\mobilya.jpg" />
+    <Content Include="Images\monster-indirim-teknosafari.jpg" />
     <Content Include="Img\r2-mvc-deseni.png" />
     <Content Include="Img\r3-mvc-yasam-dongusu.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -274,6 +271,8 @@
     <Content Include="Views\MVC06CRUD\Edit.cshtml" />
     <Content Include="Views\MVC06CRUD\Index.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\HataYakalama.cshtml" />
+    <Content Include="Views\MVC15FiltersUsing\UyeGuncelle.cshtml" />
+    <Content Include="Views\MVC15FiltersUsing\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,7 +15,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 
             return View();
         }
-
+        [Route("iletisim")]
         public ActionResult Contact()
         {
             ViewBag.Message = "İletişim sayfası";

@@ -34,8 +34,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         public ActionResult CookieOku()
         {
             if (HttpContext.Request.Cookies["username"] != null)
-                TempData["mesaj"] = HttpContext.Request.Cookies["username"].Value; // Request.Cookies ile username isimli cookie yi okuyoruz // .value demeden netframework mvc de değere ulaşamadık
-
+                TempData["mesaj"] = HttpContext.Request.Cookies["username"].Value;
             if (HttpContext.Request.Cookies["userguid"] != null)
                 TempData["kullaniciguid"] = HttpContext.Request.Cookies["userguid"].Value;
             return View();
@@ -44,7 +43,6 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             if (HttpContext.Request.Cookies["username"] != null)
                 HttpContext.Response.Cookies["username"].Expires = DateTime.Now.AddSeconds(-1);
-
             if (HttpContext.Request.Cookies["userguid"] != null)
                 HttpContext.Response.Cookies["userguid"].Expires = DateTime.Now.AddSeconds(-1);
             return RedirectToAction("CookieOku");

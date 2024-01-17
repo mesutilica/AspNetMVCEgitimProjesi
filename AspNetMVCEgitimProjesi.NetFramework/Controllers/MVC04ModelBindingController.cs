@@ -30,7 +30,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult AdresDetay()
         {
-            return View();
+            var model = new Adres { Ilce = "Ataşehir", Sehir = "İstanbul", AcikAdres = "Menekşe Sokak No:18" };
+            return View(model);
         }
         [HttpPost]
         public ActionResult AdresDetay(Adres adres)

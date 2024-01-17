@@ -44,8 +44,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         }
 
         // POST: MVC06CRUD/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Ad,Soyad,Email,Telefon,TcKimlikNo,DogumTarihi,KullaniciAdi,Sifre,SifreTekrar")] Uye uye)

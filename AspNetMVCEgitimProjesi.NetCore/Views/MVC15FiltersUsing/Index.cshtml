@@ -1,7 +1,30 @@
-﻿
-@{
-    ViewData["Title"] = "Kullanıcı";
+﻿@{
+    ViewData["Title"] = "MVC Filters Using";
 }
 
-<h1>Kullanıcı : @ViewBag.Kullanici</h1>
+<h1>
+    MVC Filters Using - Filtre Kullanımı
+</h1>
 
+<h3>
+    Kullanıcı guid : @ViewBag.Kullanici
+</h3>
+
+<h4>
+    Action filters : Özel Filtre
+</h4>
+<a href="/MVC15FiltersUsing/FiltreKullanimi">Filtre Kullanimi</a>
+
+<hr />
+
+<h4>
+    Authorization filters : Oturum filtresi
+</h4>
+<a href="/MVC15FiltersUsing/UyeGuncelle/1">Uye Guncelle</a>
+
+<hr />
+
+<h4>
+    Exception filters : Hata yakalama filtresi
+</h4>
+<a href="/MVC15FiltersUsing/HataYakalama">Hata Yakalama</a>

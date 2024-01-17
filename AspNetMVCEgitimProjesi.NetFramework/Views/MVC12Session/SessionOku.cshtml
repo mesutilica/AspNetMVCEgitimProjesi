@@ -5,21 +5,28 @@
 
 <h1>Session Oku</h1>
 
-<div>
-    Sessiondaki Değer : 
-    <b>
-        @TempData["SessionBilgi"]
-    </b>
-</div>
-
-<hr />
-
-<a href="Index">
-    Session Oluştur
-</a>
-
-<hr />
-
-<a href="SessionSil">
-    Session Sil
-</a>
+@if (Session["userguid"] != null)
+{
+    <div>
+        Hoşgeldin
+        <b>
+            @TempData["SessionBilgi"]
+        </b>
+        <hr />
+        <b>
+            Guid :
+        </b>
+        @Session["userguid"]
+    </div>
+    <hr />
+    <a href="SessionSil" class="btn btn-danger">
+        Oturumu Kapat
+    </a>
+}
+else
+{
+    <h4>Session Boş!</h4>
+    <a href="Index" class="btn btn-primary">
+        Session Oluştur
+    </a>
+}

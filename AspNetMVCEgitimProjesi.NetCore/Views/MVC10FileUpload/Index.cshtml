@@ -1,10 +1,11 @@
-﻿
-@{
-    ViewData["Title"] = "Mvc Dosya Yükleme";
+﻿@{
+    ViewBag.Title = "File Upload - Dosya Yükleme İşlemi";
+    var dosyalar = new DirectoryInfo(Directory.GetCurrentDirectory() + "/wwwroot/Images/");
+    var infoList = dosyalar.GetFiles();
 }
 
-<h1>Mvc Dosya Yükleme</h1>
-
+<h2>File Upload - Dosya Yükleme İşlemi</h2>
+@System.IO.Path.GetRandomFileName()
 <p>
     Dosya yüklemek için bir form elementine ihtiyaç var.
     Form elementine enctype="multipart/form-data" attribute ünü eklemek zorundayız
@@ -13,9 +14,45 @@
 </p>
 
 <form asp-action="Index" enctype="multipart/form-data">
-    <input type="file" name="Image" class="form-control" />
+    <input type="file" name="dosya" class="form-control" />
     <hr />
     <input type="submit" value="Yükle" class="btn btn-primary" />
 </form>
 <hr />
 <img src="/Img/@TempData["Resim"]" alt="" height="180" />
+
+@TempData["message"]
+<hr />
+
+<table class="table">
+    <tr>
+        <th>Resim</th>
+        <th>Dosya Adı</th>
+        <th>Oluşma Tarihi</th>
+        <th>Dosya Boyutu</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in infoList)
+    {
+        <tr>
+            <td>
+                <img src="/Images/@item.Name" alt="@item.Name" title="@item.Name" height="84" style="max-width:100%" />
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.CreationTime
+            </td>
+            <td>
+                @item.Length
+            </td>
+            <td>
+                <form action="/MVC10FileUpload/ResimSil" method="post">
+                    <input type="hidden" name="resimYolu" value="@item.FullName" />
+                    <button type="submit" class="btn btn-danger"> <span class="btn-close btn-close-white"></span></button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

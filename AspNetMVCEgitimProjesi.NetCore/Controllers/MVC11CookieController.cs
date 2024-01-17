@@ -36,7 +36,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         }
         public IActionResult CookieOku()
         {
-            if (Request.Cookies["userguid"] is null) return RedirectToAction("Index");
+            if (Request.Cookies["userguid"] is null) 
+                return RedirectToAction("Index");
             return View();
         }
         public IActionResult CookieSil()

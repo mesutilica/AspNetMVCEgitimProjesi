@@ -40,7 +40,7 @@
     Model içerisinden gelen verileri düzenleme
 </h3>
 
-<form asp-action="Kullanici">
+<form asp-action="KullaniciDetay">
     <table class="table table-bordered">
         <tr>
             <td>Ad</td>
@@ -73,11 +73,35 @@
 
 <hr />
 
-<form>
-    <input type="text" asp-for="Ad" /><br />
-    <input type="text" asp-for="Soyad" /><br />
-    <input type="text" asp-for="Email" /><br />
-    <input type="text" asp-for="KullaniciAdi" /><br />
-    <input type="text" asp-for="Sifre" /><br />
-    <input type="submit" value="Kaydet" class="btn btn-primary" />
+<h3>Asp-For ile Form Kullanımı</h3>
+
+<form asp-action="KullaniciDetay">
+    <table class="table table-bordered">
+        <tr>
+            <td>Ad</td>
+            <td><input asp-for="Ad" /></td>
+        </tr>
+        <tr>
+            <td>Soyad</td>
+            <td><input asp-for="Soyad" /></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input asp-for="Email" /></td>
+        </tr>
+        <tr>
+            <td>Kullanıcı Adı</td>
+            <td><input asp-for="KullaniciAdi" /></td>
+        </tr>
+        <tr>
+            <td>Şifre</td>
+            <td><input asp-for="Sifre" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </td>
+        </tr>
+    </table>
 </form>

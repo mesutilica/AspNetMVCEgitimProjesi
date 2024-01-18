@@ -1,13 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC08PartialController : Controller
     {
-        // GET: MVC07Partial
+        private UyeContext db = new UyeContext();
+        // GET: MVC08Partial
         public ActionResult Index()
         {
-            return View();
+            return View(db.Uyeler.ToList());
         }
     }
 }

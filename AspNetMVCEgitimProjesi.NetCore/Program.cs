@@ -22,7 +22,7 @@ builder.Services.AddDbContext<UyeContext>(); //option => option.UseInMemoryDatab
 // Admin login iþlemi için aþaðýdaki servisi ekliyoruz.
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {
-    x.LoginPath = "/Admin/Login"; // Admin oturum açma sayfamýzý belirttik
+    x.LoginPath = "/MVC15FiltersUsing/Login"; // Admin oturum açma sayfamýzý belirttik
 });
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

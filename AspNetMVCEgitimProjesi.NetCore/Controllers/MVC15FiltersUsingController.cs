@@ -1,9 +1,11 @@
 ﻿using AspNetMVCEgitimProjesi.NetCore.Filters;
 using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
@@ -26,7 +28,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             return RedirectToAction("Index");
         }
         [Authorize]
-        public async Task<ActionResult> UyeGuncelleAsync(int? id)
+        public async Task<ActionResult> UyeGuncelle(int? id)
         {
             if (id == null)
             {
@@ -57,9 +59,44 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<ActionResult> LoginAsync(Uye uye)
+        {
+            try
+            {
+                var kullanici = await _context.Uyeler.FirstOrDefaultAsync(u => u.Email == uye.Email && u.Sifre == uye.Sifre);
+                if (kullanici != null) // eğer girilen bilgilerle eşleşen kullanıcı varsa
+                {
+                    var haklar = new List<Claim>() // kullanıcı hakları tanımladık
+                    {
+                        new Claim(ClaimTypes.Email, kullanici.Email) // claim = hak(kullanıcıya tanımlalan haklar)
+                    };
+                    var kullaniciKimligi = new ClaimsIdentity(haklar, "Login"); // kullanıcı için bir kimlik oluşturduk
+                    ClaimsPrincipal claimsPrincipal = new(kullaniciKimligi);
+                    await HttpContext.SignInAsync(claimsPrincipal); // yukardaki yetkilerle sisteme giriş yaptık
+                    if (!string.IsNullOrEmpty(HttpContext.Request.Query["ReturnUrl"])) // eğer adres çubuğunda ReturnUrl diye bir değer varsa
+                    {
+                        return Redirect(HttpContext.Request.Query["ReturnUrl"]); // oturum açıldıktan sonra kullanıcıyı kaldığı yere dönürmek için returnurl deki adrese yönlendir
+                    }
+                    return RedirectToAction("Index");
+                }
+                else TempData["Message"] = "<div class='alert alert-danger'>Giriş Başarısız!</div>";
+            }
+            catch (Exception)
+            {
+                TempData["Message"] = "<div class='alert alert-danger'>Hata Oluştu!</div>";
+            }
+            return View(uye);
+        }
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            HttpContext.SignOutAsync();
+            return RedirectToAction("Index");
+        }
         //[HandleError]
         //[HandleError(ExceptionType = typeof(NullReferenceException), View = "~/Views/Error/NullReference.cshtml")]
-        [OutputCache(Duration = 10)] // Keşleme attribute ü
+        [OutputCache(Duration = 10)] // OutputCache filter
         public ActionResult HataYakalama()
         {
             string msg = null;

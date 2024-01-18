@@ -11,7 +11,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
     public class MVC15FiltersUsingController : Controller
     {
         private UyeContext db = new UyeContext();
-        
+
         public ActionResult Index()
         {
             ViewBag.Kullanici = HttpContext.Session["userguid"];
@@ -67,7 +67,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                     {
                         return Redirect(Request.QueryString["ReturnUrl"]); // oturum açıldıktan sonra kullanıcıyı kaldığı yere dönürmek için returnurl deki adrese yönlendir
                     }
-                    return Redirect("/Admin"); // ReturnUrl boşsa direk admin anasayfaya yönlendir
+                    return RedirectToAction("Index"); // ReturnUrl boşsa anasayfaya yönlendir
                 }
                 else
                 {
@@ -81,6 +81,12 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                 //throw;
             }
             return View();
+        }
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
         [HandleError]
         //[HandleError(ExceptionType = typeof(NullReferenceException), View = "~/Views/Error/NullReference.cshtml")]

@@ -12,12 +12,16 @@
 </p>
 
 <p>
-    HttpContextAccessor kullanabilmek için program.cs ye builder.Services.AddSingleton < IHttpContextAccessor HttpContextAccessor >(); kodunu ekliyoruz.
+    HttpContextAccessor kullanabilmek için program.cs ye builder.Services.AddSingleton <code>< IHttpContextAccessor HttpContextAccessor >();</code> kodunu ekliyoruz.
 </p>
 
-<p>
+<hr />
+
+<h3>
     Controller da DI yaparak kullanabiliriz;
-    <hr />
+</h3>
+<p>
+    
     @Html.Raw(TempData["mesaj"])
 </p>
 
@@ -25,8 +29,8 @@
     @Html.Editor("kelime")
 </form>
 
+<h3>IHttpContextAccessor ü inject ederek kullanma</h3>
 <p>
-    Sayafada direk inject ederek kullanabiliriz;
     <hr />Controller Adı : 
     @_context.HttpContext.GetRouteValue("Controller")
     <br />Action Adı :

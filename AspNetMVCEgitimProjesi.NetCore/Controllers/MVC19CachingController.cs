@@ -4,11 +4,11 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC18CachingController : Controller
+    public class MVC19CachingController : Controller
     {
         UyeContext context = new UyeContext();
         private readonly IMemoryCache _memoryCache;
-        public MVC18CachingController(IMemoryCache memoryCache)
+        public MVC19CachingController(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
         }

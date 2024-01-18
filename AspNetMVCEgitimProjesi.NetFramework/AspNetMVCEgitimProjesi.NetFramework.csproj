@@ -260,7 +260,6 @@
     <Content Include="Views\MVC11Cookie\Index.cshtml" />
     <Content Include="Views\MVC09ViewResults\Index.cshtml" />
     <Content Include="Views\Shared\_KategorilerPartial.cshtml" />
-    <Content Include="Views\Shared\_PartialModelKullanimi.cshtml" />
     <Content Include="Views\MVC10FileUpload\Index.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\Index.cshtml" />
     <Content Include="Views\MVC14AppSetting\Index.cshtml" />
@@ -273,6 +272,7 @@
     <Content Include="Views\MVC15FiltersUsing\HataYakalama.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\UyeGuncelle.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\Login.cshtml" />
+    <Content Include="Views\Shared\_PartialModelKullanimi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

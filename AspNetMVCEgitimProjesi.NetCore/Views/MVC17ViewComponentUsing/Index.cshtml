@@ -17,9 +17,9 @@
 </p>
 
 <p>
-    /Views/MVC17ViewComponentUsing/Components/Kategoriler/Default.cshtml
+    /Views/MVC17ViewComponentUsing/Components/Uyeler/Default.cshtml
     <br />
-    /Views/Shared/Components/Kategoriler/Default.cshtml
+    /Views/Shared/Components/Uyeler/Default.cshtml
     <br />
     Yukardaki konumlardan birine ilgili sayfayı oluşturuyoruz.
 </p>
@@ -29,7 +29,9 @@
 </h2>
 
 <p>
-    await ile Component.InvokeAsync("Kategoriler") metodunu çağırıp parametre olarak çalıştıracağımızkomponent ismini gönderiyoruz.
+    await ile Component.InvokeAsync("Uyeler") metodunu çağırıp parametre olarak çalıştıracağımızkomponent ismini gönderiyoruz.
 </p>
 
-@await Component.InvokeAsync("Kategoriler", new{ secili = "hakkimizda"})
+<hr />
+
+@await Component.InvokeAsync("Uyeler", new { secili = "3" })

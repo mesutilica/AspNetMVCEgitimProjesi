@@ -5,17 +5,16 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC08PartialController : Controller
     {
+        private readonly UyeContext _context;
+
+        public MVC08PartialController(UyeContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
-            Kullanici kullanici = new Kullanici()
-            {
-                Ad = "Murat",
-                Soyad = "Yılmaz",
-                Email = "info@yoneciti.com",
-                KullaniciAdi = "murat",
-                Sifre = "123456"
-            };
-            return View(kullanici);
+            return View(_context.Uyeler.FirstOrDefault());
         }
     }
 }

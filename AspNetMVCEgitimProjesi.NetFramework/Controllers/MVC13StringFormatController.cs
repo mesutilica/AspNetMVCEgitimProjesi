@@ -7,6 +7,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         // GET: MVC12StringFormat
         public ActionResult Index()
         {
+            ViewBag.Data = string.Format("M{0:D6}", 1);
+            ViewBag.Data2 = string.Format("M{0:D6}", 218);
             return View();
         }
     }

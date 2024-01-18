@@ -1,10 +1,10 @@
-﻿@model Kullanici
+﻿@model Uye
 @{
     ViewBag.Title = "MVC Partial Kullanımı";
     ViewData["CurrentMenu"] = "active";
 }
 
-@section OzelCss{
+@section OzelCss {
     <style>
         .active { background-color: silver; }
     </style>
@@ -16,11 +16,33 @@
     Partial parça anlamına gelir ve kod sayısı fazlalaşan ve karmaşıklaşan uygulamalarda sayfalarımızı parçalara ayırarak yönetmemizi kolaylaştırır.
 </p>
 
-<partial name="_PartialTest" />
+<h3>
+    Klasik Yöntemle Kullanımı
+</h3>
+
+<ul class="navbar-nav">
+    @Html.Partial("_PartialMenu")
+</ul>
+
+<h3>
+    partial Tag Helper Kullanımı
+</h3>
+
+<ul class="navbar-nav">
+    <partial name="_PartialMenu" />
+</ul>
+
+<h3>
+    PartialAsync Kullanımı
+</h3>
+
+<ul class="navbar-nav">
+    @await Html.PartialAsync("_PartialMenu")
+</ul>
 
 <h3>Partialda Model Kullanımı</h3>
 
-<partial name="_PartialModelKullanimi" model="Model" />
+<partial name="_PartialModelKullanimi" />
 
 <h3>Partialin Asenkron Çağrılması</h3>
 
@@ -30,25 +52,18 @@
 @{
     await Html.RenderPartialAsync("_PartialModelKullanimi", Model);
 }
-<ul>
-    @Html.Partial("_PartialMenu")
-    <hr />
-    <partial name="_PartialMenu" />
-    <li>
-        <a href="#">Şifre Yenileme</a>
-    </li>
-    <hr />
-    @await Html.PartialAsync("_PartialMenu")
-</ul>
 
-<partial name="_PartialMenu" view-data="ViewData" />
+<ul class="navbar-nav">
+    <partial name="_PartialMenu" view-data="ViewData" />
+</ul>
 
 <hr />
 
 <h3>ViewDataDictionary ile Veri Gönderme</h3>
 
-@await Html.PartialAsync("_PartialMenu", new ViewDataDictionary(ViewData) { { "id", 18 }, { "Baslik", "Partial Data" } })
-
+<ul class="navbar-nav">
+    @await Html.PartialAsync("_PartialMenu", new ViewDataDictionary(ViewData) { { "id", 18 }, { "Baslik", "Partial Data" } })
+</ul>
 @*
 <partial name="_Partial" for="PartialViewModel" view-data="ViewData" />
 

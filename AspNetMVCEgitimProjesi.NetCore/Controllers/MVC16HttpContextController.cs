@@ -10,12 +10,12 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             _contextAccessor = contextAccessor;
         }
-
         public IActionResult Index()
         {
-            var mesaj = " Controller : " + _contextAccessor.HttpContext.GetRouteValue("Controller");
-            mesaj += "<hr/> Action : " + HttpContext.GetRouteValue("Action");
-            mesaj += "<hr/> Id : " + HttpContext.GetRouteValue("id");
+            var mesaj = "_contextAccessor Controller : " + _contextAccessor.HttpContext.GetRouteValue("Controller");
+            mesaj += "<hr/>_contextAccessor Action : " + _contextAccessor.HttpContext.GetRouteValue("Action");
+            mesaj += "<hr/>HttpContext Action : " + HttpContext.GetRouteValue("Action");
+            mesaj += "<hr/>HttpContext Id : " + HttpContext.GetRouteValue("id");
             mesaj += "<hr/> Kelime : " + HttpContext.Request.Query["kelime"];
             TempData["mesaj"] = mesaj;
             return View();

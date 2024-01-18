@@ -2,7 +2,7 @@
 
 namespace AspNetMVCEgitimProjesi.NetCore.ViewComponents
 {
-    public class Kategoriler : ViewComponent
+    public class Uyeler : ViewComponent
     {
         public IViewComponentResult Invoke(string secili)
         {

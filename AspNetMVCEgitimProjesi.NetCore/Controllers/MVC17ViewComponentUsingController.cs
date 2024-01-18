@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC17ViewComponentUsingController : Controller
     {
-        public IActionResult Index()
+        private readonly UyeContext _context;
+
+        public MVC17ViewComponentUsingController(UyeContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Uyeler.ToListAsync());
         }
     }
 }

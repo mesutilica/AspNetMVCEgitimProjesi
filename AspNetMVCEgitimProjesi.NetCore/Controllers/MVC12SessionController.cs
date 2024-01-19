@@ -1,4 +1,5 @@
-﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+﻿using AspNetMVCEgitimProjesi.NetCore.Extensions;
+using AspNetMVCEgitimProjesi.NetCore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
@@ -26,6 +27,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 HttpContext.Session.SetString("Sifre", sifre);
                 HttpContext.Session.SetInt32("IsLoggedIn", 1);
                 HttpContext.Session.SetString("UserGuid", Guid.NewGuid().ToString());
+                HttpContext.Session.SetJson("uye", kullanici);
                 return RedirectToAction("SessionOku");
             }
             else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
@@ -33,6 +35,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         }
         public IActionResult SessionOku()
         {
+            //var kullanici = _context.Uyeler.FirstOrDefault();
+            //HttpContext.Session.SetJson("uye", kullanici);
             return View();
         }
         [HttpPost]

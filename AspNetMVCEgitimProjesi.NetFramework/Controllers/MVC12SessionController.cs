@@ -21,6 +21,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             {
                 Session["deger"] = "Admin"; //mvc de sessiona veri atma
                 Session["userguid"] = Guid.NewGuid().ToString();
+                Session["kullanici"] = kullanici;
                 return RedirectToAction("SessionOku");
             }
             else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";

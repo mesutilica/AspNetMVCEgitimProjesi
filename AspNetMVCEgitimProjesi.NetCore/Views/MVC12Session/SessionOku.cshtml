@@ -1,29 +1,57 @@
-﻿@{
+﻿@using AspNetMVCEgitimProjesi.NetCore.Extensions
+
+@{
     ViewData["Title"] = "Session Oku";
-}
 
-<h1>Session Oku</h1>
+    <h1>Session Oku</h1>
 
-@if (Context.Session.GetInt32("IsLoggedIn") == 1)
-{
-    <h3>
-        Hoşgeldin : @Context.Session.GetString("Kullanici")
-    </h3>
-    <h3>
-        Guid : @Context.Session.GetString("UserGuid")
-    </h3>
+    @if (Context.Session.GetInt32("IsLoggedIn") == 1)
+    {
+        // var uye = Context.Session.GetJson<Uye>("uye");
+        <h3>
+            Hoşgeldin : @Context.Session.GetString("Kullanici")
+        </h3>
+        <h3>
+            Guid : @Context.Session.GetString("UserGuid")
+        </h3>
 
-    <hr />
+        var uye = Context.Session.GetJson<Uye>("uye");
+        <table class="table">
+            <tr>
+                <td>Ad Soyad</td>
+                <td> @uye.Ad @uye.Soyad</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@uye.Email</td>
+            </tr>
+            <tr>
+                <td>TC Kimlik No</td>
+                <td>@uye.TcKimlikNo</td>
+            </tr>
+            <tr>
+                <td>Telefon</td>
+                <td>@uye.Telefon</td>
+            </tr>
+            <tr>
+                <td>Doğum Tarihi</td>
+                <td>@uye.DogumTarihi</td>
+            </tr>
+        </table>
 
-    <form asp-action="SessionSil">
-        <input type="submit" value="Oturumu Kapat" class="btn btn-danger" />
-    </form>
-}
-else{
-    <div class="alert alert-danger">
-        Lütfen Oturum Açınız!
-    </div>
-    <a asp-action="Index">
-        Session Oluştur Sayfasına Git
-    </a>
+        <hr />
+
+        <form asp-action="SessionSil">
+            <input type="submit" value="Oturumu Kapat" class="btn btn-danger" />
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            Lütfen Oturum Açınız!
+        </div>
+        <a asp-action="Index">
+            Session Oluştur Sayfasına Git
+        </a>
+    }
 }

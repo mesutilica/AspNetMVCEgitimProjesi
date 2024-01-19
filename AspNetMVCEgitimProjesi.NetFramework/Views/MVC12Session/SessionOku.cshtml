@@ -5,8 +5,9 @@
 
 <h1>Session Oku</h1>
 
-@if (Session["userguid"] != null)
+@if (Session["userguid"] != null & Session["kullanici"] != null)
 {
+    var uye = Session["kullanici"] as Uye;
     <div>
         Hoşgeldin
         <b>
@@ -18,7 +19,33 @@
         </b>
         @Session["userguid"]
     </div>
+
+    <h3>Kullanıcı Bilgileriniz</h3>
+    <table class="table">
+        <tr>
+            <td>Ad Soyad</td>
+            <td> @uye.Ad @uye.Soyad</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@uye.Email</td>
+        </tr>
+        <tr>
+            <td>TC Kimlik No</td>
+            <td>@uye.TcKimlikNo</td>
+        </tr>
+        <tr>
+            <td>Telefon</td>
+            <td>@uye.Telefon</td>
+        </tr>
+        <tr>
+            <td>Doğum Tarihi</td>
+            <td>@uye.DogumTarihi.ToShortDateString()</td>
+        </tr>
+    </table>
+
     <hr />
+
     <a href="SessionSil" class="btn btn-danger">
         Oturumu Kapat
     </a>

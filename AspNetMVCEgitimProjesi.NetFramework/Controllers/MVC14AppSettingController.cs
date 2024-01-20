@@ -8,8 +8,9 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         // GET: MVC13AppSetting
         public ActionResult Index()
         {
-            ViewBag.Usr = WebConfigurationManager.AppSettings["EmailUserName"];
-            ViewBag.Pwd = WebConfigurationManager.AppSettings["EmailPassWord"];
+            ViewBag.MailinGidecegiAdres = WebConfigurationManager.AppSettings["EmailAdresi"];
+            ViewBag.MailKullaniciAdi = WebConfigurationManager.AppSettings["EmailUsername"];
+            ViewBag.MailSifre = WebConfigurationManager.AppSettings["EmailPassword"];
             return View();
         }
     }

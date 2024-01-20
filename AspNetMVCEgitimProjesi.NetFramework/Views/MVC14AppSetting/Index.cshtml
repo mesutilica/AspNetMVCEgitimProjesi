@@ -5,8 +5,18 @@
 
 <h1>Web.Config Dosyasından Değer Okuma</h1>
 
-<h3>Email Kullanıcı Adı : @ViewBag.Usr</h3>
+<p>
+    Mvc ile web config dosyasına yazacağımız özel verilere erişip uygulama içerisinde kullanabiliriz.
+</p>
 
-<hr />
+<p class="alert alert-info">
+    <b>MailinGidecegiAdres :</b> @ViewBag.MailinGidecegiAdres
+</p>
 
-<h3>Email Şifresi : @ViewBag.Pwd</h3>
+<p class="alert alert-danger">
+    <b>Kullanıcı Adı :</b> @ViewBag.MailKullaniciAdi
+</p>
+
+<p class="alert alert-primary">
+    <b>Sifre :</b> @ViewBag.MailSifre
+</p>

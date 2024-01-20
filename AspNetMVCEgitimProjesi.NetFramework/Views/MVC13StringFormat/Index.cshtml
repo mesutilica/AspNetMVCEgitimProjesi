@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Mvc String Format";
     DateTime tarih = DateTime.Now;
 }
@@ -13,6 +12,18 @@
 </p>
 
 <h3>
+    Müşteri No :
+</h3>
+@ViewBag.MusteriNo
+
+<h3>
+    Satıcı No :
+</h3>
+@ViewBag.SaticiNo
+
+<hr />
+
+<h3>
     Tarih Formatlama
 </h3>
 
@@ -20,42 +31,38 @@
     @tarih
 </h4>
 
-Kısa Saat -t : @String.Format("{0:t}", tarih)
+Kısa Saat t : @String.Format("{0:t}", tarih)
 
 <hr />
 
-Kısa Tarih -d : @String.Format("{0:d}", tarih)
+Kısa Tarih d : @String.Format("{0:d}", tarih)
 
 <hr />
 
-Yıl -yyyy : @String.Format("{0:yyyy}", tarih)
+Yıl yyyy : @String.Format("{0:yyyy}", tarih)
 
 <h3>
     Sayı Formatlama
 </h3>
 
-C : @String.Format("{0:C}", 49.50)
+C 49.90 : @String.Format("{0:C}", 49.90)
 
 <hr />
 
-D3 : @String.Format("{0:D3}", 10)
+D3 18 : @String.Format("{0:D3}", 18)
 
 <hr />
 
-Müşteri No :  @ViewBag.Data
-<br />
-Müşteri No 2 :  @ViewBag.Data2
-<br />
-D6 : @String.Format("{0:D6}", 10)
+D5 18 : @String.Format("{0:D5}", 18)
 
 <hr />
 
-F1 : @String.Format("{0:F1}", 15.96)
+F1 15.84 : @String.Format("{0:F1}", 15.84)
 
 <hr />
 
-F2 : @String.Format("{0:F2}", 15.9)
+F2 15.9 : @String.Format("{0:F2}", 15.9)
 
 <hr />
 
-F3 : @String.Format("{0:F3}", 15.95)
+F3 15.84 : @String.Format("{0:F3}", 15.84)

@@ -58,8 +58,8 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             try
             {
-                var kullanici = db.Uyeler.FirstOrDefault(u => u.Email == uye.Email && u.Sifre == uye.Sifre);
-                if (kullanici != null)
+                var kullanici = db.Uyeler.Any(u => u.Email == uye.Email && u.Sifre == uye.Sifre);
+                if (kullanici)
                 {
                     Session["Admin"] = kullanici;
                     FormsAuthentication.SetAuthCookie(uye.Email, true);

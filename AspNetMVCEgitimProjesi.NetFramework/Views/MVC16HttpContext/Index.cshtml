@@ -5,31 +5,51 @@
 
 <h2>MVC Http Context</h2>
 
+<p>
+    Mvc de controller veya view larda uygulumanın yapılan isteklerdeki controller, action, id, query string vb gibi bilgilere erişip işlememizi sağlayan yapı HttpContext dir.
+</p>
+
+<h3>
+    RouteData Values
+</h3>
+
+<p>
+    @Html.Raw(TempData["mesaj"])
+</p>
+
 <form>
     @Html.Editor("kelime")
 </form>
 
-<p>
-    Controller Adı :
-    @ViewContext.RouteData.Values["controller"].ToString()
-    <br />Action Adı :
-    @ViewContext.RouteData.Values["action"].ToString()
-    <br />Id Değeri :
-    @ViewContext.RouteData.Values["id"]
-    <br />Request Method :
-    @Context.Request.HttpMethod
-    <br />Request Scheme :
-    @Context.Request.Url.Scheme
-    <br />QueryString :
-    @Context.Request.QueryString
-    <br />Query kelime:
-    @Context.Request.QueryString["kelime"]
-    <br /> Session değeri :
-    @Context.Session["UserGuid"]
-    <br /> Cookie değeri :
-    @Context.Request.Cookies["userguid"]
-    <br /> Oturum açılmış mı? :
-    @Context.User.Identity.IsAuthenticated
-    <br /> Kullanıcı User Rolüne Sahip mi? :
-    @Context.User.IsInRole("User")
-</p>
+<h5>Controller Adı :</h5>
+@ViewContext.RouteData.Values["controller"]
+
+<h5>Action Adı :</h5>
+@ViewContext.RouteData.Values["action"]
+
+<h5>Id Değeri :</h5>
+@ViewContext.RouteData.Values["id"]
+
+<h5>Request Method :</h5>
+@Context.Request.HttpMethod
+
+<h5>Request Scheme :</h5>
+@Context.Request.Url.Scheme
+
+<h5>QueryString :</h5>
+@Context.Request.QueryString
+
+<h5>Query kelime:</h5>
+@Context.Request.QueryString["kelime"]
+
+<h5>Session değeri :</h5>
+@Context.Session["UserGuid"]
+
+<h5>Cookie değeri :</h5>
+@Context.Request.Cookies["userguid"].Value
+
+<h5>Oturum açılmış mı? :</h5>
+@Context.User.Identity.IsAuthenticated
+
+<h5>Kullanıcı User Rolüne Sahip mi? :</h5>
+@Context.User.IsInRole("User")

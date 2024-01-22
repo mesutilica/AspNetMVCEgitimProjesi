@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AspNetMVCEgitimProjesi.NetCore.Models;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {

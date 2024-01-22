@@ -16,7 +16,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Filters
         {
             var UserGuid = context.HttpContext.Session.GetString("UserGuid");
             var userguid = context.HttpContext.Request.Cookies["userguid"];
-            if (UserGuid == null) 
+            if (UserGuid == null)
                 context.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
             base.OnActionExecuting(context);
         }

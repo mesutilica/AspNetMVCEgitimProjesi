@@ -1,6 +1,5 @@
 ﻿using AspNetMVCEgitimProjesi.NetCore.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
@@ -63,7 +62,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             }
             return View(uye);
         }
-        
+
         [HttpPost]
         public IActionResult UyeSil(Uye uye)
         {

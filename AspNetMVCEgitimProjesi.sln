@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCProjesi", "Asp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWebAPI", "AspNetCoreWebAPI\AspNetCoreWebAPI.csproj", "{B1CDC054-C754-45C4-86A7-731041DBE063}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMVCWebAPIUsing", "AspNetCoreMVCWebAPIUsing\AspNetCoreMVCWebAPIUsing.csproj", "{8502C30E-4025-425C-9087-F6E4C9565C06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCWebAPIUsing", "AspNetCoreMVCWebAPIUsing\AspNetCoreMVCWebAPIUsing.csproj", "{8502C30E-4025-425C-9087-F6E4C9565C06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMVCWebAPI.NetFramework", "AspNetMVCWebAPI.NetFramework\AspNetMVCWebAPI.NetFramework.csproj", "{46FDC126-70C2-4D76-83D3-7BAC73B9E205}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8502C30E-4025-425C-9087-F6E4C9565C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8502C30E-4025-425C-9087-F6E4C9565C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8502C30E-4025-425C-9087-F6E4C9565C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FDC126-70C2-4D76-83D3-7BAC73B9E205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FDC126-70C2-4D76-83D3-7BAC73B9E205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FDC126-70C2-4D76-83D3-7BAC73B9E205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FDC126-70C2-4D76-83D3-7BAC73B9E205}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

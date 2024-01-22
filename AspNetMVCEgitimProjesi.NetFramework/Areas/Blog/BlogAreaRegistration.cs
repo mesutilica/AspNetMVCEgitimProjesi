@@ -2,17 +2,17 @@
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Areas.Blog
 {
-    public class BlogAreaRegistration : AreaRegistration 
+    public class BlogAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Blog";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Blog_default",

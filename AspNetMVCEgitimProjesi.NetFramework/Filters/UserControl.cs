@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using System;
+﻿using System;
+using System.Diagnostics;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -17,7 +17,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
         {
             var UserGuid = context.HttpContext.Session["userguid"];
             var userguid = context.HttpContext.Request.Cookies["userguid"];
-            if (UserGuid == null) 
+            if (UserGuid == null)
                 context.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
             base.OnActionExecuting(context);
         }

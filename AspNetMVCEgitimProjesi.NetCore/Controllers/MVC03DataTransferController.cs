@@ -59,7 +59,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             TempData["Tdata2"] = "Checkbox dan seçilen değer : " + Request.Form["cbOnay"][0];// first() de kullanılabilir //true seçince true,false dönüyor
 
             //TempData["Tdata"] = "Checkbox dan seçilen değer : " + Request.Form.GetValues("cbOnay")[0];
-            
+
             return View();
         }
 

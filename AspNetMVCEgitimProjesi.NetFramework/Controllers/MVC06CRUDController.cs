@@ -1,8 +1,8 @@
-﻿using System.Data.Entity;
+﻿using AspNetMVCEgitimProjesi.NetFramework.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using AspNetMVCEgitimProjesi.NetFramework.Models;
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {

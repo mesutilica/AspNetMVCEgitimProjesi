@@ -1,5 +1,5 @@
-﻿using AspNetMVCWebAPI.NetFramework.Data;
-using AspNetMVCWebAPI.NetFramework.Entities;
+﻿using AspNetFramework.Entities;
+using AspNetFrameworkMVCWebAPI.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -64,7 +64,7 @@ namespace AspNetMVCWebAPI.NetFramework.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return StatusCode(HttpStatusCode.OK);
         }
 
         // POST: api/Users

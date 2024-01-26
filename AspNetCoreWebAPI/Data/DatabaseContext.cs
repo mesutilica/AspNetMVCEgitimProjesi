@@ -18,6 +18,7 @@ namespace AspNetCoreWebAPI.Data
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=AspNetCoreMVCProjesi; integrated security=true;"); // TrustServerCertificate=True
             //optionsBuilder.UseInMemoryDatabase("NetCoreMvcProjeUygulamasi");
             optionsBuilder.UseLazyLoadingProxies();
+            // komut satırında yardım için dotnet ef enter
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,7 +1,8 @@
-﻿using System.Data.Entity.Migrations;
+﻿using AspNetFramework.Entities;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
-namespace AspNetMVCWebAPI.NetFramework.Migrations
+namespace AspNetFrameworkMVCWebAPI.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<Data.DatabaseContext>
     {
@@ -15,7 +16,7 @@ namespace AspNetMVCWebAPI.NetFramework.Migrations
         {
             if (!context.Users.Any())
             {
-                context.Users.Add(new Entities.User()
+                context.Users.Add(new User()
                 {
                     Name = "Admin",
                     Surname = "User",
@@ -24,7 +25,9 @@ namespace AspNetMVCWebAPI.NetFramework.Migrations
                     UserName = "Admin",
                     IsActive = true,
                     IsAdmin = true,
-                    UserGuid = System.Guid.NewGuid()
+                    UserGuid = System.Guid.NewGuid(),
+                    RefreshToken = System.Guid.NewGuid().ToString(),
+                    RefreshTokenExpireDate = System.DateTime.Now.AddDays(1)
                 });
                 context.SaveChanges();
             }

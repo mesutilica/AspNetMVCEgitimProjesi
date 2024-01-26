@@ -1,7 +1,7 @@
-﻿using AspNetMVCWebAPI.NetFramework.Entities;
+﻿using AspNetFramework.Entities;
 using System.Data.Entity;
 
-namespace AspNetMVCWebAPI.NetFramework.Data
+namespace AspNetFrameworkMVCWebAPI.Data
 {
     public class DatabaseContext : DbContext
     {

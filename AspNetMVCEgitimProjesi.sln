@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMVCEgitimProjesi.NetFramework", "AspNetMVCEgitimProjesi.NetFramework\AspNetMVCEgitimProjesi.NetFramework.csproj", "{E13E84AB-4567-4C4E-B456-B68238717E57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFrameworkMVCEgitimKonulari", "AspNetMVCEgitimProjesi.NetFramework\AspNetFrameworkMVCEgitimKonulari.csproj", "{E13E84AB-4567-4C4E-B456-B68238717E57}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetMVCEgitimProjesi.NetCore", "AspNetMVCEgitimProjesi.NetCore\AspNetMVCEgitimProjesi.NetCore.csproj", "{E742AA6B-D295-4BA8-9813-BB8A5108AE7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCEgitimKonulari", "AspNetMVCEgitimProjesi.NetCore\AspNetCoreMVCEgitimKonulari.csproj", "{E742AA6B-D295-4BA8-9813-BB8A5108AE7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCProjesi", "AspNetCoreMVCProjesi\AspNetCoreMVCProjesi.csproj", "{BEA932BA-FAF4-4161-A795-220BAA86F590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCKurumsalSite", "AspNetCoreMVCProjesi\AspNetCoreMVCKurumsalSite.csproj", "{BEA932BA-FAF4-4161-A795-220BAA86F590}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWebAPI", "AspNetCoreWebAPI\AspNetCoreWebAPI.csproj", "{B1CDC054-C754-45C4-86A7-731041DBE063}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCWebAPIUsing", "AspNetCoreMVCWebAPIUsing\AspNetCoreMVCWebAPIUsing.csproj", "{8502C30E-4025-425C-9087-F6E4C9565C06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMVCWebAPI.NetFramework", "AspNetMVCWebAPI.NetFramework\AspNetMVCWebAPI.NetFramework.csproj", "{46FDC126-70C2-4D76-83D3-7BAC73B9E205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFrameworkMVCWebAPI", "AspNetMVCWebAPI.NetFramework\AspNetFrameworkMVCWebAPI.csproj", "{46FDC126-70C2-4D76-83D3-7BAC73B9E205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFrameworkMVCWebAPIUsing", "AspNetMVCWebAPIUsing\AspNetFrameworkMVCWebAPIUsing.csproj", "{920A26A8-9A87-46C5-9587-CE3F95CDF391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFramework.Entities", "AspNetFramework.Entities\AspNetFramework.Entities.csproj", "{EA04EB5F-1D0F-4292-B285-212CF86E76F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{46FDC126-70C2-4D76-83D3-7BAC73B9E205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46FDC126-70C2-4D76-83D3-7BAC73B9E205}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46FDC126-70C2-4D76-83D3-7BAC73B9E205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{920A26A8-9A87-46C5-9587-CE3F95CDF391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{920A26A8-9A87-46C5-9587-CE3F95CDF391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{920A26A8-9A87-46C5-9587-CE3F95CDF391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{920A26A8-9A87-46C5-9587-CE3F95CDF391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA04EB5F-1D0F-4292-B285-212CF86E76F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA04EB5F-1D0F-4292-B285-212CF86E76F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA04EB5F-1D0F-4292-B285-212CF86E76F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA04EB5F-1D0F-4292-B285-212CF86E76F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

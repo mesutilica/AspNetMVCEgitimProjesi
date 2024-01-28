@@ -13,9 +13,5 @@ namespace AspNetFramework.Entities
         [Display(Name = "Marka Logosu")]
         public string Logo { get; set; }
         public virtual List<Product> Products { get; set; }
-        public Brand()
-        {
-            Products = new List<Product>();
-        }
     }
 }

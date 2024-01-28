@@ -1,57 +1,46 @@
 ﻿using AspNetFramework.Entities;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace AspNetFrameworkMVCWebAPIUsing.Areas.Admin.Controllers
 {
-    public class UsersController : Controller
+    public class CategoriesController : Controller
     {
-        static string apiAdres = "https://localhost:44347/Api/Users/";
-        HttpClient client = new HttpClient
-        {
-            BaseAddress = new Uri(apiAdres)
-        };
-        public UsersController()
-        {
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); //media tipi
-        }
-
-        // GET: Admin/Users
+        static string apiAdres = "https://localhost:44347/Api/Categories/";
+        HttpClient client = new HttpClient();
+        // GET: Admin/Categories
         public async Task<ActionResult> Index()
         {
-            var response = await client.GetAsync(""); //Users verisini getir
+            var response = await client.GetAsync(apiAdres);
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync(); //JSON verisini oku
-                var model = JsonConvert.DeserializeObject<List<User>>(data); //JSON verisini Post listesine dönüştür
+                var model = JsonConvert.DeserializeObject<List<Category>>(data); //JSON verisini Post listesine dönüştür
                 return View(model);
             }
             return new HttpStatusCodeResult(HttpStatusCode.NotFound);
         }
 
-        // GET: Admin/Users/Details/5
+        // GET: Admin/Categories/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Admin/Users/Create
+        // GET: Admin/Categories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Users/Create
+        // POST: Admin/Categories/Create
         [HttpPost]
-        public async Task<ActionResult> Create(User collection)
+        public async Task<ActionResult> Create(Category collection)
         {
             if (ModelState.IsValid)
             {
@@ -60,8 +49,7 @@ namespace AspNetFrameworkMVCWebAPIUsing.Areas.Admin.Controllers
                     // TODO: Add insert logic here
                     var json = JsonConvert.SerializeObject(collection);
                     var data = new StringContent(json, Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync("Create", data);
-                    // var result = await response.Content.ReadAsStringAsync();
+                    var response = await client.PostAsync(apiAdres + "Create", data);
                     if (response.IsSuccessStatusCode)
                         return RedirectToAction("Index");
                 }
@@ -73,31 +61,30 @@ namespace AspNetFrameworkMVCWebAPIUsing.Areas.Admin.Controllers
             return View(collection);
         }
 
-        // GET: Admin/Users/Edit/5
+        // GET: Admin/Categories/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
-            var response = await client.GetAsync("" + id); //Users verisini getir
+            var response = await client.GetAsync(apiAdres + id);
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync(); //JSON verisini oku
-                var model = JsonConvert.DeserializeObject<User>(data); //JSON verisini Post listesine dönüştür
+                var model = JsonConvert.DeserializeObject<Category>(data); //JSON verisini Post listesine dönüştür
                 return View(model);
             }
             return new HttpStatusCodeResult(HttpStatusCode.NotFound);
         }
 
-        // POST: Admin/Users/Edit/5
+        // POST: Admin/Categories/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(int id, User collection)
+        public async Task<ActionResult> Edit(int id, Category collection)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // TODO: Add update logic here
                     var json = JsonConvert.SerializeObject(collection);
                     var data = new StringContent(json, Encoding.UTF8, "application/json");
-                    var response = await client.PutAsync("" + id, data);
+                    var response = await client.PutAsync(apiAdres + id, data);
                     if (response.IsSuccessStatusCode)
                         return RedirectToAction("Index");
                 }
@@ -109,27 +96,26 @@ namespace AspNetFrameworkMVCWebAPIUsing.Areas.Admin.Controllers
             return View(collection);
         }
 
-        // GET: Admin/Users/Delete/5
+        // GET: Admin/Categories/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            var response = await client.GetAsync("" + id); //Users verisini getir
+            var response = await client.GetAsync(apiAdres + id);
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync(); //JSON verisini oku
-                var user = JsonConvert.DeserializeObject<User>(data); //JSON verisini Post listesine dönüştür
-                return View(user);
+                var model = JsonConvert.DeserializeObject<Category>(data); //JSON verisini Post listesine dönüştür
+                return View(model);
             }
             return new HttpStatusCodeResult(HttpStatusCode.NotFound);
         }
 
-        // POST: Admin/Users/Delete/5
+        // POST: Admin/Categories/Delete/5
         [HttpPost]
-        public async Task<ActionResult> Delete(int id, User collection)
+        public async Task<ActionResult> Delete(int id, Category collection)
         {
             try
             {
-                // TODO: Add delete logic here
-                var response = await client.DeleteAsync("" + id);
+                var response = await client.DeleteAsync(apiAdres + id);
                 if (response.IsSuccessStatusCode)
                     return RedirectToAction("Index");
             }

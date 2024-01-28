@@ -11,7 +11,7 @@ namespace AspNetFramework.Entities
         public string Name { get; set; }
         [Display(Name = "Kategori Açıklama"), DataType(DataType.MultilineText)]
         public string Description { get; set; }
-        [Display(Name = "Kategori Resmi"), StringLength(50)]
+        [Display(Name = "Kategori Resmi"), StringLength(50), DataType(DataType.Upload)]
         public string Image { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)] // ScaffoldColumn(false) : sayfa oluştururken bu kolon oluşmasın
         public DateTime CreateDate { get; set; } = DateTime.Now;

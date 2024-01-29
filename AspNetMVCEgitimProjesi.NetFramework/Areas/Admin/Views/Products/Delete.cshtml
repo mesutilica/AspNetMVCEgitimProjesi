@@ -1,4 +1,4 @@
-﻿@model AspNetFramework.Entities.Brand
+﻿@model AspNetFramework.Entities.Product
 
 @{
     ViewBag.Title = "Sil";
@@ -8,7 +8,7 @@
 
 <h3>Sil?</h3>
 <div>
-    <h4>Marka</h4>
+    <h4>Ürün</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
@@ -28,12 +36,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Logo)
+            @Html.DisplayNameFor(model => model.Image)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Logo)
+            @Html.DisplayFor(model => model.Image)
         </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
@@ -41,7 +50,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Sil" class="btn btn-danger" /> |
-            @Html.ActionLink("List", "Index")
+            @Html.ActionLink("Listeye Dön", "Index")
         </div>
     }
 </div>

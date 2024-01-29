@@ -12,6 +12,6 @@ namespace AspNetFramework.Entities
         public string Description { get; set; }
         [Display(Name = "Marka Logosu")]
         public string Logo { get; set; }
-        public virtual List<Product> Products { get; set; }
+        // public virtual IEnumerable<Product> Products { get; set; } // web api kullanımında navigation property tavsiye edilmiyor
     }
 }

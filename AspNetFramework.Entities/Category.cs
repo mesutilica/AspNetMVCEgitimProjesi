@@ -17,6 +17,6 @@ namespace AspNetFramework.Entities
         public DateTime CreateDate { get; set; } = DateTime.Now;
         [Display(Name = "Durum")]
         public bool IsActive { get; set; }
-        public virtual IEnumerable<Product> Products { get; set; }
+        //public virtual IEnumerable<Product> Products { get; set; } // web api kullanımında navigation property tavsiye edilmiyor
     }
 }

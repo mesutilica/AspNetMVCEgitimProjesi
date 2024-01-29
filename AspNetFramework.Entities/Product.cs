@@ -22,11 +22,11 @@ namespace AspNetFramework.Entities
         public DateTime CreateDate { get; set; } = DateTime.Now;
         [Display(Name = "Ürün Kategorisi"), Required(ErrorMessage = "Ürün Kategorisi Boş Geçilemez!")]
         public int CategoryId { get; set; }
-        [Display(Name = "Ürün Kategorisi")]
-        public virtual Category Category { get; set; }
+        //[Display(Name = "Ürün Kategorisi")]
+        //public virtual Category Category { get; set; }
         [Display(Name = "Ürün Markası"), Required(ErrorMessage = "Ürün Markası Boş Geçilemez!")]
         public int BrandId { get; set; }
-        [Display(Name = "Ürün Markası")]
-        public virtual Brand Brand { get; set; }
+        //[Display(Name = "Ürün Markası")]
+        //public virtual Brand Brand { get; set; } // web api kullanımında navigation property tavsiye edilmiyor
     }
 }

@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Ürün Detayı";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div id="images" class="row row-cols-2"></div>
+    </div>
+    <div id="detail" class="col-md-4"></div>
+</div>
+@section Scripts {
+    <script>
+        let images = document.getElementById('images');
+        let div = document.getElementById('detail');
+        fetch('https://dummyjson.com/products/' + @Context.GetRouteValue("id"))
+            .then(res => res.json())
+            .then(product => {
+                const resimler = product.images;
+                for (const property in resimler) {
+                    console.log(`${property}: ${resimler[property]}`);
+                    images.innerHTML += `<div class="col">
+                                            <a href="${resimler[property]}">
+                                             <img src="${resimler[property]}" alt="" class="img-fluid" />
+                                            </a>
+                                         </div>`
+                }
+                // ` : altgr ; space
+                div.innerHTML = `
+                                <div class="col-md-12">
+                                            <h1>${product.title}</h1>
+                                            <h2>${product.category}</h2>
+                                    <h4>Fiyat: ${product.price} ₺</h4>
+                                    <h5>Stok : ${product.stock}</h5>
+                                    <div>
+                                         ${product.description}
+                                    </div>
+                                </div>`;
+            })
+    </script>
+}

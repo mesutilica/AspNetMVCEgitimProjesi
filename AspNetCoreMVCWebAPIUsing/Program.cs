@@ -1,3 +1,6 @@
+using AspNetCoreMVCWebAPIUsing.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AspNetCoreMVCWebAPIUsing
 {
     public class Program
@@ -8,7 +11,7 @@ namespace AspNetCoreMVCWebAPIUsing
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<DatabaseContext>();// (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,6 +28,10 @@ namespace AspNetCoreMVCWebAPIUsing
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "admin",
+                pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

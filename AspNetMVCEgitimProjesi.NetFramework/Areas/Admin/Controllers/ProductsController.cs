@@ -77,11 +77,28 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Areas.Admin.Controllers
         // GET: Admin/Products/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
+            
             var response = await client.GetAsync(apiAdres + id);
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync(); //JSON verisini oku
                 var model = JsonConvert.DeserializeObject<Product>(data); //JSON verisini Post listesine dönüştür
+
+                var response1 = await client.GetAsync("https://localhost:44347/Api/Categories/");
+                if (response1.IsSuccessStatusCode)
+                {
+                    var dataCategory = await response1.Content.ReadAsStringAsync();
+                    var model1 = JsonConvert.DeserializeObject<List<Category>>(dataCategory);
+                    ViewBag.CategoryId = new SelectList(model1, "Id", "Name", model.CategoryId);
+                }
+                var response2 = await client.GetAsync("https://localhost:44347/Api/Brands/");
+                if (response2.IsSuccessStatusCode)
+                {
+                    var data2 = await response2.Content.ReadAsStringAsync(); //JSON verisini oku
+                    var model2 = JsonConvert.DeserializeObject<List<Brand>>(data2); //JSON verisini Post listesine dönüştür
+                    ViewBag.BrandId = new SelectList(model2, "Id", "Name", model.BrandId);
+                }
+
                 return View(model);
             }
             return new HttpStatusCodeResult(HttpStatusCode.NotFound);

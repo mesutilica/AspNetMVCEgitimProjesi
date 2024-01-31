@@ -31,7 +31,7 @@
                 let div = document.getElementById('products');
                 // Ürünleri div içine yazdır
                 data.products.forEach(product => {
-                    div.innerHTML += `<div><a href="Home/Detail/${product.id}"><img src="${product.thumbnail}" alt="" class="img-fluid" /></a><h5>${product.title} - ${product.price} ₺</h5></div>`;
+                    div.innerHTML += `<div><a href="/Admin/Home/Detail/${product.id}"><img src="${product.thumbnail}" alt="" class="img-fluid" /></a><h5>${product.title} - ${product.price} ₺</h5></div>`;
                 });
             })
             .catch(error => {

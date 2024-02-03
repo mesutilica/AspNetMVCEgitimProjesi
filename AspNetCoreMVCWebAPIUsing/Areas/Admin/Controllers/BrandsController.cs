@@ -47,7 +47,7 @@ namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
                     // TODO: Add insert logic here
                     var json = JsonConvert.SerializeObject(collection);
                     var data = new StringContent(json, Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(apiAdres + "Create", data);
+                    var response = await client.PostAsync(apiAdres, data);
                     if (response.IsSuccessStatusCode)
                         return RedirectToAction("Index");
                 }

@@ -34,11 +34,4 @@
     <ProjectReference Include="..\AspNeCore.Entities\AspNetCore.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Areas\Admin\Views\Home\Index.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

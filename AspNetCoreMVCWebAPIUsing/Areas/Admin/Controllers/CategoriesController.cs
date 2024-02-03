@@ -1,7 +1,5 @@
 ﻿using AspNetCore.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
 {

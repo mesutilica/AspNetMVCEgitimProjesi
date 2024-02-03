@@ -1,10 +1,10 @@
-﻿@model IEnumerable<AspNetCore.Entities.Category>
+﻿@model IEnumerable<AspNetCore.Entities.Product>
 
 @{
-    ViewData["Title"] = "Kategoriler";
+    ViewData["Title"] = "Ürünler";
 }
 
-<h1>Kategoriler</h1>
+<h1>Ürünler</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-outline-primary">Yeni Ekle</a>
@@ -16,13 +16,22 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsActive)
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
             </th>
             <th></th>
         </tr>
@@ -35,13 +44,22 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Image)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.Name)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |

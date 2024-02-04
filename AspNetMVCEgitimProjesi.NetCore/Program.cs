@@ -19,8 +19,8 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true; // Javascriptle ulaþýlamasýn
     options.Cookie.IsEssential = true; // onay politikasý kontrolleri atlansýn
 }); // Uygulamada session kullanacaðýmýzý bildirdik. option kullanarak session yapýlandýrmasýný kullanabiliriz. Sonrasýnda aþaðýdaki add tanýmlamasýndan sonra use session ayarýný yapýyoruz.
-
-builder.Services.AddDbContext<UyeContext>(); //option => option.UseInMemoryDatabase("InMemoryDb") UseInMemoryDatabase kullanýmý
+var connectionString = builder.Configuration.GetConnectionString("UyeContext");
+builder.Services.AddDbContext<UyeContext>(x => x.UseSqlServer(connectionString)); //option => option.UseInMemoryDatabase("InMemoryDb") UseInMemoryDatabase kullanýmý
 // Admin login iþlemi için aþaðýdaki servisi ekliyoruz.
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {

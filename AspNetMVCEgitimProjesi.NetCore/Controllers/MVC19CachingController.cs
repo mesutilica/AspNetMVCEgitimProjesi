@@ -6,19 +6,20 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC19CachingController : Controller
     {
-        UyeContext context = new UyeContext();
+        private readonly UyeContext _context;
         private readonly IMemoryCache _memoryCache;
-        public MVC19CachingController(IMemoryCache memoryCache)
+        public MVC19CachingController(IMemoryCache memoryCache, UyeContext context)
         {
             _memoryCache = memoryCache;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            var model = context.Uyeler.ToList();
+            var model = _context.Uyeler.ToList();
             if (model is null)
             {
-                context.Uyeler.AddRange(
+                _context.Uyeler.AddRange(
                     new Uye
                     {
                         Ad = "Alp",
@@ -38,8 +39,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                         Sifre = "789"
                     }
                 );
-                context.SaveChanges();
-                model = context.Uyeler.ToList();
+                _context.SaveChanges();
+                model = _context.Uyeler.ToList();
             }
             return View(model);
         }
@@ -49,7 +50,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
             if (list is null)
             {
-                list = context.Uyeler.ToList();
+                list = _context.Uyeler.ToList();
                 //Thread.Sleep(5000);
                 _memoryCache.Set("liste", list, TimeSpan.FromSeconds(18));
             }
@@ -64,8 +65,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             if (ModelState.IsValid) // Eğer modeldeki validasyon kurallarına uyulmuşsa, tersi için !ModelState.IsValid
             {
-                context.Add(uye); // 6. yöntem
-                context.SaveChanges();
+                _context.Add(uye); // 6. yöntem
+                _context.SaveChanges();
                 TempData["Uye"] = uye.Ad + " " + uye.Soyad + " İsimli üye kaydı başarıyla gerçekleşti..";
                 //_memoryCache.Remove("liste");
                 return RedirectToAction("Index");

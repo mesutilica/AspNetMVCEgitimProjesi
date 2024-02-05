@@ -1,4 +1,5 @@
 using AspNetCoreMVCWebAPIUsing.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreMVCWebAPIUsing
@@ -13,6 +14,7 @@ namespace AspNetCoreMVCWebAPIUsing
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession();
             builder.Services.AddHttpClient();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             builder.Services.AddDbContext<DatabaseContext>();// (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             var app = builder.Build();
 

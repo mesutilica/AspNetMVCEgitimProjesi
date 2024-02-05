@@ -1,12 +1,13 @@
 ﻿using AspNetCore.Entities;
 using AspNetCoreMVCWebAPIUsing.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize]
     public class BrandsController : Controller
     {
         static string apiAdres = "https://localhost:7116/Api/Brands/";

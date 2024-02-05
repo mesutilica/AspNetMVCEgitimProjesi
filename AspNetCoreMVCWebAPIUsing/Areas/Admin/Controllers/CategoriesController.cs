@@ -1,9 +1,10 @@
 ﻿using AspNetCore.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize]
     public class CategoriesController : Controller
     {
         private readonly HttpClient _httpClient;

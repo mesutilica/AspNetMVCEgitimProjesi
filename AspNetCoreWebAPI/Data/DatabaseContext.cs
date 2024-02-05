@@ -1,4 +1,4 @@
-﻿using AspNetCoreWebAPI.Entities;
+﻿using AspNetCore.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreWebAPI.Data

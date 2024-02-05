@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreWebAPI.Entities
+﻿namespace AspNetCore.Entities.Models
 {
     public class Token
     {

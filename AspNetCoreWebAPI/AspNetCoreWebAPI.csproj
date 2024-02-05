@@ -22,4 +22,8 @@
     <Folder Include="wwwroot\Img\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AspNeCore.Entities\AspNetCore.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

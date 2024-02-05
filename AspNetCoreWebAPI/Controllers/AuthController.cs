@@ -1,5 +1,6 @@
-﻿using AspNetCoreWebAPI.Data;
-using AspNetCoreWebAPI.Entities;
+﻿using AspNetCore.Entities;
+using AspNetCore.Entities.Models;
+using AspNetCoreWebAPI.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -21,7 +22,7 @@ namespace AspNetCoreWebAPI.Controllers
             _configuration = configuration;
         }
         [HttpPost("Login")]
-        public async Task<IActionResult> LoginAsync(User appUser)//[FromBody] 
+        public async Task<IActionResult> LoginAsync(UserLoginModel appUser)//[FromBody] 
         {
             var account = await _context.Users.FirstOrDefaultAsync(u => u.Email == appUser.Email && u.Password == appUser.Password && u.IsActive);
             if (account == null)

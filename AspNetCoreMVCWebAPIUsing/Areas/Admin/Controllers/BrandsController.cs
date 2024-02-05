@@ -1,4 +1,5 @@
 ﻿using AspNetCore.Entities;
+using AspNetCoreMVCWebAPIUsing.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -37,13 +38,13 @@ namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
 
         // POST: Admin/Brands/Create
         [HttpPost]
-        public async Task<ActionResult> Create(Brand collection)
+        public async Task<ActionResult> Create(Brand collection, IFormFile? Logo)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // TODO: Add insert logic here
+                    collection.Logo = await FileHelper.FileLoaderAsync(Logo);
                     var json = JsonConvert.SerializeObject(collection);
                     var data = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(apiAdres, data);
@@ -73,12 +74,16 @@ namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
 
         // POST: Admin/Brands/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(int id, Brand collection)
+        public async Task<ActionResult> Edit(int id, Brand collection, IFormFile? Logo, bool resmiSil = false)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (resmiSil == true)
+                        collection.Logo = string.Empty;
+                    if (Logo != null)
+                        collection.Logo = await FileHelper.FileLoaderAsync(Logo);
                     var json = JsonConvert.SerializeObject(collection);
                     var data = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PutAsync(apiAdres + id, data);

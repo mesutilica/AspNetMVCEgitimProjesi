@@ -35,7 +35,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Logo)
+                    <img src="/Img/@Html.DisplayFor(modelItem => item.Logo)" alt="" height="34" />
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |

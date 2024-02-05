@@ -28,7 +28,7 @@ namespace AspNetCoreWebAPI
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
             app.UseAuthorization();
 
 

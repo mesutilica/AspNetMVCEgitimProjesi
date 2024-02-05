@@ -1,4 +1,5 @@
 ﻿using AspNetCore.Entities;
+using AspNetCoreMVCWebAPIUsing.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -45,7 +46,7 @@ namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
             {
                 try
                 {
-                    //entity.Image = await FileHelper.FileLoaderAsync(Image);
+                    entity.Image = await FileHelper.FileLoaderAsync(Image);
                     var response = await _httpClient.PostAsJsonAsync(_apiAdres + "Products", entity);
                     if (response.IsSuccessStatusCode) return RedirectToAction(nameof(Index));
                     ModelState.AddModelError("", "Kayıt Eklenemedi!");
@@ -80,7 +81,8 @@ namespace AspNetCoreMVCWebAPIUsing.Areas.Admin.Controllers
                 {
                     if (resmiSil == true) 
                         entity.Image = string.Empty;
-                    //if (Image != null) entity.Image = await FileHelper.FileLoaderAsync(Image);
+                    if (Image != null) 
+                        entity.Image = await FileHelper.FileLoaderAsync(Image);
                     var response = await _httpClient.PutAsJsonAsync($"{_apiAdres + "Products"}/{id}", entity);
                     if (response.IsSuccessStatusCode)
                         return RedirectToAction(nameof(Index));

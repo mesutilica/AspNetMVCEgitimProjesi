@@ -18,6 +18,18 @@ namespace AspNetCoreWebAPI
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // json dan çekmek için
+
+            builder.Services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("https://localhost:7262")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -31,6 +43,8 @@ namespace AspNetCoreWebAPI
             app.UseStaticFiles();
             app.UseAuthorization();
 
+            // UseCors
+            app.UseCors("default");
 
             app.MapControllers();
 

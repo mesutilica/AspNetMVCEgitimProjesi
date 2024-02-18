@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Marka Yönetimi";
+}
+
+<h1>Marka Yönetimi</h1>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Logo</th>
+        <th>Marka Adı</th>
+        <th>Marka Açıklama</th>
+        <th></th>
+    </tr>
+    <tbody id="list"></tbody>
+</table>
+
+<form action="/" method="post">
+    <table>
+        <tr>
+            <td>Marka Adı</td>
+            <td>
+                <input type="text" name="Name" value="" />
+            </td>
+            <td>Logo</td>
+            <td>
+                <input type="text" name="Logo" />
+            </td>
+        </tr>
+        <tr>
+            <td>Açıklama</td>
+            <td colspan="3">
+                <textarea name="Description" rows="5"></textarea>
+            </td>
+        </tr>
+    </table>
+</form>
+
+@section Scripts {
+    <script>
+        fetch('https://localhost:7116/api/Brands')
+            .then(response => response.json()) // JSON olarak dönüştür
+            .then(data => {
+                console.log(data)
+                // Ekrandaki div elementini seç
+                let div = document.getElementById('list');
+                // Ürünleri div içine yazdır
+                data.forEach(item => {
+                    div.innerHTML += `<tr><td>${item.id}</td>
+                                                                    <td><a href="/Home/itemDetail/${item.id}"><img src="/Img/${item.image}" alt="" height="34" /></a></td>
+                                                                    <td>${item.name}</td>
+                                                                            <td>${item.description}</td>
+                                                                    <td>
+                                                                                <input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="edit(${item.id})">
+                                                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="delete(${item.id})">
+                                                                    </td>
+                                                                    </tr>`;
+                });
+            })
+            .catch(error => {
+                // Hata olursa konsola yazdır
+                console.error(error);
+            });
+    </script>
+}

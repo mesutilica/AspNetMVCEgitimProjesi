@@ -7,14 +7,50 @@
     <p>
         Asp.Net Core ile web api projesinin kullanım örnekleri.
     </p>
-    
+
     <h2>CORS</h2>
     <p>
         Javascript ile Api ye istek atmaya izin vermek için önce api de cors ayarını etkinleştriyoruz.
     </p>
-    <div id="products" class="row row-cols-3">
-    </div>
 </div>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Ürün Resmi</th>
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>Eklenme Tarihi</th>
+        <th></th>
+    </tr>
+    <tbody id="products"></tbody>
+</table>
+
+<form action="/" method="post">
+    <table>
+        <tr>
+            <td>Ürün Adı</td>
+            <td>
+                <input type="text" name="Name" value="" />
+            </td>
+            <td>Fiyat</td>
+            <td>
+                <input type="text" name="Price" value="" />
+            </td>
+        </tr>
+        <tr>
+            <td>Stok</td>
+            <td>
+                <input type="number" name="Stock" value="" />
+            </td>
+            <td>Fiyat</td>
+            <td>
+                <input type="text" name="Price" value="" />
+            </td>
+        </tr>
+    </table>
+</form>
 
 @section Scripts {
     <script>
@@ -26,7 +62,17 @@
                 let div = document.getElementById('products');
                 // Ürünleri div içine yazdır
                 data.forEach(product => {
-                    div.innerHTML += `<div><a href="Home/Detail/${product.id}"><img src="/Img/${product.image}" alt="" class="img-fluid" /></a><h5>${product.name} - ${product.price} ₺</h5></div>`;
+                    div.innerHTML += `<tr><td>${product.id}</td>
+                                    <td><a href="/Home/ProductDetail/${product.id}"><img src="/Img/${product.image}" alt="" height="34" /></a></td>
+                                    <td>${product.name}</td>
+                                    <td>${product.price} ₺</td>
+                                    <td>${product.stock}</td>
+                                    <td>${product.createDate}</td>
+                                    <td>
+                                                <input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="editStudent(${product.id})">
+                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="deleteStudent(${product.id})">
+                                    </td>
+                                    </tr>`;
                 });
             })
             .catch(error => {

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Ürün Detayı";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div id="images" class="row row-cols-2"></div>
+    </div>
+    <div id="detail" class="col-md-4"></div>
+</div>
+@section Scripts {
+    <script>
+        let images = document.getElementById('images');
+        let div = document.getElementById('detail');
+        fetch('https://localhost:7116/api/Products/' + @Context.GetRouteValue("id"))
+            .then(res => res.json())
+            .then(product => {
+                images.innerHTML += `<div class="col">
+                                      <a href="${product.image}"><img src="/Img/${product.image}" alt="" class="img-fluid" /></a></div>`
+                // ` : altgr ; space
+                div.innerHTML = `
+                                        <div class="col-md-12">
+                                                            <h1>${product.name}</h1>
+                                                    <h2>${product.category.name}</h2>
+                                            <h4>Fiyat: ${product.price} ₺</h4>
+                                            <h5>Stok : ${product.stock}</h5>
+                                            <div>
+                                                 ${product.description}
+                                            </div>
+                                        </div>`;
+            })
+    </script>
+}

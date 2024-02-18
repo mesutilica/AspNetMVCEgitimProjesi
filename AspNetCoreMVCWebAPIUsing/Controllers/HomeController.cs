@@ -26,8 +26,20 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
             }
             return View();
         }
+        public IActionResult Brands()
+        {
+            return View();
+        }
         public IActionResult Products()
         {
+            return View();
+        }
+        public IActionResult ProductDetail(int? id)
+        {
+            if (id is null)
+            {
+                return BadRequest();
+            }
             return View();
         }
 

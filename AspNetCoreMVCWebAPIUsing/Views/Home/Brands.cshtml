@@ -15,51 +15,174 @@
     <tbody id="list"></tbody>
 </table>
 
-<form action="/" method="post">
-    <table>
-        <tr>
-            <td>Marka Adı</td>
-            <td>
-                <input type="text" name="Name" value="" />
-            </td>
-            <td>Logo</td>
-            <td>
-                <input type="text" name="Logo" />
-            </td>
-        </tr>
-        <tr>
-            <td>Açıklama</td>
-            <td colspan="3">
-                <textarea name="Description" rows="5"></textarea>
-            </td>
-        </tr>
-    </table>
-</form>
+<input type="hidden" name="Id" />
+<table>
+    <tr>
+        <td>Marka Adı</td>
+        <td>
+            <input type="text" name="Name" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>Logo</td>
+        <td>
+            <input type="file" name="Logo" />
+        </td>
+    </tr>
+    <tr>
+        <td>Açıklama</td>
+        <td>
+            <textarea name="Description" rows="5"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Ekle" class="btn btn-success" onclick="Ekle()" />
+            <input type="submit" value="Güncelle" class="btn btn-success" onclick="Guncelle()" />
+        </td>
+    </tr>
+</table>
 
 @section Scripts {
     <script>
-        fetch('https://localhost:7116/api/Brands')
-            .then(response => response.json()) // JSON olarak dönüştür
-            .then(data => {
-                console.log(data)
-                // Ekrandaki div elementini seç
-                let div = document.getElementById('list');
-                // Ürünleri div içine yazdır
-                data.forEach(item => {
-                    div.innerHTML += `<tr><td>${item.id}</td>
-                                                                    <td><a href="/Home/itemDetail/${item.id}"><img src="/Img/${item.image}" alt="" height="34" /></a></td>
-                                                                    <td>${item.name}</td>
-                                                                            <td>${item.description}</td>
-                                                                    <td>
-                                                                                <input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="edit(${item.id})">
-                                                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="delete(${item.id})">
-                                                                    </td>
-                                                                    </tr>`;
+        function GetAll() {
+            fetch('https://localhost:7116/api/Brands')
+                .then(response => response.json()) // JSON olarak dönüştür
+                .then(data => {
+                    // console.log(data)
+                    // Ekrandaki div elementini seç
+                    let div = document.getElementById('list');
+                    div.innerHTML = "";
+                    // Ürünleri div içine yazdır
+                    data.forEach(item => {
+                        div.innerHTML += `<tr><td>${item.id}</td>
+                                                                                                    <td><a href="/Home/itemDetail/${item.id}"><img src="/Img/${item.logo}" alt="" height="34" /></a></td>
+                                                                                                    <td>${item.name}</td>
+                                                                                                            <td>${item.description}</td>
+                                                                                                    <td>
+                                                                                                                <input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="edit(${item.id})">
+                                                                                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="Delete(${item.id})">
+                                                                                                    </td>
+                                                                                                    </tr>`;
+                    });
+                })
+                .catch(error => {
+                    // Hata olursa konsola yazdır
+                    console.error(error);
                 });
+        }
+        GetAll();
+        function edit(id) {
+            fetch('https://localhost:7116/api/Brands/' + id)
+                .then(response => response.json()) // JSON olarak dönüştür
+                .then(item => {
+                    console.log(item)
+                    // Ekrandaki div elementini seç
+                    document.getElementsByName('Id')[0].value = item.id;
+                    document.getElementsByName('Name')[0].value = item.name;
+                    document.getElementsByName('Description')[0].value = item.description;
+                    document.getElementsByName('Logo')[0].value = item.logo;
+                })
+                .catch(error => {
+                    // Hata olursa konsola yazdır
+                    console.error(error);
+                });
+        }
+
+        function Ekle() {
+            fetch('https://localhost:7116/api/Brands/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    Name: document.getElementsByName('Name')[0].value,
+                    Description: document.getElementsByName('Description')[0].value,
+                    Logo: document.getElementsByName('Logo')[0].value
+                })
             })
-            .catch(error => {
-                // Hata olursa konsola yazdır
-                console.error(error);
-            });
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json(); // Başarılı ise JSON verisini alın
+                    } else {
+                        throw new Error('İstek başarısız oldu.'); // Hata durumunda hata fırlatın
+                    }
+                })
+                .then((data) => {
+                    console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
+                    GetAll();
+                })
+                .catch((error) => {
+                    console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
+                });
+        }
+
+        function Guncelle() {
+            var id = document.getElementsByName('Id')[0].value;
+            if (!id) {
+                alert("Listeden Güncellenecek Kayıt Seçiniz!")
+                return false;
+            }
+                fetch('https://localhost:7116/api/Brands/' + id, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                    Id: parseInt(id),
+                    Name: document.getElementsByName('Name')[0].value,
+                    Description: document.getElementsByName('Description')[0].value,
+                    Logo: document.getElementsByName('Logo')[0].value
+                    })
+                })
+                // .then((response) => { // api geriye json dönmüyorsa hata veriyor
+                //         if (response.ok) {
+                //             return response.json(); // Başarılı ise JSON verisini alın
+                //         } else {
+                //             throw new Error('İstek başarısız oldu.'); // Hata durumunda hata fırlatın
+                //         }
+                //     })
+                    .then((data) => {
+                        console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
+                        GetAll();
+                    })
+                    .catch((error) => {
+                        console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
+                    });
+        }
+        function Delete(id) {
+            if (confirm('Öğrenciyi silmek istediğinize emin misiniz?')) {
+                fetch('https://localhost:7116/api/Brands/' + id, {
+                    method: 'DELETE',
+                })
+                    .then((data) => {
+                        console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
+                        GetAll();
+                    })
+                    .catch((error) => {
+                        console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
+                    });
+            }
+        }
+
+        // file upload
+        async function upload(formData) {
+            try {
+                const response = await fetch("https://example.com/profile/avatar", {
+                    method: "PUT",
+                    body: formData,
+                });
+                const result = await response.json();
+                console.log("Success:", result);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        const formData = new FormData();
+        const fileField = document.querySelector('input[type="file"]');
+
+        formData.append("username", "abc123");
+        formData.append("avatar", fileField.files[0]);
+
+        //upload(formData);
+
     </script>
 }

@@ -15,7 +15,7 @@ namespace AspNetCoreWebAPI.Controllers
             {
                 return Problem("Dosya Yüklenemedi!");
             }
-            return Created(string.Empty, result); // Geriye dosyanın eklendiğine dair response döndük
+            return Created(string.Empty, new { imageName = result }); // Geriye dosyanın eklendiğine dair response döndük
         }
     }
 }

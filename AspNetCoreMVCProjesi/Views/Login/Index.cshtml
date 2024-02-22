@@ -11,22 +11,26 @@
     <title>Login</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="/css/admin.css" rel="stylesheet">
+    <style>
+        input#floatingPassword { text-security: disc; -webkit-text-security: disc; -mox-text-security: disc; }
+    </style>
 </head>
 <body class="text-center">
 
     <main class="form-signin">
-        <form asp-action="Index">
+        <form asp-action="Index" autocomplete="off">
+            <input autocomplete="false" name="hidden" type="text" style="display:none;">
             <img class="mb-4" src="/Img/lock-300x300.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 fw-normal">Giriş</h1>
             <div class="alert">
                 @TempData["Mesaj"]
             </div>
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" name="email" required placeholder="name@example.com">
+                <input type="email" class="form-control" id="floatingInput" name="email" required placeholder="name@example.com" autocomplete="new-email" autofocus="true">
                 <label for="floatingInput">Email</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+                <input type="text" class="form-control" id="floatingPassword" name="password" placeholder="Password" autocomplete="new-password" required>
                 <label for="floatingPassword">Şifre</label>
             </div>
 
@@ -39,5 +43,53 @@
             <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
         </form>
     </main>
+    <script>
+        function changeType(x) {
+            // onclick="(this.type='password')"
+            // x.style.background = "yellow";
+             x.type = 'password'
+            x.removeAttribute('readonly')
+            //x.removeAttribute("aria-autocomplete")
+        }
+
+        // Şifre alanını seçin (örneğin, id="password")
+        const passwordInput = document.getElementById("floatingPassword");
+
+        // Otomatik doldurmayı devre dışı bırakın
+        passwordInput.setAttribute("autocomplete", "off");
+
+
+        // Password input alanını seçin
+        // İlgili input alanını seçin (örneğin, id="myInput")
+        /*const inputElement = document.getElementById("floatingPassword");
+
+        // MutationObserver oluşturun
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === "attributes" && mutation.attributeName === "aria-autocomplete") {
+                    // Eğer aria-autocomplete="false" ise, özniteliği kaldırın
+                    if (inputElement.getAttribute("aria-autocomplete") === "false") {
+                        inputElement.removeAttribute("aria-autocomplete");
+                    }
+                }
+            }
+        });
+
+        // Gözlemciyi başlatın
+        observer.observe(inputElement, { attributes: true });
+         
+        // Örnek olarak aria-autocomplete="false" özniteliği ekleyin
+        //inputElement.setAttribute("aria-autocomplete", "false");
+
+        // Input alanını seçin (örneğin, id="myInput")
+        const inputElement = document.getElementById("floatingPassword");
+
+        // Kullanıcının girdiği değeri maskeleyin
+        inputElement.addEventListener("input", function () {
+            const maskedValue = "•".repeat(inputElement.value.length);
+            inputElement.value = maskedValue;
+        });
+*/
+    </script>
 </body>
 </html>

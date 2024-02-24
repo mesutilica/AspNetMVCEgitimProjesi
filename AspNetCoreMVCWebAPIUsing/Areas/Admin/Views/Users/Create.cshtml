@@ -1,12 +1,11 @@
 ﻿@model AspNetCore.Entities.User
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Kullanıcı Ekle";
 }
 
-<h1>Create</h1>
+<h1>Kullanıcı Ekle</h1>
 
-<h4>User</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -48,28 +47,13 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="UserGuid" class="control-label"></label>
-                <input asp-for="UserGuid" class="form-control" />
-                <span asp-validation-for="UserGuid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RefreshToken" class="control-label"></label>
-                <input asp-for="RefreshToken" class="form-control" />
-                <span asp-validation-for="RefreshToken" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RefreshTokenExpireDate" class="control-label"></label>
-                <input asp-for="RefreshTokenExpireDate" class="form-control" />
-                <span asp-validation-for="RefreshTokenExpireDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Ekle" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">List</a>
 </div>
 

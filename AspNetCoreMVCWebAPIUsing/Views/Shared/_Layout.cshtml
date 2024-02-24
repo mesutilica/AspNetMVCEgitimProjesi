@@ -20,18 +20,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa(dummyjson)</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Brands">Markalar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index">Ürünlerimiz(dummyjson)</a>
+                            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index">Ürünlerimiz(HttpClient)</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Products">Ürünlerimiz(localhost)</a>
                         </li>
                     </ul>
+                </div>
+                <div class="text-end">
+                    <a href="/Account/Login" class="btn btn-outline-primary me-2">Giriş</a>
+                    <a href="/Account/SignUp" class="btn btn-primary">Kayıt</a>
                 </div>
             </div>
             <a class="navbar-brand" asp-area="Admin" asp-controller="Default" asp-action="Index">Admin</a>

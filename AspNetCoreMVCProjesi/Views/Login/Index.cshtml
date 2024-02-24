@@ -1,36 +1,23 @@
 ﻿
-@{
-    Layout = null;
-}
+<style>
+    #main { display: flex; align-items: center; padding-top: 40px; padding-bottom: 40px; }
 
-<!DOCTYPE html>
+    .form-signin { width: 100%; max-width: 330px; padding: 15px; margin: auto; background-color: #f5f5f5; }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <style>
-        body { display: flex; align-items: center; padding-top: 40px; padding-bottom: 40px; background-color: #f5f5f5; }
+    .form-signin .checkbox { font-weight: 400; }
 
-        .form-signin { width: 100%; max-width: 330px; padding: 15px; margin: auto; }
+    .form-signin .form-floating:focus-within { z-index: 2; }
 
-        .form-signin .checkbox { font-weight: 400; }
+    .form-signin input[type="email"] { margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
 
-        .form-signin .form-floating:focus-within { z-index: 2; }
+    .form-signin input[type="password"] { margin-bottom: 10px; border-top-left-radius: 0; border-top-right-radius: 0; }
 
-        .form-signin input[type="email"] { margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
+    input#floatingPassword { text-security: disc; -webkit-text-security: disc; -mox-text-security: disc; }
+</style>
 
-        .form-signin input[type="password"] { margin-bottom: 10px; border-top-left-radius: 0; border-top-right-radius: 0; }
-
-        input#floatingPassword { text-security: disc; -webkit-text-security: disc; -mox-text-security: disc; }
-    </style>
-</head>
-<body class="text-center">
-
-    <main class="form-signin">
+<div id="main">
+    <div class="form-signin text-center">
         <form asp-action="Index" autocomplete="off">
-            <input autocomplete="false" name="hidden" type="text" style="display:none;">
             <img class="mb-4" src="/Img/lock-300x300.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 fw-normal">Giriş</h1>
             <div class="alert">
@@ -41,7 +28,7 @@
                 <label for="floatingInput">Email</label>
             </div>
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingPassword" name="password" placeholder="Password" autocomplete="new-password" required>
+                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" autocomplete="new-password" required>
                 <label for="floatingPassword">Şifre</label>
             </div>
 
@@ -53,12 +40,12 @@
             <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş</button>
             <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
         </form>
-    </main>
+    </div>
     <script>
         function changeType(x) {
             // onclick="(this.type='password')"
             // x.style.background = "yellow";
-             x.type = 'password'
+            x.type = 'password'
             x.removeAttribute('readonly')
             //x.removeAttribute("aria-autocomplete")
         }
@@ -88,7 +75,7 @@
 
         // Gözlemciyi başlatın
         observer.observe(inputElement, { attributes: true });
-         
+
         // Örnek olarak aria-autocomplete="false" özniteliği ekleyin
         //inputElement.setAttribute("aria-autocomplete", "false");
 
@@ -100,7 +87,6 @@
             const maskedValue = "•".repeat(inputElement.value.length);
             inputElement.value = maskedValue;
         });
-*/
+        */
     </script>
-</body>
-</html>
+</div>

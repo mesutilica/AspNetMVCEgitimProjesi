@@ -16,7 +16,7 @@
 </table>
 
 <input type="hidden" name="Id" />
-<input type="hidden" name="LogoName" />
+<input type="hidden" name="LogoName" id="LogoName" />
 <table>
     <tr>
         <td>Marka Adı</td>
@@ -40,7 +40,7 @@
     <tr>
         <td></td>
         <td>
-            <input type="submit" value="Ekle" class="btn btn-success" onclick="Ekle()" />
+            <input type="submit" value="Ekle" class="btn btn-primary" onclick="Ekle()" />
             <input type="submit" value="Güncelle" class="btn btn-success" onclick="Guncelle()" />
         </td>
     </tr>
@@ -59,14 +59,13 @@
                     // Ürünleri div içine yazdır
                     data.forEach(item => {
                         div.innerHTML += `<tr><td>${item.id}</td>
-                                                                                                            <td><a href="/Home/itemDetail/${item.id}"><img src="https://localhost:7116/Img/${item.logo}" alt="" height="34" /></a></td>
-                                                                                                    <td>${item.name}</td>
-                                                                                                            <td>${item.description}</td>
-                                                                                                    <td>
-                                                                                                                <input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="edit(${item.id})">
-                                                                                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="Delete(${item.id})">
-                                                                                                    </td>
-                                                                                                    </tr>`;
+                                              <td><a href="/Home/itemDetail/${item.id}"><img src="https://localhost:7116/Img/${item.logo}" alt="" height="34" /></a></td>
+                                              <td>${item.name}</td>
+                                              <td>${item.description}</td>
+                                              <td><input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="edit(${item.id})">
+                                                  <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="Delete(${item.id})">
+                                              </td>
+                                          </tr>`;
                     });
                 })
                 .catch(error => {
@@ -94,15 +93,12 @@
         }
 
         function Ekle() {
-
             // file upload
             const formData = new FormData();
             const fileField = document.querySelector('input[type="file"]');
 
             //formData.append("username", "abc123");
             formData.append("formFile", fileField.files[0]);
-
-            
 
             fetch('https://localhost:7116/api/Brands/', {
                 method: 'POST',
@@ -117,7 +113,7 @@
                     if (response.ok) {
                         upload(formData);
                         location.reload()
-                       // return response.json(); // Başarılı ise JSON verisini alın
+                        // return response.json(); // Başarılı ise JSON verisini alın
                     } else {
                         throw new Error('İstek başarısız oldu.'); // Hata durumunda hata fırlatın
                     }
@@ -129,11 +125,12 @@
                 .catch((error) => {
                     console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
                 });
-            
+
         }
 
         function Guncelle() {
             var id = document.getElementsByName('Id')[0].value;
+            var resim = document.getElementById('LogoName').value;
 
             // file upload
             const formData = new FormData();
@@ -144,39 +141,43 @@
 
             // console.log("fileField.files[0].name : ", fileField.files[0].name)
             // console.warn("formData.get('formFile') : ", formData.get("formFile").name)
-            
+
             if (!id) {
                 alert("Listeden Güncellenecek Kayıt Seçiniz!")
                 return false;
             }
-                fetch('https://localhost:7116/api/Brands/' + id, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
+
+            if (fileField.files[0]) {
+                resim = formData.get("formFile").name
+            }
+
+            fetch('https://localhost:7116/api/Brands/' + id, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
                     Id: parseInt(id),
                     Name: document.getElementsByName('Name')[0].value,
                     Description: document.getElementsByName('Description')[0].value,
-                    Logo: formData.get("formFile").name //document.getElementsByName('Logo')[0].value
-                    })
+                    Logo: resim // formData.get("formFile").name //document.getElementsByName('Logo')[0].value
                 })
-                .then((response) => { // api geriye json dönmüyorsa hata veriyor
-                        if (response.ok) {
+            }).then((response) => { // api geriye json dönmüyorsa hata veriyor
+                    if (response.ok) {
                         upload(formData);
                         location.reload()
-                           // return response.json(); // Başarılı ise JSON verisini alın
-                        } else {
-                            throw new Error('İstek başarısız oldu.'); // Hata durumunda hata fırlatın
-                        }
-                    })
-                    // .then((data) => {
-                        
-                    //     // console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
-                    //     // GetAll();
-                        
-                    // })
-                    .catch((error) => {
-                        console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
-                    });
+                        // return response.json(); // Başarılı ise JSON verisini alın
+                    } else {
+                        throw new Error('İstek başarısız oldu.'); // Hata durumunda hata fırlatın
+                    }
+                })
+                // .then((data) => {
+
+                //     // console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
+                //     // GetAll();
+
+                // })
+                .catch((error) => {
+                    console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
+                });
 
         }
         function Delete(id) {
@@ -208,7 +209,7 @@
             }
         }
 
-        
+
 
     </script>
 }

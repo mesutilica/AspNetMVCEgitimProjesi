@@ -14,6 +14,11 @@
     </p>
 </div>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Yeni Kayıt
+</button>
+
 <table class="table">
     <tr>
         <th>Id</th>
@@ -27,31 +32,68 @@
     <tbody id="products"></tbody>
 </table>
 
-<form action="/" method="post">
-    <table>
-        <tr>
-            <td>Ürün Adı</td>
-            <td>
-                <input type="text" name="Name" value="" />
-            </td>
-            <td>Fiyat</td>
-            <td>
-                <input type="text" name="Price" value="" />
-            </td>
-        </tr>
-        <tr>
-            <td>Stok</td>
-            <td>
-                <input type="number" name="Stock" value="" />
-            </td>
-            <td>Fiyat</td>
-            <td>
-                <input type="text" name="Price" value="" />
-            </td>
-        </tr>
-    </table>
-</form>
+<input type="hidden" id="Id" />
+<input type="hidden" id="ImageName" />
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Ürün Bilgileri</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Ürün Adı</td>
+                        <td>
+                            <input type="text" id="Name" value="" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Resim</td>
+                        <td>
+                            <input type="file" name="Image" class="form-control" />
+                            <span id="Image"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fiyat</td>
+                        <td>
+                            <input type="text" id="Price" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Stok</td>
+                        <td>
+                            <input type="text" id="Stock" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Durum</td>
+                        <td>
+                            <input type="checkbox" id="IsActive" />
+                            <label for="IsActive">Aktif</label>
+                            <span id="Image"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Açıklama</td>
+                        <td>
+                            <textarea id="Description" rows="5" class="form-control"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary me-auto" data-bs-dismiss="modal">Vazgeç</button>
+                <input type="submit" value="Ekle" class="btn btn-primary" onclick="Ekle()" />
+                <input type="submit" value="Güncelle" class="btn btn-success" onclick="Guncelle()" id="btnGuncelle" disabled />
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     <script>
         fetch('https://localhost:7116/api/Products')

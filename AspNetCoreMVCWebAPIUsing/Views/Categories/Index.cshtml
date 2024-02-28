@@ -9,7 +9,7 @@
     Yeni Kayıt
 </button>
 
-<table class="table">
+<table class="table table-striped table-hover">
     <tr>
         <th>Id</th>
         <th>Resim</th>
@@ -226,7 +226,7 @@
         }
 
         function Delete(id) {
-            if (confirm('Öğrenciyi silmek istediğinize emin misiniz?')) {
+            if (confirm('Kaydı silmek istediğinize emin misiniz?')) {
                 fetch('https://localhost:7116/api/Categories/' + id, {
                     method: 'DELETE',
                 })

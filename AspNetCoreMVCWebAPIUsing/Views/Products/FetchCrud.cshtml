@@ -1,0 +1,326 @@
+﻿@{
+    ViewData["Title"] = "Ürünler";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Javascript Fetch ile Web API Kullanımı</h1>
+    <p>
+        Asp.Net Core ile web api projesinin kullanım örnekleri.
+    </p>
+
+    <h2>CORS</h2>
+    <p>
+        Javascript ile Api ye istek atmaya izin vermek için önce api de cors ayarını etkinleştriyoruz.
+    </p>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Yeni Kayıt
+</button>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Kategori</th>
+        <th>Marka</th>
+        <th>Ürün Resmi</th>
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>Eklenme Tarihi</th>
+        <th></th>
+    </tr>
+    <tbody id="products"></tbody>
+</table>
+
+<input type="hidden" id="Id" />
+<input type="hidden" id="ImageName" />
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Ürün Bilgileri</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Kategori</td>
+                        <td>
+                            <select name="Kategoriler" id="Kategoriler" class="form-select">
+                                <option>Seçiniz</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Marka</td>
+                        <td>
+                            <select id="Markalar" class="form-select">
+                                <option>Seçiniz</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ürün Adı</td>
+                        <td>
+                            <input type="text" id="Name" value="" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Resim</td>
+                        <td>
+                            <input type="file" name="Image" class="form-control" />
+                            <span id="Image"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fiyat</td>
+                        <td>
+                            <input type="text" id="Price" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Stok</td>
+                        <td>
+                            <input type="text" id="Stock" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Açıklama</td>
+                        <td>
+                            <textarea id="Description" rows="5" class="form-control"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary me-auto" data-bs-dismiss="modal">Vazgeç</button>
+                <input type="submit" value="Ekle" class="btn btn-primary" onclick="Ekle()" />
+                <input type="submit" value="Güncelle" class="btn btn-success" onclick="Guncelle()" id="btnGuncelle" disabled />
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        fetch('https://localhost:7116/api/Products')
+            .then(response => response.json()) // JSON olarak dönüştür
+            .then(data => {
+                // console.log(data)
+                // Ekrandaki div elementini seç
+                let div = document.getElementById('products');
+                // Ürünleri div içine yazdır
+                data.forEach(item => {
+                    div.innerHTML += `<tr><td>${item.id}</td><td>${item.category.name}</td><td>${item.brand.name}</td>
+                                                  <td><a href="/Home/ProductDetail/${item.id}"><img src="https://localhost:7116/Img/${item.image}" alt="" height="34" /></a></td>
+                                            <td>${item.name}</td>
+                                            <td>${item.price} ₺</td>
+                                            <td>${item.stock}</td>
+                                            <td>${item.createDate}</td>
+                                            <td><input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="Edit(${item.id})"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="Delete(${item.id})">
+                                            </td>
+                                    </tr>`;
+                });
+            })
+            .catch(error => {
+                // Hata olursa konsola yazdır
+                console.error(error);
+            });
+
+            // Kategoriler
+           function Getcategories(){
+               fetch('https://localhost:7116/api/categories')
+            .then(response => response.json()) // JSON olarak dönüştür
+            .then(data => {
+                // console.log(data)
+                // Ekrandaki div elementini seç
+                let elm = document.getElementById('Kategoriler');
+                // Ürünleri div içine yazdır
+                data.forEach(item => {
+                    let option = new Option(item.name, item.id)
+                    // console.log(option)
+                    elm.add(option)
+                });
+            })
+            .catch(error => {
+                // Hata olursa konsola yazdır
+                console.error(error);
+            });
+           }
+
+            Getcategories();
+            
+            // Markalar
+           function Getbrands(){
+               fetch('https://localhost:7116/api/brands')
+            .then(response => response.json()) // JSON olarak dönüştür
+            .then(data => {
+                // console.log(data)
+                // Ekrandaki div elementini seç
+                let elm = document.getElementById('Markalar');
+                // Ürünleri div içine yazdır
+                data.forEach(item => {
+                    let option = new Option(item.name, item.id)
+                    // console.log(option)
+                    elm.add(option)
+                });
+            })
+            .catch(error => {
+                // Hata olursa konsola yazdır
+                console.error(error);
+            });
+           }
+
+           Getbrands();
+
+        function Ekle() {
+            if (!document.getElementById('Name').value) {
+                alert("Ürün Adı Boş Bırakılamaz!")
+                return false;
+            }
+            // file upload
+            const formData = new FormData();
+            const fileField = document.querySelector('input[type="file"]');
+
+            //formData.append("username", "abc123");
+            formData.append("formFile", fileField.files[0]);
+
+            fetch('https://localhost:7116/api/Products/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    Name: document.getElementById('Name').value,
+                    CategoryId: document.getElementById('Kategoriler').value,
+                    BrandId: document.getElementById('Markalar').value,
+                    Price: document.getElementById('Price').value,
+                    Stock: document.getElementById('Stock').value,
+                    Description: document.getElementById('Description').value,
+                    Image: formData.get('formFile').name //document.getElementsByName('Image')[0].value
+                })
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        upload(formData);
+                        location.reload()
+                        // return response.json(); // Başarılı ise JSON verisini alın
+                    } else {
+                        throw new Error('İstek başarısız oldu.'); // Hata durumunda hata fırlatın
+                    }
+                })
+                // .then((data) => {
+                //     console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
+                //     GetAll();
+                // })
+                .catch((error) => {
+                    console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
+                });
+        }
+
+        function Edit(id) {
+            fetch('https://localhost:7116/api/Products/' + id)
+                .then(response => response.json()) // JSON olarak dönüştür
+                .then(item => {
+                    console.log(item)
+                    // Ekrandaki div elementini seç
+                    document.getElementById('Kategoriler').value = item.categoryId;
+                    document.getElementById('Markalar').value = item.brandId;
+                    document.getElementById('Id').value = item.id;
+                    document.getElementById('Name').value = item.name;
+                    document.getElementById('Description').value = item.description;
+                    document.getElementById('Price').value = item.price;
+                    document.getElementById('Stock').value = item.stock;
+                    document.getElementById('ImageName').value = item.image;
+                    document.getElementById("Image").innerHTML = "<img src='https://localhost:7116/Img/" + item.image + "' height='50' />"
+                })
+                .catch(error => {
+                    // Hata olursa konsola yazdır
+                    console.error(error);
+                });
+            document.getElementById("btnGuncelle").removeAttribute("disabled")
+        }
+
+        function Guncelle() {
+            if (!document.getElementById('Name').value) {
+                alert("Ürün Adı Boş Bırakılamaz!")
+                return false;
+            }
+            var id = document.getElementById('Id').value;
+            var resim = document.getElementById('ImageName').value;
+            // file upload
+            const formData = new FormData();
+            const fileField = document.querySelector('input[type="file"]');
+
+            //formData.append("username", "abc123");
+            formData.append("formFile", fileField.files[0]);
+
+            if (fileField.files[0]) {
+                resim = formData.get("formFile").name
+            }
+
+            fetch('https://localhost:7116/api/Products/' + id, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    Id: id,
+                    Name: document.getElementById('Name').value,
+                    CategoryId: document.getElementById('Kategoriler').value,
+                    BrandId: document.getElementById('Markalar').value,
+                    Price: document.getElementById('Price').value,
+                    Stock: document.getElementById('Stock').value,
+                    Description: document.getElementById('Description').value,
+                    Image: resim // formData.get('formFile').name //document.getElementsByName('Image')[0].value
+                })
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        upload(formData);
+                        location.reload()
+                        // return response.json(); // Başarılı ise JSON verisini alın
+                    } else {
+                        console.warn(response)
+                        throw new Error('İstek başarısız oldu.'); // Hata durumunda hata fırlatın
+                    }
+                })
+                // .then((data) => {
+                //     console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
+                //     GetAll();
+                // })
+                .catch((error) => {
+                    console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
+                });
+        }
+
+        function Delete(id) {
+            if (confirm('Kaydı silmek istediğinize emin misiniz?')) {
+                fetch('https://localhost:7116/api/Products/' + id, {
+                    method: 'DELETE',
+                })
+                    .then((data) => {
+                        console.log('İşlem başarılı:', data); // İşlem başarılıysa veriyi konsola yazdırın
+                        location.reload()
+                    })
+                    .catch((error) => {
+                        console.error('Hata:', error); // Hata durumunda hata mesajını konsola yazdırın
+                    });
+            }
+        }
+
+        // file upload
+        async function upload(formData) {
+            try {
+                const response = await fetch("https://localhost:7116/api/Upload", {
+                    method: "POST",
+                    body: formData,
+                });
+                const result = await response.json();
+                console.log("Success:", result);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    </script>
+}

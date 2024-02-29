@@ -46,5 +46,21 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
             }
             return View(model);
         }
+        public IActionResult FetchCrud()
+        {
+            return View();
+        }
+        public IActionResult ProductDetail(int? id)
+        {
+            if (id is null)
+            {
+                return BadRequest();
+            }
+            return View();
+        }
+        public IActionResult JqueryCrud()
+        {
+            return View();
+        }
     }
 }

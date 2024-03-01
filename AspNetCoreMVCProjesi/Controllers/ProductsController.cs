@@ -1,9 +1,9 @@
-﻿using AspNetCoreMVCProjesi.Data;
-using AspNetCoreMVCProjesi.Entities;
+﻿using AspNetCore.Data;
+using AspNetCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspNetCoreMVCProjesi.Controllers
+namespace AspNetCore.Controllers
 {
     public class ProductsController : Controller
     {

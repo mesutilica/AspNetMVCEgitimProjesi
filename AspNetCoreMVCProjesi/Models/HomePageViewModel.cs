@@ -1,4 +1,4 @@
-﻿using AspNetCoreMVCProjesi.Entities;
+﻿using AspNetCore.Entities;
 
 namespace AspNetCoreMVCProjesi.Models
 {

@@ -1,7 +1,7 @@
-﻿using AspNetCoreMVCProjesi.Entities;
+﻿using AspNetCore.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspNetCoreMVCProjesi.Data
+namespace AspNetCore.Data
 {
     public class DatabaseContext : DbContext
     {

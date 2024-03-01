@@ -1,4 +1,5 @@
-using AspNetCoreMVCProjesi.Data;
+using AspNetCore.Data;
+using AspNetCore.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // json dan çekmek için
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {

@@ -1,5 +1,6 @@
-﻿using AspNetCoreMVCProjesi.Data;
-using AspNetCoreMVCProjesi.Entities;
+﻿using AspNetCore.Data;
+using AspNetCore.Entities;
+using AspNetCore.Service;
 using AspNetCoreMVCProjesi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,18 +10,18 @@ namespace AspNetCoreMVCProjesi.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IService<Slider> _serviceSlider;
         private readonly DatabaseContext _context; // Buradaki gibi birden çok DI işlemi varsa _context e sağ tıklayıp Quick actions and .. menüsüne tıklayıp açılan menüden Add parameters to.. ile başlayan menüye tıkladığımızda var olan constructor u bozmadan _context i de ekler.
-        public HomeController(ILogger<HomeController> logger, DatabaseContext context)
+        public HomeController(IService<Slider> serviceSlider, DatabaseContext context)
         {
-            _logger = logger;
+            _serviceSlider = serviceSlider;
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
             HomePageViewModel model = new HomePageViewModel();
-            model.Sliders = await _context.Sliders.ToListAsync();
+            model.Sliders = _serviceSlider.GetAll();// await _context.Sliders.ToListAsync();
             model.Products = await _context.Products.Take(6).ToListAsync();
             return View(model);
         }

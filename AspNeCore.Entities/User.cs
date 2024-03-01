@@ -2,7 +2,7 @@
 
 namespace AspNetCore.Entities
 {
-    public class User
+    public class User : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Kullanıcı Adı"), StringLength(50)]

@@ -1,5 +1,5 @@
-﻿using AspNetCoreMVCProjesi.Data;
-using AspNetCoreMVCProjesi.Entities;
+﻿using AspNetCore.Data;
+using AspNetCore.Entities;
 using AspNetCoreMVCProjesi.Tools;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

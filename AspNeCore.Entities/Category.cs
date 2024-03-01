@@ -2,7 +2,7 @@
 
 namespace AspNetCore.Entities
 {
-    public class Category
+    public class Category : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Kategori Adı"), StringLength(50), Required(ErrorMessage = "Kategori Adı Boş Geçilemez!")]
@@ -15,6 +15,6 @@ namespace AspNetCore.Entities
         public DateTime? CreateDate { get; set; } = DateTime.Now;
         [Display(Name = "Durum")]
         public bool IsActive { get; set; }
-        // public virtual IEnumerable<Product>? Products { get; set; }
+        public virtual IEnumerable<Product>? Products { get; set; }
     }
 }

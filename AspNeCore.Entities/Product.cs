@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetCore.Entities
 {
-    public class Product
+    public class Product : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Ürün Adı"), StringLength(50), Required(ErrorMessage = "Ürün Adı Boş Geçilemez!")]

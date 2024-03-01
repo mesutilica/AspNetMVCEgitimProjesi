@@ -2,7 +2,7 @@
 
 namespace AspNetCore.Entities
 {
-    public class Contact
+    public class Contact : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Adınız"), Required(ErrorMessage = "{0} Boş Geçilemez!"), StringLength(50)]

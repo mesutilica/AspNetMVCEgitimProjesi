@@ -2,7 +2,7 @@
 
 namespace AspNetCore.Entities
 {
-    public class Brand
+    public class Brand : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Marka Adı"), Required(ErrorMessage = "Marka Adı Boş Geçilemez!")]
@@ -11,6 +11,6 @@ namespace AspNetCore.Entities
         public string? Description { get; set; }
         [Display(Name = "Marka Logosu")]
         public string? Logo { get; set; }
-        // public virtual ICollection<Product> Products { get; set; }
+        public virtual List<Product>? Products { get; set; }
     }
 }

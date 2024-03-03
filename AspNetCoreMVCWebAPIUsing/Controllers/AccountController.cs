@@ -1,4 +1,6 @@
 ﻿using AspNetCore.Entities;
+using AspNetCore.Entities.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreMVCWebAPIUsing.Controllers
@@ -12,7 +14,7 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
         public AccountController(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            _apiAdres = "https://localhost:7132/Api/";
+            _apiAdres = "https://localhost:7116/Api/Auth/";
         }
         public IActionResult Index()
         {
@@ -23,8 +25,23 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> LoginAsync(UserLoginModel userLoginModel)
         {
+            try
+            {
+                //_httpClient.DefaultRequestHeaders.Authorization.Parameter.Insert(0,"test");
+                var response = await _httpClient.PostAsJsonAsync(_apiAdres + "Login", userLoginModel);
+                if (response.IsSuccessStatusCode)
+                {
+                    HttpContext.Session.SetString("userToken", await response.Content.ReadAsStringAsync());
+                    return RedirectToAction(nameof(Index));
+                }
+                ModelState.AddModelError("", "Giriş Başarısız!");
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Hata Oluştu!");
+            }
             return View();
         }
         public IActionResult SignUp()
@@ -40,8 +57,8 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
                 {
                     //_httpClient.DefaultRequestHeaders.Authorization.Parameter.Insert(0,"test");
                     appUser.CreateDate = DateTime.Now;
-                    var response = await _httpClient.PostAsJsonAsync(_apiAdres + "AppUsers", appUser);
-                    if (response.IsSuccessStatusCode) 
+                    var response = await _httpClient.PostAsJsonAsync(_apiAdres + "CreateAppUser", appUser);
+                    if (response.IsSuccessStatusCode)
                         return RedirectToAction(nameof(Index));
                     ModelState.AddModelError("", "Kayıt Başarısız!");
                 }

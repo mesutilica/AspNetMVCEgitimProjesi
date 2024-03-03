@@ -28,7 +28,7 @@ namespace AspNetCoreMVCWebAPIUsing
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();

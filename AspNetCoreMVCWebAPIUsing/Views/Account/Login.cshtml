@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AspNetCore.Entities.Models.UserLoginModel
+@{
     ViewData["Title"] = "Giriş";
 }
 <style>
@@ -25,11 +26,11 @@
                 @TempData["Mesaj"]
             </div>
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" name="email" required placeholder="name@example.com" autocomplete="new-email" autofocus="true">
+                <input asp-for="Email" class="form-control" id="floatingInput" required placeholder="name@example.com" autocomplete="new-email" autofocus="true">
                 <label for="floatingInput">Email</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" autocomplete="new-password" required>
+                <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="new-password" required>
                 <label for="floatingPassword">Şifre</label>
             </div>
 

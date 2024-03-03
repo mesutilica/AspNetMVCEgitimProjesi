@@ -78,8 +78,8 @@ namespace AspNetCoreWebAPI.Controllers
          */
         //return Created("", new JwtTokenGenerator(_configuration).GenerateToken());
         // POST: api/AppUsers
-        [HttpPost("CreateAppUser")]
-        public async Task<ActionResult<User>> CreateAppUser(User appUser)
+        [HttpPost("SignUp")]
+        public async Task<ActionResult<User>> SignUp(User appUser)
         {
             try
             {

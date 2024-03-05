@@ -20,6 +20,10 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
         {
             return View();
         }
+        public IActionResult JsLogin()
+        {
+            return View();
+        }
         public IActionResult Login()
         {
             return View();
@@ -33,7 +37,11 @@ namespace AspNetCoreMVCWebAPIUsing.Controllers
                 var response = await _httpClient.PostAsJsonAsync(_apiAdres + "Login", userLoginModel);
                 if (response.IsSuccessStatusCode)
                 {
-                    HttpContext.Session.SetString("userToken", await response.Content.ReadAsStringAsync());
+                    Token jwt = await response.Content.ReadFromJsonAsync<Token>();
+                    if (jwt is not null)
+                    {
+                        HttpContext.Session.SetString("userToken", jwt.AccessToken);
+                    }
                     return RedirectToAction(nameof(Index));
                 }
                 ModelState.AddModelError("", "Giriş Başarısız!");

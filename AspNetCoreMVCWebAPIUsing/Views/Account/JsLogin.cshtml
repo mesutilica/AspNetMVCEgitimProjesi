@@ -18,29 +18,91 @@
 
 <div id="main">
     <div class="form-signin text-center">
-        <form asp-action="JsLogin" autocomplete="off">
-            <input autocomplete="false" name="hidden" type="text" style="display:none;">
-            <img class="mb-4" src="/Img/lock-300x300.png" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 fw-normal">Js Giriş</h1>
-            <div class="alert">
-                @TempData["Mesaj"]
-            </div>
-            <div class="form-floating">
-                <input asp-for="Email" class="form-control" id="floatingInput" required placeholder="name@example.com" autocomplete="new-email" autofocus="true" value="admin@admin.com">
-                <label for="floatingInput">Email</label>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="new-password" required>
-                <label for="floatingPassword">Şifre</label>
-            </div>
+        <input autocomplete="false" name="hidden" type="text" style="display:none;">
+        <img class="mb-4" src="/Img/lock-300x300.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 fw-normal">Js Giriş</h1>
+        <div class="alert">
+            @TempData["Mesaj"]
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="Email" required placeholder="name@example.com" autocomplete="new-email" autofocus="true" value="admin@admin.com">
+            <label for="Email">Email</label>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" id="Password" placeholder="Password" autocomplete="new-password" required>
+            <label for="Password">Şifre</label>
+        </div>
 
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Beni Hatırla
-                </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary">Giriş</button>
-            <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
-        </form>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Beni Hatırla
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" onclick="Login()">Giriş</button>
+        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
     </div>
 </div>
+@Context.Session.Id
+@section scripts {
+    <script>
+        function Login() {
+            if (!document.getElementById('Email').value) {
+                alert("Email Boş Bırakılamaz!")
+                return false;
+            }
+            if (!document.getElementById('Password').value) {
+                alert("Şifre Boş Bırakılamaz!")
+                return false;
+            }
+
+            var UserLoginModel = {
+                Email: document.getElementById('Email').value,
+                Password: document.getElementById('Password').value
+            }
+            console.log(UserLoginModel)
+            console.log(JSON.stringify(UserLoginModel))
+            $.ajax({
+                method: 'POST',
+                url: "https://localhost:7116/Api/Auth/Login",
+                // type: "json",
+                headers: { 'Content-Type': 'application/json' },
+                data: JSON.stringify(UserLoginModel),
+                success: function (data) {
+                    //gelen sonuc
+                    console.log(data.accessToken);
+                    localStorage.setItem("token", data.accessToken);
+                    sessionStorage.token2 = data.accessToken;
+                    sessionStorage["token3"] = data.accessToken;
+
+                    // localStorage.removeItem("token");
+                    // localStorage.clear();
+                    // sessionStorage.clear()
+
+                    // localStorage.getItem("token");
+                    // sessionStorage.getItem(keyname)
+                    // sessionStorage.token2
+                    // sessionStorage["token3"]
+
+                    // console.table(data);
+                    // location.reload()
+                    location.href = "/Account"
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log("xhr.statusText : ", xhr.statusText);
+                    console.warn("textStatus: ", textStatus);
+                    console.log("error: ", error);
+                }
+            })
+                .done(function (msg) {
+                    console.log("second success", msg);
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                    console.warn("xhr, textStatus, errorThrown: ", xhr.status, textStatus, errorThrown);
+                    alert("Giriş Başarısız!")
+                })
+                .always(function () {
+                    console.log("finished");
+                });
+        }
+    </script>
+}

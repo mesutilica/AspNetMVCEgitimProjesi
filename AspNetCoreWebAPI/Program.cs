@@ -41,10 +41,12 @@ namespace AspNetCoreWebAPI
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthorization();
 
             // UseCors
             app.UseCors("default");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllers();
 

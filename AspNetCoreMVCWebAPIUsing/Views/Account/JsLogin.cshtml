@@ -69,9 +69,10 @@
                 data: JSON.stringify(UserLoginModel),
                 success: function (data) {
                     //gelen sonuc
-                    console.log(data.accessToken);
+                    console.log(data);
                     localStorage.setItem("token", data.accessToken);
-                    sessionStorage.token2 = data.accessToken;
+                    sessionStorage.refreshToken = data.refreshToken;
+
                     sessionStorage["token3"] = data.accessToken;
 
                     // localStorage.removeItem("token");

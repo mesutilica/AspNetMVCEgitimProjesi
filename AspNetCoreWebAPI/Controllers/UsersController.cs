@@ -2,6 +2,7 @@
 using AspNetCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspNetCoreWebAPI.Controllers
 {
@@ -36,6 +37,23 @@ namespace AspNetCoreWebAPI.Controllers
                 return NotFound();
             }
             var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+        // GET: api/Users/5
+        [HttpGet("GetUserByUserGuid/{id}"), Authorize]
+        public async Task<ActionResult<User>> GetUserByUserGuid(string id)
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.RefreshToken == id);
 
             if (user == null)
             {

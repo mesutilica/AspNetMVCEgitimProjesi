@@ -17,6 +17,10 @@ namespace AspNetCore.Entities
         [Column("Image", TypeName = "Varchar")]
         [Display(Name = "Ürün Resmi"), MaxLength(50)]
         public string? Image { get; set; }
+        //[Display(Name = "Durum")]
+        //public bool IsActive { get; set; }
+        //[Display(Name = "Anasayfada Göster")]
+        //public bool IsHome { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]
         public DateTime? CreateDate { get; set; } = DateTime.Now;
         [Display(Name = "Ürün Kategorisi"), Required(ErrorMessage = "Ürün Kategorisi Boş Geçilemez!")]

@@ -1,4 +1,4 @@
-﻿using AspNetCoreWebAPI.Data;
+﻿using AspNetCore.Data;
 using AspNetCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

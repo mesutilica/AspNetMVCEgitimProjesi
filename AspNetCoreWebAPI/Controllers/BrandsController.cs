@@ -1,5 +1,5 @@
 ﻿using AspNetCore.Entities;
-using AspNetCoreWebAPI.Data;
+using AspNetCore.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

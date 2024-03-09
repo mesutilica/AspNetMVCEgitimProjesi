@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AspNeCore.Entities\AspNetCore.Entities.csproj" />
+    <ProjectReference Include="..\AspNetCore.Data\AspNetCore.Data.csproj" />
   </ItemGroup>
 
 </Project>

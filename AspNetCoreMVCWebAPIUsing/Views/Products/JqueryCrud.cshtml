@@ -103,24 +103,24 @@
 </div>
 @section Scripts {
     <script>
-        $.get('https://localhost:7116/api/Products', function(data){
-                // console.log(data)
-                // Ekrandaki div elementini seç
-                let div = document.getElementById('products');
-                // Ürünleri div içine yazdır
-                data.forEach(item => {
-                    div.innerHTML += `<tr><td>${item.id}</td><td>${item.category.name}</td><td>${item.brand.name}</td>
-                                                          <td><a href="/Home/ProductDetail/${item.id}"><img src="https://localhost:7116/Img/${item.image}" alt="" height="34" /></a></td>
-                                                    <td>${item.name}</td>
-                                                    <td>${item.price} ₺</td>
-                                                    <td>${item.stock}</td>
-                                                    <td>${item.createDate}</td>
-                                                    <td><input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="Edit(${item.id})"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="Delete(${item.id})">
-                                                    </td>
-                                            </tr>`;
-                });
-            })
+        $.get('https://localhost:7116/api/Products', function (data) {
+            // console.log(data)
+            // Ekrandaki div elementini seç
+            let div = $('#products');
+            // Ürünleri div içine yazdır
+            data.forEach(item => {
+                div.append(`<tr><td>${item.id}</td><td>${item.category.name}</td><td>${item.brand.name}</td>
+                                                                  <td><a href="/Home/ProductDetail/${item.id}"><img src="https://localhost:7116/Img/${item.image}" alt="" height="34" /></a></td>
+                                                            <td>${item.name}</td>
+                                                            <td>${item.price} ₺</td>
+                                                            <td>${item.stock}</td>
+                                                            <td>${item.createDate}</td>
+                                                            <td><input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="Edit(${item.id})"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="Delete(${item.id})">
+                                                            </td>
+                                                    </tr>`);
+            });
+        })
             .catch(error => {
                 // Hata olursa konsola yazdır
                 console.error(error);
@@ -129,16 +129,16 @@
         // Kategoriler
         function Getcategories() {
             $.get('https://localhost:7116/api/categories', function (data) {
-                    // console.log(data)
-                    // Ekrandaki div elementini seç
-                    let elm = document.getElementById('Kategoriler');
-                    // Ürünleri div içine yazdır
-                    data.forEach(item => {
-                        let option = new Option(item.name, item.id)
-                        // console.log(option)
-                        elm.add(option)
-                    });
-                })
+                // console.log(data)
+                // Ekrandaki div elementini seç
+                let elm = $('#Kategoriler');
+                // Ürünleri div içine yazdır
+                data.forEach(item => {
+                    let option = new Option(item.name, item.id)
+                    // console.log(option)
+                    elm.append(option)
+                });
+            })
                 .catch(error => {
                     // Hata olursa konsola yazdır
                     console.error(error);
@@ -150,16 +150,16 @@
         // Markalar
         function Getbrands() {
             $.get('https://localhost:7116/api/brands', function (data) {
-                    // console.log(data)
-                    // Ekrandaki div elementini seç
-                    let elm = document.getElementById('Markalar');
-                    // Ürünleri div içine yazdır
-                    data.forEach(item => {
-                        let option = new Option(item.name, item.id)
-                        // console.log(option)
-                        elm.add(option)
-                    });
-                })
+                // console.log(data)
+                // Ekrandaki div elementini seç
+                let elm = $('#Markalar');
+                // Ürünleri div içine yazdır
+                data.forEach(item => {
+                    let option = new Option(item.name, item.id)
+                    // console.log(option)
+                    elm.append(option)
+                });
+            })
                 .catch(error => {
                     // Hata olursa konsola yazdır
                     console.error(error);
@@ -169,7 +169,7 @@
         Getbrands();
 
         function Ekle() {
-            if (!document.getElementById('Name').value) {
+            if (!$('#Name').val()) {
                 alert("Ürün Adı Boş Bırakılamaz!")
                 return false;
             }
@@ -179,15 +179,19 @@
 
             //formData.append("username", "abc123");
             formData.append("formFile", fileField.files[0]);
+
             var product = {
-                Name: document.getElementById('Name').value,
-                CategoryId: document.getElementById('Kategoriler').value,
-                BrandId: document.getElementById('Markalar').value,
-                Price: document.getElementById('Price').value,
-                Stock: document.getElementById('Stock').value,
-                Description: document.getElementById('Description').value,
-                Image: formData.get('formFile').name //document.getElementsByName('Image')[0].value
+                Name: $("#Name").val(),
+                CategoryId: $("#Kategoriler").val(),
+                BrandId: $("#Markalar").val(),
+                Image: formData.get("formFile").name, // document.getElementById("Image").value,
+                // IsActive: $("#IsActive")[0].checked,
+                // IsHome: $("#IsHome")[0].checked,
+                Stock: $("#Stock").val(),
+                Price: $("#Price").val(),
+                Description: $("#Description").val()
             }
+
             console.log(product)
             console.log(JSON.stringify(product))
             $.ajax({
@@ -210,32 +214,32 @@
 
         function Edit(id) {
             $.get('https://localhost:7116/api/Products/' + id, function (item) {
-                    console.log(item)
-                    // Ekrandaki div elementini seç
-                    document.getElementById('Kategoriler').value = item.categoryId;
-                    document.getElementById('Markalar').value = item.brandId;
-                    document.getElementById('Id').value = item.id;
-                    document.getElementById('Name').value = item.name;
-                    document.getElementById('Description').value = item.description;
-                    document.getElementById('Price').value = item.price;
-                    document.getElementById('Stock').value = item.stock;
-                    document.getElementById('ImageName').value = item.image;
-                    document.getElementById("Image").innerHTML = "<img src='https://localhost:7116/Img/" + item.image + "' height='50' />"
-                })
+                console.log(item)
+                // Ekrandaki div elementini seç
+                $('#Id').val() = item.id;
+                $('#Kategoriler').val() = item.categoryId;
+                $('#Markalar').val() = item.brandId;
+                $('#Name').val() = item.name;
+                $('#Description').val() = item.description;
+                $('#Price').val() = item.price;
+                $('#Stock').val() = item.stock;
+                $('#ImageName').val() = item.image;
+                $("#Image").html("<img src='https://localhost:7116/Img/" + item.image + "' height='50' />")
+            })
                 .catch(error => {
                     // Hata olursa konsola yazdır
                     console.error(error);
                 });
-            document.getElementById("btnGuncelle").removeAttribute("disabled")
+            $("#btnGuncelle").removeAttr("disabled")
         }
 
         function Guncelle() {
-            if (!document.getElementById('Name').value) {
+            if (!$('#Name').val()) {
                 alert("Ürün Adı Boş Bırakılamaz!")
                 return false;
             }
-            var id = document.getElementById('Id').value;
-            var resim = document.getElementById('ImageName').value;
+            var id = $('#Id').val();
+            var resim = $('#ImageName').val();
             // file upload
             const formData = new FormData();
             const fileField = document.querySelector('input[type="file"]');
@@ -248,13 +252,15 @@
             }
             var product = {
                 Id: id,
-                Name: document.getElementById('Name').value,
-                CategoryId: document.getElementById('Kategoriler').value,
-                BrandId: document.getElementById('Markalar').value,
-                Price: document.getElementById('Price').value,
-                Stock: document.getElementById('Stock').value,
-                Description: document.getElementById('Description').value,
-                Image: resim //document.getElementsByName('Image')[0].value
+                Name: $("#Name").val(),
+                CategoryId: $("#Kategoriler").val(),
+                BrandId: $("#Markalar").val(),
+                Image: resim,
+                // IsActive: $("#IsActive")[0].checked,
+                // IsHome: $("#IsHome")[0].checked,
+                Stock: $("#Stock").val(),
+                Price: $("#Price").val(),
+                Description: $("#Description").val()
             }
             $.ajax({
                 method: 'PUT',

@@ -1,6 +1,6 @@
 ﻿using AspNetCore.Entities;
 using AspNetCore.Entities.Models;
-using AspNetCoreWebAPI.Data;
+using AspNetCore.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

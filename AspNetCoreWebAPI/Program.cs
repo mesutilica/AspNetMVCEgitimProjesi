@@ -1,4 +1,4 @@
-using AspNetCoreWebAPI.Data;
+using AspNetCore.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

@@ -1,4 +1,4 @@
-﻿using AspNetCoreWebAPI.Data;
+﻿using AspNetCore.Data;
 using AspNetCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +24,7 @@ namespace AspNetCoreWebAPI.Controllers
             {
                 return NotFound();
             }
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(c => c.Category).Include(b => b.Brand).ToListAsync();
         }
 
         // GET: api/Products/5

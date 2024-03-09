@@ -15,8 +15,10 @@ namespace AspNetCore.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Burası veritabanı yapılandırma ayarlarını yapabileceğimiz metot
-            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=AspNetCoreMVCProjesi; integrated security=true;"); // TrustServerCertificate=True
-            //optionsBuilder.UseInMemoryDatabase("AspNetCoreMVCProjesi");
+            // optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=AspNetCoreMVCProjesi; integrated security=true;"); // TrustServerCertificate=True
+            // optionsBuilder.UseInMemoryDatabase("AspNetCoreMVCProjesi");
+            // optionsBuilder.UseLazyLoadingProxies();
+            // komut satırında yardım için dotnet ef enter
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

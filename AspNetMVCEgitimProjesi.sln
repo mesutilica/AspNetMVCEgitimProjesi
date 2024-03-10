@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFrameworkMVCEgitimKon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCEgitimKonulari", "AspNetMVCEgitimProjesi.NetCore\AspNetCoreMVCEgitimKonulari.csproj", "{E742AA6B-D295-4BA8-9813-BB8A5108AE7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCKurumsalSite", "AspNetCoreMVCProjesi\AspNetCoreMVCKurumsalSite.csproj", "{BEA932BA-FAF4-4161-A795-220BAA86F590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.MVCUI", "AspNetCoreMVCProjesi\AspNetCore.MVCUI.csproj", "{BEA932BA-FAF4-4161-A795-220BAA86F590}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWebAPI", "AspNetCoreWebAPI\AspNetCoreWebAPI.csproj", "{B1CDC054-C754-45C4-86A7-731041DBE063}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebAPI", "AspNetCoreWebAPI\AspNetCore.WebAPI.csproj", "{B1CDC054-C754-45C4-86A7-731041DBE063}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFrameworkMVCWebAPI", "AspNetMVCWebAPI.NetFramework\AspNetFrameworkMVCWebAPI.csproj", "{46FDC126-70C2-4D76-83D3-7BAC73B9E205}"
 EndProject
@@ -17,11 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetFramework.Entities", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Entities", "AspNeCore.Entities\AspNetCore.Entities.csproj", "{E6BF39F1-188F-47CB-AAEB-AA5535C07C47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMVCWebAPIUsing", "AspNetCoreMVCWebAPIUsing\AspNetCoreMVCWebAPIUsing.csproj", "{AC50A1F5-3777-47FD-8C17-0AEEEAFCC1FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.MVCWebAPIUsing", "AspNetCoreMVCWebAPIUsing\AspNetCore.MVCWebAPIUsing.csproj", "{AC50A1F5-3777-47FD-8C17-0AEEEAFCC1FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Data", "AspNetCore.Data\AspNetCore.Data.csproj", "{CD4F41C8-0C2A-45AA-88D4-CCFAC7C8B3A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Data", "AspNetCore.Data\AspNetCore.Data.csproj", "{CD4F41C8-0C2A-45AA-88D4-CCFAC7C8B3A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Service", "AspNetCore.Service\AspNetCore.Service.csproj", "{819F2EE2-3211-4AAE-8903-53EE39C497BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Service", "AspNetCore.Service\AspNetCore.Service.csproj", "{819F2EE2-3211-4AAE-8903-53EE39C497BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

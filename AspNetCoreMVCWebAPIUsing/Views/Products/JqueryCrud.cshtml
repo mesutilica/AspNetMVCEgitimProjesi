@@ -322,52 +322,7 @@
             }
         }
 
-        // seçilen satırları silme 1
-        // $(document).ready(function () {
-        //     $("#deleteSelected").click(function () {
-        //         $(".selectRow:checked").each(function () {
-        //             console.log()
-        //             $(this).closest("tr").remove();
-        //             // Silme işlemini gerçekleştirin (örneğin, AJAX ile sunucuya gönderin)
-        //         });
-        //     });
-        // });
-
-        // $(document).ready(function () {
-        //     $("#urunler tbody tr").click(function () {
-        //         $(this).toggleClass("table-danger");
-
-        //     });
-
-        //     $("#deleteSelected").click(function () {
-        //         $("#urunler tbody tr.table-danger").each(function () {
-        //             $(this).remove();
-        //             // Silme işlemini gerçekleştirin (örneğin, AJAX ile sunucuya gönderin)
-        //         });
-        //     });
-        // });
-
-        // $(document).ready(function () {
-        //     $("#deleteSelected").click(function () {
-        //         $("#urunler tbody tr.table-danger").each(function () {
-        //             const dataId = $(this).data("id"); // data-id değerini yakala
-        //             // AJAX ile sunucuya gönder (örneğin, silme işlemi)
-        //             $.ajax({
-        //                 url: "/delete",
-        //                 method: "POST",
-        //                 data: { id: dataId }, // data-id değerini sunucuya gönder
-        //                 success: function (response) {
-        //                     console.log("Silme işlemi başarılı:", response);
-        //                 },
-        //                 error: function (error) {
-        //                     console.error("Hata oluştu:", error);
-        //                 }
-        //             });
-        //         });
-        //     });
-        // });
-
-        $(document).ready(function () {
+        $(function () {
             // Checkbox seçildiğinde çalışacak işlevi tanımlayın
             $(".selectRow").change(function () {
                 if ($(this).is(":checked")) {
@@ -391,6 +346,5 @@
                 }
             });
         });
-
     </script>
 }

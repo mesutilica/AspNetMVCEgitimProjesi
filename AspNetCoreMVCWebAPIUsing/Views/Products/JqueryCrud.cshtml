@@ -11,12 +11,13 @@
 </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Yeni Kayıt
 </button>
 
-<table class="table table-striped table-hover">
+<table id="urunler" class="table table-striped table-hover">
     <tr>
+        <th></th>
         <th>Id</th>
         <th>Kategori</th>
         <th>Marka</th>
@@ -29,6 +30,8 @@
     </tr>
     <tbody id="products"></tbody>
 </table>
+
+<button id="deleteSelected" class="btn btn-warning">Seçilenleri Sil</button>
 
 <input type="hidden" id="Id" />
 <input type="hidden" id="ImageName" />
@@ -109,16 +112,16 @@
             let div = $('#products');
             // Ürünleri div içine yazdır
             data.forEach(item => {
-                div.append(`<tr><td>${item.id}</td><td>${item.category.name}</td><td>${item.brand.name}</td>
-                                                                  <td><a href="/Home/ProductDetail/${item.id}"><img src="https://localhost:7116/Img/${item.image}" alt="" height="34" /></a></td>
-                                                            <td>${item.name}</td>
-                                                            <td>${item.price} ₺</td>
-                                                            <td>${item.stock}</td>
-                                                            <td>${item.createDate}</td>
-                                                            <td><input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="Edit(${item.id})"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                                <input type="button" value="Sil" class="btn btn-sm btn-danger" onclick="Delete(${item.id})">
-                                                            </td>
-                                                    </tr>`);
+                div.append(`<tr data-id="${item.id}"><td><input type="checkbox" class="selectRow"></td><td>${item.id}</td><td>${item.category.name}</td><td>${item.brand.name}</td>
+                                                                                  <td><a href="/Home/ProductDetail/${item.id}"><img src="https://localhost:7116/Img/${item.image}" alt="" height="34" /></a></td>
+                                                                            <td>${item.name}</td>
+                                                                            <td>${item.price} ₺</td>
+                                                                            <td>${item.stock}</td>
+                                                                            <td>${item.createDate}</td>
+                                                                            <td><input type="button" value="Düzenle" class="btn btn-sm btn-primary" onclick="Edit(${item.id})"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                                        <input data-id="${item.id}" type="button" value="Sil" class="btn btn-sm btn-danger">
+                                                                            </td>
+                                                                    </tr>`);
             });
         })
             .catch(error => {
@@ -281,21 +284,26 @@
         }
 
         function Delete(id) {
-            if (confirm('Kaydı silmek istediğinize emin misiniz?')) {
-                $.ajax({
-                    url: 'https://localhost:7116/api/Products/' + id,
-                    type: 'DELETE',
-                    success: function (data) {
-                        //gelen sonuc
-                        // console.log(data);
-                        location.reload()
-                    },
-                    error: function (err) {
-                        $("#sonuc").show().removeClass("alert-info").addClass("alert-danger").html("Hata Oluştu! Mesajınız Gönderilemedi!").delay("10000").fadeOut();
-                    }
-                });
-            }
+            $.ajax({
+                url: 'https://localhost:7116/api/Products/' + id,
+                type: 'DELETE',
+                success: function (data) {
+                    //gelen sonuc
+                    // console.log(data);
+                    location.reload()
+                },
+                error: function (err) {
+                    $("#sonuc").show().removeClass("alert-info").addClass("alert-danger").html("Hata Oluştu! Mesajınız Gönderilemedi!").delay("10000").fadeOut();
+                }
+            });
         }
+
+        $("#urunler tbody").on("click", "tr .btn-danger", function () {
+            if (confirm('Kaydı silmek istediğinize emin misiniz?')) {
+                console.log($(this).data("id"));
+                Delete($(this).data("id"))
+            }
+        });
 
         // file upload
         function upload(formData) {
@@ -313,5 +321,76 @@
                 console.error("Error:", error);
             }
         }
+
+        // seçilen satırları silme 1
+        // $(document).ready(function () {
+        //     $("#deleteSelected").click(function () {
+        //         $(".selectRow:checked").each(function () {
+        //             console.log()
+        //             $(this).closest("tr").remove();
+        //             // Silme işlemini gerçekleştirin (örneğin, AJAX ile sunucuya gönderin)
+        //         });
+        //     });
+        // });
+
+        // $(document).ready(function () {
+        //     $("#urunler tbody tr").click(function () {
+        //         $(this).toggleClass("table-danger");
+
+        //     });
+
+        //     $("#deleteSelected").click(function () {
+        //         $("#urunler tbody tr.table-danger").each(function () {
+        //             $(this).remove();
+        //             // Silme işlemini gerçekleştirin (örneğin, AJAX ile sunucuya gönderin)
+        //         });
+        //     });
+        // });
+
+        // $(document).ready(function () {
+        //     $("#deleteSelected").click(function () {
+        //         $("#urunler tbody tr.table-danger").each(function () {
+        //             const dataId = $(this).data("id"); // data-id değerini yakala
+        //             // AJAX ile sunucuya gönder (örneğin, silme işlemi)
+        //             $.ajax({
+        //                 url: "/delete",
+        //                 method: "POST",
+        //                 data: { id: dataId }, // data-id değerini sunucuya gönder
+        //                 success: function (response) {
+        //                     console.log("Silme işlemi başarılı:", response);
+        //                 },
+        //                 error: function (error) {
+        //                     console.error("Hata oluştu:", error);
+        //                 }
+        //             });
+        //         });
+        //     });
+        // });
+
+        $(document).ready(function () {
+            // Checkbox seçildiğinde çalışacak işlevi tanımlayın
+            $(".selectRow").change(function () {
+                if ($(this).is(":checked")) {
+                    $(this).closest("tr").addClass("table-danger");
+                } else {
+                    $(this).closest("tr").removeClass("table-danger");
+                }
+            });
+
+            // Silme işlemi için seçili satırları kullanabilirsiniz
+            $("#deleteSelected").click(function () {
+                if (confirm('Seçili kayıtları silmek istediğinize emin misiniz?')) {
+                    $(".table-danger").each(function () {
+                        // Silme işlemini gerçekleştirin (örneğin, AJAX ile sunucuya gönderin)
+                        const dataId = $(this).data("id");
+                        console.warn(dataId);
+                        // $(this).remove();
+
+                        Delete(dataId)
+                    });
+                }
+            });
+        });
+
     </script>
 }

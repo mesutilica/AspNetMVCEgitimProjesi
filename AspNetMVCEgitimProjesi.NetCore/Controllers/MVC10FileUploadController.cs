@@ -9,7 +9,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(IFormFile? dosya)
+        public IActionResult Index(IFormFile? dosya) // Mvc de dosya yükleme IFormFile interface i ile yapılıyor. Burada dosya isminin ekrandaki file upload name i ile aynı olması gerekir yoksa dosya yüklenmez!
         {
             if (dosya is not null)
             {
@@ -38,6 +38,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             if (System.IO.File.Exists(resimYolu))
             {
                 System.IO.File.Delete(resimYolu);
+                TempData["message"] = "Resim Silindi!";
                 return RedirectToAction("Index");
             }
             return View("Index");

@@ -1,17 +1,11 @@
 ﻿@{
     ViewBag.Title = "File Upload - Dosya Yükleme İşlemi";
-    var dosyalar = new DirectoryInfo(Directory.GetCurrentDirectory() + "/wwwroot/Images/");
-    var infoList = dosyalar.GetFiles();
 }
 
 <h2>File Upload - Dosya Yükleme İşlemi</h2>
+
+<b>Rasgele Dosya Adı :</b>
 @System.IO.Path.GetRandomFileName()
-<p>
-    Dosya yüklemek için bir form elementine ihtiyaç var.
-    Form elementine enctype="multipart/form-data" attribute ünü eklemek zorundayız
-    Formda dosya yüklemek için type ı file olan element gerekli
-    File elementine verilen isim önemli post metodunda bu elementin name değerine göre eşleşme sağlanıyor!
-</p>
 
 <form asp-action="Index" enctype="multipart/form-data">
     <input type="file" name="dosya" class="form-control" />
@@ -19,10 +13,22 @@
     <input type="submit" value="Yükle" class="btn btn-primary" />
 </form>
 <hr />
-<img src="/Img/@TempData["Resim"]" alt="" height="180" />
+<img src="/Images/@TempData["Resim"]" alt="" height="180" />
 
 @TempData["message"]
 <hr />
+
+<p>
+    Dosya yüklemek için bir form elementine ihtiyaç var.
+    Form elementine enctype="multipart/form-data" attribute ünü eklemek zorundayız
+    Formda dosya yüklemek için type ı file olan element gerekli
+    File elementine verilen isim önemli post metodunda bu elementin name değerine göre eşleşme sağlanıyor!
+</p>
+
+@{
+    var dosyalar = new DirectoryInfo(Directory.GetCurrentDirectory() + "/wwwroot/Images/");
+    FileInfo[] infoList = dosyalar.GetFiles();
+}
 
 <table class="table">
     <tr>

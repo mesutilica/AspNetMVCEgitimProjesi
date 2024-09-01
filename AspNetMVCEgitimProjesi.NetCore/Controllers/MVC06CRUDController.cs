@@ -46,7 +46,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         // POST: MVC06CRUD/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Ad,Soyad,Email,Telefon,TcKimlikNo,DogumTarihi,KullaniciAdi,Sifre,SifreTekrar")] Uye uye)
+        public async Task<IActionResult> Create(Uye uye)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         // POST: MVC06CRUD/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Ad,Soyad,Email,Telefon,TcKimlikNo,DogumTarihi,KullaniciAdi,Sifre,SifreTekrar")] Uye uye)
+        public async Task<IActionResult> Edit(int id, Uye uye)
         {
             if (id != uye.Id)
             {

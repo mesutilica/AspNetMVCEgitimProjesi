@@ -1,5 +1,14 @@
 ﻿@model Uye
 
-<div>
-    @Model.Ad @Model.Soyad
-</div>
+@if (Model is not null)
+{
+    <div>
+        @Model.Ad @Model.Soyad
+    </div>
+}
+else
+{
+    <div>
+        Model datası bulunamadı!
+    </div>
+}

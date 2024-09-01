@@ -20,7 +20,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             return View("Index");
         }
-        public IActionResult Yonlendir(string arananDeger)
+        public IActionResult Yonlendir(string kelime)
         {
             // Bir action içerisinde farklı bir sayfaya yönlendirme yapabiliriz
             //return Redirect("/Home"); // Redirect ile sayfa yönlendirme genelde verilerle ilgili bir işlemden sonra lazım olur

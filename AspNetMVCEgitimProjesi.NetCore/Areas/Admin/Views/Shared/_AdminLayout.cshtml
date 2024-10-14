@@ -23,15 +23,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                            <a class="nav-link" asp-area="Admin" asp-controller="Default" asp-action="Index">Anasayfa</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Admin" asp-controller="Brands" asp-action="Index">Markalar</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="Categories" asp-action="Index">Kategoriler</a>
+                        </li>
                     </ul>
                 </div>
 
-                <a class="btn btn-danger" asp-area="Admin" asp-controller="Login" asp-action="Logout">Çıkış</a>
+                <form action="/MVC15FiltersUsing/Logout" method="post" class="text-end">
+                    <input type="submit" class="btn btn-danger" value="Oturumu Kapat" />
+                </form>
 
             </div>
         </nav>

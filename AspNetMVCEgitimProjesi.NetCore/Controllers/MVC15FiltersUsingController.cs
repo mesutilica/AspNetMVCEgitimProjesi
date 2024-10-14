@@ -55,11 +55,13 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             }
             return View(uye);
         }
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> LoginAsync(Uye uye)
         {
             try
@@ -69,8 +71,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 {
                     var haklar = new List<Claim>() // kullanıcı hakları tanımladık
                     {
-                        new Claim(ClaimTypes.Email, kullanici.Email), // claim = hak(kullanıcıya tanımlalan haklar)
-                        new Claim(ClaimTypes.Role, "Admin")
+                        new(ClaimTypes.Email, kullanici.Email), // claim = hak(kullanıcıya tanımlalan haklar)
+                        new(ClaimTypes.Role, "Admin")
                     };
                     var kullaniciKimligi = new ClaimsIdentity(haklar, "Login"); // kullanıcı için bir kimlik oluşturduk
                     ClaimsPrincipal claimsPrincipal = new(kullaniciKimligi);

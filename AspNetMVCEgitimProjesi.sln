@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Data", "AspNetCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Service", "AspNetCore.Service\AspNetCore.Service.csproj", "{819F2EE2-3211-4AAE-8903-53EE39C497BF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCoreKatmanliProje", "AspNetCoreKatmanliProje", "{2D545843-229F-4F6C-8016-4A6DA2E01621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BEA932BA-FAF4-4161-A795-220BAA86F590} = {2D545843-229F-4F6C-8016-4A6DA2E01621}
+		{B1CDC054-C754-45C4-86A7-731041DBE063} = {2D545843-229F-4F6C-8016-4A6DA2E01621}
+		{E6BF39F1-188F-47CB-AAEB-AA5535C07C47} = {2D545843-229F-4F6C-8016-4A6DA2E01621}
+		{AC50A1F5-3777-47FD-8C17-0AEEEAFCC1FA} = {2D545843-229F-4F6C-8016-4A6DA2E01621}
+		{CD4F41C8-0C2A-45AA-88D4-CCFAC7C8B3A0} = {2D545843-229F-4F6C-8016-4A6DA2E01621}
+		{819F2EE2-3211-4AAE-8903-53EE39C497BF} = {2D545843-229F-4F6C-8016-4A6DA2E01621}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57ABCF8C-3B47-46B4-833D-8083F8F090B8}

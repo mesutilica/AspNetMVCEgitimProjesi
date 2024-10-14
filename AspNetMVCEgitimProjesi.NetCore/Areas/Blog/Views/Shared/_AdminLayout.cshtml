@@ -37,7 +37,9 @@
                     </ul>
                 </div>
 
-                <a class="btn btn-danger" asp-area="Admin" asp-controller="Login" asp-action="Logout">Çıkış</a>
+                <form action="/MVC15FiltersUsing/Logout" method="post" class="text-end">
+                    <input type="submit" class="btn btn-danger" value="Oturumu Kapat" />
+                </form>
 
             </div>
         </nav>

@@ -8,14 +8,17 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Admin\Data\**" />
+    <Compile Remove="Areas\Blog\Data\**" />
+    <Compile Remove="Areas\Blog\Models\**" />
     <Content Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\Blog\Data\**" />
+    <Content Remove="Areas\Blog\Models\**" />
     <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\Blog\Data\**" />
+    <EmbeddedResource Remove="Areas\Blog\Models\**" />
     <None Remove="Areas\Admin\Data\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Blog\Data\" />
-    <Folder Include="Areas\Blog\Models\" />
+    <None Remove="Areas\Blog\Data\**" />
+    <None Remove="Areas\Blog\Models\**" />
   </ItemGroup>
 
   <ItemGroup>

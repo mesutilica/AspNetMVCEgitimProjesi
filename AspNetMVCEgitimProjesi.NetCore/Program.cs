@@ -1,13 +1,15 @@
 using AspNetMVCEgitimProjesi.NetCore.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore; // Bu kütüphaneyi de admin login için ekledik.
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims; // Bu kütüphaneyi de admin login için ekledik.
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews(); // Uygulamada MVC controller view yapýsýný kullanacaðýz
-
 
 //FluentValidation
 builder.Services.AddScoped<IValidator<Kullanici>, KullaniciValidator>();
@@ -19,13 +21,22 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true; // Javascriptle ulaþýlamasýn
     options.Cookie.IsEssential = true; // onay politikasý kontrolleri atlansýn
 }); // Uygulamada session kullanacaðýmýzý bildirdik. option kullanarak session yapýlandýrmasýný kullanabiliriz. Sonrasýnda aþaðýdaki add tanýmlamasýndan sonra use session ayarýný yapýyoruz.
+
 var connectionString = builder.Configuration.GetConnectionString("UyeContext");
+
 builder.Services.AddDbContext<UyeContext>(x => x.UseSqlServer(connectionString)); //option => option.UseInMemoryDatabase("InMemoryDb") UseInMemoryDatabase kullanýmý
+
 // Admin login iþlemi için aþaðýdaki servisi ekliyoruz.
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {
     x.LoginPath = "/MVC15FiltersUsing/Login"; // Admin oturum açma sayfamýzý belirttik
 });
+
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("AdminPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"))
+    .AddPolicy("UserPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "Admin", "User"))
+    .AddPolicy("CustomerPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "Admin", "User", "Customer"))
+    .AddPolicy("BlogPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "Admin", "User", "Customer"));
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -55,8 +66,9 @@ app.UseAuthorization(); // Uygulamada yetkilendirme kullanýmýný aktif et
 // Admin areasýný ekledikten sonra aþaðýdaki route ayarýný tanýmlamamýz gerekiyor! Sonrasýnda admin içerisindeki controllerlarýn üstüne area adýný yazmamýz gerekiyor yoksa 404 error hatasý alýyoruz.
 app.MapControllerRoute(
             name: "admin",
-            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-          );
+            pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}"
+          )
+    .RequireAuthorization("BlogPolicy");
 
 app.MapControllerRoute(
             name: "blog",

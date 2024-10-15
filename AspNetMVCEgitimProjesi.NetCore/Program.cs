@@ -1,3 +1,4 @@
+using AspNetCoreMVCEgitimKonulari.Dtos;
 using AspNetMVCEgitimProjesi.NetCore.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -41,6 +42,9 @@ builder.Services.AddAuthorizationBuilder()
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddMemoryCache(); // Keþlemeyi kullanabilmek için
+
+builder.Services.AddAutoMapper(typeof(DtoMapper)); // AutoMapper inject için
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

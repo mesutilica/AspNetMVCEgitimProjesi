@@ -1,0 +1,108 @@
+﻿@model IEnumerable<AspNetCoreMVCEgitimKonulari.Dtos.UyeListDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>AutoMapper Nedir?</h1>
+
+<p>
+    Kısaca açıklamak gerekirse; bir nesne türünü başka bir nesneye özellikleriyle birlikte eşleyen basit bir kütüphanedir.
+</p>
+
+<h2>DTO Nedir?</h2>
+
+<p>
+    Dto(Data Transfer Object), işlemler arasında veri taşıyan bir nesnedir.
+</p>
+
+<p>
+    AutoMapper, nesne yönelimli programlama (OOP) için oldukça kullanışlı bir kütüphanedir. Temel amacı, bir nesnenin özelliklerini başka bir nesneye otomatik olarak eşlemektir. Özellikle veri transfer nesneleri (DTO) ve veri erişim nesneleri (DAO) arasında veri taşırken yaygın olarak kullanılır. Bu, aynı türde farklı nesneler arasında veri aktarımını daha hızlı ve hatasız bir şekilde gerçekleştirmenize yardımcı olur. Kısacası, AutoMapper sizin için kod tekrarını azaltır ve veri dönüşümlerini daha basit hale getirir.
+</p>
+
+<h3>AutoMapper’ı Projeye Nasıl Ekleriz?</h3>
+
+<p>Package Manager Console’a ‘Install-Package Automapper.Extensions.Microsoft.DependencyInjection’ yazarak tüm AutoMapper paketlerini kurabiliriz. Farklı bir kurulum yöntemi olan Manage NuGet Packages’i kullanabilirsiniz. Projenizde ‘Dependencies’e sağ tıklayıp ilgili seçeneği seçin.</p>
+
+<p>
+    Eğer uygulamamıza bir kullanıcı kayıt olacaksa bu tabloya ilk kayıt işleminde Id, IsActive, ConfirmedEmail ve ConfirmedPhone alanlarının kullanıcı tarafından doldurulup gönderilmesi gerekmemekte.
+    <br /><br />
+    Aynı mantıkla kullanıcı login olacağı zaman sadece Email ve Password alanlarını doldurması gerekmekte. Direkt kullanıcıdan model almamız, gereksiz kolonları tutmamıza neden olacak. Büyük verilerin listeleneceği/aksiyon alınacağı modellerde dto’ların kullanılmaması performans sorununa yol açabilir. Bu durumdan en iyi performansı alabilmek için DTO’ları kullanıyoruz. Şimdi Core katmanında DTOS klasörü içerisinde login ve register işleminde kullanacağım class’ları oluşturacağım.
+</p>
+
+<h3>Startup</h3>
+
+<p>
+    İlgili işlemimi gerçekleştirdikten sonra startup.cs dosyama gelip
+    <br /><br />
+    builder.Services.AddAutoMapper(typeof(DtoMapper)); // AutoMapper inject için
+</p>
+
+<h3>Controller Kullanımı</h3>
+
+<code>
+    private readonly IMapper _mapper;
+
+    public MVC20AutoMapperController(IMapper mapper)
+    {
+    _mapper = mapper;
+    }
+</code>
+
+<h2>Üye Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TcKimlikNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DogumTarihi)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TcKimlikNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DogumTarihi)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Uye Dto Bilgileri</h3>
+
+<p>ViewBag.Email: @ViewBag.Email</p>
+
+<p>ViewBag.Password: @ViewBag.Password</p>

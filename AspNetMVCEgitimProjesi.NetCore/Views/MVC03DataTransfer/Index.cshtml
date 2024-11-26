@@ -68,6 +68,13 @@
     <hr />
     @Html.DropDownList("ddlListe", liste)
     <hr />
+    <label for="rbOnay">
+        @Html.RadioButton("rbOnay", "onay", htmlAttributes: new { id = "rbOnay" }) Onaylıyorum
+    </label>
+    <label for="rbRed">
+        @Html.RadioButton("rbOnay", "red", htmlAttributes: new { id = "rbRed" }) Onaylamıyorum
+    </label>
+    <hr />
     @Html.CheckBox("cbOnay") <label for="cbOnay">Onaylıyorum</label>
     <hr />
     <input type="submit" value="Gönder" />

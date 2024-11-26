@@ -75,6 +75,19 @@
             <td>@Html.DropDownList("ddlListe", kategoriler)</td>
         </tr>
         <tr>
+            <td>
+                Sözleşme
+            </td>
+            <td>
+                <label for="rbOnay">
+                    @Html.RadioButton("rbOnay", "onay", htmlAttributes: new { id = "rbOnay" }) Onaylıyorum
+                </label>
+                <label for="rbRed">
+                    @Html.RadioButton("rbOnay", "red", htmlAttributes: new { id = "rbRed" }) Onaylamıyorum
+                </label>
+            </td>
+        </tr>
+        <tr>
             <td>Durum</td>
             <td>@Html.CheckBox("cbOnay") <label for="cbOnay">Aktif</label> </td>
         </tr>

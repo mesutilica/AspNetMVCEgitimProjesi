@@ -28,7 +28,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(string text1, string ddlListe, bool cbOnay, FormCollection formCollection)
+        public ActionResult Index(string text1, string ddlListe, bool cbOnay, string rbOnay, FormCollection formCollection)
         {
             IList<Urun> urunListesi = new List<Urun>
             {
@@ -42,16 +42,19 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             ViewBag.Mesaj1 = "Textbox değeri : " + text1;
             ViewBag.Mesaj2 = "Dropdown değeri : " + ddlListe;
             ViewBag.Mesaj3 = "cbOnay değeri : " + cbOnay;
+            ViewBag.Mesaj3 += " - rbOnay değeri : " + rbOnay;
 
             ViewBag.Baslik2 = "2. Yöntem FormCollection İle Yakalama";
             ViewBag.Mesaj4 = "Textbox değeri : " + formCollection["text1"];
             ViewBag.Mesaj5 = "Dropdown değeri : " + formCollection["ddlListe"];
             ViewBag.Mesaj6 = "cbOnay değeri : " + formCollection.GetValues("cbOnay")[0];
+            ViewBag.Mesaj6 += "rbOnay değeri : " + formCollection.GetValues("rbOnay")[0];
 
             ViewBag.Baslik3 = "3. Yöntem Request Form İle Yakalama";
             ViewBag.Mesaj7 = "Textbox değeri : " + Request.Form["text1"];
             ViewBag.Mesaj8 = "Dropdown değeri : " + Request.Form["ddlListe"];
             ViewBag.Mesaj9 = "cbOnay değeri : " + Request.Form.GetValues("cbOnay")[0];
+            ViewBag.Mesaj9 += "rbOnay değeri : " + Request.Form.GetValues("rbOnay")[0];
             ViewBag.Mesaj9 += " -- <hr> text1 değeri : " + Request.Form.GetValues("text1")[0];
             ViewBag.Mesaj9 += " -- ddlListe değeri : " + Request.Form.GetValues("ddlListe")[0];
             return View();

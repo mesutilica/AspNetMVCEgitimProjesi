@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AspNetCoreMVCEgitimKonulari.Filters;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema; // Validation işlemleri için gerekli kütüphane
 
 namespace AspNetMVCEgitimProjesi.NetCore.Models
@@ -12,6 +13,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Models
         [Required(ErrorMessage = "{0} alanı boş geçilemez!"), StringLength(50)]
         public string Soyad { get; set; }
         [EmailAddress(ErrorMessage = "Geçersiz Email Adresi!"), StringLength(50)] // Aşağıdaki alana email adresi türünde veri girilebilsin
+        [UniqueEmail] // Custom attribute for unique email:filters konusunda ekle
         public string? Email { get; set; }
         [Phone(ErrorMessage = "Geçersiz Telefon Formatı!")]
         public string? Telefon { get; set; } // string? soru işareti bu alanın nullable yani boş geçilebilir olmasını sağlar

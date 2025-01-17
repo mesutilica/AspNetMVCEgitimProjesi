@@ -31,48 +31,58 @@
 
 <h3>IHttpContextAccessor ü inject ederek kullanma</h3>
 <p>
-    <hr />Controller Adı : 
+    <hr />Controller Adı :
     @_context.HttpContext.GetRouteValue("Controller")
     <br />Action Adı :
     @_context.HttpContext.GetRouteValue("Action")
-    <br />Id Değeri : 
+    <br />Id Değeri :
     @_context.HttpContext.GetRouteValue("id")
-    <br />Request Method : 
+    <br />Request Method :
     @_context.HttpContext.Request.Method
-    <br />QueryString : 
+    <br />Request Scheme :
+    @_context.HttpContext.Request.Scheme
+    <br />Request.Path :
+    @_context.HttpContext.Request.Path.Value
+    <br />Request.Host :
+    @_context.HttpContext.Request.Host
+    <br />QueryString :
     @_context.HttpContext.Request.QueryString
     <br />Query kelime:
     @_context.HttpContext.Request.Query["kelime"]
-    <br /> Session değeri : 
+    <br /> Session değeri :
     @_context.HttpContext.Session.GetString("UserGuid")
-    <br /> Cookie değeri : 
+    <br /> Cookie değeri :
     @_context.HttpContext.Request.Cookies["userguid"]
-    <br /> Oturum açılmış mı? : 
+    <br /> Oturum açılmış mı? :
     @_context.HttpContext.User.Identity.IsAuthenticated
     <br /> Kullanıcı User Rolüne Sahip mi? :
     @_context.HttpContext.User.IsInRole("User")
 </p>
 
 <p>
-    <hr />Controller Adı : 
+    <hr />Controller Adı :
     @Context.GetRouteValue("Controller")
     <br />Action Adı :
     @Context.GetRouteValue("Action")
-    <br />Id Değeri : 
+    <br />Id Değeri :
     @Context.GetRouteValue("id")
-    <br />Request Method : 
+    <br />Request Method :
     @Context.Request.Method
     <br />Request Scheme :
     @Context.Request.Scheme
-    <br />QueryString : 
+    <br />Request.Path :
+    @Context.Request.Path.Value
+    <br />Request.Host :
+    @Context.Request.Host
+    <br />QueryString :
     @Context.Request.QueryString
     <br />Query kelime:
     @Context.Request.Query["kelime"]
-    <br /> Session değeri : 
+    <br /> Session değeri :
     @Context.Session.GetString("UserGuid")
-    <br /> Cookie değeri : 
+    <br /> Cookie değeri :
     @Context.Request.Cookies["userguid"]
-    <br /> Oturum açılmış mı? : 
+    <br /> Oturum açılmış mı? :
     @Context.User.Identity.IsAuthenticated
     <br /> Kullanıcı User Rolüne Sahip mi? :
     @Context.User.IsInRole("User")

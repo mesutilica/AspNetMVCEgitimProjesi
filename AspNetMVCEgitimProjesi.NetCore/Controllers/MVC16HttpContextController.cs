@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
@@ -17,6 +18,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             mesaj += "<hr/>HttpContext Action : " + HttpContext.GetRouteValue("Action");
             mesaj += "<hr/>HttpContext Id : " + HttpContext.GetRouteValue("id");
             mesaj += "<hr/> Kelime : " + HttpContext.Request.Query["kelime"];
+            mesaj += "<hr/> Tam Url-GetEncodedUrl : " + UriHelper.GetEncodedUrl(Request);
+            mesaj += "<hr/> Tam Url-GetDisplayUrl : " + UriHelper.GetDisplayUrl(Request);
+            mesaj += "<hr/> Tam Url-GetEncodedPathAndQuery : " + UriHelper.GetEncodedPathAndQuery(Request);
             TempData["mesaj"] = mesaj;
             return View();
         }

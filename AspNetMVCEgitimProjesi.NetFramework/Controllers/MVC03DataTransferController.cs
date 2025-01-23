@@ -24,7 +24,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             // 3-TempData : 2 kullanımlık ömrü vardır.
             TempData["UrunBilgi"] = "Toplam " + urunListesi.Count + " Ürün Bulundu..";
 
-            ViewBag.ArananKelime = txtAra;
+            ViewBag.GetVerisi = txtAra;
             return View();
         }
         [HttpPost]

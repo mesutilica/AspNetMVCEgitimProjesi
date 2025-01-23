@@ -1,6 +1,8 @@
-﻿
+﻿@model IEnumerable<Uye>
+
 @{
     ViewBag.Title = "MVC Partial Kullanımı";
+    ViewData["CurrentMenu"] = "active";
 }
 
 <h2>MVC Partial Kullanımı</h2>
@@ -25,3 +27,19 @@
 </p>
 
 @Html.Partial("_PartialModelKullanimi")
+
+
+<h3>RenderPartial</h3>
+@{
+    Html.RenderPartial("_PartialModelKullanimi", Model);
+}
+
+<p>
+    Html.RenderPartial() HTML çıktısını doğrudan yanıt akışına yazar.
+</p>
+
+<p>
+    Html.Partial() ise HTML çıktısını bir dize olarak döndürür.
+
+    Bu yöntem, döndürülen çıktının bir değişkene atanmasını veya manipüle edilmesini sağlar.
+</p>

@@ -1,4 +1,5 @@
-﻿@model Uye
+﻿@model IEnumerable<Uye>
+
 @{
     ViewBag.Title = "MVC Partial Kullanımı";
     ViewData["CurrentMenu"] = "active";
@@ -52,23 +53,23 @@
 @{
     await Html.RenderPartialAsync("_PartialModelKullanimi", Model);
 }
-
-<ul class="navbar-nav">
-    <partial name="_PartialMenu" view-data="ViewData" />
-</ul>
-
-<hr />
-
-<h3>ViewDataDictionary ile Veri Gönderme</h3>
-
-<ul class="navbar-nav">
-    @await Html.PartialAsync("_PartialMenu", new ViewDataDictionary(ViewData) { { "id", 18 }, { "Baslik", "Partial Data" } })
-</ul>
 @*
-<partial name="_Partial" for="PartialViewModel" view-data="ViewData" />
+    <ul class="navbar-nav">
+        <partial name="_PartialMenu" view-data="ViewData" />
+    </ul>
 
-@await Html.PartialAsync("_Header", new ViewDataDictionary { { "HeaderName", "User Management" }, { "TitleName", "List Of Users" } })
+        <hr />
 
-@{
-    await Html.PartialAsync("_Header", new ViewDataDictionary { { "HeaderName", "User Management" }, { "TitleName", "List Of Users" } });
-}*@
+        <h3>ViewDataDictionary ile Veri Gönderme</h3>
+
+        <ul class="navbar-nav">
+            @await Html.PartialAsync("_PartialMenu", new ViewDataDictionary(ViewData) { { "id", 18 }, { "Baslik", "Partial Data" } })
+        </ul>
+
+            <partial name="_Partial" for="PartialViewModel" view-data="ViewData" />
+
+            @await Html.PartialAsync("_Header", new ViewDataDictionary { { "HeaderName", "User Management" }, { "TitleName", "List Of Users" } })
+
+            @{
+                await Html.PartialAsync("_Header", new ViewDataDictionary { { "HeaderName", "User Management" }, { "TitleName", "List Of Users" } });
+            }*@

@@ -5,7 +5,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC04ModelBindingController : Controller
     {
-        // GET: MVC10ModelBinding
+        // GET: MVC04ModelBinding
         public ActionResult Index()
         {
             return View();
@@ -20,7 +20,6 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                 KullaniciAdi = "murat",
                 Sifre = "123456"
             };
-
             return View(kullanici); // yukardaki kullanici nesnesinin view da model olarak kullanılabilmesi için bu şekilde view a göndermemiz gerekir.
         }
         [HttpPost]

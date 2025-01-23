@@ -1,15 +1,15 @@
-﻿@model AspNetMVCEgitimProjesi.NetFramework.Models.Uye
+﻿@model Uye
 
 @{
     ViewBag.Title = "Yeni Üye";
 }
 
-<h2>Yeni Üye</h2>
+<h1>Yeni Üye</h1>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Üye Bilgileri</h4>
         <hr />

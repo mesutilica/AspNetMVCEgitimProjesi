@@ -5,6 +5,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
     public class MVC04ModelBindingController : Controller
     {
+        // GET: MVC04ModelBinding
         public IActionResult Index()
         {
             return View();
@@ -37,7 +38,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             // Projelerde bu noktada yakaladığımız adres nesnesini veritabanına kaydederiz.
             return View(adres);
         }
-        public IActionResult UyeSayfasi()
+        public IActionResult KullaniciAdresDetay()
         {
             Kullanici kullanici = new Kullanici()
             {

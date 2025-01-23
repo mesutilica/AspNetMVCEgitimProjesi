@@ -14,7 +14,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 
         public IActionResult Index()
         {
-            return View(_context.Uyeler.FirstOrDefault());
+            return View(_context.Uyeler.ToList());
         }
     }
 }

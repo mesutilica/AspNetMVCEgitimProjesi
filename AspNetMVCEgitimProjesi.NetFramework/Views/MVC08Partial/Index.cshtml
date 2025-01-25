@@ -11,23 +11,19 @@
     Partial parça anlamına gelir ve kod sayısı fazlalaşan ve karmaşıklaşan uygulamalarda sayfalarımızı parçalara ayırarak yönetmemizi kolaylaştırır.
 </p>
 
-<ul>
+<ul class="navbar-nav">
     @Html.Partial("_PartialMenu")
-    <li>
-        <a href="#">Şifre Yenileme</a>
-    </li>
 </ul>
 
 <hr />
 
-<h3>_Partial Model Kullanimi</h3>
+<h3>Partial Model Kullanimi</h3>
 
 <p>
     Datayı yolladığımızda Mvc otomatik model bindingile modeli aktarıyor
 </p>
 
 @Html.Partial("_PartialModelKullanimi")
-
 
 <h3>RenderPartial</h3>
 @{

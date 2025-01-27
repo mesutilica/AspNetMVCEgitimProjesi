@@ -11,7 +11,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             _context = context;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -29,8 +28,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         }
         public IActionResult ActionaYonlendir()
         {
-            //return RedirectToAction("Index"); // metot çalıştığında aynı controllerdaki bir actiona yönlendirmemizi sağlar
-            return RedirectToAction("Index", "Home"); // metot çalıştığında farklı bir controller daki actiona bu şekilde yönlendirebiliriz
+            //return RedirectToAction("Index");
+            //return RedirectToAction("Yonlendir");
+            return RedirectToAction("Index", "Home"); // controller ve action u belirtebiliriz
         }
         public RedirectToRouteResult RouteYonlendir()
         {

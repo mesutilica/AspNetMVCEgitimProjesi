@@ -6,36 +6,29 @@
 
 <h4>Farklı View Döndürme</h4>
 
-<a asp-action="FarkliViewDondur">View Result</a>
+<a href="/MVC09ViewResults/FarkliViewDondur">View Result</a>
 
-<h4>
+<h3>
     Redirect Result : Sayfayı bir url adresine yönlendirme için kullanılır
-</h4>
+</h3>
 
-@Html.ActionLink("Redirect Result", "Yonlendir")
+<a href="/MVC09ViewResults/Yonlendir">Redirect Result</a>
 
-<a asp-action="Yonlendir">Redirect Result</a>
-
-<a href="/MVC09ViewResults/Yonlendir?kelime=telefon">Parametreli Redirect Result</a>
-
-<h4>
+<h3>
     RedirectToAction Result : Sayfayı başka bir actiona yönlendirme için kullanılır
-</h4>
+</h3>
 
-<a asp-action="ActionaYonlendir">RedirectToAction Result</a>
-<hr />
+<a href="/MVC09ViewResults/ActionaYonlendir">RedirectToAction Result</a>
 
-<h4>
+<h3>
     RedirectToRouteResult Result : Sayfayı başka bir route a yönlendirme için kullanılır
-</h4>
+</h3>
 
-<a asp-action="RouteYonlendir">RedirectToRouteResult</a>
+<a href="/MVC09ViewResults/RouteYonlendir">RedirectToRouteResult Result</a>
 
-<hr />
-
-<h4>
+<h3>
     PartialViewResult : Actiona gelen istek sonucu geriye bir PartialView döndürmek için kullanılır
-</h4>
+</h3>
 
 <partial name="_KategorilerPartial" />
 

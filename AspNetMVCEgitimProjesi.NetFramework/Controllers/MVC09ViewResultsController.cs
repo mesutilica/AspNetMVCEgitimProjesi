@@ -16,7 +16,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             return View("Index");
         }
-        public ActionResult Yonlendir(string arananDeger)
+        public ActionResult Yonlendir(string kelime)
         {
             // Bir action içerisinde farklı bir sayfaya yönlendirme yapabiliriz
             //return Redirect("/Home"); // Redirect ile sayfa yönlendirme genelde verilerle ilgili bir işlemden sonra lazım olur
@@ -25,9 +25,9 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         }
         public ActionResult ActionaYonlendir()
         {
-            //return RedirectToAction("Index"); // ActionaYonlendir metodu tetiklendiğinde FarkliViewDondur isimli actiona sayfayı yönlendir
+            //return RedirectToAction("Index");
             //return RedirectToAction("Yonlendir");
-            return RedirectToAction("UyeListesi", "MVC05ModelValidation"); // controller ve action u belirtebiliriz
+            return RedirectToAction("Index", "Home"); // controller ve action u belirtebiliriz
         }
         public RedirectToRouteResult RouteYonlendir()
         {
@@ -43,7 +43,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             var kullanicilar = context.Uyeler.ToList();
             return PartialView("_PartialModelKullanimi", kullanicilar); // Geriye döndermek istediğimiz partial ismini verebiliriz
         }
-        public JavaScriptResult JsResult()
+        public ActionResult JsResult()
         {
             return JavaScript("console.log('JavaScriptResult')");
         }

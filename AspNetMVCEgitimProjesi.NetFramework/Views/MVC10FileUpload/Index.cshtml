@@ -1,23 +1,33 @@
 ﻿@{
     ViewBag.Title = "File Upload - Dosya Yükleme İşlemi";
-    var dosyalar = new DirectoryInfo(Server.MapPath("/Images"));
-    var infoList = dosyalar.GetFiles();
 }
 
 <h2>File Upload - Dosya Yükleme İşlemi</h2>
+
+<b>Rasgele Dosya Adı :</b>
+@System.IO.Path.GetRandomFileName()
 
 <form action="" method="post" enctype="multipart/form-data">
     <input type="file" name="dosya" id="fileup" />
     <input type="submit" value="Yükle" class="btn btn-info" />
 </form>
 
-<p>
-    Mvc de resim yükleme için form elementine enctype="multipart/form-data" attribute ünü mutlakaeklemeliyiz yoksa dosya yüklenmez!!
-</p>
+<hr />
+<img src="/Images/@TempData["Resim"]" alt="" height="180" />
 
 @TempData["message"]
 
-<hr />
+<p>
+    Dosya yüklemek için bir form elementine ihtiyaç var.
+    Form elementine enctype="multipart/form-data" attribute ünü eklemek zorundayız
+    Formda dosya yüklemek için type ı file olan element gerekli
+    File elementine verilen isim önemli post metodunda bu elementin name değerine göre eşleşme sağlanıyor!
+</p>
+
+@{
+    var dosyalar = new DirectoryInfo(Server.MapPath("/Images"));
+    var infoList = dosyalar.GetFiles();
+}
 
 <table class="table">
     <tr>

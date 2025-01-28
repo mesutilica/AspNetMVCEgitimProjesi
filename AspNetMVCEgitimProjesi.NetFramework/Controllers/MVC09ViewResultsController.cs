@@ -73,11 +73,11 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         public FileStreamResult MetinDosyasiIndir()
         {
             string metin = "FileStreamResult ile metin dosyası indirme"; // indirilecek dosya içeriği
-            System.IO.MemoryStream memory = new System.IO.MemoryStream();
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(metin);
+            var memory = new System.IO.MemoryStream();
+            var bytes = System.Text.Encoding.UTF8.GetBytes(metin);
             memory.Write(bytes, 0, bytes.Length);
             memory.Position = 0;
-            FileStreamResult result = new FileStreamResult(memory, "text/plain");
+            var result = new FileStreamResult(memory, "text/plain");
             result.FileDownloadName = "metin.txt";
             return result;
         }

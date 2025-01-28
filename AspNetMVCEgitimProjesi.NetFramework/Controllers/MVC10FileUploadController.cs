@@ -13,7 +13,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase dosya) // Ön yüzde file upload elementine name olarak ne isim verdiysek onu kullanmalıyız
         {
-            if (dosya != null && dosya.ContentLength > 0)
+            if (dosya != null)
             {
                 // Dosya işlemleri için system.ıo kütüphanesini using ile yukarıya eklemeliyiz!
                 var uzanti = Path.GetExtension(dosya.FileName); // Dosya uzantı kontrolü yapmak istersek

@@ -7,16 +7,15 @@
 <b>Rasgele Dosya Adı :</b>
 @System.IO.Path.GetRandomFileName()
 
-<form asp-action="Index" enctype="multipart/form-data">
-    <input type="file" name="dosya" class="form-control" />
-    <hr />
-    <input type="submit" value="Yükle" class="btn btn-primary" />
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="dosya" id="fileup" />
+    <input type="submit" value="Yükle" class="btn btn-info" />
 </form>
+
 <hr />
 <img src="/Images/@TempData["Resim"]" alt="" height="180" />
 
 @TempData["message"]
-<hr />
 
 <p>
     Dosya yüklemek için bir form elementine ihtiyaç var.
@@ -27,7 +26,7 @@
 
 @{
     var dosyalar = new DirectoryInfo(Directory.GetCurrentDirectory() + "/wwwroot/Images/");
-    FileInfo[] infoList = dosyalar.GetFiles();
+    var infoList = dosyalar.GetFiles();
 }
 
 <table class="table">

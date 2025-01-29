@@ -13,16 +13,18 @@
     Kullanıcıyı tanımlamak ve sonraki girişinde tanıyabilmek için kullanılır.
 </p>
 
-
 <h2>Cookie Oluştur</h2>
 
-<form asp-action="CookieOlustur">
-    <input type="text" name="kullaniciAdi" placeholder="Kullanıcı Adı" />
-    <input type="text" name="sifre" placeholder="Şifre" />
+<form method="post" action="/MVC11Cookie/CookieOlustur">
+    <input type="text" name="kullaniciAdi" placeholder="Kullanıcı Adı" required />
+    <input type="text" name="sifre" placeholder="Şifre" required />
     <input type="submit" value="Giriş" />
 </form>
 
-<a asp-action="CookieOku">
+<a href="MVC11Cookie/CookieOku">
     Cookie Oku
 </a>
-@Html.Raw(TempData["Mesaj"])
+
+<h5>
+    @Html.Raw(TempData["Mesaj"])
+</h5>

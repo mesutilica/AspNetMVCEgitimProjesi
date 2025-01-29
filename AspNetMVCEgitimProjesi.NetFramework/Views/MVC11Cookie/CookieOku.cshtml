@@ -11,18 +11,20 @@
 
 <hr />
 
-<div>
-    Cookie deki kullanıcı adı :
-    <b>
-        @TempData["mesaj"]
-    </b>
-</div>
+<h3>Cookie deki kullanıcı adı :</h3>
+<h5>
+    Frontend: @Context.Request.Cookies["username"].Value
+</h5>
+<h5>
+    Backend: @TempData["kullaniciAdi"]
+</h5>
 
 <hr />
 
-<div>
-    Cookie deki kullanıcı guid :
-    <b>
-        @TempData["kullaniciguid"]
-    </b>
-</div>
+<h3>Cookie deki kullanıcı guid :</h3>
+<h5>
+    Frontend: @Context.Request.Cookies["userguid"].Value
+</h5>
+<h5>
+    Backend: @TempData["kullaniciguid"]
+</h5>

@@ -14,29 +14,33 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             return View();
         }
-        [Route("CookieOlustur"), HttpPost]
+        [HttpPost]
         public ActionResult CookieOlustur(string kullaniciAdi, string sifre)
         {
             var kullanici = context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
             if (kullanici != null)
             {
-                HttpCookie cookie = new HttpCookie("username", "Admin")
+                var cookieAyarlari = new HttpCookie("username", "Admin")
                 {
                     Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
                 };
-                HttpContext.Response.Cookies.Add(cookie); // .net framework de HttpContext ile oluşturuyoruz
+                HttpContext.Response.Cookies.Add(cookieAyarlari); // .net framework de HttpContext ile oluşturuyoruz
                 Response.Cookies.Add(new HttpCookie("userguid", Guid.NewGuid().ToString()));
                 return RedirectToAction("CookieOku");
             }
-            else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
+            else
+                TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
             return RedirectToAction("Index");
         }
         public ActionResult CookieOku()
         {
-            if (HttpContext.Request.Cookies["username"] != null)
-                TempData["mesaj"] = HttpContext.Request.Cookies["username"].Value;
-            if (HttpContext.Request.Cookies["userguid"] != null)
-                TempData["kullaniciguid"] = HttpContext.Request.Cookies["userguid"].Value;
+            if (HttpContext.Request.Cookies["username"] == null || HttpContext.Request.Cookies["userguid"] == null)
+            {
+                TempData["Mesaj"] = "Lütfen Giriş Yapınız!";
+                return RedirectToAction("Index");
+            }
+            TempData["kullaniciAdi"] = HttpContext.Request.Cookies["username"].Value;
+            TempData["kullaniciguid"] = HttpContext.Request.Cookies["userguid"].Value;
             return View();
         }
         public ActionResult CookieSil()

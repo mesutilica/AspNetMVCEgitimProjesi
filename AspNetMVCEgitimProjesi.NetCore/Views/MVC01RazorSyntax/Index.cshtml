@@ -4,8 +4,8 @@
     string urunAdi = "Bilgisayar";
     decimal fiyat = 18000;
     decimal kdv = 1.20M;
-    string[] isimler = { "Muhammed", "Ali", "Cem", "Kürşat", "Alparslan" };
-    var tarih = @DateTime.Now; // yorum satırı
+    string[] isimler = { "Murat", "Ali", "Cem", "Mesut", "Alparslan" };
+    var tarih = DateTime.Now; // yorum satırı
 }
 
 <h2>MVC Razor Syntax</h2>
@@ -73,8 +73,7 @@ Listedeki 2. isim : @isimler[1]
 
 @foreach (var isim in isimler)
 {
-    @(isim + " ")
-    // isimleri aralarına boşluk bırakarak yazdırır
+    @(isim + " ") // isimleri aralarına boşluk bırakarak yazdırır
     @:İsim :  @isim -
 }
 

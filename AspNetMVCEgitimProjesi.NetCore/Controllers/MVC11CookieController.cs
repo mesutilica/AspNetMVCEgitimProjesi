@@ -22,27 +22,33 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             var kullanici = _context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
             if (kullanici != null)
             {
-                CookieOptions cookieAyarlari = new()
+                var cookieAyarlari = new CookieOptions()
                 {
                     Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
                 };
-                Response.Cookies.Append("kullaniciAdi", kullaniciAdi, cookieAyarlari);
+                Response.Cookies.Append("username", kullaniciAdi, cookieAyarlari);
                 Response.Cookies.Append("sifre", sifre, cookieAyarlari);
                 Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
                 return RedirectToAction("CookieOku");
             }
-            else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
+            else
+                TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
             return View("Index");
         }
         public IActionResult CookieOku()
         {
-            if (Request.Cookies["userguid"] is null)
+            if (HttpContext.Request.Cookies["username"] == null || HttpContext.Request.Cookies["userguid"] == null)
+            {
+                TempData["Mesaj"] = "Lütfen Giriş Yapınız!";
                 return RedirectToAction("Index");
+            }
+            TempData["kullaniciAdi"] = HttpContext.Request.Cookies["username"];
+            TempData["kullaniciguid"] = HttpContext.Request.Cookies["userguid"];
             return View();
         }
         public IActionResult CookieSil()
         {
-            Response.Cookies.Delete("kullaniciAdi");
+            Response.Cookies.Delete("username");
             Response.Cookies.Delete("sifre");
             Response.Cookies.Delete("userguid");
 

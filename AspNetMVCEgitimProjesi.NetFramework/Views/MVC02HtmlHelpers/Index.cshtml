@@ -1,35 +1,52 @@
 ﻿@{
+    ViewBag.Title = "MVC02 Html Helpers";
 }
 
-<h2>MVC02 HtmlHelpers</h2>
+<h2>MVC02 Html Helpers</h2>
 
 @Html.ActionLink("Anasayfa", "Index", "Home")
 
 @Html.ActionLink("MVC01 Razor Syntax", "Index", "MVC01RazorSyntax")
 
+<a href="/">Anasayfa</a>
+
+<hr />
+
 <h3>
     Html Checkbox Oluşturma
 </h3>
 
-@Html.CheckBox("Onay") Onaylıyorum
+<label>
+    <input type="checkbox" name="cbOnay" /> Onaylıyorum
+</label>
+
+<br />
+
+<label>
+    @Html.CheckBox("Onay") Onaylıyorum
+</label>
+
+<hr />
 
 <h3>
     Html TextBox Oluşturma
 </h3>
 
-@Html.TextBox("txtAd") Ekranda type ı text olan giriş(input) elementi oluşturur.
-
 <input id="txtSoyad" name="txtSoyad" type="text" value="">
 
-<h3>
-    Html Editor Oluşturma
-</h3>
+<br />
 
-<hr />
+@Html.TextBox("txtAd") Ekranda type ı text olan giriş(input) elementi oluşturur.
 
-@Html.Editor("txtMiktar") Ekranda veri tipine göre otomatik tipi ayarlı giriş(input) elementi oluşturur.
+<h4>
+    Html Editor
+</h4>
 
 <input id="txtMiktar" name="txtMiktar" type="number" value="1">
+
+<br />
+
+@Html.Editor("txtMiktar") Ekranda veri tipine göre otomatik tipi ayarlı giriş(input) elementi oluşturur.
 
 <hr />
 
@@ -38,6 +55,8 @@
 </h3>
 
 @Html.Hidden("GizliElement", "Html Hidden(Gizli Element) deki veriler sadece sayfa kaynağında görünür")
+
+"Html Hidden(Gizli Element) deki veriler sadece sayfa kaynağında görünür"
 
 <hr />
 
@@ -54,6 +73,8 @@
 </h3>
 
 @Html.TextArea("txtAdres", "Html Textarea(Çok satırlı input) Oluşturma")
+
+<hr />
 
 <h3>
     Html Password(Şifre alanı) Oluşturma
@@ -82,7 +103,7 @@
 <h3>Listbox ve DropDownList Elementi Kullanımı</h3>
 
 @{
-    SelectListItem[] liste = new SelectListItem[]{
+    var liste = new SelectListItem[]{
                 new SelectListItem() { Text = "Bilgisayar"},
                 new SelectListItem() { Text = "Elektronik"},
                 new SelectListItem() { Text = "Telefon"}
@@ -98,7 +119,13 @@
 
 <h3>RadioButton Elementi Kullanımı</h3>
 
-@Html.RadioButton("rbOnay", "Onaylıyorum") Sözleşmeyi Onaylıyorum
+<h5>Sözleşmeyi</h5>
+<label>
+    @Html.RadioButton("rbOnay", "Onay")  Onaylıyorum
+</label>
+<label>
+    @Html.RadioButton("rbOnay", "Red") Onaylamıyorum
+</label>
 
 <hr />
 

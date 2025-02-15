@@ -5,7 +5,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC05ModelValidationController : Controller
     {
-        // GET: MVC11ModelValidation
+        // GET: MVC05ModelValidation
         public ActionResult Index()
         {
             return View();
@@ -19,12 +19,11 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             if (ModelState.IsValid) // Eğer modeldeki validasyon kurallarına uyulmuşsa, tersi için !ModelState.IsValid
             {
-                // Parametreyle gelen uye nesnesini burada veritabanına kaydedebiliriz
-                return RedirectToAction("UyeListesi");
+                // kayıt ekle
             }
-            if (!ModelState.IsValid) // model kuralları geçersizse
+            else
             {
-                ViewBag.Uye = "Lütfen gerekli alanları doldurunuz!";
+                ModelState.AddModelError("", "Lütfen Tüm Zorunlu Alanları Doldurunuz!");
             }
             return View(uye);
         }

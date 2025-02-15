@@ -48,13 +48,13 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             ViewBag.Mesaj4 = "Textbox değeri : " + formCollection["txtUrunAdi"];
             ViewBag.Mesaj5 = "Dropdown değeri : " + formCollection["ddlKategori"];
             ViewBag.Mesaj6 = "cbOnay değeri : " + formCollection.GetValues("cbOnay")[0];
-            ViewBag.Mesaj6 += "rbOnay değeri : " + formCollection.GetValues("rbOnay")[0];
+            ViewBag.Mesaj6 += " - rbOnay değeri : " + formCollection.GetValues("rbOnay")[0];
 
             ViewBag.Baslik3 = "3. Yöntem Request Form İle Yakalama";
             ViewBag.Mesaj7 = "Textbox değeri : " + Request.Form["txtUrunAdi"];
             ViewBag.Mesaj8 = "Dropdown değeri : " + Request.Form["ddlKategori"];
             ViewBag.Mesaj9 = "cbOnay değeri : " + Request.Form.GetValues("cbOnay")[0];
-            ViewBag.Mesaj9 += "rbOnay değeri : " + Request.Form.GetValues("rbOnay")[0];
+            ViewBag.Mesaj9 += " - rbOnay değeri : " + Request.Form.GetValues("rbOnay")[0];
             ViewBag.Mesaj9 += " -- <hr> txtUrunAdi değeri : " + Request.Form.GetValues("txtUrunAdi")[0];
             ViewBag.Mesaj9 += " -- ddlKategori değeri : " + Request.Form.GetValues("ddlKategori")[0];
             return View();

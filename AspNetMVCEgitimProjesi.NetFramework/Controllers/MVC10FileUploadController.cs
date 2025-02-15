@@ -32,19 +32,19 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                     var fileName = Path.ChangeExtension(randomFileName, ".jpg"); // dosya adı ve uzantısını değiştirip birleştirdik
                     var path = Path.Combine(klasor, fileName); // klasör ve resim adını birleştirdik
                     //dosya.SaveAs(path); // resmi farklı kaydet metoduyla sunucuya yüklüyoruz.
-                    //ViewBag.ResimAdi = fileName;
-                    //ViewBag.ResimPath = path;
+                    //TempData["Resim"] = fileName;
 
                     // 2. Yöntem - Resmi Kendi Adıyla Yükleme
                     var dosyaAdi = Path.GetFileName(dosya.FileName);
                     var yol = Path.Combine(klasor, dosyaAdi);
 
                     //dosya.SaveAs(yol);
+                    //TempData["Resim"] = fileName;
 
                     // 3. Yönetm - Resmi direk sunucuya yollama
                     dosya.SaveAs(Server.MapPath("/Images/" + dosya.FileName));
 
-                    ViewBag.ResimAdi = dosyaAdi;
+                    TempData["Resim"] = fileName;
                     return RedirectToAction("Index");
                 }
                 else TempData["message"] = "Sadece .jpg, .jpeg, .png, .gif Resimleri Yükleyebilirsiniz! ";

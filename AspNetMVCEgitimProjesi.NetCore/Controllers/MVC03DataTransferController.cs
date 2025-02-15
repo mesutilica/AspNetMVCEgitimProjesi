@@ -56,7 +56,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             ViewBag.Mesaj8 = "Dropdown değeri : " + Request.Form["ddlKategori"];
             ViewBag.Mesaj9 = "cbOnay değeri : " + Request.Form["cbOnay"][0];
             ViewBag.Mesaj9 += " - rbOnay değeri : " + Request.Form["rbOnay"][0];
-            //ViewBag.Mesaj9 = "cbOnay değeri : " + Request.Form.GetValues("cbOnay")[0];
+            //ViewBag.Mesaj9 = " - cbOnay değeri : " + Request.Form.GetValues("cbOnay")[0];
             //ViewBag.Mesaj9 += " -- <hr> text1 değeri : " + Request.Form.GetValues("text1")[0];
             //ViewBag.Mesaj9 += " -- ddlListe değeri : " + Request.Form.GetValues("ddlKategori")[0]; bunlar çalışmıyor
             TempData["Tdata2"] = "Checkbox dan seçilen değer : " + Request.Form["cbOnay"][0];// first() de kullanılabilir //true seçince true,false dönüyor

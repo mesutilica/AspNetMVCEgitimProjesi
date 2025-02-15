@@ -7,7 +7,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
     public class MVC09ViewResultsController : Controller
     {
         private UyeContext context = new UyeContext();
-        // GET: MVC14ViewResults
+        // GET: MVC09ViewResults
         public ActionResult Index()
         {
             return View();

@@ -9,7 +9,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
     public class MVC11CookieController : Controller
     {
         private UyeContext context = new UyeContext();
-        // GET: MVC13Cookie
+        // GET: MVC11Cookie
         public ActionResult Index()
         {
             return View();
@@ -20,12 +20,14 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             var kullanici = context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
             if (kullanici != null)
             {
+                Response.Cookies.Add(new HttpCookie("userguid", Guid.NewGuid().ToString()));
+                
                 var cookieAyarlari = new HttpCookie("username", "Admin")
                 {
                     Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
                 };
                 HttpContext.Response.Cookies.Add(cookieAyarlari); // .net framework de HttpContext ile oluşturuyoruz
-                Response.Cookies.Add(new HttpCookie("userguid", Guid.NewGuid().ToString()));
+                
                 return RedirectToAction("CookieOku");
             }
             else
@@ -36,7 +38,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             if (HttpContext.Request.Cookies["username"] == null || HttpContext.Request.Cookies["userguid"] == null)
             {
-                TempData["Mesaj"] = "Lütfen Giriş Yapınız!";
+                TempData["Mesaj"] = @"<div class='alert alert-danger'>Lütfen Giriş Yapınız!</div>";
                 return RedirectToAction("Index");
             }
             TempData["kullaniciAdi"] = HttpContext.Request.Cookies["username"].Value;

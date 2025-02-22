@@ -28,9 +28,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 if (uzanti == ".jpg" || uzanti == ".jpeg" || uzanti == ".png" || uzanti == ".gif") // Sadece bu uzantılardaki dosyaları kabul et
                 {
                     // 1. Yöntem Random(Rastgele) İsimle Dosya Yükleme
-                    var randomFileName = Path.GetRandomFileName(); // rasgele dosya ismi oluşturma metodu
-                    var fileName = Path.ChangeExtension(randomFileName, ".jpg"); // dosya adı ve uzantısını değiştirip birleştirdik
-                    var path = Path.Combine(klasor, fileName); // klasör ve resim adını birleştirdik
+                    //var randomFileName = Path.GetRandomFileName(); // rasgele dosya ismi oluşturma metodu
+                    //var fileName = Path.ChangeExtension(randomFileName, ".jpg"); // dosya adı ve uzantısını değiştirip birleştirdik
+                    //var path = Path.Combine(klasor, fileName); // klasör ve resim adını birleştirdik
                     //dosya.SaveAs(path); // resmi farklı kaydet metoduyla sunucuya yüklüyoruz.
                     //TempData["Resim"] = fileName;
 
@@ -39,12 +39,12 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                     var yol = Path.Combine(klasor, dosyaAdi);
 
                     //dosya.SaveAs(yol);
-                    //TempData["Resim"] = fileName;
+                    //TempData["Resim"] = dosyaAdi;
 
                     // 3. Yönetm - Resmi direk sunucuya yollama
                     dosya.SaveAs(Server.MapPath("/Images/" + dosya.FileName));
 
-                    TempData["Resim"] = fileName;
+                    TempData["Resim"] = dosya.FileName;
                     return RedirectToAction("Index");
                 }
                 else TempData["message"] = "Sadece .jpg, .jpeg, .png, .gif Resimleri Yükleyebilirsiniz! ";

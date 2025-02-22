@@ -22,13 +22,15 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             var kullanici = _context.Uyeler.FirstOrDefault(u => u.KullaniciAdi == kullaniciAdi && u.Sifre == sifre);
             if (kullanici != null)
             {
+                Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
+                
                 var cookieAyarlari = new CookieOptions()
                 {
                     Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
                 };
                 Response.Cookies.Append("username", kullaniciAdi, cookieAyarlari);
                 Response.Cookies.Append("sifre", sifre, cookieAyarlari);
-                Response.Cookies.Append("userguid", Guid.NewGuid().ToString());
+                
                 return RedirectToAction("CookieOku");
             }
             else

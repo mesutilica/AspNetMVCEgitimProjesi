@@ -13,13 +13,13 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
             Log("OnActionExecuted", filterContext.RouteData);
         }
 
-        public override void OnActionExecuting(ActionExecutingContext context)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var UserGuid = context.HttpContext.Session["userguid"];
-            var userguid = context.HttpContext.Request.Cookies["userguid"];
+            var UserGuid = filterContext.HttpContext.Session["userguid"];
+            var userguid = filterContext.HttpContext.Request.Cookies["userguid"];
             if (UserGuid == null)
-                context.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
-            base.OnActionExecuting(context);
+                filterContext.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
+            base.OnActionExecuting(filterContext);
         }
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {

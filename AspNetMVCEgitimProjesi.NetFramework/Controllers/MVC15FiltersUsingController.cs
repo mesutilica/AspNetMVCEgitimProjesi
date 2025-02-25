@@ -71,12 +71,12 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                 }
                 else
                 {
-                    TempData["Message"] = "<div class='alert alert-danger'>Giriş Başarısız!</div>";
+                    ModelState.AddModelError("", "Giriş Başarısız!");
                 }
             }
             catch (System.Exception hata)
             {
-                TempData["Message"] = "<div class='alert alert-danger'>Hata Oluştu!</div>";
+                ModelState.AddModelError("", "Hata Oluştu!");
                 //Todo: burada loglama yapılıp hata kaydedilmeli!
                 //throw;
             }

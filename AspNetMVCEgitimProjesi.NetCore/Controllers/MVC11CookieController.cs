@@ -11,7 +11,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             _context = context;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -29,7 +28,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                     Expires = DateTime.Now.AddMinutes(1) // cookie ye 1 dk lık bitiş süresi tanımladık
                 };
                 Response.Cookies.Append("username", kullaniciAdi, cookieAyarlari);
-                Response.Cookies.Append("sifre", sifre, cookieAyarlari);
                 
                 return RedirectToAction("CookieOku");
             }
@@ -41,7 +39,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             if (HttpContext.Request.Cookies["username"] == null || HttpContext.Request.Cookies["userguid"] == null)
             {
-                TempData["Mesaj"] = "Lütfen Giriş Yapınız!";
+                TempData["Mesaj"] = "<div class='alert alert-warning'>Lütfen Giriş Yapınız!</div>";
                 return RedirectToAction("Index");
             }
             TempData["kullaniciAdi"] = HttpContext.Request.Cookies["username"];
@@ -51,7 +49,6 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         public IActionResult CookieSil()
         {
             Response.Cookies.Delete("username");
-            Response.Cookies.Delete("sifre");
             Response.Cookies.Delete("userguid");
 
             return RedirectToAction("CookieOku");

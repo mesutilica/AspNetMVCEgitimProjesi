@@ -5,7 +5,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
     public class MVC14AppSettingController : Controller
     {
-        // GET: MVC13AppSetting
+        // GET: MVC14AppSetting
         public ActionResult Index()
         {
             ViewBag.MailinGidecegiAdres = WebConfigurationManager.AppSettings["EmailAdresi"];

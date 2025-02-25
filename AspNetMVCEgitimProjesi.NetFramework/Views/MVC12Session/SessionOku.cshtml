@@ -1,11 +1,10 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Session Oku";
 }
 
 <h1>Session Oku</h1>
 
-@if (Session["userguid"] != null & Session["kullanici"] != null)
+@if (Session["userguid"] != null && Session["kullanici"] != null)
 {
     var uye = Session["kullanici"] as Uye;
     <div>
@@ -52,8 +51,8 @@
 }
 else
 {
-    <h4>Session Boş!</h4>
+    <h4>Oturum Açılmamış!</h4>
     <a href="Index" class="btn btn-primary">
-        Session Oluştur
+        Oturum Aç
     </a>
 }

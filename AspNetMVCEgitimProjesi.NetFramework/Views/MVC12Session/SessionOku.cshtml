@@ -4,20 +4,39 @@
 
 <h1>Session Oku</h1>
 
-@if (Session["userguid"] != null && Session["kullanici"] != null)
-{
+<h3>Session daki kullanıcı adı :</h3>
+<h5>
+    Frontend: @Session["username"]
+</h5>
+<h5>
+    Backend: @TempData["kullaniciAdi"]
+</h5>
+
+<hr />
+
+<h3>Session daki kullanıcı guid :</h3>
+<h5>
+    Frontend: @Session["userguid"]
+</h5>
+<h5>
+    Backend: @TempData["kullaniciguid"]
+</h5>
+
+<a href="SessionSil">
+    Session Sil
+</a>
+
+<hr />
+
+@{
     var uye = Session["kullanici"] as Uye;
-    <div>
-        Hoşgeldin
-        <b>
-            @TempData["SessionBilgi"]
-        </b>
-        <hr />
-        <b>
-            Guid :
-        </b>
-        @Session["userguid"]
-    </div>
+}
+
+@if (uye != null)
+{
+    <h3>
+        Hoşgeldin : @uye.KullaniciAdi
+    </h3>
 
     <h3>Kullanıcı Bilgileriniz</h3>
     <table class="table">
@@ -42,17 +61,4 @@
             <td>@uye.DogumTarihi.ToShortDateString()</td>
         </tr>
     </table>
-
-    <hr />
-
-    <a href="SessionSil" class="btn btn-danger">
-        Oturumu Kapat
-    </a>
-}
-else
-{
-    <h4>Oturum Açılmamış!</h4>
-    <a href="Index" class="btn btn-primary">
-        Oturum Aç
-    </a>
 }

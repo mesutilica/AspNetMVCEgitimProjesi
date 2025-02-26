@@ -21,21 +21,31 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             {
                 Session["deger"] = "Admin"; //mvc de sessiona veri atma
                 Session["userguid"] = Guid.NewGuid().ToString();
+                Session["username"] = kullanici.KullaniciAdi;
                 Session["kullanici"] = kullanici;
                 return RedirectToAction("SessionOku");
             }
-            else TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
+            else
+                TempData["Mesaj"] = @"<div class='alert alert-danger'>Giriş Başarısız!</div>";
             return RedirectToAction("Index");
         }
         public ActionResult SessionOku()
         {
+            if (Session["username"] == null || Session["userguid"] == null)
+            {
+                TempData["Mesaj"] = @"<div class='alert alert-danger'>Lütfen Giriş Yapınız!</div>";
+                return RedirectToAction("Index");
+            }
             TempData["SessionBilgi"] = Session["deger"]; // sessiondaki veriye ulaşım
+            TempData["kullaniciAdi"] = Session["username"];
+            TempData["kullaniciguid"] = Session["userguid"];
             return View();
         }
         public ActionResult SessionSil()
         {
-            HttpContext.Session.Remove("deger"); // deger isimli sessionu süresini beklemeden sil
-            Session["userguid"] = null;
+            Session.Remove("deger"); // deger isimli sessionu süresini beklemeden sil
+            //Session["userguid"] = null;
+            Session.RemoveAll(); // tüm sessionları sil
             return RedirectToAction("Index");
         }
     }

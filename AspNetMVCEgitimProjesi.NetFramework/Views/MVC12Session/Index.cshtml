@@ -13,12 +13,12 @@
 
 <form action="/MVC12Session/SessionOlustur" method="post">
     <input type="text" name="kullaniciAdi" placeholder="Kullanıcı Adı" />
-    <input type="text" name="sifre" placeholder="Şifre" />
+    <input type="password" name="sifre" placeholder="Şifre" />
     <input type="submit" value="Giriş" />
 </form>
 
 <a href="/MVC12Session/SessionOku">
-    Session Oku Sayfasına Git
+    Session Oku
 </a>
 
 @Html.Raw(TempData["Mesaj"])

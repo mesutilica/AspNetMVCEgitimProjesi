@@ -5,18 +5,10 @@
 
 <h1>Appsettins Dosyasından Veri Okuma</h1>
 
-<h5>
-    Email : @TempData["Email"]
-</h5>
+<p>
+    Mvc ile config dosyasına yazacağımız özel verilere erişip uygulama içerisinde kullanabiliriz.
+</p>
 
-<h5>
-    Mail Sunucu : @TempData["MailSunucu"]
-</h5>
-
-<h5>
-    Mail Kullanıcı Adı :  @TempData["KullaniciAdi"]
-</h5>
-
-<h5>
-    Mail Şifre : @TempData["Sifre"]
-</h5>
+<p class="alert alert-warning">
+    @ViewBag.Mesaj
+</p>

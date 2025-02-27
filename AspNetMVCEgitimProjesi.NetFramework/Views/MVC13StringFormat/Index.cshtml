@@ -1,21 +1,19 @@
 ﻿@{
     ViewData["Title"] = "Mvc String Format";
-    DateTime tarih = DateTime.Now;
+    var tarih = DateTime.Now;
 }
 
 <p>
-    String Format : Ekrandaki verileri formatlamak için kullanırız.
+    String Format : Ekrandaki verileri biçimlendirmek için kullanılır.
 </p>
 
 <h3>
-    Müşteri No :
+    Müşteri No : @ViewBag.MusteriNo
 </h3>
-@ViewBag.MusteriNo
 
 <h3>
-    Satıcı No :
+    Satıcı No : @ViewBag.SaticiNo
 </h3>
-@ViewBag.SaticiNo
 
 <hr />
 

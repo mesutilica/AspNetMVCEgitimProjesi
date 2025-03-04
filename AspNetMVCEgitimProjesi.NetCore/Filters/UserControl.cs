@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetMVCEgitimProjesi.NetCore.Extensions;
+using AspNetMVCEgitimProjesi.NetCore.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Diagnostics;
 
@@ -14,9 +16,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Filters
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var UserGuid = context.HttpContext.Session.GetString("UserGuid");
-            var userguid = context.HttpContext.Request.Cookies["userguid"];
-            if (UserGuid == null)
+            var SessionUserGuid = context.HttpContext.Session.GetString("UserGuid");
+            var CookiesUserguid = context.HttpContext.Request.Cookies["userguid"]; 
+            var uye = context.HttpContext.Session.GetJson<Uye>("uye");
+            if (uye == null)
                 context.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
             base.OnActionExecuting(context);
         }

@@ -15,9 +15,10 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var UserGuid = filterContext.HttpContext.Session["userguid"];
-            var userguid = filterContext.HttpContext.Request.Cookies["userguid"];
-            if (UserGuid == null)
+            var SessionUserGuid = filterContext.HttpContext.Session["userguid"];
+            var CookiesUserguid = filterContext.HttpContext.Request.Cookies["userguid"];
+            var uye = filterContext.HttpContext.Session["kullanici"];
+            if (uye == null)
                 filterContext.Result = new RedirectResult("/MVC12Session?msg=AccessDenied");
             base.OnActionExecuting(filterContext);
         }
@@ -25,12 +26,10 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
         {
             Log("OnResultExecuted", filterContext.RouteData);
         }
-
         public override void OnResultExecuting(ResultExecutingContext filterContext)
         {
             Log("OnResultExecuting ", filterContext.RouteData);
         }
-
         private void Log(string methodName, RouteData routeData)
         {
             var controllerName = routeData.Values["controller"];
@@ -40,6 +39,5 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
                                                                         actionName);
             Debug.WriteLine(message);
         }
-
     }
 }

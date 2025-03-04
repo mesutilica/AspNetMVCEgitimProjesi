@@ -14,13 +14,12 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Kullanici = HttpContext.Session["userguid"];
             return View();
         }
         [UserControl]
-        public ActionResult FiltreKullanimi()
+        public ActionResult UyelikBilgilerim()
         {
-            return RedirectToAction("Index");
+            return View();
         }
         [Authorize]
         public ActionResult UyeGuncelle(int? id)

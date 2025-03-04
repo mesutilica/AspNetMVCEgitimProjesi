@@ -294,6 +294,7 @@
     <Content Include="Views\MVC15FiltersUsing\UyeGuncelle.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\Login.cshtml" />
     <Content Include="Views\Shared\_PartialModelKullanimi.cshtml" />
+    <Content Include="Views\MVC15FiltersUsing\UyelikBilgilerim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

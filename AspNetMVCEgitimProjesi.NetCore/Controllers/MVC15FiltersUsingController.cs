@@ -23,9 +23,9 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             return View();
         }
         [UserControl]
-        public ActionResult FiltreKullanimi()
+        public ActionResult UyelikBilgilerim()
         {
-            return RedirectToAction("Index");
+            return View();
         }
         [Authorize]
         public async Task<ActionResult> UyeGuncelle(int? id)

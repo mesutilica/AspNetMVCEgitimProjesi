@@ -46,8 +46,8 @@
                         </li>
                         <partial name="_PartialMenu" />
                         @*<partial name="_PartialTest" />
-                        <partial name="/Views/MVC07Partial/_PartialTest.cshtml" />
-                        @await Html.PartialAsync("/Views/MVC07Partial/_PartialTest.cshtml")*@
+                            <partial name="/Views/MVC07Partial/_PartialTest.cshtml" />
+                            @await Html.PartialAsync("/Views/MVC07Partial/_PartialTest.cshtml")*@
                         @{
                             //await Html.RenderPartialAsync("/Views/MVC07Partial/_PartialTest.cshtml");
                             // PartialAsync geriye IHtmlContent ile partial içindeki veriyi işleyerek döndürür
@@ -75,5 +75,15 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+    document.querySelectorAll('a').forEach(function (element) {
+        console.log(element);
+        if (element.href.includes('@ViewContext.RouteData.Values["controller"]')) {
+            element.classList.remove('nav-link');
+            element.classList.add('btn', 'btn-secondary', 'active');
+        }
+    });
+    </script>
 </body>
 </html>

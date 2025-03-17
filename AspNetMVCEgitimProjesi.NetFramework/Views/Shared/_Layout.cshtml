@@ -45,5 +45,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+    document.querySelectorAll('a').forEach(function (element) {
+        console.log(element);
+        if (element.href.includes('@ViewContext.RouteData.Values["controller"]')) {
+            element.classList.remove('nav-link');
+            element.classList.add('btn', 'btn-secondary', 'active');
+        }
+    });
+    </script>
 </body>
 </html>

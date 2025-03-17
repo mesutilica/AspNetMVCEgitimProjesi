@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "MVC Http Context";
 }
 
@@ -18,6 +17,11 @@
 </p>
 
 <form>
+    @Html.Editor("kelime")
+</form>
+
+<h4>Post</h4>
+<form method="post">
     @Html.Editor("kelime")
 </form>
 
@@ -46,10 +50,16 @@
 @Context.Session["UserGuid"]
 
 <h5>Cookie değeri :</h5>
-@Context.Request.Cookies["userguid"].Value
+@if (Context.Request.Cookies["userguid"] != null)
+{
+    @Context.Request.Cookies["userguid"].Value
+}
 
 <h5>Oturum açılmış mı? :</h5>
 @Context.User.Identity.IsAuthenticated
 
 <h5>Kullanıcı User Rolüne Sahip mi? :</h5>
 @Context.User.IsInRole("User")
+
+<h5>Context Session Id</h5>
+@Context.Session.SessionID

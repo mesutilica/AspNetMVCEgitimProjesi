@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using System.Web.Security;
+using System.Web.Security; // FormsAuthentication için ekledik
 
 namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
 {
@@ -22,27 +22,32 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult UyeGuncelle(int? id)
+        [UserControl]
+        public ActionResult UyeGuncelle()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Uye uye = db.Uyeler.Find(id);
-            if (uye == null)
-            {
-                return HttpNotFound();
-            }
+            Uye uye = Session["Kullanici"] as Uye;
             return View(uye);
         }
-        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Authorize]
+        [UserControl]
         public ActionResult UyeGuncelle(Uye uye)
         {
+            Uye kullanici = Session["Kullanici"] as Uye;
+
             if (ModelState.IsValid)
             {
-                db.Entry(uye).State = EntityState.Modified;
+                kullanici.Ad = uye.Ad;
+                kullanici.Soyad = uye.Soyad;
+                kullanici.Email = uye.Email;
+                kullanici.Telefon = uye.Telefon;
+                kullanici.TcKimlikNo = uye.TcKimlikNo;
+                kullanici.DogumTarihi = uye.DogumTarihi;
+                kullanici.KullaniciAdi = uye.KullaniciAdi;
+                kullanici.Sifre = uye.Sifre;
+                kullanici.SifreTekrar = uye.SifreTekrar;
+
+                db.Entry(kullanici).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -57,10 +62,10 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             try
             {
-                var kullanici = db.Uyeler.Any(u => u.Email == uye.Email && u.Sifre == uye.Sifre);
-                if (kullanici)
+                var kullanici = db.Uyeler.FirstOrDefault(u => u.Email == uye.Email && u.Sifre == uye.Sifre);
+                if (kullanici != null)
                 {
-                    Session["Admin"] = kullanici;
+                    Session["Kullanici"] = kullanici;
                     FormsAuthentication.SetAuthCookie(uye.Email, true);
                     if (Request.QueryString["ReturnUrl"] != null) // eğer adres çubuğunda ReturnUrl diye bir değer varsa
                     {
@@ -81,14 +86,13 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             }
             return View();
         }
-        [HttpPost]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }
-        [HandleError]
-        //[HandleError(ExceptionType = typeof(NullReferenceException), View = "~/Views/Error/NullReference.cshtml")]
+        //[HandleError]
+        [HandleError(ExceptionType = typeof(System.NullReferenceException), View = "~/Views/Error/NullReference.cshtml")]
         [OutputCache(Duration = 10)] // Keşleme attribute ü
         public ActionResult HataYakalama()
         {

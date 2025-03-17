@@ -10,9 +10,7 @@ namespace AspNetCoreMVCWebAPIUsing
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSession();
-            builder.Services.AddHttpClient();
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -25,15 +23,8 @@ namespace AspNetCoreMVCWebAPIUsing
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSession();
+            
             app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "admin",
-                pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

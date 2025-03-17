@@ -9,12 +9,13 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
     {
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            // Bir action çalışmadan önce yaptırmak istediklerimizi burada yaptırabiliriz
+            // Bir action çalıştıktan sonra yaptırmak istediklerimizi burada yapabiliriz
             Log("OnActionExecuted", filterContext.RouteData);
         }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            // Bir action çalışmadan önce yaptırmak istediklerimizi burada yaptırabiliriz
             var SessionUserGuid = filterContext.HttpContext.Session["userguid"];
             var CookiesUserguid = filterContext.HttpContext.Request.Cookies["userguid"];
             var uye = filterContext.HttpContext.Session["kullanici"];
@@ -24,10 +25,12 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Filters
         }
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
+            // Bir action çalıştıktan sonra yaptırmak istediklerimizi burada yapabiliriz
             Log("OnResultExecuted", filterContext.RouteData);
         }
         public override void OnResultExecuting(ResultExecutingContext filterContext)
         {
+            // Bir action çalıştıktan sonra yaptırmak istediklerimizi burada yapabiliriz
             Log("OnResultExecuting ", filterContext.RouteData);
         }
         private void Log(string methodName, RouteData routeData)

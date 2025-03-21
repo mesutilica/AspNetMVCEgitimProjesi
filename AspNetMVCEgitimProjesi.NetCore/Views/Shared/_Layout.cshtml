@@ -77,7 +77,7 @@
     @await RenderSectionAsync("Scripts", required: false)
 
     <script>
-    document.querySelectorAll('a').forEach(function (element) {
+        document.querySelectorAll('nav a').forEach(function (element) {
         console.log(element);
         if (element.href.includes('@ViewContext.RouteData.Values["controller"]')) {
             element.classList.remove('nav-link');

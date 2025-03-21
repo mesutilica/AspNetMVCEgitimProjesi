@@ -10,6 +10,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             var mesaj = "RouteData controller : " + RouteData.Values["controller"];
             mesaj += "<hr/>Action : " + RouteData.Values["action"];
             mesaj += "<hr/>Id : " + RouteData.Values["id"];
+            mesaj += "<br />HttpContext.Request.Url : " + HttpContext.Request.Url;
             mesaj += "<hr/>QueryString Kelime : " + HttpContext.Request.QueryString["kelime"];
             TempData["mesaj"] = mesaj;
             return View();

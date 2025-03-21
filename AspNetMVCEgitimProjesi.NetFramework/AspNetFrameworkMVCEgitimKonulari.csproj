@@ -143,6 +143,7 @@
     <Compile Include="Controllers\MVC10FileUploadController.cs" />
     <Compile Include="Controllers\MVC15FiltersUsingController.cs" />
     <Compile Include="Controllers\MVC16HttpContextController.cs" />
+    <Compile Include="Controllers\MVC17AreasController.cs" />
     <Compile Include="Filters\UserControl.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +185,31 @@
     <Content Include="Images\monster-indirim-teknosafari.jpg" />
     <Content Include="Img\r2-mvc-deseni.png" />
     <Content Include="Img\r3-mvc-yasam-dongusu.png" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brands\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Detail.cshtml" />
+    <Content Include="Areas\Blog\Views\web.config" />
+    <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Blog\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Blog\Views\Home\Index.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -212,31 +238,6 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Brands\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Brands\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Brands\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Brands\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Detail.cshtml" />
-    <Content Include="Areas\Blog\Views\web.config" />
-    <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Blog\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Blog\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -295,6 +296,7 @@
     <Content Include="Views\MVC15FiltersUsing\Login.cshtml" />
     <Content Include="Views\Shared\_PartialModelKullanimi.cshtml" />
     <Content Include="Views\MVC15FiltersUsing\UyelikBilgilerim.cshtml" />
+    <Content Include="Views\MVC17Areas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,7 +310,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AspNetFramework.Entities\AspNetFramework.Entities.csproj">
-      <Project>{ea04eb5f-1d0f-4292-b285-212cf86e76f4}</Project>
+      <Project>{EA04EB5F-1D0F-4292-B285-212CF86E76F4}</Project>
       <Name>AspNetFramework.Entities</Name>
     </ProjectReference>
   </ItemGroup>

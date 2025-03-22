@@ -76,14 +76,22 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
+    @*<script>
+            document.querySelectorAll('nav a').forEach(function (element) {
+            console.log(element);
+            if (element.href.includes('@ViewContext.RouteData.Values["controller"]')) {
+                element.classList.remove('nav-link');
+                element.classList.add('btn', 'btn-secondary', 'active');
+            }
+        });
+        </script>*@
     <script>
-        document.querySelectorAll('nav a').forEach(function (element) {
-        console.log(element);
-        if (element.href.includes('@ViewContext.RouteData.Values["controller"]')) {
-            element.classList.remove('nav-link');
-            element.classList.add('btn', 'btn-secondary', 'active');
-        }
-    });
+        console.log("document.URL", document.URL);
+        document.querySelectorAll('nav a').forEach(a => {
+            if (a.href === document.URL) {
+                a.classList.add('btn', 'btn-secondary', 'active');
+            }
+        });
     </script>
 </body>
 </html>

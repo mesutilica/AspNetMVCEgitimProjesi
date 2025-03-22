@@ -7,11 +7,11 @@ namespace AspNetMVCEgitimProjesi.NetCore.Models
     {
         public UyeContext(DbContextOptions<UyeContext> options) : base(options)
         {
-            Database.Migrate();
+            //Database.Migrate();
         }
         public UyeContext()
         {
-            Database.Migrate();
+            //Database.Migrate();
         }
         public DbSet<Uye> Uyeler { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -17,7 +17,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                new { controller = "Main", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

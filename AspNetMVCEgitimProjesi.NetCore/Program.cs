@@ -2,8 +2,6 @@ using AspNetCoreMVCEgitimKonulari.Dtos;
 using AspNetMVCEgitimProjesi.NetCore.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims; // Bu kütüphaneyi de admin login için ekledik.
 
@@ -88,4 +86,5 @@ app.MapControllerRoute( // uygulamada kullanacaðýmýz routing yapýsý
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 // Eðer birden fazla routing kullanacaksak bu alana ekleyebiliriz
+
 app.Run(); // Uygulamayý çalýþtýr

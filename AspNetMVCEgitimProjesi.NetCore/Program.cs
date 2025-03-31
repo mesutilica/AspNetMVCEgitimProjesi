@@ -68,7 +68,7 @@ app.UseAuthorization(); // Uygulamada yetkilendirme kullanýmýný aktif et
 // Admin areasýný ekledikten sonra aþaðýdaki route ayarýný tanýmlamamýz gerekiyor! Sonrasýnda admin içerisindeki controllerlarýn üstüne area adýný yazmamýz gerekiyor yoksa 404 error hatasý alýyoruz.
 app.MapControllerRoute(
             name: "admin",
-            pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}"
+            pattern: "{area:exists}/{controller=Main}/{action=Index}/{id?}"
           )
     .RequireAuthorization("BlogPolicy");
 

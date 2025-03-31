@@ -5,6 +5,11 @@
     {
       "library": "ckeditor5@35.3.2",
       "destination": "wwwroot/lib/ckeditor/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "bootstrap@5.3.3",
+      "destination": "wwwroot/lib/bootstrap/"
     }
   ]
 }

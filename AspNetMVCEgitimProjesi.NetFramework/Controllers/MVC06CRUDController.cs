@@ -59,6 +59,10 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            //var uye = context.Uyes.Where(b => b.Id == id).FirstOrDefault();
+            //var uye = context.Uyes.Where(b => b.Id == id).SingleOrDefault();
+            //var uye = context.Uyes.FirstOrDefault(b => b.Id == id);
+            //var uye = context.Uyes.SingleOrDefault(b => b.Id == id);
             Uye uye = db.Uyeler.Find(id);
             if (uye == null)
             {
@@ -74,6 +78,13 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         {
             if (ModelState.IsValid)
             {
+                // context.Update(uye);
+                // context.Uyes.Update(uye);
+                // context.Attach<Uye>(uye).State = EntityState.Modified;
+                // context.Entry(uye).State = EntityState.Modified;
+                // context.Entry<Uye>(uye).State = EntityState.Modified;
+                // context.Entry(uye).State = EntityState.Modified;
+                // context.SaveChanges();
                 db.Entry(uye).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -102,6 +113,10 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Uye uye = db.Uyeler.Find(id);
+            // context.Remove(uye);
+            // context.Attach<Uye>(uye).State = EntityState.Deleted;
+            // context.Entry(uye).State = EntityState.Deleted;
+            // context.Entry<Uye>(uye).State = EntityState.Deleted;
             db.Uyeler.Remove(uye);
             db.SaveChanges();
             return RedirectToAction("Index");

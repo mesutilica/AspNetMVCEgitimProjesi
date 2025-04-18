@@ -50,6 +50,13 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
         {
             if (ModelState.IsValid)
             {
+                //context.Uyes.Add(uye); // 1. yöntem
+                //context.Add<Uye>(uye); // 2. yöntem
+                //context.Entry<Uye>(uye).State = EntityState.Added; // 3. yöntem
+                //context.Entry(uye).State = EntityState.Added; // 4. yöntem
+                //context.Attach<Uye>(uye); // 5. yöntem
+                //context.Add(uye); // 6. yöntem
+                //context.SaveChanges();
                 _context.Add(uye);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

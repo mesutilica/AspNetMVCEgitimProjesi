@@ -26,7 +26,7 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             {
                 HttpContext.Session.SetString("deger", "Admin"); //mvc de sessiona veri atma
                 HttpContext.Session.SetString("userguid", Guid.NewGuid().ToString());
-                HttpContext.Session.SetString("username", kullanici.KullaniciAdi);                
+                HttpContext.Session.SetString("username", kullanici.KullaniciAdi);
                 HttpContext.Session.SetString("kullanici", kullaniciAdi); // session da string olarak key value şeklinde değer saklayabiliriz
                 
                 HttpContext.Session.SetInt32("kullaniciId", kullanici.Id);
@@ -50,9 +50,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             TempData["kullaniciguid"] = HttpContext.Session.GetString("userguid");
             return View();
         }
-        [HttpPost]
         public IActionResult SessionSil()
         {
+            HttpContext.Session.Remove("userguid");
+            HttpContext.Session.Remove("username");
             HttpContext.Session.Remove("kullanici"); // Kullanici isimli sessionu süresini beklemeden sil
             HttpContext.Session.Clear();
             return RedirectToAction("SessionOku");

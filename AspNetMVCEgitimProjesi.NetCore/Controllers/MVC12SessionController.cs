@@ -31,7 +31,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
                 
                 HttpContext.Session.SetInt32("kullaniciId", kullanici.Id);
                 
-                HttpContext.Session.SetJson("uye", kullanici);
+                //HttpContext.Session.SetJson("uye", kullanici);
+                HttpContext.Session.Set("uye", kullanici);
                 return RedirectToAction("SessionOku");
             }
             else

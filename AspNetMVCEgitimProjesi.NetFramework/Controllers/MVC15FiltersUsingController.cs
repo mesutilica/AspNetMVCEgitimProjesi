@@ -47,7 +47,7 @@ namespace AspNetMVCEgitimProjesi.NetFramework.Controllers
                 kullanici.Sifre = uye.Sifre;
                 kullanici.SifreTekrar = uye.SifreTekrar;
 
-                db.Entry(kullanici).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(kullanici).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

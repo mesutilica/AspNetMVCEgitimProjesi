@@ -6,7 +6,7 @@
 <h1>Uyelik Bilgilerim</h1>
 
 @{
-    var uye = Context.Session.GetJson<Uye>("uye");
+    var uye = Context.Session.Get<Uye>("uye");
 }
 
 @if (uye != null)

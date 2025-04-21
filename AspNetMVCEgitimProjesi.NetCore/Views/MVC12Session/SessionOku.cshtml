@@ -27,10 +27,15 @@
     Session Sil
 </a>
 
+<p>
+    Giriş Yapan Kullanıcı No: @Context.Session.GetInt32("kullaniciId")
+</p>
+
 <hr />
 
 @{
-    var uye = Context.Session.GetJson<Uye>("uye");
+    //var uye = Context.Session.GetJson<Uye>("uye");
+    var uye = Context.Session.Get<Uye>("uye");
 }
 
 @if (uye != null)

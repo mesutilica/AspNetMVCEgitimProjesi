@@ -1,4 +1,5 @@
-﻿using AspNetMVCEgitimProjesi.NetCore.Filters;
+﻿using AspNetMVCEgitimProjesi.NetCore.Extensions;
+using AspNetMVCEgitimProjesi.NetCore.Filters;
 using AspNetMVCEgitimProjesi.NetCore.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -28,29 +29,35 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             return View();
         }
         [Authorize]
-        public async Task<ActionResult> UyeGuncelle(int? id)
+        [UserControl]
+        public ActionResult UyeGuncelle()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var uye = await _context.Uyeler.FindAsync(id);
-            if (uye == null)
-            {
-                return NotFound();
-            }
+            var uye = HttpContext.Session.GetJson<Uye>("uye");
             return View(uye);
         }
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
+        [UserControl]
         public ActionResult UyeGuncelle(Uye uye)
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(uye).State = EntityState.Modified;
+                var kullanici = HttpContext.Session.GetJson<Uye>("uye");
+
+                kullanici.Ad = uye.Ad;
+                kullanici.Soyad = uye.Soyad;
+                kullanici.Email = uye.Email;
+                kullanici.Telefon = uye.Telefon;
+                kullanici.TcKimlikNo = uye.TcKimlikNo;
+                kullanici.DogumTarihi = uye.DogumTarihi;
+                kullanici.KullaniciAdi = uye.KullaniciAdi;
+                kullanici.Sifre = uye.Sifre;
+                kullanici.SifreTekrar = uye.SifreTekrar;
+
+                _context.Entry(kullanici).State = EntityState.Modified;
                 _context.SaveChanges();
+                HttpContext.Session.SetJson("uye", kullanici);
                 return RedirectToAction("Index");
             }
             return View(uye);
@@ -91,10 +98,10 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             }
             return View(uye);
         }
-        [HttpPost]
         public ActionResult Logout()
         {
             HttpContext.SignOutAsync();
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
         //[HandleError]

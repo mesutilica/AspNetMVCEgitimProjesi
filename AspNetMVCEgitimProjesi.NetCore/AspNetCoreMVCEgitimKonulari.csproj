@@ -36,10 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\ApiKullanimi\Controllers\" />
     <Folder Include="Areas\ApiKullanimi\Data\" />
     <Folder Include="Areas\ApiKullanimi\Models\" />
-    <Folder Include="Areas\ApiKullanimi\Views\" />
   </ItemGroup>
 
 </Project>

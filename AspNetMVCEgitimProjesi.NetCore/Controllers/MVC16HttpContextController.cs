@@ -11,8 +11,8 @@ namespace AspNetMVCEgitimProjesi.NetCore.Controllers
             mesaj += "<hr/>Action : " + RouteData.Values["action"];
             mesaj += "<hr/>Id : " + RouteData.Values["id"];
             mesaj += "<hr/>QueryString Kelime : " + HttpContext.Request.Query["kelime"];
-            mesaj += "<hr/> Tam Url-GetDisplayUrl : " + UriHelper.GetDisplayUrl(Request);
-            mesaj += "<hr/> Tam Url-GetEncodedPathAndQuery : " + UriHelper.GetEncodedPathAndQuery(Request);
+            //mesaj += "<hr/> Tam Url-GetDisplayUrl : " + UriHelper.GetDisplayUrl(Request);
+            //mesaj += "<hr/> Tam Url-GetEncodedPathAndQuery : " + UriHelper.GetEncodedPathAndQuery(Request);
             TempData["mesaj"] = mesaj;
             return View();
         }

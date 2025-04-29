@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AspNetMVCEgitimProjesi.NetCore.Areas.Admin.Controllers
+namespace AspNetCoreMVCEgitimKonulari.Areas.ApiKullanimi.Controllers
 {
     [Area("Admin")]
-    public class LoginController : Controller
+    public class MainController : Controller
     {
         public IActionResult Index()
         {

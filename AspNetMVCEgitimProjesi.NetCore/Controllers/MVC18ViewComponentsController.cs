@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetMVCEgitimProjesi.NetCore.Controllers
 {
-    public class MVC18ViewComponentUsingController : Controller
+    public class MVC18ViewComponentsController : Controller
     {
         private readonly UyeContext _context;
 
-        public MVC18ViewComponentUsingController(UyeContext context)
+        public MVC18ViewComponentsController(UyeContext context)
         {
             _context = context;
         }

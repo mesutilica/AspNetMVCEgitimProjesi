@@ -18,16 +18,16 @@ namespace AspNetMVCEgitimProjesi.NetCore.Models
         {
             // optionsBuilder.UseInMemoryDatabase("InMemoryDb");
             // con stringi manuel vermek istersek
-            // optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=UyeDb; integrated security=true; TrustServerCertificate=True"); //
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=UyeDb; integrated security=true; TrustServerCertificate=True"); //
 
             // con stringi appsettings den çekmek için
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+            //var configuration = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json")
+            //    .Build();
 
-            var connectionString = configuration.GetConnectionString("UyeContext");
-            optionsBuilder.UseSqlServer(connectionString);
+            //var connectionString = configuration.GetConnectionString("UyeContext");
+            //optionsBuilder.UseSqlServer(connectionString);
 
             base.OnConfiguring(optionsBuilder);
         }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspNetMVCEgitimProjesi.NetCore.Models;
 
@@ -22,7 +17,7 @@ namespace AspNetCoreWebAPI.Controllers
 
         // GET: api/Uyeler
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Uye>>> GetUyeler()
+        public async Task<IEnumerable<Uye>> GetUyeler()
         {
             return await _context.Uyeler.ToListAsync();
         }
@@ -51,23 +46,10 @@ namespace AspNetCoreWebAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(uye).State = EntityState.Modified;
+            //_context.Entry(uye).State = EntityState.Modified;
+            _context.Uyeler.Update(uye);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UyeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }

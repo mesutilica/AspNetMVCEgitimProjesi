@@ -43,6 +43,8 @@ builder.Services.AddMemoryCache(); // Keþlemeyi kullanabilmek için
 
 builder.Services.AddAutoMapper(typeof(DtoMapper)); // AutoMapper inject için
 
+builder.Services.AddHttpClient(); //api ye istek iþlemleri için
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

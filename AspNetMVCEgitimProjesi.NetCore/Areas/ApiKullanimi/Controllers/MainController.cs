@@ -2,7 +2,7 @@
 
 namespace AspNetCoreMVCEgitimKonulari.Areas.ApiKullanimi.Controllers
 {
-    [Area("Admin")]
+    [Area("ApiKullanimi")]
     public class MainController : Controller
     {
         public IActionResult Index()
